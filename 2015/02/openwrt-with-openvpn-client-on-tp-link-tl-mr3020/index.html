@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenWrt with OpenVPN client on TP-Link TL-MR3020 | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="OpenWrt with OpenVPN client on TP-Link TL-MR3020" />
+<meta property="og:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2015-02-15T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2015-02-15T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" />
+<meta name="twitter:title" content="OpenWrt with OpenVPN client on TP-Link TL-MR3020"/>
+<meta name="twitter:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "OpenWrt with OpenVPN client on TP-Link TL-MR3020",
+      "item": "https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenWrt with OpenVPN client on TP-Link TL-MR3020",
+  "name": "OpenWrt with OpenVPN client on TP-Link TL-MR3020",
+  "description": "Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!\nDate URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:",
+  "keywords": [
+    
+  ],
+  "articleBody": "Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!\nDate URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:\nRevision 1 Revision 2 Revision 3 (this post) I have since re-directed all the links to this page, since revision 1 and revision 2 were obsoleted by revision 3. I just wanted to keep the links alive on the internet.\nIntroduction A few months ago, the team at OpenWrt released version 14.07 of OpenWrt, called Barrier Breaker. I’m going to be installing Barrier Breaker on my MR3020 and setting up an OpenVPN client. If you don’t know the difference between PPTP/IPSec/OpenVPN, IVPN has a great comparison chart.\nThe “why” Before we get started, I need to get up on my soapbox and say a few things. If you’re not using a VPN, you should be. VPNs aren’t just for hackers, thieves, or people doing illegal things (you wouldn’t download a car, would you?). VPNs are great for:\nAdding a layer of security to your browsing (VPNs encrypt everything!) Securely connecting two routers to create one large network over the internet (businesses do this all the time) Students/employees connecting back to their university/office to work remotely (again, a common practice) Circumventing geoblocking (i.e., content blocked based on your physical location) Watch Netflix from outside the US Watch BBC iPlayer from outside the UK FREEDOM OF SPEECH! Use a VPN to circumvent government restrictions put on the internet (e.g., China, Iran, North Korea, etc…) But, I digress. VPNs are great. If you don’t have one, get one. Personally, I like using Private Internet Access (I’m not compensated, just a happy customer). If you don’t know where to start, TorrentFreak has a great article on which VPN services take your anonymity seriously (newsflash, PIA is at the top of their list).\nThe “how” My plan for this router is to use it when I travel. I plan on plugging it into the Ethernet port in a hotel (or my house/friend’s house/Airbnb host) and having it broadcast a wireless network. Since the router is an OpenVPN client, any devices that join that wireless network will be VPNed into PIA’s servers. Eventually, when I install OpenVPN on my home router, I can route my connection back home. It’s probably easier illustrated than explained, as below.\nThere are a few advantages to this setup, as opposed to installing the OpenVPN client on each device:\nDevices that don’t support OpenVPN can be protected (XBox, Roku, etc…) Multiple machines (phone, laptop, Roku, etc…) can share one VPN connection You can switch between an insecure wireless network (home/friend’s house/hotel) and a secure wireless network (OpenWrt) whenever needed Ready? Let’s get started!\nInstall OpenWrt I’m going to assume you’re already running Attitude Adjustment (AA) and want to upgrade to Barrier Breaker (BB).\nDisconnect your PC from all wired and wireless networks, then connect your MR3020 to your PC. Because of the way I have this router setup from my previous post (eth0 is a DHCP client, not server), I’m going to connect to the WiFi network it’s broadcasting. I checked my IP, opened my browser, and navigated to 10.80.1.1 (your address will be 192.168.1.1 as stock). I then logged in with the username and password I had set before.\nOnce you’re logged into OpenWrt, go to the System tab, then the Backup/Flash Firmware tab. At this point, it’s a good idea to make a backup of your config by pressing Generate Archive.\nAs-of this writing, the OpenWrt wiki page for the MR3020 doesn’t list BB as the newest firmware. There are two options for the BB download: a file for the factory firmware, and a file for upgrading. We’ll choose the upgrade.\nBack at your router, under Flash new firmware image, make sure Keep settings is checked to keep your current settings. I’m going to uncheck this, since I want to start from scratch. Browse to your downloaded firmware, and press Flash image to upgrade it.\nVerify the checksum, and press Proceed to continue.\nWait a few minutes and the router will reboot. Check your IP again after it’s back up, as mine had changed since I erased my settings.\nAt this point, my MR3020 is running stock BB and I’m going to reconfigure it from scratch. Since the wireless network was wiped out, I’m going to reconnect with Ethernet.\nConfigure OpenWrt From here, the OpenWrt wiki page recommends going through the basic configuration for any OpenWrt installation. I’m going to be combining some of the basic configuration with my configuration for the VPN client.\nNavigate to 192.168.1.1 in your browser and you’ll be greeted by LuCI, the web interface for OpenWrt. OpenWrt recently switched to the Unified Configuration Interface, also known as UCI. The UCI is basically a collection of easy-to-read configuration files that are all centrally located, making OpenWrt much easier to configure. What’s nice about LuCI is that it reads/writes from/to the UCI files. Any changes you make in LuCI are reflected in the UCI files, and vice versa, meaning you can configure the MR3020 from the web interface, or from the command line.\nAnyway, moving on. Leave the username as “root” and the password field empty. Press Login to continue.\nSet a password From the main status screen, we’re going to set a root password by using the link in the yellow box at the top of the page. If you haven’t noticed, LuCI is a lot easier on the eyes in BB than AA.\nHere, you can (and should) set a root password, as well as setup SSH access (which we’ll need later). Press Save \u0026 Apply to continue.\nLook for Password successfully changed! at the top of the screen.\nVerify SSH access by using PuTTY or another SSH client.\n[logan@Arch ~]$ ssh root@192.168.1.1 root@192.168.1.1's password: BusyBox v1.22.1 (2014-09-20 22:01:35 CEST) built-in shell (ash) Enter 'help' for a list of built-in commands. _______ ________ __ | |.-----.-----.-----.| | | |.----.| |_ | - || _ | -__| || | | || _|| _| |_______|| __|_____|__|__||________||__| |____| |__| W I R E L E S S F R E E D O M ----------------------------------------------------- BARRIER BREAKER (14.07, r42625) ----------------------------------------------------- * 1/2 oz Galliano Pour all ingredients into * 4 oz cold Coffee an irish coffee mug filled * 1 1/2 oz Dark Rum with crushed ice. Stir. * 2 tsp. Creme de Cacao ----------------------------------------------------- root@OpenWrt:~# Setup NTP The MR3020 doesn’t have a real-time clock or CMOS battery. Because of this, every time it loses power, the clock resets to October 1st. To circumvent this, we’re going to use NTP to get our time from the internet. You don’t have to setup NTP, but it makes troubleshooting easier when you’re looking at timestamped log files. Keep in mind, since the MR3020 is connected directly to your PC (not the internet), this won’t take effect until after we get it online. Don’t freak out if it’s not working right away.\nFirst, set a hostname, zone name, and time zone for your router. The list of zone names/time zones can be found here. Make note of the tick marks around the zonename.\nuci set system.@system[0].hostname=mr3020_home uci set system.@system[0].zonename='America/New York' uci set system.@system[0].timezone=EST5EDT,M3.2.0,M11.1.0 uci commit system Next, we’re going to enable the NTP client. I’m using US servers from the NTP Pool Project, but change your servers as needed. Again, don’t forget the tick marks.\nuci set system.ntp=timeserver uci set system.ntp.enabled=1 uci delete system.ntp.server uci add_list system.ntp.server='0.us.pool.ntp.org' uci add_list system.ntp.server='1.us.pool.ntp.org' uci add_list system.ntp.server='2.us.pool.ntp.org' uci add_list system.ntp.server='3.us.pool.ntp.org' uci commit system Set default IP Next, we’re going to change the default IP of the router from 192.168.1.1 to 10.80.1.1 (or whatever scheme you want). Most devices ship with 192.168.1.1 as the default, and since we’re going to be double-NATed, we can’t have two identical IPs on the same network.\nuci set network.lan.ipaddr=10.80.1.1 uci commit network You can also limit the number of addresses available in the DHCP pool (optional).\nuci set dhcp.lan.start=10 uci set dhcp.lan.limit=20 uci commit dhcp /etc/init.d/network restart Log back into the web interface at the new address using your new root password.\nCreate wireless network We need to create a wireless network for the MR3020 to broadcast. Eventually, we’re going to turn off LAN access on the Ethernet port, and we’ll need a way to connect to the router locally.\nStart by enabling wireless. At this point, you should be able to see the default OpenWrt network from a device.\nuci delete wireless.radio0.disabled uci commit wireless /etc/init.d/network restart Once enabled, setup your network as needed (name, channel, etc…).\nuci set wireless.radio0.channel=11 uci set wireless.radio0.txpower=18 uci set wireless.radio0.country=US uci set wireless.@wifi-iface[0].ssid='Aw yiss' uci commit wireless You should secure your network and choose a strong password (preferably WPA2-PSK with AES). Remember, this device may be a direct link back to your home network. Even if you have a strong VPN password, a weak WiFi password with weak encryption (e.g., WEP) could compromise your network.\nuci set wireless.@wifi-iface[0].encryption='psk2+ccmp' uci set wireless.@wifi-iface[0].key='wirelesspasswordgoeshere' uci commit wireless /etc/init.d/network restart At this point, you should disconnect the Ethernet cable from the MR3020 and connect to the WiFi network we just setup. Normally, it’s not recommended to configure routers over wireless, but since we’re not going to be transferring files or upgrading firmware, we should be ok.\nSetup WAN interface We need the MR3020 to request an IP address from another router when it is plugged in. For this, we’ll need to make a new interface that will act as a DHCP client. Name the interface something like WAN, with the protocol being set to DHCP client, covering the eth0 interface.\nuci set network.WAN=interface uci set network.WAN.proto=dhcp uci set network.WAN.ifname=eth0 uci commit network On the next screen, under Common Configuration, go to the Firewall Settings tab and select WAN. Press Save \u0026 Apply to continue.\nuci set firewall.@zone[1].network='wan wan6 WAN' uci commit firewall /etc/init.d/network restart /etc/init.d/firewall restart Unbridge LAN interfaces By default, the wired and wireless interfaces are bridged. I want them to be separate, so that I can plug the wired interface into another router and use the wireless interface to broadcast a network. Essentially, I making it so that only another router can use the Ethernet port, and only clients can use the wireless network.\nuci delete network.lan.ifname uci delete network.lan.type uci commit network /etc/init.d/network restart If you don’t unbridge the interfaces, you’ve basically just created a wireless AP for the other router.\nVerify internet access At this point, plug your MR3020 into a LAN port on your other router, and connect your PC to the MR3020’s wireless network. It doesn’t matter what IP your MR3020 gets from the other router, as your PC should see the MR3020 as 10.80.1.1 (or whatever your made it).\nYou should be able to access the internet, as well as ping websites through SSH. In addition, go to the Status dropdown, then select Overview to make sure your Local Time field is updated with the correct time, now that we’re on the internet.\nCongratulations, you are now double-NATed.\nConfigure extroot Before we get started, we need to make some space for OpenVPN. The MR3020 only has 4MB of flash. After OpenWrt is installed, we’re only left with about 400KB, which won’t be enough for the 600KB+ of OpenSSL libraries we’ll need, in addition to other packages that will make life easier.\nroot@OpenWrt:~# df -h Filesystem Size Used Available Use% Mounted on rootfs 640.0K 228.0K 412.0K 36% / /dev/root 2.3M 2.3M 0 100% /rom tmpfs 14.1M 448.0K 13.7M 3% /tmp /dev/mtdblock3 640.0K 228.0K 412.0K 36% /overlay overlayfs:/overlay 640.0K 228.0K 412.0K 36% / tmpfs 512.0K 0 512.0K 0% /dev There are two ways around this:\nExtRoot, which can either extend or move the root filesystem to a USB flash drive Build a custom image of OpenWrt from scratch, leaving out unnecessary packages My first instinct was to build a custom image, leaving out PPP. However, after a few hours of trying and multiple images, it still didn’t give me the space I needed. The only way to get OpenVPN on the MR3020 would be to leave LuCI out of the image, and I’m not willing to give that up.\nThat leaves me with using a USB flash drive to extend or move the filesystem. Thankfully, setting up ExtRoot is pretty easy, and we won’t need a huge flash drive since we’re only after a few extra MB. I picked up this flash drive since it’s small.\nStart by reading the theory on ExtRoot, then go over the how-to guide. You need to decide whether you’ll be using external overlay (also called pivot-overlay) or external root (also called pivot-root). Essentially, external overlay extends the root filesystem to include the flash drive, while external root copies the root filesystem to the flash drive, then boots from the flash drive. External root has a couple advantages (that I can see):\nYou can boot from multiple flash drives, each with a different config (one flash drive with a config for home, another with a config for traveling, etc…) If the flash drive dies, OpenWrt still boots from the internal root filesystem (without all your configs) In this guide, I’m going to be using external root.\nSince my flash drive is 8GB, I’m going to give 1GB to OpenWrt and use the rest for a SAMBA share. Any device connected to my router will have access to the other ~6.5GB share. Get stared by formatting your flash drive with two ext4 partitions. I did this on my machine using GParted, but if you’re running Windows you can use this to format the drive. In this case, /dev/sda1 is 1GB and /dev/sda2 is the remaining ~6.5GB.\nNext, SSH into your router, and install a few packages. You’ll need to install the kmod-fs package for the type of filesystem that you’re using (e.g., kmod-fs-ext4, kmod-fs-ext3, kmod-fs-btrfs, etc…)\nopkg update opkg install block-mount kmod-usb-storage kmod-fs-ext4 There’s a good chance your kernel modules didn’t load. If that’s the case, reboot your router and then plug in your flash drive.\nkmod: failed to insert /lib/modules/3.10.49/sd_mod.ko Configuring kmod-usb-storage. Configuring kmod-crypto-hash. Configuring kmod-lib-crc16. Configuring block-mount. Configuring kmod-fs-ext4. kmod: failed to insert /lib/modules/3.10.49/ext4.ko Find the name of your flash drive with the block info command. Mine was /dev/sda. Notice there are two partitions on the drive.\nroot@mr3020_home:~# block info /dev/mtdblock2: UUID=\"20ad40ea-d33a421e-785b7d2d-ada99230\" VERSION=\"4.0\" TYPE=\"squashfs\" /dev/mtdblock3: TYPE=\"jffs2\" /dev/sda1: UUID=\"bf19ec66-8d6a-40d7-b366-f99f48cced33\" NAME=\"EXT_JOURNAL\" VERSION=\"1.0\" TYPE=\"ext4\" /dev/sda2: UUID=\"5ca298db-53d6-406c-9db3-344c2e5ebae8\" NAME=\"EXT_JOURNAL\" VERSION=\"1.0\" TYPE=\"ext4\" Create two directories and mount /dev/sda1 and /dev/sda2 on them.\nmkdir /mnt/batman mount /dev/sda1 /mnt/batman mkdir /mnt/network chmod -R 777 /mnt/network mount /dev/sda2 /mnt/network Now, copy the router’s internal flash to the flash drive. Obviously, replace /mnt/batman with whatever mount point you’re using.\nmkdir -p /tmp/cproot mount --bind / /tmp/cproot tar -C /tmp/cproot -cvf - . | tar -C /mnt/batman -xf - umount /tmp/cproot Your flash drive now has a copy of the router’s root filesystem on it (so don’t lose it). However, the router will still boot from its internal memory, so we need to change that by editing the /etc/config/fstab file. In addition to that, we’re also creating an extra entry for our SAMBA fileshare.\ncat \u003e\u003e /etc/config/fstab \u003c\u003c EOF config 'mount' option target / option device /dev/sda1 option fstype ext4 option options rw,sync option enabled 1 option enabled_fsck 0 config 'mount' option target /mnt/network option device /dev/sda2 option fstype ext4 option options rw,sync option enabled 1 option enabled_fsck 1 EOF Reboot your router. When it starts up, check your mount points and you should see that /dev/sda1 has been mounted on /, while /dev/sda2 has been mounted on /mnt/network.\nroot@mr3020_home:~# mount rootfs on / type rootfs (rw) /dev/root on /rom type squashfs (ro,noatime) proc on /proc type proc (rw,noatime) sysfs on /sys type sysfs (rw,noatime) tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noatime) /dev/sda1 on / type ext4 (rw,relatime,data=ordered) tmpfs on /dev type tmpfs (rw,relatime,size=512k,mode=755) devpts on /dev/pts type devpts (rw,relatime,mode=600) /dev/sda2 on /mnt/network type ext4 (rw,sync,relatime,data=ordered) debugfs on /sys/kernel/debug type debugfs (rw,noatime) If you check your space again, you’ll see that your root filesystem is now larger, and you have a second partition for SAMBA.\nroot@mr3020_home:~# df -h Filesystem Size Used Available Use% Mounted on rootfs 975.9M 10.5M 898.2M 1% / /dev/root 2.3M 2.3M 0 100% /rom tmpfs 14.1M 360.0K 13.7M 2% /tmp /dev/sda1 975.9M 10.5M 898.2M 1% / tmpfs 512.0K 0 512.0K 0% /dev /dev/sda2 6.2G 14.5M 5.9G 0% /mnt/network Setup VPN Now we need to install the OpenVPN client and configure it. The VPN termination point is going to be one of PIA’s servers, but it could be any OpenVPN server. You should read OpenWrt’s VPN overview, as well the OpenVPN beginner’s guide and the client guide.\nFirst, we’ll need to install a couple packages: openvpn-openssl for obvious reasons, the real version of wget to downlad the configuration files from PIA, and unzip to unzip the downloaded files. This is easiest done by connecting through SSH and running the commands below.\nopkg update opkg install openvpn-openssl wget unzip mv /etc/config/openvpn /etc/config/openvpn_old Unfortunately, there is no LuCI package for OpenVPN in BB, like there is in AA. As-of this writing, the package luci-app-openvpn is marked as broken. There appears to be a package for Chaos Calmer, located here, but I don’t think that will work in BB. That means we’re doing everything from the command line, which isn’t as intimidating as it may sound. Plus, since LuCI runs from the UCI files, we’ll be able to see some of our changes in LuCI when we log back in.\nWe’ll need to create a new interface for the VPN by using the commands below. Name the network interface whatever you’d like, and name the physical (even though it’s virtual) interface tun0.\ncat \u003e\u003e /etc/config/network \u003c\u003c EOF config interface 'PIA_VPN' option proto 'none' option ifname 'tun0' EOF /etc/init.d/network restart Download the OpenVPN configuration files from PIA.\ncd /etc/openvpn wget --no-check-certificate https://www.privateinternetaccess.com/openvpn/openvpn.zip unzip openvpn.zip rm openvpn.zip Now, we need to edit each .ovpn file in /etc/openvpn to include your username and password. However, it’s a pain editing every file manually. Instead, we’ll create a single file that stores your login credentials. The file I created is called authuser. Substitute your username and password, obviously.\ncat \u003e\u003e /etc/openvpn/authuser \u003c\u003c EOF PIA_USERNAME PIA_PASSWORD EOF However, now we’ll have to go back and edit each .ovpn file to look for the authuser file, which is still too much work for me. If you look at each .ovpn file, you’ll see the only difference between them is the server address. What if we created a generic .ovpn connection file which omitted the server address (and port), but specified to use the authuser file? We could pass the server address and port as an option in our command to start the VPN connection.\nCreate the file with the command below. See how we removed the line for the server/port, and added a line for the authuser file and auth-nocache options?\ncat \u003e\u003e /etc/openvpn/piageneric.ovpn \u003c\u003c EOF client dev tun proto udp resolv-retry infinite nobind persist-key persist-tun ca ca.crt tls-client remote-cert-tls server auth-user-pass authuser auth-nocache comp-lzo verb 1 reneg-sec 0 crl-verify crl.pem keepalive 10 120 EOF To compare, this is the US East.ovpn file…\nclient dev tun proto udp remote us-east.privateinternetaccess.com 1194 resolv-retry infinite nobind persist-key persist-tun ca ca.crt tls-client remote-cert-tls server auth-user-pass comp-lzo verb 1 reneg-sec 0 crl-verify crl.pem Now, we need to create a new firewall zone for this VPN connection. This is actually the same config as the WAN zone, but it’s easier to make a new zone in case we need to change anything in the future. Name the firewall zone, and substitute the network interface name you created above. We’ll also be forwarding LAN traffic to the VPN.\ncat \u003e\u003e /etc/config/firewall \u003c\u003c EOF config zone option name 'VPN_FW' option input 'REJECT' option output 'ACCEPT' option forward 'REJECT' option masq '1' option mtu_fix '1' option network 'PIA_VPN' config forwarding option dest 'VPN_FW' option src 'lan' EOF /etc/init.d/network restart /etc/init.d/firewall restart If you’d like, you can login to LuCI and see the new network interface, physical interface tun0, and firewall zone. Back on the command line, use the following command to start the VPN. Specify your generic configuration file and choose a server from PIA, as well as a port number.\nopenvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 If everything went well, you should see something like below, ending in Initialization Sequence Completed. If not, you did something wrong. Check your logs and start looking here.\nroot@mr3020_home:~# openvpn --cd /etc/openvpn --config /etc/openvpn/piag eneric.ovpn --remote us-east.privateinternetaccess.com 1194 Sat Jan 24 13:16:20 2015 OpenVPN 2.3.6 mips-openwrt-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [MH] [IPv6] built on Jan 6 2015 Sat Jan 24 13:16:20 2015 library versions: OpenSSL 1.0.1k 8 Jan 2015, LZO 2.08 Sat Jan 24 13:16:20 2015 WARNING: file 'authuser' is group or others accessible Sat Jan 24 13:16:20 2015 UDPv4 link local: [undef] Sat Jan 24 13:16:20 2015 UDPv4 link remote: [AF_INET]64.237.51.174:1194 Sat Jan 24 13:16:21 2015 [Private Internet Access] Peer Connection Initiated with [AF_INET]64.237.51.174:1194 Sat Jan 24 13:16:24 2015 TUN/TAP device tun0 opened Sat Jan 24 13:16:24 2015 do_ifconfig, tt-\u003eipv6=0, tt-\u003edid_ifconfig_ipv6_setup=0 Sat Jan 24 13:16:24 2015 /sbin/ifconfig tun0 10.121.1.6 pointopoint 10.121.1.5 mtu 1500 Sat Jan 24 13:16:24 2015 Initialization Sequence Completed Check ifconfig to see if you have a tunnel interface. If you do, that’s good!\ntun0 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00 inet addr:10.121.1.6 P-t-P:10.121.1.5 Mask:255.255.255.255 UP POINTOPOINT RUNNING NOARP MULTICAST MTU:1500 Metric:1 RX packets:78 errors:0 dropped:0 overruns:0 frame:0 TX packets:102 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:100 RX bytes:10371 (10.1 KiB) TX bytes:83342 (81.3 KiB) Next, try to get on the internet. If you can’t, there’s a good chance it’s a DNS issue. To resolve this, we’ll set our DNS servers on this connection to use PIA’s DNS servers. It looks like we can set the DNS servers for a specific interface, so we’ll add them for the LAN interface.\nuci add_list dhcp.lan.dhcp_option=\"6,209.222.18.222,209.222.18.218\" uci commit dhcp /etc/init.d/network restart Now we should have DNS working, and since we’re using PIA VPN and PIA DNS servers, we shouldn’t have any DNS leaks either. After all, what’s the point of a VPN if your DNS leaks?\nRestart your VPN connection and try it again! Check your IP with an external tool, like WhatIsMyIP, both on your local wireless network, as well as the OpenWrt network. You should see the difference, meaning you are successfully connected!\nBefore (on my local network)…\nAfter (VPNed in)…\nNow is a good time to check for DNS leaks while on the VPN. Basically, we’re looking to make sure the server giving us our IP address is also providing DNS. If it’s not, then your ISP probably providing DNS, and they’re able to see every DNS request you make.\nNote - Commenter Ben found that his DNS was still leaking when set on the LAN interface. He suggested setting it on the WAN interface, as seen in the comments.\nRun at startup If you’d like your VPN connection to run at startup, edit the /etc/rc.local file. Paste your connection string before exit 0. The ampersand tells OpenWrt not to output anything to the screen.\nBefore…\n# Put your custom commands here that should be executed once # the system init finished. By default this file does nothing. exit 0 After…\n# Put your custom commands here that should be executed once # the system init finished. By default this file does nothing. openvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 \u0026 exit 0 Setup SAMBA Next, we need to setup the SAMBA share by installing the SAMBA packages. You’ll need to search opkg for the correct version of SAMBA server.\nopkg update opkg list | grep -i samba opkg install luci-app-samba samba36-server /etc/init.d/samba enable /etc/init.d/samba start rm /tmp/luci-indexcache Following the last step of this guide (thanks to commenter Ben for sending this in!), go to the Services dropdown, then select Network Shares. Under Samba, select a hostname.\nThen, under Shared Directories, select Add. Here, specify a share name and path (in our case, /mnt/network), and select Allow guests. If you don’t want guest access, you’ll need to setup users as described here. Press Save \u0026 Apply to continue.\nConnect to your router’s wireless network, then, in your file manager (assuming you’re using Linux, since this is a ext4 SAMBA share), navigate to your share name (e.g., smb://openwrt/box/).\nNote - Your distro may not have a SAMBA client installed. On Arch Linux, I needed the smbclient and gvfs-smb packages.\nSetup alerting scripts The whole point of this build was to create a connection that is always on and safe for you to use. But, what if the VPN tunnel goes down? You’d still be able to pass traffic, but it would be over the regular internet, not the encrypted VPN connection. There are a couple ways around this, including putting a route in that denies traffic when not on the VPN, as well as setting up alerting scripts to let you know when the tunnel goes down. Here, I’ll be doing the latter.\nOn the The OpenVPN 2.3 man page, there are options called --up and --down, which as they sound, run scripts when the VPN tunnel comes up or goes down. Basically, we’re going to create a script to email us when the tunnel comes up, and another script that will run when the tunnel goes down, but we still have internet access. Obviously, if the tunnel goes down as a result of the router being powered off or the WAN connection dying, the email isn’t going to work. We’re also going to implement a third script that will run out of root’s crontab to check for VPN connection status every 10 minutes.\nSetup email First, we need to install msmtp.\nopkg update opkg install msmtp If it’s not set already, you need to set the msmtp config file to be R/W for your account only. It won’t function otherwise.\nchmod 600 /etc/msmtprc cp -p /etc/msmtprc /etc/msmtprc_old We need an external STMP server that we can use to route messages through. Luckily, Google provides one for free if you have a Gmail account. Obviously, I would advise against using your primary Gmail account for this. Setting up a dedicated Gmail account just for this application only takes a few minutes and is worth it, in my opinion. Google’s SMTP settings are here, we’ll need them later.\nNext, we’re going to edit the config file at /etc/msmtprc to include our information. There is some pretty good documentation for msmtp over at SourceForge, so I won’t bother going over all the options below. Substitute your new Gmail username and password below.\nBefore…\n# Example for a system wide configuration file # A system wide configuration file is optional. # If it exists, it usually defines a default account. # This allows msmtp to be used like /usr/sbin/sendmail. account default # The SMTP smarthost. host mailhub.oursite.example # Construct envelope-from addresses of the form \"user@oursite.example\". #auto_from on #maildomain oursite.example # Use TLS. #tls on #tls_trust_file /etc/ssl/certs/ca-certificates.crt # Syslog logging with facility LOG_MAIL instead of the default LOG_USER. syslog LOG_MAIL After…\naccount default tls on tls_certcheck off logfile /etc/openvpn/msmtp.log auto_from on auth on host smtp.gmail.com protocol smtp port 587 user your_gmail_address@gmail.com password your_gmail_password syslog LOG_MAIL Next, create three scripts in your /etc/openvpn folder and set permissions on them.\ntouch /etc/openvpn/vpndown.sh touch /etc/openvpn/vpnup.sh touch /etc/openvpn/vpncheck.sh chmod 700 /etc/openvpn/vpndown.sh chmod 700 /etc/openvpn/vpnup.sh chmod 700 /etc/openvpn/vpncheck.sh vpndown.sh The only difference between the vpnup.sh script and vpndown.sh script are the words UP and DOWN in the STATUS variable in each script. Replace your recipients as needed.\n#!/bin/ash #2015-01-24 #Logan Marchione STATUS=DOWN HOSTNAME=`uci get system.@system[0].hostname` RECIPIENT=\"recipient@address.com\" DAY=`date \"+%A\"` DATE=`date \"+%Y-%m-%d\"` TIME=`date \"+%H:%M:%S\"` EMAIL='Subject: VPN '$STATUS' on '$HOSTNAME' From: OpenWrt Monitor As of '$DAY', '$DATE' at '$TIME' the VPN tunnel on '$HOSTNAME' is '$STATUS'.' echo \"$EMAIL\" | msmtp -t $RECIPIENT vpnup.sh The only difference between the vpnup.sh script and vpndown.sh script are the words UP and DOWN in the STATUS variable in each script. Replace your recipients as needed.\n#!/bin/ash #2015-01-24 #Logan Marchione STATUS=UP HOSTNAME=`uci get system.@system[0].hostname` RECIPIENT=\"recipient@address.com\" DAY=`date \"+%A\"` DATE=`date \"+%Y-%m-%d\"` TIME=`date \"+%H:%M:%S\"` EMAIL='Subject: VPN '$STATUS' on '$HOSTNAME' From: OpenWrt Monitor As of '$DAY', '$DATE' at '$TIME' the VPN tunnel on '$HOSTNAME' is '$STATUS'.' echo \"$EMAIL\" | msmtp -t $RECIPIENT Now, edit the /etc/openvpn/piageneric.ovpn file. Here, we’ve added the up and down options and specified the appropriate scripts. We’ve also added the up-restart option, which allows scripts to be called for restarts as well as initial program start. Finally, I’ve set script-security level to 2, which allows calling of built-in executables and user-defined scripts.\nclient dev tun proto udp resolv-retry infinite nobind persist-key persist-tun ca ca.crt tls-client remote-cert-tls server auth-user-pass authuser auth-nocache comp-lzo verb 1 up vpnup.sh down vpndown.sh script-security 2 up-restart reneg-sec 0 crl-verify crl.pem keepalive 10 120 vpncheck.sh This script calls ifconfig and looks for an adapter called tun0. If your adapter name is different, replace it as needed. Replace the line that starts the VPN manually (the same command we used earlier) with your connection string.\n#!/bin/ash #2015-01-24 #Logan Marchione RESULT=`ifconfig | awk '/^tun0/ {print $1;}'` DATETIME=`date \"+%Y-%m-%d %H:%M:%S\"` if [ \"$RESULT\" == tun0 ] then echo \"$DATETIME - No restart needed\" \u003e\u003e vpncheck.log\u0026 else echo \"$DATETIME - Restart needed, see below\" \u003e\u003e vpncheck.log\u0026 openvpn --cd /etc/openvpn --config piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 \u003e\u003e vpncheck.log\u0026 fi The vpncheck.sh script will need to run on a schedule, and for that, we’ll be using cron. First, we need to make a file for root’s crontab and then start crontab.\ntouch /etc/crontabs/root /etc/init.d/cron start /etc/init.d/cron enable If you check logs…\nlogread …you should see that cron was started.\nSat Jan 24 14:17:04 2015 cron.info crond[1526]: crond: crond (busybox 1.22.1) started, log level 5 Then, add your entry to crontab. Use the schedule below to setup your job.\n#Crontab Schedule # +---------------- minute (0 - 59) *=all # | +------------- hour (0 - 23) *=all # | | +---------- day of month (1 - 31) *=all # | | | +------- month (1 - 12) *=all # | | | | +---- day of week (0 - 6) (Sunday=0) *=all # | | | | | # * * * * * command to be executed # -- -- -- -- - --------------------------------- # 00 12 * * * some_command # will run some_command at 12:00 (noon) daily #Run VPN check to check for tunnel up/down 10 * * * * /etc/openvpn/vpncheck.sh \u003e /etc/openvpn/vpncheck.log Finally, restart cron for the changes to take effect.\n/etc/init.d/cron restart Once everything is updated, reboot your MR3020 one final time.\nTest alerting scripts vpndown.sh Assuming your VPN is already up, use ps | grep openvpn to find and kill the OpenVPN process ID.\nroot@mr3020_home:~# ps | grep openvpn 911 root 3436 S openvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 root@mr3020_home:~# kill 911 root@mr3020_home:~# ps | grep openvpn 1380 root 1356 S grep openvpn After you kill it, grep again and you should see that OpenVPN isn’t running. In a minute or so, you should you get an email alerting you that the VPN tunnel is down.\nvpnup.sh Now, start the VPN manually (using the same command we used earlier to test).\nopenvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 \u0026 Here, you’ll see the output from OpenVPN starting, and you should see the script vpnup.sh running.\nroot@mr3020_home:~# openvpn --cd /etc/openvpn --config /etc/openvpn/piag eneric.ovpn --remote us-east.privateinternetaccess.com 1194 \u0026 root@mr3020_home:~# Sat Jan 24 13:56:03 2015 OpenVPN 2.3.6 mips-openwrt-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [MH] [IPv6] built on Jan 6 2015 Sat Jan 24 13:56:03 2015 library versions: OpenSSL 1.0.1k 8 Jan 2015, LZO 2.08 Sat Jan 24 13:56:03 2015 WARNING: file 'authuser' is group or others accessible Sat Jan 24 13:56:03 2015 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts Sat Jan 24 13:56:03 2015 UDPv4 link local: [undef] Sat Jan 24 13:56:03 2015 UDPv4 link remote: [AF_INET]64.237.52.133:1194 Sat Jan 24 13:56:05 2015 [Private Internet Access] Peer Connection Initiated with [AF_INET]64.237.52.133:1194 Sat Jan 24 13:56:08 2015 TUN/TAP device tun0 opened Sat Jan 24 13:56:08 2015 do_ifconfig, tt-\u003eipv6=0, tt-\u003edid_ifconfig_ipv6_setup=0 Sat Jan 24 13:56:08 2015 /sbin/ifconfig tun0 10.150.1.10 pointopoint 10.150.1.9 mtu 1500 Sat Jan 24 13:56:08 2015 vpnup.sh tun0 1500 1542 10.150.1.10 10.150.1.9 init Sat Jan 24 13:56:12 2015 Initialization Sequence Completed Again, in a minute or so, you should you get an email alerting you that the VPN tunnel is up.\nvpncheck.sh This is easy to test. Kill your OpenVPN process and wait until the vpncheck.sh script runs out of crontab. Then, you should see your tunnel come back up and get an email about it.\nExtras Backup your config You did all this work, don’t lose it. Go to the System dropdown, then select Backup/Flash Firmware and press Generate Archive to download a backup of all your configuration files. I don’t believe this backs up custom scripts/files, so keep that in mind.\nFailsafe mode At some point during this build, you’ll probably break something and lock yourself out of your router. Thankfully, you’re not left with a paper-weight. OpenWrt includes a failsafe mode that will let you telnet to your router. Steps for the MR3020 are below.\nPower off your MR3020 and connect it to your PC via Ethernet Set your PC’s IP to 192.168.1.2 with a subnet of 255.255.255.0 and a gatway of 192.168.1.1 Plug in the power to the MR3020 When the WPS button starts to flash, slide the switch labeled 3G/4G/WISP/AP back and forth really fast. At this point, the WPS button will start blinking faster than it was before. You are in failsafe mode. Connect to the router via telnet and you should see that you are in failsafe mode. logan@fedora20 ~$ telnet 192.168.1.1 Trying 192.168.1.1... Connected to 192.168.1.1. Escape character is '^]'. === IMPORTANT ============================ Use 'passwd' to set your login password this will disable telnet and enable SSH ------------------------------------------ BusyBox v1.22.1 (2014-09-20 22:01:35 CEST) built-in shell (ash) Enter 'help' for a list of built-in commands. _______ ________ __ | |.-----.-----.-----.| | | |.----.| |_ | - || _ | -__| || | | || _|| _| |_______|| __|_____|__|__||________||__| |____| |__| W I R E L E S S F R E E D O M ----------------------------------------------------- BARRIER BREAKER (14.07, r42625) ----------------------------------------------------- * 1/2 oz Galliano Pour all ingredients into * 4 oz cold Coffee an irish coffee mug filled * 1 1/2 oz Dark Rum with crushed ice. Stir. * 2 tsp. Creme de Cacao ----------------------------------------------------- Now, you should be able to change your password by entering passwd, but you may get an error about the filesystem being read-only, like below. passwd: /etc/passwd: Read-only file system passwd: can't update password file /etc/passwd If that happens, enter mount_root, then try the passwd command again. At this point, you should be able to SSH into the MR3020.\nIf you installed too many packages and filled up the filesystem, you can wipe it and do a factory reset with the command below.\nfirstboot Reboot the router, as below. reboot -f Try to SSH in. If it doesn’t work (mine didn’t), telnet in again, set your password again, and then try SSH again.\nIf you want to transfer a new firmware file to the router, you can do that with the SCP utility on your PC.\nscp /path/to/file.bin root@192.168.1.1:/path/to/file.bin Then, flash the new firmware file with the command below. sysupgrade -v /path/to/file.bin HTTPS Support Out of the box, LuCI does not support HTTPS. For that, you’ll need a couple packages.\nopkg update opkg install luci-ssl uhttpd-mod-tls First, backup the original /etc/config/uhttpd file. Then, edit the file to change your certificate settings as needed.\ncp -p /etc/config/uhttpd /etc/config/uhttpd_old vi /etc/config/uhttpd Before…\nconfig cert 'px5g' option days '730' option bits '1024' option country 'DE' option state 'Berlin' option location 'Berlin' option commonname 'OpenWrt' After…\nconfig cert 'px5g' option days '730' option bits '2048' option country 'US' option state 'Pennsylvania' option location 'Pennsylvania' option commonname '10.80.1.1' Once you have your certificate setup, restart the webserver.\n/etc/init.d/uhttpd restart You should see a message similar to the one below.\nGenerating RSA private key, 2048 bit long modulus Generating selfsigned certificate with subject 'C=US;ST=Pennsylvania;L=Pennsylvania;CN=10.80.1.1;' and validity 20141021000526-20161020000526 If you navigate to /etc, you should see a certificate and a key file.\n-rw-r--r-- 1 root root 828 Oct 20 20:50 /etc/uhttpd.crt -rw-r--r-- 1 root root 1192 Oct 20 20:50 /etc/uhttpd.key Open your browser, and instead of going to http://10.80.1.1, go to https://10.80.1.1. If you get a scary looking error message, that’s ok. Click Advanced.\nThen, proceed to your site.\nIn the URL bar, you’ll still probably see some intimidating red error message.\nUpon further inspection, we can see this error is because the certificate wasn’t generated by a trusted CA (Thawte, Symatec, etc…).\nIf you inspect the actual certificate, you can see it’s the certificate we created, so you know it can be trusted.\nThat’s it! I’ll be tweaking this guide as I go, but let me know if anything is incorrect or missing. Also, a couple useful posts and sources I used when stuck are located here, here, and here.\n-Logan\nComments Old comments from WordPress (rev1)\nOld comments from WordPress (rev2)\nOld comments from WordPress (rev3)\n",
+  "wordCount" : "6217",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_openwrt.svg","datePublished": "2015-02-15T00:00:00Z",
+  "dateModified": "2015-02-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      OpenWrt with OpenVPN client on TP-Link TL-MR3020
+    </h1>
+    <div class="post-meta"><span title='2015-02-15 00:00:00 +0000 UTC'>2015-02-15</span>&nbsp;·&nbsp;30 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#update-multiple-posts" aria-label="Update: Multiple posts">Update: Multiple posts</a></li>
+                <li>
+                    <a href="#introduction" aria-label="Introduction ">Introduction </a></li>
+                <li>
+                    <a href="#the-why" aria-label="The &amp;ldquo;why&amp;rdquo;">The &ldquo;why&rdquo;</a></li>
+                <li>
+                    <a href="#the-how" aria-label="The &amp;ldquo;how&amp;rdquo;">The &ldquo;how&rdquo;</a></li>
+                <li>
+                    <a href="#install-openwrt" aria-label="Install OpenWrt">Install OpenWrt</a></li>
+                <li>
+                    <a href="#configure-openwrt" aria-label="Configure OpenWrt">Configure OpenWrt</a><ul>
+                        
+                <li>
+                    <a href="#set-a-password" aria-label="Set a password">Set a password</a></li>
+                <li>
+                    <a href="#setup-ntp" aria-label="Setup NTP">Setup NTP</a></li>
+                <li>
+                    <a href="#set-default-ip" aria-label="Set default IP">Set default IP</a></li>
+                <li>
+                    <a href="#create-wireless-network" aria-label="Create wireless network">Create wireless network</a></li>
+                <li>
+                    <a href="#setup-wan-interface" aria-label="Setup WAN interface">Setup WAN interface</a></li>
+                <li>
+                    <a href="#unbridge-lan-interfaces" aria-label="Unbridge LAN interfaces">Unbridge LAN interfaces</a></li>
+                <li>
+                    <a href="#verify-internet-access" aria-label="Verify internet access">Verify internet access</a></li></ul>
+                </li>
+                <li>
+                    <a href="#configure-extroot" aria-label="Configure extroot">Configure extroot</a></li>
+                <li>
+                    <a href="#setup-vpn" aria-label="Setup VPN">Setup VPN</a><ul>
+                        
+                <li>
+                    <a href="#run-at-startup" aria-label="Run at startup">Run at startup</a></li></ul>
+                </li>
+                <li>
+                    <a href="#setup-samba" aria-label="Setup SAMBA">Setup SAMBA</a></li>
+                <li>
+                    <a href="#setup-alerting-scripts" aria-label="Setup alerting scripts">Setup alerting scripts</a><ul>
+                        
+                <li>
+                    <a href="#setup-email" aria-label="Setup email">Setup email</a></li>
+                <li>
+                    <a href="#vpndownsh" aria-label="vpndown.sh">vpndown.sh</a></li>
+                <li>
+                    <a href="#vpnupsh" aria-label="vpnup.sh">vpnup.sh</a></li>
+                <li>
+                    <a href="#vpnchecksh" aria-label="vpncheck.sh">vpncheck.sh</a></li></ul>
+                </li>
+                <li>
+                    <a href="#test-alerting-scripts" aria-label="Test alerting scripts">Test alerting scripts</a><ul>
+                        
+                <li>
+                    <a href="#vpndownsh-1" aria-label="vpndown.sh">vpndown.sh</a></li>
+                <li>
+                    <a href="#vpnupsh-1" aria-label="vpnup.sh">vpnup.sh</a></li>
+                <li>
+                    <a href="#vpnchecksh-1" aria-label="vpncheck.sh">vpncheck.sh</a></li></ul>
+                </li>
+                <li>
+                    <a href="#extras" aria-label="Extras">Extras</a><ul>
+                        
+                <li>
+                    <a href="#backup-your-config" aria-label="Backup your config">Backup your config</a></li>
+                <li>
+                    <a href="#failsafe-mode" aria-label="Failsafe mode">Failsafe mode</a></li>
+                <li>
+                    <a href="#https-support" aria-label="HTTPS Support">HTTPS Support</a></li></ul>
+                </li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>URL</th>
+<th>Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2016-04-28</td>
+<td><a href="/2016/04/openwrt-upgrade-process/">OpenWrt upgrade process</a></td>
+<td>OpenWrt upgrade</td>
+</tr>
+<tr>
+<td>2015-08-26</td>
+<td><a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">OpenWrt with OpenVPN server on TP-Link Archer C7</a></td>
+<td>Initial post</td>
+</tr>
+<tr>
+<td>2015-02-15</td>
+<td><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/">OpenWrt with OpenVPN client on TP-Link TL-MR3020</a></td>
+<td>Initial post</td>
+</tr>
+</tbody>
+</table>
+<h1 id="update-multiple-posts">Update: Multiple posts<a hidden class="anchor" aria-hidden="true" href="#update-multiple-posts">#</a></h1>
+<p>Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:</p>
+<ul>
+<li><a href="/2014/10/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/">Revision 1</a></li>
+<li><a href="/2015/01/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-2/">Revision 2</a></li>
+<li><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/">Revision 3</a> (this post)</li>
+</ul>
+<p>I have since re-directed all the links to this page, since revision 1 and revision 2 were obsoleted by revision 3. I just wanted to keep the links alive on the internet.</p>
+<h1 id="introduction">Introduction <a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>A few months ago, the team at OpenWrt released version 14.07 of OpenWrt, called <a href="http://wiki.openwrt.org/doc/barrier.breaker">Barrier Breaker</a>. I&rsquo;m going to be installing Barrier Breaker on my MR3020 and setting up an OpenVPN client. If you don&rsquo;t know the difference between PPTP/IPSec/OpenVPN, IVPN has a great <a href="https://www.ivpn.net/pptp-vs-l2tp-vs-openvpn">comparison chart</a>.</p>
+<h1 id="the-why">The &ldquo;why&rdquo;<a hidden class="anchor" aria-hidden="true" href="#the-why">#</a></h1>
+<p>Before we get started, I need to get up on my soapbox and say a few things. If you&rsquo;re not using a VPN, you should be. VPNs aren&rsquo;t just for hackers, thieves, or people doing illegal things (<a href="http://knowyourmeme.com/memes/piracy-its-a-crime">you wouldn&rsquo;t download a car, would you?</a>). VPNs are great for:</p>
+<ul>
+<li>Adding a layer of security to your browsing (VPNs encrypt everything!)</li>
+<li>Securely connecting two routers to create one large network over the internet (businesses do this all the time)</li>
+<li>Students/employees connecting back to their university/office to work remotely (again, a common practice)</li>
+<li>Circumventing geoblocking (i.e., content blocked based on your physical location)
+<ul>
+<li>Watch Netflix from outside the US</li>
+<li>Watch BBC iPlayer from outside the UK</li>
+</ul>
+</li>
+<li>FREEDOM OF SPEECH! Use a VPN to circumvent government restrictions put on the internet (e.g., China, Iran, North Korea, etc&hellip;)</li>
+</ul>
+<p>But, I digress. VPNs are great. If you don&rsquo;t have one, get one. Personally, I like using <a href="https://www.privateinternetaccess.com/">Private Internet Access</a> (I&rsquo;m not compensated, just a happy customer). If you don&rsquo;t know where to start, TorrentFreak has a <a href="http://torrentfreak.com/which-vpn-services-take-your-anonymity-seriously-2014-edition-140315/">great article</a> on which VPN services take your anonymity seriously (newsflash, PIA is at the top of their list).</p>
+<h1 id="the-how">The &ldquo;how&rdquo;<a hidden class="anchor" aria-hidden="true" href="#the-how">#</a></h1>
+<p>My plan for this router is to use it when I travel. I plan on plugging it into the Ethernet port in a hotel (or my house/friend&rsquo;s house/Airbnb host) and having it broadcast a wireless network. Since the router is an OpenVPN client, any devices that join that wireless network will be VPNed into PIA&rsquo;s servers. Eventually, when I install OpenVPN on my home router, I can route my connection back home. It&rsquo;s probably easier illustrated than explained, as below.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_002.png" loading="lazy" alt="screenshot"></p>
+<p>There are a few advantages to this setup, as opposed to installing the OpenVPN client on each device:</p>
+<ul>
+<li>Devices that don&rsquo;t support OpenVPN can be protected (XBox, Roku, etc&hellip;)</li>
+<li>Multiple machines (phone, laptop, Roku, etc&hellip;) can share one VPN connection</li>
+<li>You can switch between an insecure wireless network (home/friend&rsquo;s house/hotel) and a secure wireless network (OpenWrt) whenever needed</li>
+</ul>
+<p>Ready? Let&rsquo;s get started!</p>
+<h1 id="install-openwrt">Install OpenWrt<a hidden class="anchor" aria-hidden="true" href="#install-openwrt">#</a></h1>
+<p>I&rsquo;m going to assume you&rsquo;re already running Attitude Adjustment (AA) and want to upgrade to Barrier Breaker (BB).</p>
+<p>Disconnect your PC from all wired and wireless networks, then connect your MR3020 to your PC. Because of the way I have this router setup from my previous post (<em>eth0</em> is a DHCP client, not server), I&rsquo;m going to connect to the WiFi network it&rsquo;s broadcasting. I checked my IP, opened my browser, and navigated to 10.80.1.1 (your address will be 192.168.1.1 as stock). I then logged in with the username and password I had set before.</p>
+<p>Once you&rsquo;re logged into OpenWrt, go to the <em>System</em> tab, then the <em>Backup/Flash Firmware</em> tab. At this point, it&rsquo;s a good idea to make a backup of your config by pressing <em>Generate Archive</em>.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20140614_022_hu6ebcd2b13fa916bbc9f9ed187f5935a3_59534_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="screenshot"></p>
+<p>As-of this writing, the OpenWrt <a href="http://wiki.openwrt.org/toh/tp-link/tl-mr3020#installation">wiki page</a> for the MR3020 doesn&rsquo;t list BB as the newest firmware. There are two options for the BB download: a file for the <a href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/openwrt-ar71xx-generic-tl-mr3020-v1-squashfs-factory.bin">factory</a> firmware, and a file for <a href="http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/openwrt-ar71xx-generic-tl-mr3020-v1-squashfs-sysupgrade.bin">upgrading</a>. We&rsquo;ll choose the upgrade.</p>
+<p>Back at your router, under <em>Flash new firmware image</em>, make sure <em>Keep settings</em> is checked to keep your current settings. I&rsquo;m going to uncheck this, since I want to start from scratch. Browse to your downloaded firmware, and press <em>Flash image</em> to upgrade it.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_004_hu55f604e86bc309a4b87f239e6a183b15_19976_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Verify the checksum, and press <em>Proceed</em> to continue.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_005_hu4405fb520c6f71d5b78c009b241ac4ba_26795_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Wait a few minutes and the router will reboot. Check your IP again after it&rsquo;s back up, as mine had changed since I erased my settings.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_006_hu9dac3378160c68ce37be89bf9137ec3c_20567_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>At this point, my MR3020 is running stock BB and I&rsquo;m going to reconfigure it from scratch. Since the wireless network was wiped out, I&rsquo;m going to reconnect with Ethernet.</p>
+<h1 id="configure-openwrt">Configure OpenWrt<a hidden class="anchor" aria-hidden="true" href="#configure-openwrt">#</a></h1>
+<p>From here, the OpenWrt wiki page recommends going through the <a href="http://wiki.openwrt.org/doc/howto/basic.config">basic configuration</a> for any OpenWrt installation. I&rsquo;m going to be combining some of the basic configuration with my configuration for the VPN client.</p>
+<p>Navigate to 192.168.1.1 in your browser and you&rsquo;ll be greeted by <a href="http://wiki.openwrt.org/doc/techref/luci">LuCI</a>, the web interface for OpenWrt. OpenWrt recently switched to the <a href="http://wiki.openwrt.org/doc/uci">Unified Configuration Interface</a>, also known as UCI. The UCI is basically a collection of easy-to-read configuration files that are all centrally located, making OpenWrt much easier to configure. What&rsquo;s nice about LuCI is that it reads/writes from/to the UCI files. Any changes you make in LuCI are reflected in the UCI files, and vice versa, meaning you can configure the MR3020 from the web interface, or from the command line.</p>
+<p>Anyway, moving on. Leave the username as  &ldquo;root&rdquo; and the password field empty. Press <em>Login</em> to continue.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_007_hua9a56e642caeef154d8caa3b24aa2cc0_65063_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="set-a-password">Set a password<a hidden class="anchor" aria-hidden="true" href="#set-a-password">#</a></h2>
+<p>From the main status screen, we&rsquo;re going to set a root password by using the link in the yellow box at the top of the page. If you haven&rsquo;t noticed, LuCI is a lot easier on the eyes in BB than AA.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_008_hu399b9b966166a31f8a96fafe2ac52ea7_83075_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Here, you can (and should) set a root password, as well as setup SSH access (which we&rsquo;ll need later). Press <em>Save &amp; Apply to continue</em>.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_009.png" loading="lazy" alt="screenshot"></p>
+<p>Look for <em>Password successfully changed!</em> at the top of the screen.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_010.png" loading="lazy" alt="screenshot"></p>
+<p>Verify SSH access by using <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a> or another SSH client.</p>
+<pre tabindex="0"><code>[logan@Arch ~]$ ssh root@192.168.1.1
+root@192.168.1.1&#39;s password: 
+
+
+BusyBox v1.22.1 (2014-09-20 22:01:35 CEST) built-in shell (ash)
+Enter &#39;help&#39; for a list of built-in commands.
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ BARRIER BREAKER (14.07, r42625)
+ -----------------------------------------------------
+  * 1/2 oz Galliano         Pour all ingredients into
+  * 4 oz cold Coffee        an irish coffee mug filled
+  * 1 1/2 oz Dark Rum       with crushed ice. Stir.
+  * 2 tsp. Creme de Cacao
+ -----------------------------------------------------
+root@OpenWrt:~#
+</code></pre><h2 id="setup-ntp">Setup NTP<a hidden class="anchor" aria-hidden="true" href="#setup-ntp">#</a></h2>
+<p>The MR3020 doesn&rsquo;t have a <a href="https://en.wikipedia.org/wiki/Real-time_clock">real-time clock</a> or CMOS battery. Because of this, every time it loses power, the clock resets to October 1st. To circumvent this, we&rsquo;re going to use <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">NTP</a> to get our time from the internet. You don&rsquo;t have to setup NTP, but it makes troubleshooting easier when you&rsquo;re looking at timestamped log files. Keep in mind, since the MR3020 is connected directly to your PC (not the internet), this won&rsquo;t take effect until after we get it online. Don&rsquo;t freak out if it&rsquo;s not working right away.</p>
+<p>First, set a hostname, zone name, and time zone for your router. The list of zone names/time zones can be found <a href="http://wiki.openwrt.org/doc/uci/system#time.zones">here</a>. Make note of the tick marks around the <em>zonename</em>.</p>
+<pre tabindex="0"><code>uci set system.@system[0].hostname=mr3020_home
+uci set system.@system[0].zonename=&#39;America/New York&#39;
+uci set system.@system[0].timezone=EST5EDT,M3.2.0,M11.1.0
+uci commit system
+</code></pre><p>Next, we&rsquo;re going to enable the NTP client. I&rsquo;m using <a href="http://www.pool.ntp.org/zone/us">US servers</a> from the <a href="http://www.pool.ntp.org/">NTP Pool Project</a>, but change your servers as needed. Again, don&rsquo;t forget the tick marks.</p>
+<pre tabindex="0"><code>uci set system.ntp=timeserver
+uci set system.ntp.enabled=1
+uci delete system.ntp.server
+uci add_list system.ntp.server=&#39;0.us.pool.ntp.org&#39;
+uci add_list system.ntp.server=&#39;1.us.pool.ntp.org&#39;
+uci add_list system.ntp.server=&#39;2.us.pool.ntp.org&#39;
+uci add_list system.ntp.server=&#39;3.us.pool.ntp.org&#39;
+uci commit system
+</code></pre><h2 id="set-default-ip">Set default IP<a hidden class="anchor" aria-hidden="true" href="#set-default-ip">#</a></h2>
+<p>Next, we&rsquo;re going to change the default IP of the router from 192.168.1.1 to 10.80.1.1 (or whatever scheme you want). Most devices ship with 192.168.1.1 as the default, and since we&rsquo;re going to be double-NATed, we can&rsquo;t have two identical IPs on the same network.</p>
+<pre tabindex="0"><code>uci set network.lan.ipaddr=10.80.1.1
+uci commit network
+</code></pre><p>You can also limit the number of addresses available in the DHCP pool (optional).</p>
+<pre tabindex="0"><code>uci set dhcp.lan.start=10
+uci set dhcp.lan.limit=20
+uci commit dhcp
+/etc/init.d/network restart
+</code></pre><p>Log back into the web interface at the new address using your new root password.</p>
+<h2 id="create-wireless-network">Create wireless network<a hidden class="anchor" aria-hidden="true" href="#create-wireless-network">#</a></h2>
+<p>We need to create a wireless network for the MR3020 to broadcast. Eventually, we&rsquo;re going to turn off LAN access on the Ethernet port, and we&rsquo;ll need a way to connect to the router locally.</p>
+<p>Start by enabling wireless. At this point, you should be able to see the default <em>OpenWrt</em> network from a device.</p>
+<pre tabindex="0"><code>uci delete wireless.radio0.disabled
+uci commit wireless
+/etc/init.d/network restart
+</code></pre><p>Once enabled, setup your network as needed (name, channel, etc&hellip;).</p>
+<pre tabindex="0"><code>uci set wireless.radio0.channel=11
+uci set wireless.radio0.txpower=18
+uci set wireless.radio0.country=US
+uci set wireless.@wifi-iface[0].ssid=&#39;Aw yiss&#39;
+uci commit wireless
+</code></pre><p>You should secure your network and choose a strong password (preferably WPA2-PSK with AES). Remember, this device may be a direct link back to your home network. Even if you have a strong VPN password, a weak WiFi password with weak encryption (e.g., WEP) could compromise your network.</p>
+<pre tabindex="0"><code>uci set wireless.@wifi-iface[0].encryption=&#39;psk2+ccmp&#39;
+uci set wireless.@wifi-iface[0].key=&#39;wirelesspasswordgoeshere&#39;
+uci commit wireless
+/etc/init.d/network restart
+</code></pre><p>At this point, you should disconnect the Ethernet cable from the MR3020 and connect to the WiFi network we just setup. Normally, it&rsquo;s not recommended to configure routers over wireless, but since we&rsquo;re not going to be transferring files or upgrading firmware, we should be ok.</p>
+<h2 id="setup-wan-interface">Setup WAN interface<a hidden class="anchor" aria-hidden="true" href="#setup-wan-interface">#</a></h2>
+<p>We need the MR3020 to request an IP address from another router when it is plugged in. For this, we&rsquo;ll need to make a new interface that will act as a DHCP client. Name the interface something like <em>WAN</em>, with the protocol being set to DHCP client, covering the <em>eth0</em> interface.</p>
+<pre tabindex="0"><code>uci set network.WAN=interface
+uci set network.WAN.proto=dhcp
+uci set network.WAN.ifname=eth0
+uci commit network
+</code></pre><p>On the next screen, under <em>Common Configuration</em>, go to the <em>Firewall Settings</em> tab and select <em>WAN</em>. Press <em>Save &amp; Apply</em> to continue.</p>
+<pre tabindex="0"><code>uci set firewall.@zone[1].network=&#39;wan wan6 WAN&#39;
+uci commit firewall
+/etc/init.d/network restart
+/etc/init.d/firewall restart
+</code></pre><h2 id="unbridge-lan-interfaces">Unbridge LAN interfaces<a hidden class="anchor" aria-hidden="true" href="#unbridge-lan-interfaces">#</a></h2>
+<p>By default, the wired and wireless interfaces are bridged. I want them to be separate, so that I can plug the wired interface into another router and use the wireless interface to broadcast a network. Essentially, I making it so that only another router can use the Ethernet port, and only clients can use the wireless network.</p>
+<pre tabindex="0"><code>uci delete network.lan.ifname
+uci delete network.lan.type
+uci commit network
+/etc/init.d/network restart
+</code></pre><p>If you don&rsquo;t unbridge the interfaces, you&rsquo;ve basically just created a wireless AP for the other router.</p>
+<h2 id="verify-internet-access">Verify internet access<a hidden class="anchor" aria-hidden="true" href="#verify-internet-access">#</a></h2>
+<p>At this point, plug your MR3020 into a LAN port on your other router, and connect your PC to the MR3020&rsquo;s wireless network. It doesn&rsquo;t matter what IP your MR3020 gets from the other router, as your PC should see the MR3020 as 10.80.1.1 (or whatever your made it).</p>
+<p>You should be able to access the internet, as well as ping websites through SSH. In addition, go to the <em>Status</em> dropdown, then select <em>Overview</em> to make sure your <em>Local Time</em> field is updated with the correct time, now that we&rsquo;re on the internet.</p>
+<p>Congratulations, you are now double-NATed.</p>
+<h1 id="configure-extroot">Configure extroot<a hidden class="anchor" aria-hidden="true" href="#configure-extroot">#</a></h1>
+<p>Before we get started, we need to make some space for OpenVPN. The MR3020 only has 4MB of flash. After OpenWrt is installed, we&rsquo;re only left with about 400KB, which won&rsquo;t be enough for the 600KB+ of OpenSSL libraries we&rsquo;ll need, in addition to other packages that will make life easier.</p>
+<pre tabindex="0"><code>root@OpenWrt:~# df -h
+Filesystem                Size      Used Available Use% Mounted on
+rootfs                  640.0K    228.0K    412.0K  36% /
+/dev/root                 2.3M      2.3M         0 100% /rom
+tmpfs                    14.1M    448.0K     13.7M   3% /tmp
+/dev/mtdblock3          640.0K    228.0K    412.0K  36% /overlay
+overlayfs:/overlay      640.0K    228.0K    412.0K  36% /
+tmpfs                   512.0K         0    512.0K   0% /dev
+</code></pre><p>There are two ways around this:</p>
+<ol>
+<li><a href="http://wiki.openwrt.org/doc/howto/extroot">ExtRoot</a>, which can either extend or move the root filesystem to a USB flash drive</li>
+<li><a href="http://wiki.openwrt.org/doc/howto/obtain.firmware.generate">Build a custom image</a> of OpenWrt from scratch, leaving out unnecessary packages</li>
+</ol>
+<p>My first instinct was to build a custom image, leaving out PPP. However, after a few hours of trying and multiple images, it still didn&rsquo;t give me the space I needed. The only way to get OpenVPN on the MR3020 would be to leave LuCI out of the image, and I&rsquo;m not willing to give that up.</p>
+<p>That leaves me with using a USB flash drive to extend or move the filesystem. Thankfully, setting up ExtRoot is pretty easy, and we won&rsquo;t need a huge flash drive since we&rsquo;re only after a few extra MB. I picked up <a href="http://amzn.com/B005FYNSPK">this</a> flash drive since it&rsquo;s small.</p>
+<p>Start by reading the <a href="http://wiki.openwrt.org/doc/howto/extroot/extroot.theory">theory</a> on ExtRoot, then go over the <a href="http://wiki.openwrt.org/doc/howto/extroot#openwrt.barrier.breaker.trunk">how-to guide</a>. You need to decide whether you&rsquo;ll be using external overlay (also called pivot-overlay) or external root (also called pivot-root). Essentially, external overlay extends the root filesystem to include the flash drive, while external root copies the root filesystem to the flash drive, then boots from the flash drive. External root has a couple advantages (that I can see):</p>
+<ul>
+<li>You can boot from multiple flash drives, each with a different config (one flash drive with a config for home, another with a config for traveling, etc&hellip;)</li>
+<li>If the flash drive dies, OpenWrt still boots from the internal root filesystem (without all your configs)</li>
+</ul>
+<p>In this guide, I&rsquo;m going to be using external root.</p>
+<p>Since my flash drive is 8GB, I&rsquo;m going to give 1GB to OpenWrt and use the rest for a SAMBA share. Any device connected to my router will have access to the other ~6.5GB share. Get stared by formatting your flash drive with two ext4 partitions. I did this on my machine using GParted, but if you&rsquo;re running Windows you can use <a href="http://www.partitionwizard.com/free-partition-manager.html">this</a> to format the drive. In this case, <em>/dev/sda1</em> is 1GB and <em>/dev/sda2</em> is the remaining ~6.5GB.</p>
+<p>Next, SSH into your router, and install a few packages. You&rsquo;ll need to install the <em>kmod-fs</em> package for the type of filesystem that you&rsquo;re using (e.g., <em>kmod-fs-ext4</em>, <em>kmod-fs-ext3</em>, <em>kmod-fs-btrfs</em>, etc&hellip;)</p>
+<pre tabindex="0"><code>opkg update
+opkg install block-mount kmod-usb-storage kmod-fs-ext4
+</code></pre><p>There&rsquo;s a good chance your kernel modules didn&rsquo;t load. If that&rsquo;s the case, reboot your router and then plug in your flash drive.</p>
+<pre tabindex="0"><code>kmod: failed to insert /lib/modules/3.10.49/sd_mod.ko
+Configuring kmod-usb-storage.
+Configuring kmod-crypto-hash.
+Configuring kmod-lib-crc16.
+Configuring block-mount.
+Configuring kmod-fs-ext4.
+kmod: failed to insert /lib/modules/3.10.49/ext4.ko
+</code></pre><p>Find the name of your flash drive with the <em>block info</em> command. Mine was <em>/dev/sda</em>. Notice there are two partitions on the drive.</p>
+<pre tabindex="0"><code>root@mr3020_home:~# block info
+/dev/mtdblock2: UUID=&#34;20ad40ea-d33a421e-785b7d2d-ada99230&#34; VERSION=&#34;4.0&#34; TYPE=&#34;squashfs&#34;
+/dev/mtdblock3: TYPE=&#34;jffs2&#34;
+/dev/sda1: UUID=&#34;bf19ec66-8d6a-40d7-b366-f99f48cced33&#34; NAME=&#34;EXT_JOURNAL&#34; VERSION=&#34;1.0&#34; TYPE=&#34;ext4&#34;
+/dev/sda2: UUID=&#34;5ca298db-53d6-406c-9db3-344c2e5ebae8&#34; NAME=&#34;EXT_JOURNAL&#34; VERSION=&#34;1.0&#34; TYPE=&#34;ext4&#34;
+</code></pre><p>Create two directories and mount <em>/dev/sda1</em> and <em>/dev/sda2</em> on them.</p>
+<pre tabindex="0"><code>mkdir /mnt/batman
+mount /dev/sda1 /mnt/batman
+mkdir /mnt/network
+chmod -R 777 /mnt/network
+mount /dev/sda2 /mnt/network
+</code></pre><p>Now, copy the router&rsquo;s internal flash to the flash drive. Obviously, replace <em>/mnt/batman</em> with whatever mount point you&rsquo;re using.</p>
+<pre tabindex="0"><code>mkdir -p /tmp/cproot
+mount --bind / /tmp/cproot
+tar -C /tmp/cproot -cvf - . | tar -C /mnt/batman -xf -
+umount /tmp/cproot
+</code></pre><p>Your flash drive now has a copy of the router&rsquo;s root filesystem on it (so don&rsquo;t lose it). However, the router will still boot from its internal memory, so we need to change that by editing the <em>/etc/config/fstab</em> file. In addition to that, we&rsquo;re also creating an extra entry for our SAMBA fileshare.</p>
+<pre tabindex="0"><code>cat &gt;&gt; /etc/config/fstab &lt;&lt; EOF
+config &#39;mount&#39;
+        option target        /
+        option device        /dev/sda1
+        option fstype        ext4
+        option options       rw,sync
+        option enabled       1
+        option enabled_fsck  0
+
+config &#39;mount&#39;
+        option target        /mnt/network
+        option device        /dev/sda2
+        option fstype        ext4
+        option options       rw,sync
+        option enabled       1
+        option enabled_fsck  1
+EOF
+</code></pre><p>Reboot your router. When it starts up, check your mount points and you should see that <em>/dev/sda1</em> has been mounted on <em>/</em>, while <em>/dev/sda2</em> has been mounted on <em>/mnt/network</em>.</p>
+<pre tabindex="0"><code>root@mr3020_home:~# mount
+rootfs on / type rootfs (rw)
+/dev/root on /rom type squashfs (ro,noatime)
+proc on /proc type proc (rw,noatime)
+sysfs on /sys type sysfs (rw,noatime)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noatime)
+/dev/sda1 on / type ext4 (rw,relatime,data=ordered)
+tmpfs on /dev type tmpfs (rw,relatime,size=512k,mode=755)
+devpts on /dev/pts type devpts (rw,relatime,mode=600)
+/dev/sda2 on /mnt/network type ext4 (rw,sync,relatime,data=ordered)
+debugfs on /sys/kernel/debug type debugfs (rw,noatime)
+</code></pre><p>If you check your space again, you&rsquo;ll see that your root filesystem is now larger, and you have a second partition for SAMBA.</p>
+<pre tabindex="0"><code>root@mr3020_home:~# df -h
+Filesystem                Size      Used Available Use% Mounted on
+rootfs                  975.9M     10.5M    898.2M   1% /
+/dev/root                 2.3M      2.3M         0 100% /rom
+tmpfs                    14.1M    360.0K     13.7M   2% /tmp
+/dev/sda1               975.9M     10.5M    898.2M   1% /
+tmpfs                   512.0K         0    512.0K   0% /dev
+/dev/sda2                 6.2G     14.5M      5.9G   0% /mnt/network
+</code></pre>
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_003.jpg" loading="lazy" alt="meme"></p>
+<h1 id="setup-vpn">Setup VPN<a hidden class="anchor" aria-hidden="true" href="#setup-vpn">#</a></h1>
+<p>Now we need to install the OpenVPN client and configure it. The VPN termination point is going to be one of PIA&rsquo;s <a href="https://www.privateinternetaccess.com/pages/network/">servers</a>, but it could be any OpenVPN server. You should read OpenWrt&rsquo;s <a href="http://wiki.openwrt.org/doc/howto/vpn.overview">VPN overview</a>, as well the OpenVPN <a href="http://wiki.openwrt.org/doc/howto/vpn.openvpn">beginner&rsquo;s guide</a> and the <a href="http://wiki.openwrt.org/doc/howto/vpn.client.openvpn.tap">client guide</a>.</p>
+<p>First, we&rsquo;ll need to install a couple packages: <em>openvpn-openssl</em> for obvious reasons, the real version of <em>wget</em> to downlad the configuration files from PIA, and <em>unzip</em> to unzip the downloaded files. This is easiest done by connecting through SSH and running the commands below.</p>
+<pre tabindex="0"><code>opkg update
+opkg install openvpn-openssl wget unzip
+mv /etc/config/openvpn /etc/config/openvpn_old
+</code></pre><p>Unfortunately, there is no LuCI package for OpenVPN in BB, like there is in AA. As-of this writing, the package <em>luci-app-openvpn</em> is <a href="http://luci.subsignal.org/trac/ticket/489">marked as broken</a>. There appears to be a package for <a href="http://wiki.openwrt.org/about/latest#bleeding.edge">Chaos Calmer</a>, located <a href="http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/luci/luci-app-openvpn_git-14.289.37369-0103344-1_ar71xx.ipk">here</a>, but I don&rsquo;t think that will work in BB. That means we&rsquo;re doing everything from the command line, which isn&rsquo;t as intimidating as it may sound. Plus, since LuCI runs from the UCI files, we&rsquo;ll be able to see some of our changes in LuCI when we log back in.</p>
+<p>We&rsquo;ll need to create a new interface for the VPN by using the commands below. Name the network interface whatever you&rsquo;d like, and name the physical (even though it&rsquo;s virtual) interface <em>tun0</em>.</p>
+<pre tabindex="0"><code>cat &gt;&gt; /etc/config/network &lt;&lt; EOF
+config interface &#39;PIA_VPN&#39;
+    option proto &#39;none&#39;
+    option ifname &#39;tun0&#39;
+EOF
+/etc/init.d/network restart
+</code></pre><p>Download the OpenVPN configuration files from PIA.</p>
+<pre tabindex="0"><code>cd /etc/openvpn
+wget --no-check-certificate https://www.privateinternetaccess.com/openvpn/openvpn.zip
+unzip openvpn.zip
+rm openvpn.zip
+</code></pre><p>Now, we need to edit each .ovpn file in <em>/etc/openvpn</em> to include your username and password. However, it’s a pain editing every file manually. Instead, we&rsquo;ll create a single file that stores your login credentials. The file I created is called <em>authuser</em>. Substitute your username and password, obviously.</p>
+<pre tabindex="0"><code>cat &gt;&gt; /etc/openvpn/authuser &lt;&lt; EOF
+PIA_USERNAME
+PIA_PASSWORD
+EOF
+</code></pre><p>However, now we&rsquo;ll have to go back and edit each .ovpn file to look for the <em>authuser</em> file, which is still too much work for me. If you look at each .ovpn file, you&rsquo;ll see the only difference between them is the server address. What if we created a generic .ovpn connection file which omitted the server address (and port), but specified to use the <em>authuser</em> file? We could pass the server address and port as an option in our command to start the VPN connection.</p>
+<p>Create the file with the command below. See how we removed the line for the server/port, and added a line for the <em>authuser</em> file and <em>auth-nocache</em> options?</p>
+<pre tabindex="0"><code>cat &gt;&gt; /etc/openvpn/piageneric.ovpn &lt;&lt; EOF
+client
+dev tun
+proto udp
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+tls-client
+remote-cert-tls server
+auth-user-pass authuser
+auth-nocache
+comp-lzo
+verb 1
+reneg-sec 0
+crl-verify crl.pem
+keepalive 10 120
+EOF
+</code></pre><p>To compare, this is the <em>US East.ovpn</em> file&hellip;</p>
+<pre tabindex="0"><code>client
+dev tun
+proto udp
+remote us-east.privateinternetaccess.com 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+tls-client
+remote-cert-tls server
+auth-user-pass
+comp-lzo
+verb 1
+reneg-sec 0
+crl-verify crl.pem
+</code></pre><p>Now, we need to create a new firewall zone for this VPN connection. This is actually the same config as the <em>WAN</em> zone, but it&rsquo;s easier to make a new zone in case we need to change anything in the future. Name the firewall zone, and substitute the network interface name you created above. We&rsquo;ll also be forwarding LAN traffic to the VPN.</p>
+<pre tabindex="0"><code>cat &gt;&gt; /etc/config/firewall &lt;&lt; EOF
+config zone
+    option name &#39;VPN_FW&#39;
+    option input &#39;REJECT&#39;
+    option output &#39;ACCEPT&#39;
+    option forward &#39;REJECT&#39;
+    option masq &#39;1&#39;
+    option mtu_fix &#39;1&#39;
+    option network &#39;PIA_VPN&#39;
+
+config forwarding                               
+        option dest &#39;VPN_FW&#39;                    
+        option src &#39;lan&#39; 
+EOF
+/etc/init.d/network restart
+/etc/init.d/firewall restart
+</code></pre><p>If you&rsquo;d like, you can login to LuCI and see the new network interface, physical interface <em>tun0</em>, and firewall zone. Back on the command line, use the following command to start the VPN. Specify your generic configuration file and choose a <a href="https://www.privateinternetaccess.com/pages/network/">server</a> from PIA, as well as a port number.</p>
+<pre tabindex="0"><code>openvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194
+</code></pre><p>If everything went well, you should see something like below, ending in <em>Initialization Sequence Completed</em>. If not, you did something wrong. Check your logs and start looking <a href="http://wiki.openwrt.org/doc/howto/vpn.openvpn#testing.troubleshooting.your.configuration3">here</a>.</p>
+<pre tabindex="0"><code>root@mr3020_home:~# openvpn --cd /etc/openvpn --config /etc/openvpn/piag
+eneric.ovpn --remote us-east.privateinternetaccess.com 1194
+Sat Jan 24 13:16:20 2015 OpenVPN 2.3.6 mips-openwrt-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [MH] [IPv6] built on Jan  6 2015
+Sat Jan 24 13:16:20 2015 library versions: OpenSSL 1.0.1k 8 Jan 2015, LZO 2.08
+Sat Jan 24 13:16:20 2015 WARNING: file &#39;authuser&#39; is group or others accessible
+Sat Jan 24 13:16:20 2015 UDPv4 link local: [undef]
+Sat Jan 24 13:16:20 2015 UDPv4 link remote: [AF_INET]64.237.51.174:1194
+Sat Jan 24 13:16:21 2015 [Private Internet Access] Peer Connection Initiated with [AF_INET]64.237.51.174:1194
+Sat Jan 24 13:16:24 2015 TUN/TAP device tun0 opened
+Sat Jan 24 13:16:24 2015 do_ifconfig, tt-&gt;ipv6=0, tt-&gt;did_ifconfig_ipv6_setup=0
+Sat Jan 24 13:16:24 2015 /sbin/ifconfig tun0 10.121.1.6 pointopoint 10.121.1.5 mtu 1500
+Sat Jan 24 13:16:24 2015 Initialization Sequence Completed
+</code></pre><p>Check <em>ifconfig</em> to see if you have a tunnel interface. If you do, that&rsquo;s good!</p>
+<pre tabindex="0"><code>tun0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          inet addr:10.121.1.6  P-t-P:10.121.1.5  Mask:255.255.255.255
+          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+          RX packets:78 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:102 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:100 
+          RX bytes:10371 (10.1 KiB)  TX bytes:83342 (81.3 KiB)
+</code></pre><p>Next, try to get on the internet. If you can&rsquo;t, there&rsquo;s a good chance it&rsquo;s a DNS issue. To resolve this, we&rsquo;ll set our DNS servers on this connection to use PIA&rsquo;s <a href="https://www.privateinternetaccess.com/pages/client-support/">DNS servers</a>. It <a href="http://www.networksorcery.com/enp/protocol/bootp/option006.htm">looks like</a> we can set the DNS servers for a specific interface, so we&rsquo;ll add them for the <em>LAN</em> interface.</p>
+<pre tabindex="0"><code>uci add_list dhcp.lan.dhcp_option=&#34;6,209.222.18.222,209.222.18.218&#34;
+uci commit dhcp
+/etc/init.d/network restart
+</code></pre><p>Now we should have DNS working, and since we&rsquo;re using PIA VPN and PIA DNS servers, we shouldn&rsquo;t have any DNS leaks either. After all, what&rsquo;s the point of a VPN if your DNS leaks?</p>
+<p>Restart your VPN connection and try it again! Check your IP with an external tool, like <a href="http://www.whatismyip.com/">WhatIsMyIP</a>, both on your local wireless network, as well as the OpenWrt network. You should see the difference, meaning you are successfully connected!</p>
+<p>Before (on my local network)&hellip;</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_020.png" loading="lazy" alt="screenshot"></p>
+<p>After (VPNed in)&hellip;</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_021.png" loading="lazy" alt="screenshot"></p>
+<p>Now is a good time to check for <a href="http://dnsleak.com/">DNS leaks</a> while on the VPN. Basically, we&rsquo;re looking to make sure the server giving us our IP address is also providing DNS. If it&rsquo;s not, then your ISP probably providing DNS, and they&rsquo;re able to see every DNS request you make.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_022.png" loading="lazy" alt="screenshot"></p>
+<p>Note - Commenter Ben found that his DNS was still leaking when set on the LAN interface. He suggested setting it on the WAN interface, as seen in the comments.</p>
+<h2 id="run-at-startup">Run at startup<a hidden class="anchor" aria-hidden="true" href="#run-at-startup">#</a></h2>
+<p>If you&rsquo;d like your VPN connection to run at startup, edit the <em>/etc/rc.local</em> file. Paste your connection string before <em>exit 0</em>. The ampersand tells OpenWrt not to output anything to the screen.</p>
+<p>Before&hellip;</p>
+<pre tabindex="0"><code># Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+exit 0
+</code></pre><p>After&hellip;</p>
+<pre tabindex="0"><code># Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+openvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 &amp;
+exit 0
+</code></pre><h1 id="setup-samba">Setup SAMBA<a hidden class="anchor" aria-hidden="true" href="#setup-samba">#</a></h1>
+<p>Next, we need to setup the SAMBA share by installing the SAMBA packages. You&rsquo;ll need to search opkg for the correct version of SAMBA server.</p>
+<pre tabindex="0"><code>opkg update
+opkg list | grep -i samba
+opkg install luci-app-samba samba36-server
+/etc/init.d/samba enable
+/etc/init.d/samba start
+rm /tmp/luci-indexcache
+</code></pre><p>Following the last step of <a href="http://wiki.openwrt.org/doc/recipes/usb-storage-samba-webinterface">this</a> guide (thanks to commenter Ben for sending this in!), go to the <em>Services</em> dropdown, then select <em>Network Shares</em>. Under <em>Samba</em>, select a hostname.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20150124_003.png" loading="lazy" alt="screenshot"></p>
+<p>Then, under <em>Shared Directories</em>, select <em>Add</em>. Here, specify a share name and path (in our case, <em>/mnt/network</em>), and select <em>Allow guests</em>. If you don&rsquo;t want guest access, you&rsquo;ll need to setup users as described <a href="http://wiki.openwrt.org/doc/uci/samba#user_level_access">here</a>. Press <em>Save &amp; Apply</em> to continue.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20150124_004_hu1da632be8b92244c1fe5aee0efbe52c0_19394_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Connect to your router&rsquo;s wireless network, then, in your file manager (assuming you&rsquo;re using Linux, since this is a ext4 SAMBA share), navigate to your share name (e.g., <em>smb://openwrt/box/</em>).</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20150124_005.png" loading="lazy" alt="screenshot"></p>
+<p>Note - Your distro may not have a SAMBA client installed. On Arch Linux, I needed the <em>smbclient</em> and <em>gvfs-smb</em> packages.</p>
+<h1 id="setup-alerting-scripts">Setup alerting scripts<a hidden class="anchor" aria-hidden="true" href="#setup-alerting-scripts">#</a></h1>
+<p>The whole point of this build was to create a connection that is always on and safe for you to use. But, what if the VPN tunnel goes down? You&rsquo;d still  be able to pass traffic, but it would be over the regular internet, not the encrypted VPN connection. There are a couple ways around this, including putting a route in that denies traffic when not on the VPN, as well as setting up alerting scripts to let you know when the tunnel goes down. Here, I&rsquo;ll be doing the latter.</p>
+<p>On the The OpenVPN 2.3 <a href="https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage">man page</a>, there are options called <em>--up</em> and <em>--down</em>, which as they sound, run scripts when the VPN tunnel comes up or goes down. Basically, we&rsquo;re going to create a script to email us when the tunnel comes up, and another script that will run when the tunnel goes down, but we still have internet access. Obviously, if the tunnel goes down as a result of the router being powered off or the WAN connection dying, the email isn&rsquo;t going to work. We&rsquo;re also going to implement a third script that will run out of root&rsquo;s crontab to check for VPN connection status every 10 minutes.</p>
+<h2 id="setup-email">Setup email<a hidden class="anchor" aria-hidden="true" href="#setup-email">#</a></h2>
+<p>First, we need to install <em>msmtp</em>.</p>
+<pre tabindex="0"><code>opkg update
+opkg install msmtp
+</code></pre><p>If it&rsquo;s not set already, you need to set the msmtp config file to be R/W for your account only. It won&rsquo;t function otherwise.</p>
+<pre tabindex="0"><code>chmod 600 /etc/msmtprc
+cp -p /etc/msmtprc /etc/msmtprc_old
+</code></pre><p>We need an external STMP server that we can use to route messages through. Luckily, Google provides one for free if you have a Gmail account. Obviously, I would advise against using your primary Gmail account for this. Setting up a dedicated Gmail account just for this application only takes a few minutes and is worth it, in my opinion. Google&rsquo;s SMTP settings are <a href="https://support.google.com/a/answer/176600?hl=en">here</a>, we&rsquo;ll need them later.</p>
+<p>Next, we&rsquo;re going to edit the config file at <em>/etc/msmtprc</em> to include our information. There is some pretty good documentation for msmtp over at <a href="http://msmtp.sourceforge.net/doc/msmtp.html">SourceForge</a>, so I won&rsquo;t bother going over all the options below. Substitute your new Gmail username and password below.</p>
+<p>Before&hellip;</p>
+<pre tabindex="0"><code># Example for a system wide configuration file
+
+# A system wide configuration file is optional.
+# If it exists, it usually defines a default account.
+# This allows msmtp to be used like /usr/sbin/sendmail.
+account default
+
+# The SMTP smarthost.
+host mailhub.oursite.example
+
+# Construct envelope-from addresses of the form &#34;user@oursite.example&#34;.
+#auto_from on
+#maildomain oursite.example
+
+# Use TLS.
+#tls on
+#tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+# Syslog logging with facility LOG_MAIL instead of the default LOG_USER.
+syslog LOG_MAIL
+</code></pre><p>After&hellip;</p>
+<pre tabindex="0"><code>account        default
+tls            on
+tls_certcheck  off
+logfile        /etc/openvpn/msmtp.log
+
+auto_from      on
+auth           on
+host           smtp.gmail.com
+protocol       smtp
+port           587
+user           your_gmail_address@gmail.com
+password       your_gmail_password
+
+syslog         LOG_MAIL
+</code></pre><p>Next, create three scripts in your <em>/etc/openvpn</em> folder and set permissions on them.</p>
+<pre tabindex="0"><code>touch /etc/openvpn/vpndown.sh
+touch /etc/openvpn/vpnup.sh
+touch /etc/openvpn/vpncheck.sh
+chmod 700 /etc/openvpn/vpndown.sh
+chmod 700 /etc/openvpn/vpnup.sh
+chmod 700 /etc/openvpn/vpncheck.sh
+</code></pre><h2 id="vpndownsh">vpndown.sh<a hidden class="anchor" aria-hidden="true" href="#vpndownsh">#</a></h2>
+<p>The only difference between the <em>vpnup.sh</em> script and <em>vpndown.sh</em> script are the words UP and DOWN in the <em>STATUS</em> variable in each script. Replace your recipients as needed.</p>
+<pre tabindex="0"><code>#!/bin/ash
+#2015-01-24
+#Logan Marchione
+
+STATUS=DOWN
+HOSTNAME=`uci get system.@system[0].hostname`
+RECIPIENT=&#34;recipient@address.com&#34;
+DAY=`date &#34;+%A&#34;`
+DATE=`date &#34;+%Y-%m-%d&#34;`
+TIME=`date &#34;+%H:%M:%S&#34;`
+
+EMAIL=&#39;Subject: VPN &#39;$STATUS&#39; on &#39;$HOSTNAME&#39;
+From: OpenWrt Monitor
+
+As of &#39;$DAY&#39;, &#39;$DATE&#39; at &#39;$TIME&#39; the VPN tunnel on &#39;$HOSTNAME&#39; is &#39;$STATUS&#39;.&#39;
+
+echo &#34;$EMAIL&#34; | msmtp -t $RECIPIENT
+</code></pre><h2 id="vpnupsh">vpnup.sh<a hidden class="anchor" aria-hidden="true" href="#vpnupsh">#</a></h2>
+<p>The only difference between the <em>vpnup.sh</em> script and <em>vpndown.sh</em> script are the words UP and DOWN in the <em>STATUS</em> variable in each script. Replace your recipients as needed.</p>
+<pre tabindex="0"><code>#!/bin/ash
+#2015-01-24
+#Logan Marchione
+
+STATUS=UP
+HOSTNAME=`uci get system.@system[0].hostname`
+RECIPIENT=&#34;recipient@address.com&#34;
+DAY=`date &#34;+%A&#34;`
+DATE=`date &#34;+%Y-%m-%d&#34;`
+TIME=`date &#34;+%H:%M:%S&#34;`
+ 
+EMAIL=&#39;Subject: VPN &#39;$STATUS&#39; on &#39;$HOSTNAME&#39; 
+From: OpenWrt Monitor
+
+As of &#39;$DAY&#39;, &#39;$DATE&#39; at &#39;$TIME&#39; the VPN tunnel on &#39;$HOSTNAME&#39; is &#39;$STATUS&#39;.&#39;
+
+echo &#34;$EMAIL&#34; | msmtp -t $RECIPIENT
+</code></pre><p>Now, edit the <em>/etc/openvpn/piageneric.ovpn</em> file. Here, we&rsquo;ve added the <em>up</em> and <em>down</em> options and specified the appropriate scripts. We&rsquo;ve also added the <em>up-restart</em> option, which allows scripts to be called for restarts as well as initial program start. Finally, I&rsquo;ve set <em>script-security level</em> to 2, which allows calling of built-in executables and user-defined scripts.</p>
+<pre tabindex="0"><code>client
+dev tun
+proto udp
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+tls-client
+remote-cert-tls server
+auth-user-pass authuser
+auth-nocache
+comp-lzo
+verb 1
+up vpnup.sh
+down vpndown.sh
+script-security 2 
+up-restart
+reneg-sec 0
+crl-verify crl.pem
+keepalive 10 120
+</code></pre><h2 id="vpnchecksh">vpncheck.sh<a hidden class="anchor" aria-hidden="true" href="#vpnchecksh">#</a></h2>
+<p>This script calls <em>ifconfig</em> and looks for an adapter called <em>tun0</em>. If your adapter name is different, replace it as needed. Replace the line that starts the VPN manually (the same command we used earlier) with your connection string.</p>
+<pre tabindex="0"><code>#!/bin/ash
+#2015-01-24
+#Logan Marchione
+
+RESULT=`ifconfig | awk &#39;/^tun0/ {print $1;}&#39;`
+DATETIME=`date &#34;+%Y-%m-%d %H:%M:%S&#34;`
+
+if [ &#34;$RESULT&#34; == tun0 ]
+then
+	echo &#34;$DATETIME - No restart needed&#34; &gt;&gt; vpncheck.log&amp;
+else
+	echo &#34;$DATETIME - Restart needed, see below&#34; &gt;&gt; vpncheck.log&amp;
+	openvpn --cd /etc/openvpn --config piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 &gt;&gt; vpncheck.log&amp;
+fi
+</code></pre><p>The <em>vpncheck.sh</em> script will need to run on a schedule, and for that, we&rsquo;ll be using cron. First, we need to make a file for root&rsquo;s crontab and then start crontab.</p>
+<pre tabindex="0"><code>touch /etc/crontabs/root
+/etc/init.d/cron start
+/etc/init.d/cron enable
+</code></pre><p>If you check logs&hellip;</p>
+<pre tabindex="0"><code>logread
+</code></pre><p>&hellip;you should see that cron was started.</p>
+<pre tabindex="0"><code>Sat Jan 24 14:17:04 2015 cron.info crond[1526]: crond: crond (busybox 1.22.1) started, log level 5
+</code></pre><p>Then, add your entry to crontab. Use the schedule below to setup your job.</p>
+<pre tabindex="0"><code>#Crontab Schedule
+# +---------------- minute (0 - 59) *=all
+# |  +------------- hour (0 - 23) *=all
+# |  |  +---------- day of month (1 - 31) *=all
+# |  |  |  +------- month (1 - 12) *=all
+# |  |  |  |  +---- day of week (0 - 6) (Sunday=0) *=all
+# |  |  |  |  |
+# *  *  *  *  * command to be executed
+# -- -- -- -- - ---------------------------------
+# 00 12 *  *  * some_command        # will run some_command at 12:00 (noon) daily
+
+#Run VPN check to check for tunnel up/down
+10 * * * * /etc/openvpn/vpncheck.sh &gt; /etc/openvpn/vpncheck.log
+</code></pre><p>Finally, restart cron for the changes to take effect.</p>
+<pre tabindex="0"><code>/etc/init.d/cron restart
+</code></pre><p>Once everything is updated, reboot your MR3020 one final time.</p>
+<h1 id="test-alerting-scripts">Test alerting scripts<a hidden class="anchor" aria-hidden="true" href="#test-alerting-scripts">#</a></h1>
+<h2 id="vpndownsh-1">vpndown.sh<a hidden class="anchor" aria-hidden="true" href="#vpndownsh-1">#</a></h2>
+<p>Assuming your VPN is already up, use <em>ps | grep openvpn</em> to find and kill the OpenVPN process ID.</p>
+<pre tabindex="0"><code>root@mr3020_home:~# ps | grep openvpn
+  911 root      3436 S    openvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194
+root@mr3020_home:~# kill 911
+root@mr3020_home:~# ps | grep openvpn
+ 1380 root      1356 S    grep openvpn
+</code></pre><p>After you kill it, grep again and you should see that OpenVPN isn&rsquo;t running. In a minute or so, you should you get an email alerting you that the VPN tunnel is down.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20150124_001.png" loading="lazy" alt="screenshot"></p>
+<h2 id="vpnupsh-1">vpnup.sh<a hidden class="anchor" aria-hidden="true" href="#vpnupsh-1">#</a></h2>
+<p>Now, start the VPN manually (using the same command we used earlier to test).</p>
+<pre tabindex="0"><code>openvpn --cd /etc/openvpn --config /etc/openvpn/piageneric.ovpn --remote us-east.privateinternetaccess.com 1194 &amp;
+</code></pre><p>Here, you&rsquo;ll see the output from OpenVPN starting, and you should see the script <em>vpnup.sh</em> running.</p>
+<pre tabindex="0"><code>root@mr3020_home:~# openvpn --cd /etc/openvpn --config /etc/openvpn/piag
+eneric.ovpn --remote us-east.privateinternetaccess.com 1194 &amp;
+root@mr3020_home:~# Sat Jan 24 13:56:03 2015 OpenVPN 2.3.6 mips-openwrt-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [MH] [IPv6] built on Jan  6 2015
+Sat Jan 24 13:56:03 2015 library versions: OpenSSL 1.0.1k 8 Jan 2015, LZO 2.08
+Sat Jan 24 13:56:03 2015 WARNING: file &#39;authuser&#39; is group or others accessible
+Sat Jan 24 13:56:03 2015 NOTE: the current --script-security setting may allow this configuration to call user-defined scripts
+Sat Jan 24 13:56:03 2015 UDPv4 link local: [undef]
+Sat Jan 24 13:56:03 2015 UDPv4 link remote: [AF_INET]64.237.52.133:1194
+Sat Jan 24 13:56:05 2015 [Private Internet Access] Peer Connection Initiated with [AF_INET]64.237.52.133:1194
+Sat Jan 24 13:56:08 2015 TUN/TAP device tun0 opened
+Sat Jan 24 13:56:08 2015 do_ifconfig, tt-&gt;ipv6=0, tt-&gt;did_ifconfig_ipv6_setup=0
+Sat Jan 24 13:56:08 2015 /sbin/ifconfig tun0 10.150.1.10 pointopoint 10.150.1.9 mtu 1500
+Sat Jan 24 13:56:08 2015 vpnup.sh tun0 1500 1542 10.150.1.10 10.150.1.9 init
+Sat Jan 24 13:56:12 2015 Initialization Sequence Completed
+</code></pre><p>Again, in a minute or so, you should you get an email alerting you that the VPN tunnel is up.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20150124_002.png" loading="lazy" alt="screenshot"></p>
+<h2 id="vpnchecksh-1">vpncheck.sh<a hidden class="anchor" aria-hidden="true" href="#vpnchecksh-1">#</a></h2>
+<p>This is easy to test. Kill your OpenVPN process and wait until the <em>vpncheck.sh</em> script runs out of crontab. Then, you should see your tunnel come back up and get an email about it.</p>
+<h1 id="extras">Extras<a hidden class="anchor" aria-hidden="true" href="#extras">#</a></h1>
+<h2 id="backup-your-config">Backup your config<a hidden class="anchor" aria-hidden="true" href="#backup-your-config">#</a></h2>
+<p>You did all this work, don&rsquo;t lose it. Go to the <em>System</em> dropdown, then select <em>Backup/Flash Firmware</em> and press <em>Generate Archive</em> to download a backup of all your configuration files. I don&rsquo;t believe this backs up custom scripts/files, so keep that in mind.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_023_hu01671bafed054d8bfbcddd2185f27405_45660_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="failsafe-mode">Failsafe mode<a hidden class="anchor" aria-hidden="true" href="#failsafe-mode">#</a></h2>
+<p>At some point during this build, you&rsquo;ll probably break something and lock yourself out of your router. Thankfully, you&rsquo;re not left with a paper-weight. OpenWrt includes a <a href="http://wiki.openwrt.org/toh/tp-link/tl-mr3020#failsafe.mode">failsafe mode</a> that will let you telnet to your router. Steps for the MR3020 are below.</p>
+<ol>
+<li>Power off your MR3020 and connect it to your PC via Ethernet</li>
+<li>Set your PC&rsquo;s IP to 192.168.1.2 with a subnet of 255.255.255.0 and a gatway of 192.168.1.1</li>
+<li>Plug in the power to the MR3020</li>
+<li>When the WPS button starts to flash, slide the switch labeled <em>3G/4G/WISP/AP</em> back and forth really fast. At this point, the WPS button will start blinking faster than it was before. You are in failsafe mode.</li>
+<li>Connect to the router via telnet and you should see that you are in failsafe mode.</li>
+</ol>
+<pre tabindex="0"><code>logan@fedora20 ~$ telnet 192.168.1.1
+Trying 192.168.1.1...
+Connected to 192.168.1.1.
+Escape character is &#39;^]&#39;.
+ === IMPORTANT ============================
+  Use &#39;passwd&#39; to set your login password
+  this will disable telnet and enable SSH
+ ------------------------------------------
+
+
+BusyBox v1.22.1 (2014-09-20 22:01:35 CEST) built-in shell (ash)
+Enter &#39;help&#39; for a list of built-in commands.
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ BARRIER BREAKER (14.07, r42625)
+ -----------------------------------------------------
+  * 1/2 oz Galliano         Pour all ingredients into
+  * 4 oz cold Coffee        an irish coffee mug filled
+  * 1 1/2 oz Dark Rum       with crushed ice. Stir.
+  * 2 tsp. Creme de Cacao
+ -----------------------------------------------------
+</code></pre><ol start="6">
+<li>Now, you should be able to change your password by entering <em>passwd</em>, but you may get an error about the filesystem being read-only, like below.</li>
+</ol>
+<pre tabindex="0"><code>passwd: /etc/passwd: Read-only file system
+passwd: can&#39;t update password file /etc/passwd
+</code></pre><ol start="7">
+<li>
+<p>If that happens, enter <em>mount_root</em>, then try the <em>passwd</em> command again. At this point, you should be able to SSH into the MR3020.</p>
+</li>
+<li>
+<p>If you installed too many packages and filled up the filesystem, you can wipe it and do a factory reset with the command below.</p>
+</li>
+</ol>
+<pre tabindex="0"><code>firstboot
+</code></pre><ol start="9">
+<li>Reboot the router, as below.</li>
+</ol>
+<pre tabindex="0"><code>reboot -f
+</code></pre><ol start="10">
+<li>
+<p>Try to SSH in. If it doesn&rsquo;t work (mine didn&rsquo;t), telnet in again, set your password again, and then try SSH again.</p>
+</li>
+<li>
+<p>If you want to transfer a new firmware file to the router, you can do that with the SCP utility on your PC.</p>
+</li>
+</ol>
+<pre tabindex="0"><code>scp /path/to/file.bin root@192.168.1.1:/path/to/file.bin
+</code></pre><ol start="12">
+<li>Then, flash the new firmware file with the command below.</li>
+</ol>
+<pre tabindex="0"><code>sysupgrade -v /path/to/file.bin
+</code></pre><h2 id="https-support">HTTPS Support<a hidden class="anchor" aria-hidden="true" href="#https-support">#</a></h2>
+<p>Out of the box, LuCI does not support HTTPS. For that, you&rsquo;ll need a couple packages.</p>
+<pre tabindex="0"><code>opkg update
+opkg install luci-ssl uhttpd-mod-tls
+</code></pre><p>First, backup the original <em>/etc/config/uhttpd</em> file. Then, edit the file to change your <a href="http://wiki.openwrt.org/doc/uci/uhttpd#https.enable.and.certificate.settings.and.creation">certificate settings</a> as needed.</p>
+<pre tabindex="0"><code>cp -p /etc/config/uhttpd /etc/config/uhttpd_old
+vi /etc/config/uhttpd
+</code></pre><p>Before&hellip;</p>
+<pre tabindex="0"><code>config cert &#39;px5g&#39;
+        option days &#39;730&#39;
+        option bits &#39;1024&#39;
+        option country &#39;DE&#39;
+        option state &#39;Berlin&#39;
+        option location &#39;Berlin&#39;
+        option commonname &#39;OpenWrt&#39;
+</code></pre><p>After&hellip;</p>
+<pre tabindex="0"><code>config cert &#39;px5g&#39;
+        option days &#39;730&#39;
+        option bits &#39;2048&#39;
+        option country &#39;US&#39;
+        option state &#39;Pennsylvania&#39;
+        option location &#39;Pennsylvania&#39;
+        option commonname &#39;10.80.1.1&#39;
+</code></pre><p>Once you have your certificate setup, restart the webserver.</p>
+<pre tabindex="0"><code>/etc/init.d/uhttpd restart
+</code></pre><p>You should see a message similar to the one below.</p>
+<pre tabindex="0"><code>Generating RSA private key, 2048 bit long modulus
+Generating selfsigned certificate with subject &#39;C=US;ST=Pennsylvania;L=Pennsylvania;CN=10.80.1.1;&#39; and validity 20141021000526-20161020000526
+</code></pre><p>If you navigate to <em>/etc</em>, you should see a certificate and a key file.</p>
+<pre tabindex="0"><code>-rw-r--r-- 1 root     root           828 Oct 20 20:50 /etc/uhttpd.crt
+-rw-r--r-- 1 root     root          1192 Oct 20 20:50 /etc/uhttpd.key
+</code></pre><p>Open your browser, and instead of going to <em>http://10.80.1.1</em>, go to <em>https://10.80.1.1</em>. If you get a scary looking error message, that&rsquo;s ok. Click <em>Advanced</em>.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_024_hueaf7d54d811de3a30411f6e2bd199fe2_37083_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Then, proceed to your site.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_025_hu0ab61f5b45d3316c15c3dccc8e5b8fe5_60850_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>In the URL bar, you&rsquo;ll still probably see some intimidating red error message.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_026.png" loading="lazy" alt="screenshot"></p>
+<p>Upon further inspection, we can see this error is because the certificate wasn&rsquo;t generated by a trusted CA (Thawte, Symatec, etc&hellip;).</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_027.png" loading="lazy" alt="screenshot"></p>
+<p>If you inspect the actual certificate, you can see it&rsquo;s the certificate we created, so you know it can be trusted.</p>
+
+<p><img src="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/20141018_028.png" loading="lazy" alt="screenshot"></p>
+<p>That&rsquo;s it! I&rsquo;ll be tweaking this guide as I go, but let me know if anything is incorrect or missing. Also, a couple useful posts and sources I used when stuck are located <a href="http://blog.matthewurch.ca/?p=120">here</a>, <a href="https://community.hide.me/tutorials/openvpn-with-openwrt.38/">here</a>, and <a href="https://blog.ipredator.se/howto/openwrt/configuring-openvpn-on-openwrt.html">here</a>.</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/comments_rev1.txt">Old comments from WordPress (rev1)</a></p>
+<p><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/comments_rev2.txt">Old comments from WordPress (rev2)</a></p>
+<p><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/comments_rev3.txt">Old comments from WordPress (rev3)</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN client on TP-Link TL-MR3020 on twitter"
+        href="https://twitter.com/intent/tweet/?text=OpenWrt%20with%20OpenVPN%20client%20on%20TP-Link%20TL-MR3020&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f02%2fopenwrt-with-openvpn-client-on-tp-link-tl-mr3020%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN client on TP-Link TL-MR3020 on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f02%2fopenwrt-with-openvpn-client-on-tp-link-tl-mr3020%2f&amp;title=OpenWrt%20with%20OpenVPN%20client%20on%20TP-Link%20TL-MR3020&amp;summary=OpenWrt%20with%20OpenVPN%20client%20on%20TP-Link%20TL-MR3020&amp;source=https%3a%2f%2floganmarchione.github.io%2f2015%2f02%2fopenwrt-with-openvpn-client-on-tp-link-tl-mr3020%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN client on TP-Link TL-MR3020 on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2015%2f02%2fopenwrt-with-openvpn-client-on-tp-link-tl-mr3020%2f&title=OpenWrt%20with%20OpenVPN%20client%20on%20TP-Link%20TL-MR3020">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN client on TP-Link TL-MR3020 on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2015%2f02%2fopenwrt-with-openvpn-client-on-tp-link-tl-mr3020%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN client on TP-Link TL-MR3020 on whatsapp"
+        href="https://api.whatsapp.com/send?text=OpenWrt%20with%20OpenVPN%20client%20on%20TP-Link%20TL-MR3020%20-%20https%3a%2f%2floganmarchione.github.io%2f2015%2f02%2fopenwrt-with-openvpn-client-on-tp-link-tl-mr3020%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN client on TP-Link TL-MR3020 on telegram"
+        href="https://telegram.me/share/url?text=OpenWrt%20with%20OpenVPN%20client%20on%20TP-Link%20TL-MR3020&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f02%2fopenwrt-with-openvpn-client-on-tp-link-tl-mr3020%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

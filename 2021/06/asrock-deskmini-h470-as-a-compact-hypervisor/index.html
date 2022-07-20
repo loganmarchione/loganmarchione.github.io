@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>ASRock DeskMini H470 as a compact hypervisor | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I&rsquo;ve outgrown the CPU and cooling solution.
+The search for a new hypervisor Size, noise, and power As outlined in my homelab mini-rack post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="ASRock DeskMini H470 as a compact hypervisor" />
+<meta property="og:description" content="Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I&rsquo;ve outgrown the CPU and cooling solution.
+The search for a new hypervisor Size, noise, and power As outlined in my homelab mini-rack post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-23T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-23T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" />
+<meta name="twitter:title" content="ASRock DeskMini H470 as a compact hypervisor"/>
+<meta name="twitter:description" content="Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I&rsquo;ve outgrown the CPU and cooling solution.
+The search for a new hypervisor Size, noise, and power As outlined in my homelab mini-rack post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "ASRock DeskMini H470 as a compact hypervisor",
+      "item": "https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ASRock DeskMini H470 as a compact hypervisor",
+  "name": "ASRock DeskMini H470 as a compact hypervisor",
+  "description": "Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I\u0026rsquo;ve outgrown the CPU and cooling solution.\nThe search for a new hypervisor Size, noise, and power As outlined in my homelab mini-rack post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I’ve outgrown the CPU and cooling solution.\nThe search for a new hypervisor Size, noise, and power As outlined in my homelab mini-rack post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room. Because of this, everything needs to be small, quiet, power efficient, and have a high WAF.\nWhen searching for a new hypervisor, my first requirements were size, noise, and power draw. Luckily for me, ServeTheHome has an excellent series called TinyMiniMicro where they review Lenovo Tiny, HP Mini, and Dell Micro PCs as servers. The ServeTheHome series gave me a great insight into the differences between manufacturers and models, as well as a starting point when looking for ultra-small form-factor (USFF) PCs.\nAMD vs Intel Normally, I would recommend AMD for almost any application, since the cores-per-dollar ratio is so good. However, in this case, one of the applications I will be running is Jellyfin, which can greatly benefit from hardware-enabled video transcoding. While AMD has its own hardware transcoding engine, it is nowhere near as efficient or as supported as Intel’s QuickSync. Because of that, I specifically looked for an Intel CPU with an integrated GPU.\nHardware comparison This Reddit post convinced me to go with the ASRock DeskMini H470, as it was almost exactly the same build as what I was looking for.\nBelow is a comparison of my current NUC and the new hypervisor (it’s obviously not a like-for-like comparison because of the CPU, cooler, and RAM differences).\nComponent Current (2017 prices) New (2021 pandemic prices) Base kit Intel NUC NUC7i3BNH - $282.99 ASRock DeskMini H470 - $200.99 CPU Intel Core i3-7100U (2c/4t @ 2.40GHz) Intel Core i5-10400 (6c/12t @ 2.90GHz) - $164.99 Memory Crucial 32GB Kit (2x 16GB) DDR4-2400 SODIMM - $173.00 Corsair 64GB Kit (2x 32GB) DDR4-2666 SODIMM - $358.99 Storage Samsung 860 Pro 2.5\" 512GB SATA SSD - $138.07 Samsung 970 Pro 512GB M.2 NVMe SSD - $149.99 Accessories N/A Noctua NH-L9i - $44.95 Total price $594.06 $919.91 Comments U-Series processor (laptop chip) Mediocre cooling Smallest footprint Standard processor (desktop chip) CPU socket (so I can upgrade the CPU later) Excellent cooling (due to aftermarket cooler) Build pics Other devices that didn’t make the cut 11th Generation Intel NUC This was an upgrade of the problems I had to begin with: U-Series processors (laptop chip) with poor cooling. Lenovo Tiny, HP Mini, and Dell Micro These were all basically the same devices, with different physical layouts: T-Series processors (low-power chip), a poor CPU heatsink, a blower fan, and limited expansion options. Dell Precision 3240 Compact I really wanted to like this. It offered Intel Core or Xeon processors, the latter of which could use ECC memory, in a super-small form-factor. It had different heatsinks for the Core vs Xeon models, but both the Core (one, two, three) and Xeon (one) models suffered from poor thermals and loud fans. HPE ProLiant MicroServer Gen10 Plus The included Xeon processor (Xeon E-2224) was only 4c/4t and it didn’t support QuickSync. Although you could physically replace the CPU, there was a BIOS limitation by HP that prevented QuickSync from working. The included cooler and external PSU (180W) probably couldn’t handle processors rated for more than 71W, which really limited my options for CPUs with more cores. There was a single PCIe slot which I could use to install a small GPU (e.g., Nvidia Quadro P400), or run a PCIe-to-NVMe card for a boot drive, but not both. Hardware-specific things 11th Generation CPUs General issues According to this post, there may be some problems with 11th Generation CPUs on the DeskMini H470. I purchased a 10th Generation CPU, so I can’t confirm this. Just something to be aware of.\nBIOS update The DeskMini H470 BIOS was recently updated to version v2.00 to support Intel 11th Generation CPUs. However, as confirmed by this post, if your BIOS is v1.x, you can’t update it to v2.x with an 11th Generation CPU installed. You would need a 10th Generation CPU to perform the update (unless you got lucky and your DeskMini H470 shipped with the v2.x BIOS already installed).\nMy device shipped with BIOS v2.10 (see the red circle below), so it should support Intel 11th Generation CPUs out of the box.\nStorage The DeskMini H470 has four storage connections:\n2x 2.5\" HDD/SSD (proprietary SATA connector) 1x 2280 PCIe Gen3 NVMe SSD (M.2 connector) 1x 2280 PCIe Gen4 NVMe SSD (M.2 connector) This only works when using 11th Generation CPUs. Right now, I’m running Proxmox and the VM storage on the same NVMe SSD. However, I will probably end up purchasing 2x SATA SSDs to run in RAID1 for VM storage.\nMotherboard flex There is a little bit of motherboard flex from the cooler because this cooler does not have a backplate. Not sure if that will be a problem, I guess we’ll see.\nIf you zoom in, the red line is drawn between the two motherboard screws, and you can see a tiny gap between the red line and the motherboard.\nSensors and VRM temperatures According to this post, the temperature sensor kernel driver (nct6683) is not loaded by default. I confirmed this was the case and loaded it manually.\nBoth KitGuru and AnandTech commented about the high VRM temperatures on the DeskMini H470. However, ASRock is known to produce motherboards with fake sensors, so I’m not sure if this is related. I’m also not sure which of these (if any) are the VRM sensors.\nnct6683-isa-0a20 Adapter: ISA adapter VIN0: +0.58 V (min = +0.00 V, max = +0.00 V) VIN1: +1.01 V (min = +0.00 V, max = +0.00 V) VIN2: +1.02 V (min = +0.00 V, max = +0.00 V) VIN3: +1.01 V (min = +0.00 V, max = +0.00 V) VIN7: +1.20 V (min = +0.00 V, max = +0.00 V) VIN16: +1.07 V (min = +0.00 V, max = +0.00 V) VCC: +3.33 V (min = +0.00 V, max = +0.00 V) fan1: 1498 RPM (min = 0 RPM) fan2: 0 RPM (min = 0 RPM) Thermistor 12: +43.0°C (low = +0.0°C) (high = +0.0°C, hyst = +0.0°C) (crit = +0.0°C) sensor = thermistor Thermistor 13: +37.0°C (low = +0.0°C) (high = +0.0°C, hyst = +0.0°C) (crit = +0.0°C) sensor = thermistor PECI 0.0: +45.5°C (low = +0.0°C) (high = +0.0°C, hyst = +0.0°C) (crit = +0.0°C) sensor = Intel PECI intrusion0: OK beep_enable: disabled pch_cometlake-virtual-0 Adapter: Virtual device temp1: +63.0°C coretemp-isa-0000 Adapter: ISA adapter Package id 0: +49.0°C (high = +84.0°C, crit = +100.0°C) Core 0: +47.0°C (high = +84.0°C, crit = +100.0°C) Core 1: +41.0°C (high = +84.0°C, crit = +100.0°C) Core 2: +49.0°C (high = +84.0°C, crit = +100.0°C) Core 3: +44.0°C (high = +84.0°C, crit = +100.0°C) Core 4: +42.0°C (high = +84.0°C, crit = +100.0°C) Core 5: +47.0°C (high = +84.0°C, crit = +100.0°C) Linux e1000e driver There is a known issue where the Intel NIC e1000e kernel driver can crash/hang when under heavy load. In my case, this happened when my VM for backups was pushing data up to the cloud. Below is what I saw in dmesg on the Proxmox host.\nJun 22 21:40:32 proxmox02 kernel: [37615.515931] e1000e 0000:00:1f.6 eno1: Detected Hardware Unit Hang: Jun 22 21:40:32 proxmox02 kernel: [37615.515931] TDH Jun 22 21:40:32 proxmox02 kernel: [37615.515931] TDT \u003c40\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] next_to_use \u003c40\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] next_to_clean Jun 22 21:40:32 proxmox02 kernel: [37615.515931] buffer_info[next_to_clean]: Jun 22 21:40:32 proxmox02 kernel: [37615.515931] time_stamp \u003c1008e50da\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] next_to_watch Jun 22 21:40:32 proxmox02 kernel: [37615.515931] jiffies \u003c1008e5848\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] next_to_watch.status \u003c0\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] MAC Status \u003c40080083\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PHY Status \u003c796d\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PHY 1000BASE-T Status \u003c3c00\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PHY Extended Status \u003c3000\u003e Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PCI Status \u003c10\u003e Below is the output from lspci -v on the Proxmox host. You can see I’m using the e1000e driver.\n00:1f.6 Ethernet controller: Intel Corporation Device 0d4d Subsystem: ASRock Incorporation Device 0d4d Flags: bus master, fast devsel, latency 0, IRQ 137 Memory at b1200000 (32-bit, non-prefetchable) [size=128K] Capabilities: [c8] Power Management version 3 Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+ Kernel driver in use: e1000e Kernel modules: e1000e This crash/hang happens because the NIC has hardware offload capabilities, but it can’t keep up with the amount of data being pushed through. The fix (as documented in this large Proxmox-specific thread) is to disable offloading and let everything be handled by the CPU. In my case, I only disabled tcp-segmentation-offload, generic-segmentation-offload, and generic-receive-offload.\nThe following snippet is from my /etc/network/interfaces file on the Proxmox host.\nauto eno1 iface eno1 inet manual offload-tso off offload-gso off offload-gro off After a reboot of the host, you can verify the settings using ethtool -k eno1. Again, this is not specific to ASRock or Proxmox, it seems to be any Linux distribution using the e1000e driver.\nConclusion So far, I’m only a few days into this new hypervisor, but it’s already leaps and bounds better than the NUC, especially under any sort of load.\n-Logan\n",
+  "wordCount" : "1576",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg","datePublished": "2021-06-23T00:00:00Z",
+  "dateModified": "2021-06-23T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      ASRock DeskMini H470 as a compact hypervisor
+    </h1>
+    <div class="post-meta"><span title='2021-06-23 00:00:00 +0000 UTC'>2021-06-23</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#the-search-for-a-new-hypervisor" aria-label="The search for a new hypervisor">The search for a new hypervisor</a><ul>
+                        
+                <li>
+                    <a href="#size-noise-and-power" aria-label="Size, noise, and power">Size, noise, and power</a></li>
+                <li>
+                    <a href="#amd-vs-intel" aria-label="AMD vs Intel">AMD vs Intel</a></li>
+                <li>
+                    <a href="#hardware-comparison" aria-label="Hardware comparison">Hardware comparison</a></li>
+                <li>
+                    <a href="#build-pics" aria-label="Build pics">Build pics</a></li>
+                <li>
+                    <a href="#other-devices-that-didnt-make-the-cut" aria-label="Other devices that didn&amp;rsquo;t make the cut">Other devices that didn&rsquo;t make the cut</a></li></ul>
+                </li>
+                <li>
+                    <a href="#hardware-specific-things" aria-label="Hardware-specific things">Hardware-specific things</a><ul>
+                        
+                <li>
+                    <a href="#11th-generation-cpus" aria-label="11th Generation CPUs">11th Generation CPUs</a><ul>
+                        
+                <li>
+                    <a href="#general-issues" aria-label="General issues">General issues</a></li>
+                <li>
+                    <a href="#bios-update" aria-label="BIOS update">BIOS update</a></li></ul>
+                </li>
+                <li>
+                    <a href="#storage" aria-label="Storage">Storage</a></li>
+                <li>
+                    <a href="#motherboard-flex" aria-label="Motherboard flex">Motherboard flex</a></li>
+                <li>
+                    <a href="#sensors-and-vrm-temperatures" aria-label="Sensors and VRM temperatures">Sensors and VRM temperatures</a></li>
+                <li>
+                    <a href="#linux-e1000e-driver" aria-label="Linux e1000e driver">Linux e1000e driver</a></li></ul>
+                </li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>My hypervisor since 2017 has been an Intel <a href="https://ark.intel.com/content/www/us/en/ark/products/95066/intel-nuc-kit-nuc7i3bnh.html">NUC7i3BNH</a>. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I&rsquo;ve outgrown the CPU and cooling solution.</p>
+<h1 id="the-search-for-a-new-hypervisor">The search for a new hypervisor<a hidden class="anchor" aria-hidden="true" href="#the-search-for-a-new-hypervisor">#</a></h1>
+<h2 id="size-noise-and-power">Size, noise, and power<a hidden class="anchor" aria-hidden="true" href="#size-noise-and-power">#</a></h2>
+<p>As outlined in my <a href="/2021/01/homelab-10-mini-rack/">homelab mini-rack</a> post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room. Because of this, everything needs to be small, quiet, power efficient, and have a high <a href="https://www.urbandictionary.com/define.php?term=Wife%20Acceptance%20Factor">WAF</a>.</p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210104_003_hu155f91eafed0a68ac7626eeaad616768_2171199_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="mini-rack on shelf"></p>
+<p>When searching for a new hypervisor, my first requirements were size, noise, and power draw. Luckily for me, <a href="https://www.servethehome.com/">ServeTheHome</a> has an excellent series called <a href="https://www.servethehome.com/tag/tinyminimicro/">TinyMiniMicro</a> where they review <a href="https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-tiny/c/M-Series-Tiny">Lenovo Tiny</a>, <a href="https://store.hp.com/us/en/vwa/mini-desktops/form=Mini">HP Mini</a>, and <a href="https://www.dell.com/en-us/work/shop/desktops-all-in-one-pcs/sr/desktops-n-workstations/optiplex-desktops/micro-small-78l-or-less?appliedRefinements=33718">Dell Micro</a> PCs as servers. The ServeTheHome series gave me a great insight into the differences between manufacturers and models, as well as a starting point when looking for ultra-small form-factor (USFF) PCs.</p>
+<h2 id="amd-vs-intel">AMD vs Intel<a hidden class="anchor" aria-hidden="true" href="#amd-vs-intel">#</a></h2>
+<p>Normally, I would recommend AMD for almost any application, since the cores-per-dollar ratio is so good. However, in this case, one of the applications I will be running is Jellyfin, which can greatly benefit from hardware-enabled video transcoding. While AMD has its own <a href="https://en.wikipedia.org/wiki/Video_Core_Next">hardware transcoding engine</a>, it is nowhere near as efficient or as supported as <a href="https://en.wikipedia.org/wiki/Intel_Quick_Sync_Video">Intel&rsquo;s QuickSync</a>. Because of that, I specifically looked for an Intel CPU with an integrated GPU.</p>
+<h2 id="hardware-comparison">Hardware comparison<a hidden class="anchor" aria-hidden="true" href="#hardware-comparison">#</a></h2>
+<p><a href="https://www.reddit.com/r/HomeServer/comments/l2qsh4/my_first_homeserver_running_esxi_7_nothing_like/">This</a> Reddit post convinced me to go with the ASRock DeskMini H470, as it was almost exactly the same build as what I was looking for.</p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210621_004.png" loading="lazy" alt="deskmini"></p>
+<p>Below is a comparison of my current NUC and the new hypervisor (it&rsquo;s obviously not a like-for-like comparison because of the CPU, cooler, and RAM differences).</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Current (2017 prices)</th>
+        <th>New (2021 pandemic prices)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Base kit</th>
+        <td><a href="https://ark.intel.com/content/www/us/en/ark/products/95066/intel-nuc-kit-nuc7i3bnh.html">Intel NUC NUC7i3BNH</a> - $282.99</td>
+        <td><a href="https://www.asrock.com/nettop/Intel/DeskMini%20H470%20Series/index.asp">ASRock DeskMini H470</a> - $200.99</td>
+      </tr>
+      <tr>
+        <th>CPU</th>
+        <td>Intel Core i3-7100U (2c/4t @ 2.40GHz)</td>
+        <td>Intel Core i5-10400 (6c/12t @ 2.90GHz) - $164.99</td>
+      </tr>
+      <tr>
+        <th>Memory</th>
+        <td>Crucial 32GB Kit (2x 16GB) DDR4-2400 SODIMM - $173.00</td>
+        <td>Corsair 64GB Kit (2x 32GB) DDR4-2666 SODIMM - $358.99</td>
+      </tr>
+      <tr>
+        <th>Storage</th>
+        <td>Samsung 860 Pro 2.5" 512GB SATA SSD - $138.07</td>
+        <td>Samsung 970 Pro 512GB M.2 NVMe SSD - $149.99</td>
+      </tr>
+      <tr>
+        <th>Accessories</th>
+        <td>N/A</td>
+        <td>Noctua NH-L9i - $44.95</td>
+      </tr>
+      <tr>
+        <th>Total price</th>
+        <td>$594.06</td>
+        <td>$919.91</td>
+      </tr>
+      <tr>
+        <th>Comments</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>U-Series processor (laptop chip)</li>
+            <li>Mediocre cooling</li>
+            <li>Smallest footprint</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Standard processor (desktop chip)</li>
+            <li>CPU socket (so I can upgrade the CPU later)</li>
+            <li>Excellent cooling (due to aftermarket cooler)</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="build-pics">Build pics<a hidden class="anchor" aria-hidden="true" href="#build-pics">#</a></h2>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_001_hu155f91eafed0a68ac7626eeaad616768_2484314_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="build pics"></p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_002_hub0ec4244633ff8650c162a99ebdc8b55_1616232_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="build pics"></p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_006_hue1f6e8e966c4a1dbec7ed7d8d674d499_1362532_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="build pics"></p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_007_hu5d9454d4fe868c48b52b1015d7cdba8b_1852831_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="build pics"></p>
+<h2 id="other-devices-that-didnt-make-the-cut">Other devices that didn&rsquo;t make the cut<a hidden class="anchor" aria-hidden="true" href="#other-devices-that-didnt-make-the-cut">#</a></h2>
+<ul>
+<li><a href="https://www.intel.com/content/www/us/en/products/details/nuc/kits/products.html">11th Generation Intel NUC</a>
+<ul>
+<li>This was an upgrade of the problems I had to begin with: U-Series processors (laptop chip) with poor cooling.</li>
+</ul>
+</li>
+<li><a href="https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-tiny/c/M-Series-Tiny">Lenovo Tiny</a>, <a href="https://store.hp.com/us/en/vwa/mini-desktops/form=Mini">HP Mini</a>, and <a href="https://www.dell.com/en-us/work/shop/desktops-all-in-one-pcs/sr/desktops-n-workstations/optiplex-desktops/micro-small-78l-or-less?appliedRefinements=33718">Dell Micro</a>
+<ul>
+<li>These were all basically the same devices, with different physical layouts: T-Series processors (low-power chip), a poor CPU heatsink, a blower fan, and limited expansion options.</li>
+</ul>
+</li>
+<li><a href="https://www.dell.com/en-us/work/shop/desktops-all-in-one-pcs/precision-3240-workstation/spd/precision-3240-workstation">Dell Precision 3240 Compact</a>
+<ul>
+<li>I really wanted to like this. It offered Intel Core or Xeon processors, the latter of which could use ECC memory, in a super-small form-factor.</li>
+<li>It had <a href="https://dl.dell.com/topicspdf/precision-3240-workstation_owners-manual_en-us.pdf#_OPENTOPIC_TOC_PROCESSING_d111e10824">different heatsinks</a> for the Core vs Xeon models, but both the Core (<a href="https://www.reddit.com/r/Dell/comments/iy12iv/precision_3240_compact/">one</a>, <a href="https://forums.redflagdeals.com/dell-dell-precision-3240-compact-workstation-usff-2-3l-i3-10100-8g-279-313-i5-10500-8g-419-470-2403015/21/#p33901450">two</a>, <a href="https://www.reddit.com/r/Dell/comments/m6ao4k/does_anyone_use_a_dell_precision_3240_compact/gsbb4yc">three</a>) and Xeon (<a href="https://www.reddit.com/r/Dell/comments/mv0vx4/feedback_on_precision_3240_compact_with_xeon/">one</a>) models suffered from poor thermals and loud fans.</li>
+</ul>
+</li>
+<li><a href="https://buy.hpe.com/us/en/servers/proliant-microserver/proliant-microserver/proliant-microserver/hpe-proliant-microserver-gen10-plus/p/1012241014">HPE ProLiant MicroServer Gen10 Plus</a>
+<ul>
+<li>The included Xeon processor (Xeon E-2224) was only 4c/4t and it didn&rsquo;t support QuickSync. Although you could physically replace the CPU, there was a BIOS limitation by HP that prevented QuickSync from working.</li>
+<li>The included cooler and external PSU (180W) probably couldn&rsquo;t handle processors rated for more than 71W, which really limited my options for CPUs with more cores.</li>
+<li>There was a single PCIe slot which I could use to install a small GPU (e.g., Nvidia Quadro P400), or run a PCIe-to-NVMe card for a boot drive, but not both.</li>
+</ul>
+</li>
+</ul>
+<h1 id="hardware-specific-things">Hardware-specific things<a hidden class="anchor" aria-hidden="true" href="#hardware-specific-things">#</a></h1>
+<h2 id="11th-generation-cpus">11th Generation CPUs<a hidden class="anchor" aria-hidden="true" href="#11th-generation-cpus">#</a></h2>
+<h3 id="general-issues">General issues<a hidden class="anchor" aria-hidden="true" href="#general-issues">#</a></h3>
+<p>According to <a href="https://forum.asrock.com/forum_posts.asp?TID=18980&amp;title=various-deskmini-h470-issues">this post</a>, there may be some problems with 11th Generation CPUs on the DeskMini H470. I purchased a 10th Generation CPU, so I can&rsquo;t confirm this. Just something to be aware of.</p>
+<h3 id="bios-update">BIOS update<a hidden class="anchor" aria-hidden="true" href="#bios-update">#</a></h3>
+<p>The DeskMini H470 <a href="https://www.asrock.com/nettop/Intel/DeskMini%20H470%20Series/index.asp#BIOS">BIOS</a> was recently updated to version v2.00 to support Intel 11th Generation CPUs. However, as confirmed by <a href="https://www.reddit.com/r/sffpc/comments/n6aidb/deskmini_h470_needs_bios_updatebut_has_no_video/">this post</a>, if your BIOS is v1.x, you can&rsquo;t update it to v2.x with an 11th Generation CPU installed. You would need a 10th Generation CPU to perform the update (unless you got lucky and your DeskMini H470 shipped with the v2.x BIOS already installed).</p>
+<p>My device shipped with BIOS v2.10 (see the red circle below), so it <em>should</em> support Intel 11th Generation CPUs out of the box.</p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_003_hu4e84feb2a715e61be5d68858042f858f_1424186_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="build pics"></p>
+<h2 id="storage">Storage<a hidden class="anchor" aria-hidden="true" href="#storage">#</a></h2>
+<p>The DeskMini H470 has four storage connections:</p>
+<ul>
+<li>2x 2.5&quot; HDD/SSD (proprietary SATA connector)</li>
+<li>1x 2280 PCIe Gen3 NVMe SSD (M.2 connector)</li>
+<li>1x 2280 PCIe Gen4 NVMe SSD (M.2 connector)
+<ul>
+<li>This only works when using 11th Generation CPUs.</li>
+</ul>
+</li>
+</ul>
+<p>Right now, I&rsquo;m running Proxmox and the VM storage on the same NVMe SSD. However, I will probably end up purchasing 2x SATA SSDs to run in RAID1 for VM storage.</p>
+<h2 id="motherboard-flex">Motherboard flex<a hidden class="anchor" aria-hidden="true" href="#motherboard-flex">#</a></h2>
+<p>There is a little bit of motherboard flex from the cooler because this cooler does not have a backplate. Not sure if that will be a problem, I guess we&rsquo;ll see.</p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_004_hu155f91eafed0a68ac7626eeaad616768_2272040_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="build pics"></p>
+<p>If you zoom in, the red line is drawn between the two motherboard screws, and you can see a tiny gap between the red line and the motherboard.</p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_005_hu5bc8cc956b0021e3d7040c917ba87d92_1145203_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="build pics"></p>
+<h2 id="sensors-and-vrm-temperatures">Sensors and VRM temperatures<a hidden class="anchor" aria-hidden="true" href="#sensors-and-vrm-temperatures">#</a></h2>
+<p>According to <a href="https://www.reddit.com/r/HomeServer/comments/l2qsh4/my_first_homeserver_running_esxi_7_nothing_like/gkcn5dt">this post</a>, the temperature sensor kernel driver (nct6683) is not loaded by default. I confirmed this was the case and loaded it manually.</p>
+<p>Both <a href="https://www.kitguru.net/desktop-pc/leo-waldock/asrock-deskmini-h470w-review-100c-vrms/">KitGuru</a> and <a href="https://www.anandtech.com/show/16335/asrock-deskmini-h470-review-a-nofrills-lga1200-minipc-platform/10">AnandTech</a> commented about the high VRM temperatures on the DeskMini H470. However, ASRock is known to produce motherboards with <a href="https://www.reddit.com/r/ASRock/comments/fwfsl7/vrm_constantly_above_100_c/">fake sensors</a>, so I&rsquo;m not sure if this is related. I&rsquo;m also not sure which of these (if any) are the VRM sensors.</p>
+<pre tabindex="0"><code>nct6683-isa-0a20
+Adapter: ISA adapter
+VIN0:           +0.58 V  (min =  +0.00 V, max =  +0.00 V)
+VIN1:           +1.01 V  (min =  +0.00 V, max =  +0.00 V)
+VIN2:           +1.02 V  (min =  +0.00 V, max =  +0.00 V)
+VIN3:           +1.01 V  (min =  +0.00 V, max =  +0.00 V)
+VIN7:           +1.20 V  (min =  +0.00 V, max =  +0.00 V)
+VIN16:          +1.07 V  (min =  +0.00 V, max =  +0.00 V)
+VCC:            +3.33 V  (min =  +0.00 V, max =  +0.00 V)
+fan1:          1498 RPM  (min =    0 RPM)
+fan2:             0 RPM  (min =    0 RPM)
+Thermistor 12:  +43.0°C  (low  =  +0.0°C)
+                         (high =  +0.0°C, hyst =  +0.0°C)
+                         (crit =  +0.0°C)  sensor = thermistor
+Thermistor 13:  +37.0°C  (low  =  +0.0°C)
+                         (high =  +0.0°C, hyst =  +0.0°C)
+                         (crit =  +0.0°C)  sensor = thermistor
+PECI 0.0:       +45.5°C  (low  =  +0.0°C)
+                         (high =  +0.0°C, hyst =  +0.0°C)
+                         (crit =  +0.0°C)  sensor = Intel PECI
+intrusion0:    OK
+beep_enable:   disabled
+
+pch_cometlake-virtual-0
+Adapter: Virtual device
+temp1:        +63.0°C
+
+coretemp-isa-0000
+Adapter: ISA adapter
+Package id 0:  +49.0°C  (high = +84.0°C, crit = +100.0°C)
+Core 0:        +47.0°C  (high = +84.0°C, crit = +100.0°C)
+Core 1:        +41.0°C  (high = +84.0°C, crit = +100.0°C)
+Core 2:        +49.0°C  (high = +84.0°C, crit = +100.0°C)
+Core 3:        +44.0°C  (high = +84.0°C, crit = +100.0°C)
+Core 4:        +42.0°C  (high = +84.0°C, crit = +100.0°C)
+Core 5:        +47.0°C  (high = +84.0°C, crit = +100.0°C)
+</code></pre><h2 id="linux-e1000e-driver">Linux e1000e driver<a hidden class="anchor" aria-hidden="true" href="#linux-e1000e-driver">#</a></h2>
+<p>There is a known issue where the Intel NIC e1000e kernel driver can crash/hang when under heavy load. In my case, this happened when my VM for backups was pushing data up to the cloud. Below is what I saw in <code>dmesg</code> on the Proxmox host.</p>
+<pre tabindex="0"><code>Jun 22 21:40:32 proxmox02 kernel: [37615.515931] e1000e 0000:00:1f.6 eno1: Detected Hardware Unit Hang:
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   TDH                  &lt;a5&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   TDT                  &lt;40&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   next_to_use          &lt;40&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   next_to_clean        &lt;a4&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931] buffer_info[next_to_clean]:
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   time_stamp           &lt;1008e50da&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   next_to_watch        &lt;a5&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   jiffies              &lt;1008e5848&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931]   next_to_watch.status &lt;0&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931] MAC Status             &lt;40080083&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PHY Status             &lt;796d&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PHY 1000BASE-T Status  &lt;3c00&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PHY Extended Status    &lt;3000&gt;
+Jun 22 21:40:32 proxmox02 kernel: [37615.515931] PCI Status             &lt;10&gt;
+</code></pre><p>Below is the output from <code>lspci -v</code> on the Proxmox host. You can see I&rsquo;m using the <code>e1000e</code> driver.</p>
+<pre tabindex="0"><code>00:1f.6 Ethernet controller: Intel Corporation Device 0d4d
+        Subsystem: ASRock Incorporation Device 0d4d
+        Flags: bus master, fast devsel, latency 0, IRQ 137
+        Memory at b1200000 (32-bit, non-prefetchable) [size=128K]
+        Capabilities: [c8] Power Management version 3
+        Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+        Kernel driver in use: e1000e
+        Kernel modules: e1000e
+</code></pre><p>This crash/hang happens because the NIC has hardware offload capabilities, but it can&rsquo;t keep up with the amount of data being pushed through. The fix (as documented in <a href="https://forum.proxmox.com/threads/e1000-driver-hang.58284/">this</a> large Proxmox-specific thread) is to disable offloading and let everything be handled by the CPU. In my case, I only disabled tcp-segmentation-offload, generic-segmentation-offload, and generic-receive-offload.</p>
+<p>The following snippet is from my <em>/etc/network/interfaces</em> file on the Proxmox host.</p>
+<pre tabindex="0"><code>auto eno1
+iface eno1 inet manual
+    offload-tso off
+    offload-gso off
+    offload-gro off
+</code></pre><p>After a reboot of the host, you can verify the settings using <code>ethtool -k eno1</code>. Again, this is not specific to ASRock or Proxmox, it seems to be any Linux distribution using the e1000e driver.</p>
+<h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p>So far, I&rsquo;m only a few days into this new hypervisor, but it&rsquo;s already leaps and bounds better than the NUC, especially under any sort of load.</p>
+
+<p><img src="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/20210622_008_hu155f91eafed0a68ac7626eeaad616768_2081815_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="mini-rack on shelf"></p>
+<p>-Logan</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ASRock DeskMini H470 as a compact hypervisor on twitter"
+        href="https://twitter.com/intent/tweet/?text=ASRock%20DeskMini%20H470%20as%20a%20compact%20hypervisor&amp;url=https%3a%2f%2floganmarchione.github.io%2f2021%2f06%2fasrock-deskmini-h470-as-a-compact-hypervisor%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ASRock DeskMini H470 as a compact hypervisor on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2021%2f06%2fasrock-deskmini-h470-as-a-compact-hypervisor%2f&amp;title=ASRock%20DeskMini%20H470%20as%20a%20compact%20hypervisor&amp;summary=ASRock%20DeskMini%20H470%20as%20a%20compact%20hypervisor&amp;source=https%3a%2f%2floganmarchione.github.io%2f2021%2f06%2fasrock-deskmini-h470-as-a-compact-hypervisor%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ASRock DeskMini H470 as a compact hypervisor on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2021%2f06%2fasrock-deskmini-h470-as-a-compact-hypervisor%2f&title=ASRock%20DeskMini%20H470%20as%20a%20compact%20hypervisor">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ASRock DeskMini H470 as a compact hypervisor on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2021%2f06%2fasrock-deskmini-h470-as-a-compact-hypervisor%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ASRock DeskMini H470 as a compact hypervisor on whatsapp"
+        href="https://api.whatsapp.com/send?text=ASRock%20DeskMini%20H470%20as%20a%20compact%20hypervisor%20-%20https%3a%2f%2floganmarchione.github.io%2f2021%2f06%2fasrock-deskmini-h470-as-a-compact-hypervisor%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ASRock DeskMini H470 as a compact hypervisor on telegram"
+        href="https://telegram.me/share/url?text=ASRock%20DeskMini%20H470%20as%20a%20compact%20hypervisor&amp;url=https%3a%2f%2floganmarchione.github.io%2f2021%2f06%2fasrock-deskmini-h470-as-a-compact-hypervisor%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Ubiquiti EdgeRouter Lite setup | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction As much as I love my C7 running OpenWrt, I&rsquo;ve been hearing a lot of good things about Ubiquiti devices.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Ubiquiti EdgeRouter Lite setup" />
+<meta property="og:description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction As much as I love my C7 running OpenWrt, I&rsquo;ve been hearing a lot of good things about Ubiquiti devices." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-04-29T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2016-04-29T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg" />
+<meta name="twitter:title" content="Ubiquiti EdgeRouter Lite setup"/>
+<meta name="twitter:description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction As much as I love my C7 running OpenWrt, I&rsquo;ve been hearing a lot of good things about Ubiquiti devices."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Ubiquiti EdgeRouter Lite setup",
+      "item": "https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ubiquiti EdgeRouter Lite setup",
+  "name": "Ubiquiti EdgeRouter Lite setup",
+  "description": "Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!\nDate URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction As much as I love my C7 running OpenWrt, I\u0026rsquo;ve been hearing a lot of good things about Ubiquiti devices.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!\nDate URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction As much as I love my C7 running OpenWrt, I’ve been hearing a lot of good things about Ubiquiti devices. In particular, the EdgeRouter Lite, which is touted as being the world’s first router under $100 capable of passing one million packets per second (1Mpps). In contrast, I’ve read that the TP-Link WDR-3600 can pass about 25Kpps. This is partly due to the hardware in the WDR-3600, and partly due to the software (OpenWrt). I wanted to try out the EdgeRouter Lite (ERL) and see how it performed.\nCurrently, my setup looks like the diagram below.\nI plan on putting the ERL in front of the C7, and using the C7 as a switch and AP only (as shown below). Eventually, I’ll replace the C7 with a proper switch and AP.\nAlso, I’m not a network engineer. Do this at your own risk, I’m not responsible for anything you break. 🙃\nHardware The ERL packs a dual-core 500MHz MIPS64 processor, 512MB DDR2 RAM, and 2GB of flash storage. In addition, it also supports hardware offload for the functions below. This means that the CPU can offload these tasks to a special chip, freeing up the CPU and greatly improving throughput.\nIPSec IPv4 forwarding IPv4 vlan IPv4 PPPoE IPv4 GRE IPv4 export IPv4 DPI IPv6 forwarding IPv6 vlan IPv6 PPPoE For this guide, I am configuring the ERL through the ethX ports over SSH, not via the console port. Because of this, I end up doing a good bit of connecting/disconnecting from my ERL. If you’d like to avoid this problem, pickup a console cable and adapter (or this combo cable).\nMy setup is going to use eth0 to connect to my WAN, and eth1 for my LAN. You could use eth2 for another LAN if needed. However, do not bridge the two LANs, as that will disable the hardware offload (see here and here). If you need more ports, you’ll need a separate switch.\nNote - The original ERL (with angled corners) had storage issues and was prone to failure, the newer ERL (with square corners) does not suffer from this issue.\nSoftware EdgeOS is based on Vyatta Core 6.3, which is itself based on Debian. As a side-note, VyOS is also a fork of Vyatta, so most principles from VyOS will apply to EdgeOS as well. The EdgeOS command line (CLI) can be accessed one of three ways: SSH via an ethX port, a console port, or through the web interface. The CLI has two modes: operational mode and configuration mode (similar to vi’s normal and insert modes). By default, you are loaded into operational mode, used to show system settings. Operational mode is indicated by a dollar-sign prompt ($).\nubnt@ubnt:~$ Use the configure command to enter configuration mode, which is used to make configuration changes to the ERL. Configuration mode is indicated by a number sign prompt (#) and the word edit.\nubnt@ubnt:~$ configure [edit] ubnt@ubnt# The CLI has context-sensitive tab completion only for commands, not for browsing around the filesystem. In addition, context-sensitive help is available with the ? command, with detailed help available with the ?? command.\nWhen making changes, they are not active until committed. To see what changes you’ve made, but not commited, use the compare command.\ncompare To undo uncommitted changes, use the discard command.\ndiscard To commit changes, use the commit command.\ncommit Committed changes are not persistent across reboots. Use the save command to write the changes to the plain-text configuration file, which is available at /config/config.boot. Note - using ? reveals that save can also save the configuration to a SCP, FTP, or TFTP location.\nsave To get back to operational mode, use exit.\nexit As far documentation is concerned, Ubiquiti’s documentation is pretty poor, but their forums and Reddit are the best places to get help. The old Vyatta Core 6.3 documents are very helpful as well. In addition, two important primers to have on-hand are the ERL quick-start guide and the EdgeOS user guide.\nInitial setup Firmware update Before we connect to the router for the first time and start making changes, I recommend you download the latest firmware. Go to Ubiquiti’s download page for the ERL and download the latest firmware (v1.8.0 at the time of this writing).\nNext, connect your PC to eth0 of the ERL with an ethernet cable, then give your PC a static IP address in the 192.168.1.x range (e.g., 192.168.1.2). The web GUI is available at https://192.168.1.1, but I’ll be trying to do most of my work through the CLI.\nFirst, transfer the firmware file to the ERL (the default credentials are ubnt/ubnt).\nscp ER-e100.v1.8.0.4853089.tar ubnt@192.168.1.1:~ Next, SSH into the ERL.\nssh ubnt@192.168.1.1 I recommend viewing the current version of the firmware (my ERL shipped with v1.2.0).\nshow version Upload the system image.\nadd system image ~/ER-e100.v1.8.0.4853089.tar Use the command below to show all the installed images.\nshow system image You’ll then need to reboot to make the new image take effect.\nreboot Once you’re back up, use the command below to show the installed images (EdgeOS can store two images, should you need to revert). At this point, you should be booted into the latest image.\nshow system image Just to be sure, verify the version you’re running.\nshow version Optional - If you’re running low on space, you can use the two commands below to view image storage and delete the unused image.\nshow system image storage delete system image Set the hostname Now that our firmware is updated, we can start making changes. I’m starting by changing the hostname.\nconfigure set system host-name commit save Note - Notice that I’m using configure to enter configuration mode, making my changes, then running commit and save. After that, you’ll need to type exit if you want to get back to operational mode.\nChange timezone The list of available time zones is available by navigating the files and directories under /usr/share/zoneinfo, should you need to update it.\nconfigure set system time-zone US/Eastern commit save NTP The ERL does not have a hardware clock, so it depends on NTP to synchronize time. You can verify the NTP settings below.\nconfigure show system ntp The ERL will use a pool of Ubiquiti NTP servers by default.\nSetup interfaces First, configure the WAN interface on eth0. My provider (Verizon FiOS) distributes addresses via DHCP (as I imagine most fiber/cable providers in the US do), so my WAN interface will use DHCP.\nconfigure delete interfaces ethernet eth0 address 192.168.1.1/24 set interfaces ethernet eth0 address dhcp set interfaces ethernet eth0 description \"WAN\" set interfaces ethernet eth0 duplex auto set interfaces ethernet eth0 speed auto Next, configure the LAN interface on eth1. I’m using the 10.10.2.x IP range, specified in CIDR notation. I’m not a network engineer, so use a calculator to determine what you need (hint - /24 will provide 254 usable IP addresses).\nset interfaces ethernet eth1 address 10.10.2.1/24 set interfaces ethernet eth1 description \"LAN\" set interfaces ethernet eth1 duplex auto set interfaces ethernet eth1 speed auto commit At this point, when you type commit, your SSH session will hang, since we just set eth0 to be a DHCP client. Change your PC’s static IP address to something in the 10.10.2.x range (e.g., 10.10.2.2), then move your ethernet cable over to eth1. SSH back into the ERL, and make sure you commit and save the changes you just made. This is where that console cable would come in handy…\nconfigure commit save Now, we need to setup a DHCP server on eth1. Pick a start and stop range, specify the router IP, DNS server, and lease time.\nconfigure set service dhcp-server disabled false set service dhcp-server shared-network-name LAN authoritative enable set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 start 10.10.2.100 stop 10.10.2.199 set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 default-router 10.10.2.1 set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 dns-server 10.10.2.1 set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 lease 86400 Here, we’ll tell DNS which interface to listen on and set a cache size. Then, we’ll tell DNSMasq to use the router itself (127.0.0.1) for DNS, and then forward DNS requests to my specified DNS servers (I’m using OpenNIC DNS servers). The options I’m using are standard DNSMasq options.\nset service dns forwarding listen-on eth1 set service dns forwarding cache-size 400 set system name-server 127.0.0.1 set service dns forwarding name-server 50.116.40.226 set service dns forwarding name-server 107.170.95.180 set service dns forwarding options domain-needed set service dns forwarding options bogus-priv set service dns forwarding options all-servers I’m also telling eth0 not to request DNS servers via DHCP, as per this post, because I want to use only OpenNIC servers.\nset interfaces ethernet eth0 dhcp-options name-server no-update commit save Now, change your PC’s static IP back to DHCP, disconnect from eth1, and reconnect to it. You should be getting an IP in the range you specified above. You can test your DNS servers here.\nSetup firewall At this point, our ERL can route, but we don’t have a firewall. To setup these rules, think of this from the router’s perspective. At a minimum, you need two sets of firewall rules: one for traffic coming from the internet destined for the LAN, and one for traffic coming from the internet destined for the ERL itself. If you’re more of a visual person, this is a great way to visualize these firewall rules.\nWe’ll start by setting some global options.\nconfigure set firewall all-ping enable set firewall broadcast-ping disable set firewall receive-redirects disable set firewall ipv6-receive-redirects disable set firewall ip-src-route disable set firewall ipv6-src-route disable set firewall log-martians enable Now, create a firewall to protect the LAN. We’re saying the default action is to drop anything coming into our LAN, with the exception of already established sessions. In addition, we drop anything with an invalid state.\nset firewall name WAN_IN default-action drop set firewall name WAN_IN description \"WAN to internal\" set firewall name WAN_IN enable-default-log set firewall name WAN_IN rule 10 action accept set firewall name WAN_IN rule 10 description \"Allow established/related\" set firewall name WAN_IN rule 10 state established enable set firewall name WAN_IN rule 10 state related enable set firewall name WAN_IN rule 20 action drop set firewall name WAN_IN rule 20 description \"Drop invalid state\" set firewall name WAN_IN rule 20 state invalid enable set firewall name WAN_IN rule 20 log enable Then, a firewall to protect the ERL itself. Again, We’re saying the default action is to drop anything coming into our ERL, with the exception of already established sessions. We drop anything with an invalid state, and we also limit pings.\nset firewall name WAN_LOCAL default-action drop set firewall name WAN_LOCAL description \"WAN to router\" set firewall name WAN_LOCAL enable-default-log set firewall name WAN_LOCAL rule 10 action accept set firewall name WAN_LOCAL rule 10 description \"Allow established/related\" set firewall name WAN_LOCAL rule 10 state established enable set firewall name WAN_LOCAL rule 10 state related enable set firewall name WAN_LOCAL rule 20 action drop set firewall name WAN_LOCAL rule 20 description \"Drop invalid state\" set firewall name WAN_LOCAL rule 20 state invalid enable set firewall name WAN_LOCAL rule 20 log enable set firewall name WAN_LOCAL rule 30 action accept set firewall name WAN_LOCAL rule 30 description \"Limit pings\" set firewall name WAN_LOCAL rule 30 limit burst 1 set firewall name WAN_LOCAL rule 30 limit rate 50/minute set firewall name WAN_LOCAL rule 30 log enable set firewall name WAN_LOCAL rule 30 protocol icmp Now, enable the firewall by applying it to our eth0 interface.\nset interfaces ethernet eth0 firewall in name WAN_IN set interfaces ethernet eth0 firewall local name WAN_LOCAL commit save Setup NAT Because of NAT, one external IP can map to many internal IPs. This allowed the extension of the use of IPv4, even though we were quickly running out of addresses. The rule below will change (masquerade) all traffic going out of eth0 to have its source address changed to the public address of eth0 (instead of staying at 10.10.2.x, where it would never get a return).\nconfigure set service nat rule 5000 description \"Masquerade for WAN\" set service nat rule 5000 outbound-interface eth0 set service nat rule 5000 type masquerade commit save That’s it! Technically, you should be able to get online with this configuration and be pretty safe!\nOptional setup Verify hardware offload Verify hardware offload is working for the services you need.\nshow ubnt offload Change password I highly recommend changing the password of the default ubnt user (even if you disable password authentication via SSH).\nconfigure set system login user ubnt authentication plaintext-password commit save Ubiquiti also recommends creating a new user and removing the default ubnt user. I’m not going to cover that, but see this document for more details.\nSetup SSH keys I also highly recommend setting up SSH keys so you don’t need to use password authentication. Start by copying the key from your PC to the ERL.\nscp ~/.ssh/id_rsa.pub ubnt@10.10.2.1:~/id_rsa.pub Then, load the key and turn off password authentication.\nconfigure loadkey ubnt ~/id_rsa.pub set service ssh disable-password-authentication commit save Note - If you receive the error below when trying to load a key, make sure there are no spaces in the comment section of the key.\nNot a valid key file format (see man sshd) at /opt/vyatta/sbin/vyatta-load-user-key.pl line 96, \u003c$in\u003e line 1. Custom SSH banners If you’d like, you can setup a SSH banner for pre-login and post-login.\nconfigure set system login banner pre-login '\\n\\n\\n\\tUNAUTHORIZED USE OF THIS SYSTEM\\n\\tIS STRICTLY PROHIBITED!\\n\\n\\tPlease contact Logan Marchione for access\\n\\n\\n\\n' set system login banner post-login '\\n\\n\\n\\tWelcome to EdgeRouter Lite\\n\\n\\n\\n' commit save Note - The string \\n is a newline, and \\t is an indent.\nChange SSH port You can argue about security through obscurity, but I’m going to change the port SSH listens on. At the very least, it’ll help protect from scanners and bots.\nconfigure set service ssh port 1234 commit save Change GUI port Again, changing this port is more security through obscurity.\nconfigure set service gui https-port 8443 commit save Change MAC I’ve been using my own router with Verizon FiOS for a while, but for some reason, I can’t pull an IP from the ONT unless I’m cloning the MAC of the original Actiontec router. Until I get the time (i.e., willpower) to call Verizon, I’m going to choose to clone the MAC.\nconfigure set interfaces ethernet eth0 mac 00:00:00:00:00:00 commit save Dynamic DNS I like to connect remotely via SSH and/or VPN to my router, so I use Dyn for my dynamic DNS service.\nconfigure set service dns dynamic interface eth0 service dyndns host-name set service dns dynamic interface eth0 service dyndns login set service dns dynamic interface eth0 service dyndns password commit save Then, trigger a manual update. EdgeOS will only update the dynamic service when your IP address actually changes.\nupdate dns dynamic interface eth0 You can show the status with the command below.\nshow dns dynamic status Remote SSH access I like to connect back to my home via SSH, and will eventually setup a VPN. To allow SSH, I’ll need to open a port for SSH in the firewall.\nconfigure set firewall name WAN_LOCAL rule 40 action accept set firewall name WAN_LOCAL rule 40 description \"Allow SSH to router\" set firewall name WAN_LOCAL rule 40 destination port 1234 set firewall name WAN_LOCAL rule 40 log enable set firewall name WAN_LOCAL rule 40 protocol tcp commit save Remote GUI access In my case, I want remote access to SSH, but I don’t want the GUI to be open to world. This will make it so it only listens for requests from the LAN, not the WAN.\nconfigure set service gui listen-address 10.10.2.1 commit save Static DHCP leases I prefer to set static DHCP leases on the router, rather than configuring all my devices with a static IP. Use the syntax below to setup a static lease.\nconfigure set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 static-mapping client01 ip-address 10.10.2.10 set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 static-mapping client01 mac-address 00:00:00:00:00:00 commit save Note - It’s best practice to not use addresses inside the DHCP pool (mine is 10.10.2.100 - 10.10.2.199).\nHope this was helpful! I plan on configuring a VPN on this router in the near future.\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "2818",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg","datePublished": "2016-04-29T00:00:00Z",
+  "dateModified": "2016-04-29T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Ubiquiti EdgeRouter Lite setup
+    </h1>
+    <div class="post-meta"><span title='2016-04-29 00:00:00 +0000 UTC'>2016-04-29</span>&nbsp;·&nbsp;14 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#hardware" aria-label="Hardware">Hardware</a></li>
+                <li>
+                    <a href="#software" aria-label="Software">Software</a></li>
+                <li>
+                    <a href="#initial-setup" aria-label="Initial setup">Initial setup</a><ul>
+                        
+                <li>
+                    <a href="#firmware-update" aria-label="Firmware update">Firmware update</a></li>
+                <li>
+                    <a href="#set-the-hostname" aria-label="Set the hostname">Set the hostname</a></li>
+                <li>
+                    <a href="#change-timezone" aria-label="Change timezone">Change timezone</a></li>
+                <li>
+                    <a href="#ntp" aria-label="NTP">NTP</a></li>
+                <li>
+                    <a href="#setup-interfaces" aria-label="Setup interfaces">Setup interfaces</a></li>
+                <li>
+                    <a href="#setup-firewall" aria-label="Setup firewall">Setup firewall</a></li>
+                <li>
+                    <a href="#setup-nat" aria-label="Setup NAT">Setup NAT</a></li></ul>
+                </li>
+                <li>
+                    <a href="#optional-setup" aria-label="Optional setup">Optional setup</a><ul>
+                        
+                <li>
+                    <a href="#verify-hardware-offload" aria-label="Verify hardware offload">Verify hardware offload</a></li>
+                <li>
+                    <a href="#change-password" aria-label="Change password">Change password</a></li>
+                <li>
+                    <a href="#setup-ssh-keys" aria-label="Setup SSH keys">Setup SSH keys</a></li>
+                <li>
+                    <a href="#custom-ssh-banners" aria-label="Custom SSH banners">Custom SSH banners</a></li>
+                <li>
+                    <a href="#change-ssh-port" aria-label="Change SSH port">Change SSH port</a></li>
+                <li>
+                    <a href="#change-gui-port" aria-label="Change GUI port">Change GUI port</a></li>
+                <li>
+                    <a href="#change-mac" aria-label="Change MAC">Change MAC</a></li>
+                <li>
+                    <a href="#dynamic-dns" aria-label="Dynamic DNS">Dynamic DNS</a></li>
+                <li>
+                    <a href="#remote-ssh-access" aria-label="Remote SSH access">Remote SSH access</a></li>
+                <li>
+                    <a href="#remote-gui-access" aria-label="Remote GUI access">Remote GUI access</a></li>
+                <li>
+                    <a href="#static-dhcp-leases" aria-label="Static DHCP leases">Static DHCP leases</a></li></ul>
+                </li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>URL</th>
+<th>Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-06-28</td>
+<td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
+<td>Migrated to a Netgate SG-1100</td>
+</tr>
+<tr>
+<td>2019-02-03</td>
+<td><a href="/2019/02/edgerouter-cname-records/">EdgeRouter CNAME records</a></td>
+<td>Setup CNAME records</td>
+</tr>
+<tr>
+<td>2017-10-03</td>
+<td><a href="/2017/10/dyn-ddns-edgerouter/">Dyn DDNS on EdgeRouter</a></td>
+<td>Setup DynDNS</td>
+</tr>
+<tr>
+<td>2017-04-25</td>
+<td><a href="/2017/04/duckdns-on-edgerouter/">DuckDNS on EdgeRouter</a></td>
+<td>Setup DuckDNS</td>
+</tr>
+<tr>
+<td>2017-01-08</td>
+<td><a href="/2017/01/ubiquiti-edgerouter-serial-console-settings/">Ubiquiti EdgeRouter serial console settings</a></td>
+<td>Serial console settings</td>
+</tr>
+<tr>
+<td>2016-11-29</td>
+<td><a href="/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/">Ubiquiti UniFi controller setup on Raspberry Pi 3</a></td>
+<td>Install UniFi Controller</td>
+</tr>
+<tr>
+<td>2016-08-30</td>
+<td><a href="/2016/08/edgerouter-lite-dnsmasq-setup/">EdgeRouter Lite Dnsmasq setup</a></td>
+<td>Setup dnsmasq</td>
+</tr>
+<tr>
+<td>2016-06-13</td>
+<td><a href="/2016/06/edgerouter-lite-software-upgrade/">EdgeRouter Lite software upgrade</a></td>
+<td>Firmware upgrade</td>
+</tr>
+<tr>
+<td>2016-05-12</td>
+<td><a href="/2016/05/edgerouter-lite-openvpn-setup/">EdgeRouter Lite OpenVPN setup</a></td>
+<td>OpenVPN server setup</td>
+</tr>
+<tr>
+<td>2016-04-29</td>
+<td><a href="/2016/04/ubiquiti-edgerouter-lite-setup/">Ubiquiti EdgeRouter Lite setup</a></td>
+<td>Initial setup</td>
+</tr>
+</tbody>
+</table>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>As much as I love my <a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">C7 running OpenWrt</a>, I&rsquo;ve been hearing a lot of good things about <a href="https://www.ubnt.com/">Ubiquiti</a> devices. In particular, the <a href="https://www.ubnt.com/edgemax/edgerouter-lite/">EdgeRouter Lite</a>, which is touted as being the world&rsquo;s first router under $100 capable of passing one million packets per second (1Mpps). In contrast, I&rsquo;ve <a href="https://www.reddit.com/r/openwrt/comments/3lhie4/stable_embedded_router_for_openwrt_that_wont_be/cv6rrud">read</a> that the TP-Link WDR-3600 can pass about 25Kpps. This is partly due to the hardware in the WDR-3600, and partly due to the software (OpenWrt). I wanted to try out the EdgeRouter Lite (ERL) and see how it performed.</p>
+<p>Currently, my setup looks like the diagram below.</p>
+
+<p><img src="/2016/04/ubiquiti-edgerouter-lite-setup/20150626_004_hu8173b57e1ef31e9af5dbe3956297f1ac_60022_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>I plan on putting the ERL in front of the C7, and using the C7 as a switch and AP only (as shown below). Eventually, I&rsquo;ll replace the C7 with a proper switch and AP.</p>
+
+<p><img src="/2016/04/ubiquiti-edgerouter-lite-setup/20160501_002_hu754b7854cce2918f39644595f243c87d_33349_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Also, I&rsquo;m not a network engineer. Do this at your own risk, I&rsquo;m not responsible for anything you break. 🙃</p>
+<h1 id="hardware">Hardware<a hidden class="anchor" aria-hidden="true" href="#hardware">#</a></h1>
+<p>The ERL packs a dual-core 500MHz MIPS64 processor, 512MB DDR2 RAM, and 2GB of flash storage. In addition, it also supports <a href="https://help.ubnt.com/hc/en-us/articles/205204070-EdgeMAX-How-do-I-disable-IP-offload-for-hardware-acceleration-">hardware offload</a> for the functions below. This means that the CPU can offload these tasks to a special chip, freeing up the CPU and greatly improving throughput.</p>
+<ul>
+<li>IPSec</li>
+<li>IPv4 forwarding</li>
+<li>IPv4 vlan</li>
+<li>IPv4 PPPoE</li>
+<li>IPv4 GRE</li>
+<li>IPv4 export</li>
+<li>IPv4 DPI</li>
+<li>IPv6 forwarding</li>
+<li>IPv6 vlan</li>
+<li>IPv6 PPPoE</li>
+</ul>
+<p>For this guide, I am configuring the ERL through the <em>ethX</em> ports over SSH, not via the <em>console</em> port. Because of this, I end up doing a good bit of connecting/disconnecting from my ERL. If you&rsquo;d like to avoid this problem, pickup a <a href="http://www.amazon.com/HDE-9-Pin-Serial-Ethernet-Console/dp/B00979DMSM">console cable</a> and <a href="http://www.amazon.com/TRENDnet-TU-S9-USB-Serial-Converter/dp/B0007T27H8">adapter</a> (or <a href="http://www.amazon.com/Serial-Console-Rollover-Cable-Routers/dp/B00M2SAKMG">this</a> combo cable).</p>
+<p>My setup is going to use <em>eth0</em> to connect to my WAN, and <em>eth1</em> for my LAN. You could use <em>eth2</em> for another LAN if needed. However, do not bridge the two LANs, as that will disable the hardware offload (see <a href="https://www.reddit.com/r/HomeNetworking/comments/41qnck/edgerouter_lite_unifi_aps_home_setup/cz4funf">here</a> and <a href="https://www.reddit.com/r/HomeNetworking/comments/3bgp6a/help_with_edgerouter_lite_conifguration/">here</a>). If you need more ports, you&rsquo;ll need a separate switch.</p>
+
+<p><img src="/2016/04/ubiquiti-edgerouter-lite-setup/20160501_001.png" loading="lazy" alt="router"></p>
+<p>Note - The original ERL (with <a href="20160501_003.jpg">angled corners</a>) had storage issues and <a href="https://www.reddit.com/r/Ubiquiti/comments/3bwdpv/edgerouter_lite_failures/">was</a> <a href="https://www.reddit.com/r/Ubiquiti/comments/3soos7/ubiquiti_edge_router_lite_failing_ram_modules_in/">prone</a> <a href="https://www.insidegadgets.com/2015/06/10/inside-the-ubiquiti-edgerouter-lite-router-dated-2013/">to</a> <a href="http://hilo90mhz.com/ubiquiti-edgerouter-lite-erlite-3-internal-usb-storage-fail/">failure</a>, the newer ERL (with <a href="20160501_004.png">square corners</a>) does not suffer from this issue.</p>
+<h1 id="software">Software<a hidden class="anchor" aria-hidden="true" href="#software">#</a></h1>
+<p>EdgeOS is based on <a href="https://en.wikipedia.org/wiki/Vyatta">Vyatta Core 6.3</a>, which is itself based on <a href="https://en.wikipedia.org/wiki/Debian">Debian</a>. As a side-note, <a href="https://en.wikipedia.org/wiki/VyOS">VyOS</a> is also a fork of Vyatta, so most principles from VyOS will apply to EdgeOS as well. The EdgeOS command line (CLI) can be accessed one of three ways: SSH via an <em>ethX</em> port, a console port, or through the web interface. The CLI has two modes: operational mode and configuration mode (similar to vi&rsquo;s normal and insert modes). By default, you are loaded into operational mode, used to show system settings. Operational mode is indicated by a dollar-sign prompt (<em>$</em>).</p>
+<pre tabindex="0"><code>ubnt@ubnt:~$
+</code></pre><p>Use the <em>configure</em> command to enter configuration mode, which is used to make configuration changes to the ERL. Configuration mode is indicated by a number sign prompt (<em>#</em>) and the word <em>edit</em>.</p>
+<pre tabindex="0"><code>ubnt@ubnt:~$ configure
+[edit]
+ubnt@ubnt#
+</code></pre><p>The CLI has context-sensitive tab completion only for commands, not for browsing around the filesystem. In addition, context-sensitive help is available with the <em>?</em> command, with detailed help available with the <em>??</em> command.</p>
+<p>When making changes, they are not active until committed. To see what changes you&rsquo;ve made, but not commited, use the <em>compare</em> command.</p>
+<pre tabindex="0"><code>compare
+</code></pre><p>To undo uncommitted changes, use the <em>discard</em> command.</p>
+<pre tabindex="0"><code>discard
+</code></pre><p>To commit changes, use the <em>commit</em> command.</p>
+<pre tabindex="0"><code>commit
+</code></pre><p>Committed changes are not persistent across reboots. Use the <em>save</em> command to write the changes to the plain-text configuration file, which is available at <em>/config/config.boot</em>. Note - using <em>?</em> reveals that <em>save</em> can also save the configuration to a SCP, FTP, or TFTP location.</p>
+<pre tabindex="0"><code>save
+</code></pre><p>To get back to operational mode, use <em>exit</em>.</p>
+<pre tabindex="0"><code>exit
+</code></pre><p>As far documentation is concerned, Ubiquiti&rsquo;s <a href="https://help.ubnt.com/hc/en-us/categories/200321064-EdgeMAX">documentation</a> is pretty poor, but their <a href="https://community.ubnt.com/t5/EdgeMAX/bd-p/EdgeMAX">forums</a> and <a href="https://www.reddit.com/r/Ubiquiti">Reddit</a> are the best places to get help. The old Vyatta Core 6.3 <a href="https://dl.networklinx.com/vyatta/6.3/">documents</a> are very helpful as well. In addition, two important primers to have on-hand are the <a href="https://www.ubnt.com/downloads/guides/edgemax/EdgeRouter_Lite_QSG.pdf">ERL quick-start guide</a> and the <a href="https://www.ubnt.com/downloads/guides/edgemax/EdgeOS_UG.pdf">EdgeOS user guide</a>.</p>
+<h1 id="initial-setup">Initial setup<a hidden class="anchor" aria-hidden="true" href="#initial-setup">#</a></h1>
+<h2 id="firmware-update">Firmware update<a hidden class="anchor" aria-hidden="true" href="#firmware-update">#</a></h2>
+<p>Before we connect to the router for the first time and start making changes, I recommend you download the latest firmware. Go to Ubiquiti&rsquo;s <a href="https://www.ubnt.com/download/?group=edgerouter-lite">download page</a> for the ERL and download the latest firmware (v1.8.0 at the time of this writing).</p>
+<p>Next, connect your PC to <em>eth0</em> of the ERL with an ethernet cable, then give your PC a static IP address in the 192.168.1.x range (e.g., 192.168.1.2). The web GUI is available at <em>https://192.168.1.1</em>, but I&rsquo;ll be trying to do most of my work through the CLI.</p>
+<p>First, transfer the firmware file to the ERL (the default credentials are <em>ubnt/ubnt</em>).</p>
+<pre tabindex="0"><code>scp ER-e100.v1.8.0.4853089.tar ubnt@192.168.1.1:~
+</code></pre><p>Next, SSH into the ERL.</p>
+<pre tabindex="0"><code>ssh ubnt@192.168.1.1
+</code></pre><p>I recommend viewing the current version of the firmware (my ERL shipped with v1.2.0).</p>
+<pre tabindex="0"><code>show version
+</code></pre><p>Upload the system image.</p>
+<pre tabindex="0"><code>add system image ~/ER-e100.v1.8.0.4853089.tar
+</code></pre><p>Use the command below to show all the installed images.</p>
+<pre tabindex="0"><code>show system image
+</code></pre><p>You&rsquo;ll then need to reboot to make the new image take effect.</p>
+<pre tabindex="0"><code>reboot
+</code></pre><p>Once you&rsquo;re back up, use the command below to show the installed images (EdgeOS can store two images, should you need to revert). At this point, you should be booted into the latest image.</p>
+<pre tabindex="0"><code>show system image
+</code></pre><p>Just to be sure, verify the version you&rsquo;re running.</p>
+<pre tabindex="0"><code>show version
+</code></pre><p>Optional - If you&rsquo;re running low on space, you can use the two commands below to view image storage and delete the unused image.</p>
+<pre tabindex="0"><code>show system image storage
+delete system image
+</code></pre><h2 id="set-the-hostname">Set the hostname<a hidden class="anchor" aria-hidden="true" href="#set-the-hostname">#</a></h2>
+<p>Now that our firmware is updated, we can start making changes. I&rsquo;m starting by changing the hostname.</p>
+<pre tabindex="0"><code>configure
+set system host-name &lt;name&gt;
+commit
+save
+</code></pre><p>Note - Notice that I&rsquo;m using <em>configure</em> to enter configuration mode, making my changes, then running <em>commit</em> and <em>save</em>. After that, you&rsquo;ll need to type <em>exit</em> if you want to get back to operational mode.</p>
+<h2 id="change-timezone">Change timezone<a hidden class="anchor" aria-hidden="true" href="#change-timezone">#</a></h2>
+<p>The list of available time zones is available by navigating the files and directories under <em>/usr/share/zoneinfo</em>, should you need to update it.</p>
+<pre tabindex="0"><code>configure
+set system time-zone US/Eastern
+commit
+save
+</code></pre><h2 id="ntp">NTP<a hidden class="anchor" aria-hidden="true" href="#ntp">#</a></h2>
+<p>The ERL does not have a hardware clock, so it depends on NTP to synchronize time. You can verify the NTP settings below.</p>
+<pre tabindex="0"><code>configure
+show system ntp
+</code></pre><p>The ERL will use a pool of Ubiquiti NTP servers by default.</p>
+<h2 id="setup-interfaces">Setup interfaces<a hidden class="anchor" aria-hidden="true" href="#setup-interfaces">#</a></h2>
+<p>First, configure the WAN interface on <em>eth0</em>. My provider (Verizon FiOS) distributes addresses via DHCP (as I imagine most fiber/cable providers in the US do), so my WAN interface will use DHCP.</p>
+<pre tabindex="0"><code>configure
+delete interfaces ethernet eth0 address 192.168.1.1/24
+set interfaces ethernet eth0 address dhcp
+set interfaces ethernet eth0 description &#34;WAN&#34;
+set interfaces ethernet eth0 duplex auto
+set interfaces ethernet eth0 speed auto
+</code></pre><p>Next, configure the LAN interface on <em>eth1</em>. I&rsquo;m using the 10.10.2.x IP range, specified in <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">CIDR notation</a>. I&rsquo;m not a network engineer, so use a <a href="https://grox.net/utils/whatmask/">calculator</a> to determine what you need (hint - /24 will provide 254 usable IP addresses).</p>
+<pre tabindex="0"><code>set interfaces ethernet eth1 address 10.10.2.1/24
+set interfaces ethernet eth1 description &#34;LAN&#34;
+set interfaces ethernet eth1 duplex auto
+set interfaces ethernet eth1 speed auto
+commit
+</code></pre><p>At this point, when you type <em>commit</em>, your SSH session will hang, since we just set <em>eth0</em> to be a DHCP client. Change your PC&rsquo;s static IP address to something in the 10.10.2.x range (e.g., 10.10.2.2), then move your ethernet cable over to <em>eth1</em>. SSH back into the ERL, and make sure you <em>commit</em> and <em>save</em> the changes you just made. This is where that console cable would come in handy&hellip;</p>
+<pre tabindex="0"><code>configure
+commit
+save
+</code></pre><p>Now, we need to setup a DHCP server on <em>eth1</em>. Pick a start and stop range, specify the router IP, DNS server, and lease time.</p>
+<pre tabindex="0"><code>configure
+set service dhcp-server disabled false
+set service dhcp-server shared-network-name LAN authoritative enable
+set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 start 10.10.2.100 stop 10.10.2.199
+set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 default-router 10.10.2.1
+set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 dns-server 10.10.2.1
+set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 lease 86400
+</code></pre><p>Here, we&rsquo;ll tell DNS which interface to listen on and set a cache size. Then, we&rsquo;ll tell DNSMasq to use the router itself (127.0.0.1) for DNS, and then forward DNS requests to my specified DNS servers (I&rsquo;m using OpenNIC DNS servers). The options I&rsquo;m using are standard <a href="http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html">DNSMasq options</a>.</p>
+<pre tabindex="0"><code>set service dns forwarding listen-on eth1
+set service dns forwarding cache-size 400
+set system name-server 127.0.0.1
+set service dns forwarding name-server 50.116.40.226
+set service dns forwarding name-server 107.170.95.180
+set service dns forwarding options domain-needed
+set service dns forwarding options bogus-priv
+set service dns forwarding options all-servers
+</code></pre><p>I&rsquo;m also telling <em>eth0</em> not to request DNS servers via DHCP, as per <a href="https://www.reddit.com/r/HomeNetworking/comments/2xeqba/noob_hereedgerouter_lite_router_and_dns_issues/coziyny">this post</a>, because I want to use only OpenNIC servers.</p>
+<pre tabindex="0"><code>set interfaces ethernet eth0 dhcp-options name-server no-update
+commit
+save
+</code></pre><p>Now, change your PC&rsquo;s static IP back to DHCP, disconnect from <em>eth1</em>, and reconnect to it. You should be getting an IP in the range you specified above. You can test your DNS servers <a href="https://dnsleaktest.com/">here</a>.</p>
+<h2 id="setup-firewall">Setup firewall<a hidden class="anchor" aria-hidden="true" href="#setup-firewall">#</a></h2>
+<p>At this point, our ERL can route, but we don&rsquo;t have a firewall. To setup these rules, think of this from the router&rsquo;s perspective. At a minimum, you need two sets of firewall rules: one for traffic coming from the internet destined for the LAN, and one for traffic coming from the internet destined for the ERL itself. If you&rsquo;re more of a visual person, <a href="https://github.com/didenko/er_poe_fw">this</a> is a great way to visualize these firewall rules.</p>
+<p>We&rsquo;ll start by setting some global options.</p>
+<pre tabindex="0"><code>configure
+set firewall all-ping enable
+set firewall broadcast-ping disable
+set firewall receive-redirects disable
+set firewall ipv6-receive-redirects disable
+set firewall ip-src-route disable
+set firewall ipv6-src-route disable
+set firewall log-martians enable
+</code></pre><p>Now, create a firewall to protect the LAN. We&rsquo;re saying the default action is to drop anything coming into our LAN, with the exception of already established sessions. In addition, we drop anything with an invalid state.</p>
+<pre tabindex="0"><code>set firewall name WAN_IN default-action drop
+set firewall name WAN_IN description &#34;WAN to internal&#34;
+set firewall name WAN_IN enable-default-log
+set firewall name WAN_IN rule 10 action accept
+set firewall name WAN_IN rule 10 description &#34;Allow established/related&#34;
+set firewall name WAN_IN rule 10 state established enable
+set firewall name WAN_IN rule 10 state related enable
+set firewall name WAN_IN rule 20 action drop
+set firewall name WAN_IN rule 20 description &#34;Drop invalid state&#34;
+set firewall name WAN_IN rule 20 state invalid enable
+set firewall name WAN_IN rule 20 log enable
+</code></pre><p>Then, a firewall to protect the ERL itself. Again, We&rsquo;re saying the default action is to drop anything coming into our ERL, with the exception of already established sessions. We drop anything with an invalid state, and we also limit pings.</p>
+<pre tabindex="0"><code>set firewall name WAN_LOCAL default-action drop
+set firewall name WAN_LOCAL description &#34;WAN to router&#34;
+set firewall name WAN_LOCAL enable-default-log
+set firewall name WAN_LOCAL rule 10 action accept
+set firewall name WAN_LOCAL rule 10 description &#34;Allow established/related&#34;
+set firewall name WAN_LOCAL rule 10 state established enable
+set firewall name WAN_LOCAL rule 10 state related enable
+set firewall name WAN_LOCAL rule 20 action drop
+set firewall name WAN_LOCAL rule 20 description &#34;Drop invalid state&#34;
+set firewall name WAN_LOCAL rule 20 state invalid enable
+set firewall name WAN_LOCAL rule 20 log enable
+set firewall name WAN_LOCAL rule 30 action accept
+set firewall name WAN_LOCAL rule 30 description &#34;Limit pings&#34;
+set firewall name WAN_LOCAL rule 30 limit burst 1
+set firewall name WAN_LOCAL rule 30 limit rate 50/minute
+set firewall name WAN_LOCAL rule 30 log enable
+set firewall name WAN_LOCAL rule 30 protocol icmp
+</code></pre><p>Now, enable the firewall by applying it to our <em>eth0</em> interface.</p>
+<pre tabindex="0"><code>set interfaces ethernet eth0 firewall in name WAN_IN
+set interfaces ethernet eth0 firewall local name WAN_LOCAL
+commit
+save
+</code></pre><h2 id="setup-nat">Setup NAT<a hidden class="anchor" aria-hidden="true" href="#setup-nat">#</a></h2>
+<p>Because of <a href="https://en.wikipedia.org/wiki/Network_address_translation">NAT</a>, one external IP can map to many internal IPs. This allowed the extension of the use of IPv4, even though we were quickly running out of addresses. The rule below will change (masquerade) all traffic going out of <em>eth0</em> to have its source address changed to the public address of <em>eth0</em> (instead of staying at 10.10.2.x, where it would never get a return).</p>
+<pre tabindex="0"><code>configure
+set service nat rule 5000 description &#34;Masquerade for WAN&#34;
+set service nat rule 5000 outbound-interface eth0
+set service nat rule 5000 type masquerade
+commit
+save
+</code></pre><p>That&rsquo;s it! Technically, you should be able to get online with this configuration and be pretty safe!</p>
+<h1 id="optional-setup">Optional setup<a hidden class="anchor" aria-hidden="true" href="#optional-setup">#</a></h1>
+<h2 id="verify-hardware-offload">Verify hardware offload<a hidden class="anchor" aria-hidden="true" href="#verify-hardware-offload">#</a></h2>
+<p>Verify hardware offload is working for the services you need.</p>
+<pre tabindex="0"><code>show ubnt offload
+</code></pre><h2 id="change-password">Change password<a hidden class="anchor" aria-hidden="true" href="#change-password">#</a></h2>
+<p>I highly recommend changing the password of the default <em>ubnt</em> user (even if you disable password authentication via SSH).</p>
+<pre tabindex="0"><code>configure
+set system login user ubnt authentication plaintext-password &lt;password_here&gt;
+commit
+save
+</code></pre><p>Ubiquiti also recommends creating a new user and removing the default <em>ubnt</em> user. I&rsquo;m not going to cover that, but see <a href="https://help.ubnt.com/hc/en-us/articles/204976374-EdgeMAX-User-Accounts">this document</a> for more details.</p>
+<h2 id="setup-ssh-keys">Setup SSH keys<a hidden class="anchor" aria-hidden="true" href="#setup-ssh-keys">#</a></h2>
+<p>I also highly recommend setting up SSH keys so you don&rsquo;t need to use password authentication. Start by copying the key from your PC to the ERL.</p>
+<pre tabindex="0"><code>scp ~/.ssh/id_rsa.pub ubnt@10.10.2.1:~/id_rsa.pub
+</code></pre><p>Then, load the key and turn off password authentication.</p>
+<pre tabindex="0"><code>configure
+loadkey ubnt ~/id_rsa.pub
+set service ssh disable-password-authentication
+commit
+save
+</code></pre><p>Note - If you receive the error below when trying to load a key, make sure there are no spaces in the comment section of the key.</p>
+<pre tabindex="0"><code>Not a valid key file format (see man sshd) at /opt/vyatta/sbin/vyatta-load-user-key.pl line 96, &lt;$in&gt; line 1.
+</code></pre><h2 id="custom-ssh-banners">Custom SSH banners<a hidden class="anchor" aria-hidden="true" href="#custom-ssh-banners">#</a></h2>
+<p>If you&rsquo;d like, you can setup a SSH banner for pre-login and post-login.</p>
+<pre tabindex="0"><code>configure
+set system login banner pre-login &#39;\n\n\n\tUNAUTHORIZED USE OF THIS SYSTEM\n\tIS STRICTLY PROHIBITED!\n\n\tPlease contact Logan Marchione for access\n\n\n\n&#39;
+set system login banner post-login &#39;\n\n\n\tWelcome to EdgeRouter Lite\n\n\n\n&#39;
+commit
+save
+</code></pre><p>Note - The string <code>\n</code> is a newline, and <code>\t</code> is an indent.</p>
+<h2 id="change-ssh-port">Change SSH port<a hidden class="anchor" aria-hidden="true" href="#change-ssh-port">#</a></h2>
+<p>You can argue about security through obscurity, but I&rsquo;m going to change the port SSH listens on. At the very least, it&rsquo;ll help protect from scanners and bots.</p>
+<pre tabindex="0"><code>configure
+set service ssh port 1234
+commit
+save
+</code></pre><h2 id="change-gui-port">Change GUI port<a hidden class="anchor" aria-hidden="true" href="#change-gui-port">#</a></h2>
+<p>Again, changing this port is more security through obscurity.</p>
+<pre tabindex="0"><code>configure
+set service gui https-port 8443
+commit
+save
+</code></pre><h2 id="change-mac">Change MAC<a hidden class="anchor" aria-hidden="true" href="#change-mac">#</a></h2>
+<p>I&rsquo;ve been using <a href="/2015/07/use-your-own-router-with-verizon-fios/">my own router</a> with Verizon FiOS for a while, but for some reason, I can&rsquo;t pull an IP from the ONT unless I&rsquo;m cloning the MAC of the original Actiontec router. Until I get the time (i.e., willpower) to call Verizon, I&rsquo;m going to choose to clone the MAC.</p>
+<pre tabindex="0"><code>configure
+set interfaces ethernet eth0 mac 00:00:00:00:00:00
+commit
+save
+</code></pre><h2 id="dynamic-dns">Dynamic DNS<a hidden class="anchor" aria-hidden="true" href="#dynamic-dns">#</a></h2>
+<p>I like to connect remotely via SSH and/or VPN to my router, so I use <a href="http://dyn.com/">Dyn</a> for my dynamic DNS service.</p>
+<pre tabindex="0"><code>configure
+set service dns dynamic interface eth0 service dyndns host-name &lt;hostname.dyn.com&gt;
+set service dns dynamic interface eth0 service dyndns login &lt;username&gt;
+set service dns dynamic interface eth0 service dyndns password &lt;password_here&gt;
+commit
+save
+</code></pre><p>Then, trigger a manual update. EdgeOS will only update the dynamic service when your IP address actually changes.</p>
+<pre tabindex="0"><code>update dns dynamic interface eth0
+</code></pre><p>You can show the status with the command below.</p>
+<pre tabindex="0"><code>show dns dynamic status
+</code></pre><h2 id="remote-ssh-access">Remote SSH access<a hidden class="anchor" aria-hidden="true" href="#remote-ssh-access">#</a></h2>
+<p>I like to connect back to my home via SSH, and will eventually setup a VPN. To allow SSH, I&rsquo;ll need to open a port for SSH in the firewall.</p>
+<pre tabindex="0"><code>configure
+set firewall name WAN_LOCAL rule 40 action accept
+set firewall name WAN_LOCAL rule 40 description &#34;Allow SSH to router&#34;
+set firewall name WAN_LOCAL rule 40 destination port 1234
+set firewall name WAN_LOCAL rule 40 log enable
+set firewall name WAN_LOCAL rule 40 protocol tcp
+commit
+save
+</code></pre><h2 id="remote-gui-access">Remote GUI access<a hidden class="anchor" aria-hidden="true" href="#remote-gui-access">#</a></h2>
+<p>In my case, I want remote access to SSH, but I don&rsquo;t want the GUI to be open to world. This will make it so it only listens for requests from the LAN, not the WAN.</p>
+<pre tabindex="0"><code>configure
+set service gui listen-address 10.10.2.1
+commit
+save
+</code></pre><h2 id="static-dhcp-leases">Static DHCP leases<a hidden class="anchor" aria-hidden="true" href="#static-dhcp-leases">#</a></h2>
+<p>I prefer to set static DHCP leases on the router, rather than configuring all my devices with a static IP. Use the syntax below to setup a static lease.</p>
+<pre tabindex="0"><code>configure
+set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 static-mapping client01 ip-address 10.10.2.10
+set service dhcp-server shared-network-name LAN subnet 10.10.2.0/24 static-mapping client01 mac-address 00:00:00:00:00:00
+commit
+save
+</code></pre><p>Note - It&rsquo;s best practice to not use addresses inside the DHCP pool (mine is 10.10.2.100 - 10.10.2.199).</p>
+<p>Hope this was helpful! I plan on configuring a VPN on this router in the near future.</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2016/04/ubiquiti-edgerouter-lite-setup/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Ubiquiti EdgeRouter Lite setup on twitter"
+        href="https://twitter.com/intent/tweet/?text=Ubiquiti%20EdgeRouter%20Lite%20setup&amp;url=https%3a%2f%2floganmarchione.github.io%2f2016%2f04%2fubiquiti-edgerouter-lite-setup%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Ubiquiti EdgeRouter Lite setup on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2016%2f04%2fubiquiti-edgerouter-lite-setup%2f&amp;title=Ubiquiti%20EdgeRouter%20Lite%20setup&amp;summary=Ubiquiti%20EdgeRouter%20Lite%20setup&amp;source=https%3a%2f%2floganmarchione.github.io%2f2016%2f04%2fubiquiti-edgerouter-lite-setup%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Ubiquiti EdgeRouter Lite setup on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2016%2f04%2fubiquiti-edgerouter-lite-setup%2f&title=Ubiquiti%20EdgeRouter%20Lite%20setup">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Ubiquiti EdgeRouter Lite setup on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2016%2f04%2fubiquiti-edgerouter-lite-setup%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Ubiquiti EdgeRouter Lite setup on whatsapp"
+        href="https://api.whatsapp.com/send?text=Ubiquiti%20EdgeRouter%20Lite%20setup%20-%20https%3a%2f%2floganmarchione.github.io%2f2016%2f04%2fubiquiti-edgerouter-lite-setup%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Ubiquiti EdgeRouter Lite setup on telegram"
+        href="https://telegram.me/share/url?text=Ubiquiti%20EdgeRouter%20Lite%20setup&amp;url=https%3a%2f%2floganmarchione.github.io%2f2016%2f04%2fubiquiti-edgerouter-lite-setup%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

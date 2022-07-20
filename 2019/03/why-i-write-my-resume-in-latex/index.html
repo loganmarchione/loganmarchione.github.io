@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Why I write my resume in LaTeX | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="TL;DR Skip to the bottom.
+Introduction I receive a lot of email questions about my resume, specifically asking why I use LaTeX, and also asking for the source (which is at the very bottom). I thought I&rsquo;d take a few minutes to discuss why I use LaTeX.
+For the past 10 years, I&rsquo;ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Why I write my resume in LaTeX" />
+<meta property="og:description" content="TL;DR Skip to the bottom.
+Introduction I receive a lot of email questions about my resume, specifically asking why I use LaTeX, and also asking for the source (which is at the very bottom). I thought I&rsquo;d take a few minutes to discuss why I use LaTeX.
+For the past 10 years, I&rsquo;ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_latex.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-03-01T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-03-01T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_latex.svg" />
+<meta name="twitter:title" content="Why I write my resume in LaTeX"/>
+<meta name="twitter:description" content="TL;DR Skip to the bottom.
+Introduction I receive a lot of email questions about my resume, specifically asking why I use LaTeX, and also asking for the source (which is at the very bottom). I thought I&rsquo;d take a few minutes to discuss why I use LaTeX.
+For the past 10 years, I&rsquo;ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Why I write my resume in LaTeX",
+      "item": "https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why I write my resume in LaTeX",
+  "name": "Why I write my resume in LaTeX",
+  "description": "TL;DR Skip to the bottom.\nIntroduction I receive a lot of email questions about my resume, specifically asking why I use LaTeX, and also asking for the source (which is at the very bottom). I thought I\u0026rsquo;d take a few minutes to discuss why I use LaTeX.\nFor the past 10 years, I\u0026rsquo;ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content.",
+  "keywords": [
+    
+  ],
+  "articleBody": "TL;DR Skip to the bottom.\nIntroduction I receive a lot of email questions about my resume, specifically asking why I use LaTeX, and also asking for the source (which is at the very bottom). I thought I’d take a few minutes to discuss why I use LaTeX.\nFor the past 10 years, I’ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content. The slightest change to a column, graphic, or font would completely alter the formatting of the entire document. With this frustration in mind, I set out to find a new way to write my resume.\nI first switched to LibreOffice Writer, but that didn’t solve my formatting problem (although, I was happy to dump Word). I then looked into plain text, then Markdown, and finally HTML/CSS. However, each solution had its own advantages and disadvantages (shown below).\nSoftware Advantage Disadvantage Plain text Portable Will work on any system Zero formatting Considered “ugly” Markdown Some formatting Un-compiled text is still human readable Can use Pandoc to convert to multiple formats No easy way to change fonts All Markdown documents look the same (without some heavy customization) HTML/CSS Most customizable option Considered “modern” Option to print to PDF Most difficult to read and write Some employers will not accept a pure HTML/CSS resume However, after searching Reddit, HackerNews, and StackExchange, I kept seeing LaTeX being recommended, so I decided to give it a shot.\nDisclaimer Before I begin, I wanted to say a few things, because someone will call me out if I don’t:\nI’m not a writer (obviously) and I don’t write for a living (luckily for me). I’m not a LaTeX expert and I don’t claim to be (talk to the folks at TeX.SE). I’ve only been using LaTeX for my resume for about a year. I don’t write scientific papers or large documents using LaTeX. I’m not a typography nerd. Yes, Computer Modern is beautiful. Yes, LaTeX documents look great. That’s not why I use LaTeX. A (very) brief history of TeX and LaTeX TeX To understand LaTeX (pronounced like lay-tek), we first need to understand its predecessor, TeX (pronounced like tek). TeX was a typesetting system created by Donald Knuth in 1978 after he decided a book he was publishing looked awful (typographically), and he was determined to solve the problem himself. He created TeX with two goals in mind:\nAllow anyone to create beautiful, high-quality books Given an input, create the same output on any computer running TeX TeX was a huge success, due to a number of reasons:\nTeX was beautiful, mostly due to Knuth’s attention to typographic detail (e.g., font styles, spacing, kerning, ligatures, etc…). TeX had its own programming language, which meant users could write small macros (i.e., custom commands) to speed up their workflow. TeX was open source, which also meant it was free. TeX was portable, which meant it would run on almost any system and still produce the same output. Knuth was more focused on stability and backwards compatibility than new features, and TeX was declared feature-complete in 1989 with version 3.0, with only minor bug fixes being applied since then (you can still download and use TeX today).\nThe main issue with TeX was that it focused mainly on the format of documents, which was great if you knew the TeX language really well. However, it was difficult for writers to get it working correctly, which made focusing on content difficult.\nLaTeX To solve this, Leslie Lamport created LaTeX in 1983. LaTeX is essentially a collection of helpful TeX macros that Lamport created himself. When you use LaTeX commands, you’re really just running a series of TeX commands. Because of these easy to use commands, LaTeX was simpler for writers to learn than TeX itself. In fact, the focus of LaTeX is more on the separation of format and content (whereas TeX focused on the format itself). In a way, you can think of a LaTeX document like HTML and CSS. One file holds the content, while the other file holds the formatting for that content.\nBecause LaTeX was even easier to use than TeX, its popularity soared. It gained a huge following in academia, and is still mainly used for writing books and scientific papers. It also excels in writing tasks that require mathematical expressions or non-Latin scripts, such as Chinese or Sanskrit.\nFor example, below is piece of LaTeX code (taken from Overleaf) with multiple mathematical expressions.\nSubscripts in math mode are written as $a_b$ and superscripts are written as $a^b$. These can be combined an nested to write expressions such as $$T^{i_1 i_2 \\dots i_p}_{j_1 j_2 \\dots j_q} = T(x^{i_1},\\dots,x^{i_p},e_{j_1},\\dots,e_{j_q})$$ We write integrals using $\\int$ and fractions using $\\frac{a}{b}$. Limits are placed on integrals using superscripts and subscripts: $$\\int_0^1 \\frac{1}{e^x} = \\frac{e-1}{e}$$ Lower case Greek letters are written as $\\omega$ $\\delta$ etc. while upper case Greek letters are written as $\\Omega$ $\\Delta$. Mathematical operators are prefixed with a backslash as $\\sin(\\beta)$, $\\cos(\\alpha)$, $\\log(x)$ etc. Below is the same piece of code (taken from Overleaf), but formatted via LaTeX. As I mentioned, one of the advantages of LaTeX is that the piece of code above will produce this exact output on any system running LaTeX.\nAs if that wasn’t enough, LaTeX also has the ability to load custom packages to add features/functionality. These packages include typical typesetting features, like:\nAdding custom fonts Customizing links Adding tables Adding image annotations Creating a table of contents However, some fun packages that have absolutely nothing to do with typesetting include:\nPlaying Reversi Creating sheet music Putting coffee stains on your documents Playing sudoku Creating knitting patterns Advantages of a LaTeX resume Now, onto the reason I’m writing this post. These are, in my opinion, the biggest advantages of using LaTeX to write your resume (in order).\nLess formatting, more content This is the entire reason I moved away from Word. I wrote a template (called a class in LaTeX) one time. Now, I know exactly how each piece of my resume will behave, because I’m using a template that is predictable.\nModularity Think of LaTeX as a programming language in that you write code, compile it, then execute it. When you write in LaTeX, you first write your plain text using any editor, let LaTeX compile the text, then output it to the screen or a file. My resume is modular because I can simply comment in/out a specific section, recompile, and I have a new resume that is tailored for a specific position.\nVersion control (Git) The source of a LaTeX resume is one or two text files which are easily tracked with Git. If you want to go back in time to see a specific thing, or simply undo something, having version control will help you.\nComplex formatting Have you seen some of the formatting LaTeX can offer for mathematical expressions or non-Latin scripts? It’s beautiful and consistent. Imagine trying to illustrate a quadratic equation in Microsoft Word.\nPackages There are literally thousands of packages available for LaTeX. In addition, there are many pre-created resume classes to choose from (some great options include Awesome CV, Fancy CV, moderncv, or any of these).\nStability LaTex is stable. LaTeX (written in the 80’s) still runs on top of the original TeX (written in the 70’s). How many times will Microsoft Word go through new file formats in the next 20 or 30 years? Will you be able to open the Word document you wrote in 2019 on Word 2050?\nOutput options You don’t want a recruiter editing your Word document, so you can output your resume to PDF. This also guarantees it will look great when printed (since you won’t be worrying about custom fonts). PDF not enough? Need HTML? Need plain text? Need Markdown? Need Word? Need almost any other text format? Check out Pandoc.\nOpen source I love things that are open source. I love things that are free. LaTeX is both.\nTypography Like I mentioned, I’m not a typography nerd. However, you have to admit, you can tell a LaTeX document when you see one, and they are always beautiful and professional. I’ve never looked at something and said “Was this written in Microsoft Word?!”.\nDisadvantages of a LaTeX resume These are, in my opinion, the biggest disadvantages of using LaTeX to write your resume (in order).\nLearning curve I’m going to admit, I had a hard time getting my class setup and working just right. All things equal, I could create the same resume in Word in a quarter of the time. In addition, finding the correct packages to get the formatting right was also difficult at first. And, don’t get me started on the syntax, it was not easy to master.\nLack of collaboration If you want to get advice on your resume, you can’t exactly send a .tex file to your friend to edit. Chances are, you’ll need to output a PDF, which your friend will have to take notes on using a separate program. With Word, your friend could put comments directly into the .docx file and send it back to you.\nInstall footprint LaTeX itself takes up a lot of space, and once you start downloading packages, it adds up quickly. In addition, if you’re using a GUI to edit your files, you need to account for that. Don’t be surprised if a full installation takes up 2GB.\nSource files resume.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Identification %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\documentclass{resume} \\geometry{letterpaper,portrait,margin=0.75in} \\begin{document} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Contact info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\ContactName {First Last} % first and last name %\\ContactInfoPhysical %{123 Main Street} % house and street %{City, State ZIP} % city, state, zip %{USA} % country \\ContactInfoDigital {tel:+019876543210} % phone URL (with int'l code) {987-654-3210} % phone display text {mailto:email@domain.com} % email URL {email@domain.com} % email display text {https://domain.com} % web URL {domain.com} % web display text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Work experience %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\section{{\\faBriefcase} Experience} \\PlaceAndLocation{Job Name}{City, State} \\\\ \\TitleAndYears{Title}{MM YYYY - MM YYYY} \\\\ Duties \\\\ \\begin{itemize} \\item Thing 1. \\item Thing 2. \\item Thing 3. \\end{itemize} Accomplishments \\\\ \\begin{itemize} \\item Thing 1. \\item Thing 2. \\item Thing 3. \\end{itemize} \\TitleAndYears{Title}{MM YYYY - MM YYYY} \\\\ \\TitleAndYears{Title}{MM YYYY - MM YYYY} \\\\ \\bigskip \\PlaceAndLocation{Job Name}{City, State} \\\\ \\TitleAndYears{Title}{MM YYYY - MM YYYY} \\\\ \\TitleAndYears{Title}{MM YYYY - MM YYYY} \\\\ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Education %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\section{{\\faGraduationCap} Education} \\PlaceAndLocation{Job Name}{City, State} \\\\ \\TitleAndYears{Major}{MM YYYY - MM YYYY} \\\\ \\TitleAndYears{Minor}{GPA: 0.00/4.00} \\\\ %Accomplishments \\\\ \\begin{itemize} \\item Thing 1. \\item Thing 2. \\item Thing 3. \\end{itemize} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Skills %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\section{{\\faCheck} Skills} Put some text here. \\begin{itemize} \\item Thing 1. \\item Thing 2. \\item Thing 3. \\end{itemize} \\end{document} resume.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % This class (resume.cls) is to define the layout/structure of the template (resume.tex) % All content should go in the template file (resume.tex), not this file %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % OS Packages (Arch Linux) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Arch packages % sudo pacman -S texmaker texlive-most %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Identification %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\ProvidesClass{resume} \\NeedsTeXFormat{LaTeX2e} \\LoadClass{article} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\nofiles % Don't create .aux files \\pagestyle{empty} % Don't use page numbers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\RequirePackage{geometry} % To change page size/orientation/margins \\RequirePackage{fontawesome5} % To use FontAwesome5 \\RequirePackage[document]{ragged2e} % To left-align everything (using [document]) \\RequirePackage{enumitem} % To change spacing between lists \\setlist[itemize]{noitemsep,topsep=0pt} \\RequirePackage{titlesec} % To format the title \\RequirePackage{tabto} % To align text to a specific point \\newcommand*{\\rightsidetab}{.7\\linewidth}% Set the tab on the right side \\RequirePackage{color} % To define specific colors \\definecolor{darkblue}{RGB}{6,69,173} % Custom color for URLs \\RequirePackage{hyperref} % To make clickable URLs and set PDF options \\hypersetup{ colorlinks=true, linkcolor=darkblue, urlcolor=darkblue, pdftitle={Name}, pdfauthor={Name} } %%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Contact info %%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\newcommand{\\ContactName}[1]{ {\\Huge{#1}}\\\\ } \\newcommand{\\ContactInfoPhysical}[3]{ {\\faHome} {#1}, {#2} {#3}\\\\ } \\newcommand{\\ContactInfoDigital}[6]{ {\\faPhone} \\href{#1}{#2} | {\\faEnvelope} \\href{#3}{#4} | {\\faGlobeAmericas} \\href{#5}{#6}\\\\ } %%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Sections %%%%%%%%%%%%%%%%%%%%%%%%%%%%% \\titleformat{\\section} {\\Large} {}{0em} {} [\\titlerule] \\newcommand*{\\PlaceAndLocation}[2]{ {\\textbf{#1} \\tabto{\\rightsidetab}{\\faMapMarker*} {#2}} } \\newcommand*{\\TitleAndYears}[2]{ {\\textit{#1} \\tabto{\\rightsidetab} {#2}} } Anyways, I really like LaTeX and I hope you check it out! Even if you don’t stick with it, it’s still something to learn!\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "2014",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_latex.svg","datePublished": "2019-03-01T00:00:00Z",
+  "dateModified": "2019-03-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Why I write my resume in LaTeX
+    </h1>
+    <div class="post-meta"><span title='2019-03-01 00:00:00 +0000 UTC'>2019-03-01</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_latex.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#tldr" aria-label="TL;DR">TL;DR</a></li>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                        
+                <li>
+                    <a href="#disclaimer" aria-label="Disclaimer">Disclaimer</a></li>
+                <li>
+                    <a href="#a-very-brief-history-of-tex-and-latex" aria-label="A (very) brief history of TeX and LaTeX">A (very) brief history of TeX and LaTeX</a><ul>
+                        
+                <li>
+                    <a href="#tex" aria-label="TeX">TeX</a></li>
+                <li>
+                    <a href="#latex" aria-label="LaTeX">LaTeX</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#advantages-of-a-latex-resume" aria-label="Advantages of a LaTeX resume">Advantages of a LaTeX resume</a><ul>
+                        
+                <li>
+                    <a href="#less-formatting-more-content" aria-label="Less formatting, more content">Less formatting, more content</a></li>
+                <li>
+                    <a href="#modularity" aria-label="Modularity">Modularity</a></li>
+                <li>
+                    <a href="#version-control-git" aria-label="Version control (Git)">Version control (Git)</a></li>
+                <li>
+                    <a href="#complex-formatting" aria-label="Complex formatting">Complex formatting</a></li>
+                <li>
+                    <a href="#packages" aria-label="Packages">Packages</a></li>
+                <li>
+                    <a href="#stability" aria-label="Stability">Stability</a></li>
+                <li>
+                    <a href="#output-options" aria-label="Output options">Output options</a></li>
+                <li>
+                    <a href="#open-source" aria-label="Open source">Open source</a></li>
+                <li>
+                    <a href="#typography" aria-label="Typography">Typography</a></li></ul>
+                </li>
+                <li>
+                    <a href="#disadvantages-of-a-latex-resume" aria-label="Disadvantages of a LaTeX resume">Disadvantages of a LaTeX resume</a><ul>
+                        
+                <li>
+                    <a href="#learning-curve" aria-label="Learning curve">Learning curve</a></li>
+                <li>
+                    <a href="#lack-of-collaboration" aria-label="Lack of collaboration">Lack of collaboration</a></li>
+                <li>
+                    <a href="#install-footprint" aria-label="Install footprint">Install footprint</a></li></ul>
+                </li>
+                <li>
+                    <a href="#source-files" aria-label="Source files">Source files</a><ul>
+                        
+                <li>
+                    <a href="#resumetex" aria-label="resume.tex">resume.tex</a></li>
+                <li>
+                    <a href="#resumecls" aria-label="resume.cls">resume.cls</a></li></ul>
+                </li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="tldr">TL;DR<a hidden class="anchor" aria-hidden="true" href="#tldr">#</a></h1>
+<p><a href="#advantages-of-a-latex-resume">Skip to the bottom</a>.</p>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I receive a lot of email questions about <a href="https://loganmarchione.com/resume/">my resume</a>, specifically asking why I use LaTeX, and also asking for the source (which is at the very bottom). I thought I&rsquo;d take a few minutes to discuss why I use LaTeX.</p>
+<p>For the past 10 years, I&rsquo;ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content. The slightest change to a column, graphic, or font would completely alter the formatting of the entire document. With this frustration in mind, I set out to find a new way to write my resume.</p>
+<p>I first switched to LibreOffice Writer, but that didn&rsquo;t solve my formatting problem (although, I was happy to dump Word). I then looked into plain text, then Markdown, and finally HTML/CSS. However, each solution had its own advantages and disadvantages (shown below).</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Software</th>
+        <th>Advantage</th>
+        <th>Disadvantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Plain text</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Portable</li>
+            <li>Will work on any system</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Zero formatting</li>
+            <li>Considered “ugly”</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Markdown</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Some formatting</li>
+            <li>Un-compiled text is still human readable</li>
+            <li>Can use Pandoc to convert to multiple formats</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>No easy way to change fonts</li>
+            <li>All Markdown documents look the same (without some heavy customization)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>HTML/CSS</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Most customizable option</li>
+            <li>Considered “modern”</li>
+            <li>Option to print to PDF</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Most difficult to read and write</li>
+            <li>Some employers will not accept a pure HTML/CSS resume</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>However, after searching Reddit, HackerNews, and StackExchange, I kept seeing LaTeX being recommended, so I decided to give it a shot.</p>
+<h2 id="disclaimer">Disclaimer<a hidden class="anchor" aria-hidden="true" href="#disclaimer">#</a></h2>
+<p>Before I begin, I wanted to say a few things, because someone will call me out if I don&rsquo;t:</p>
+<ul>
+<li>I&rsquo;m not a writer (obviously) and I don&rsquo;t write for a living (luckily for me).</li>
+<li>I&rsquo;m not a LaTeX expert and I don&rsquo;t claim to be (talk to the folks at <a href="https://tex.stackexchange.com/">TeX.SE</a>).</li>
+<li>I&rsquo;ve only been using LaTeX for my resume for about a year.</li>
+<li>I don&rsquo;t write scientific papers or large documents using LaTeX.</li>
+<li>I&rsquo;m not a typography nerd. Yes, <a href="https://en.wikipedia.org/wiki/Computer_Modern">Computer Modern</a> is beautiful. Yes, LaTeX documents look great. That&rsquo;s not why I use LaTeX.</li>
+</ul>
+<h2 id="a-very-brief-history-of-tex-and-latex">A (very) brief history of TeX and LaTeX<a hidden class="anchor" aria-hidden="true" href="#a-very-brief-history-of-tex-and-latex">#</a></h2>
+<h3 id="tex">TeX<a hidden class="anchor" aria-hidden="true" href="#tex">#</a></h3>
+<p>To understand LaTeX (pronounced like <em>lay-tek</em>), we first need to understand its predecessor, TeX (pronounced like <em>tek</em>). TeX was a <a href="https://en.wikipedia.org/wiki/Typesetting">typesetting system</a> created by Donald Knuth in 1978 after he decided a book he was publishing looked awful (typographically), and he was determined to solve the problem himself. He created TeX with two goals in mind:</p>
+<ol>
+<li>Allow anyone to create beautiful, high-quality books</li>
+<li>Given an input, create the same output on any computer running TeX</li>
+</ol>
+<p>TeX was a huge success, due to a number of reasons:</p>
+<ol>
+<li>TeX was beautiful, mostly due to Knuth&rsquo;s attention to typographic detail (e.g., font styles, spacing, kerning, ligatures, etc&hellip;).</li>
+<li>TeX had its own programming language, which meant users could write small macros (i.e., custom commands) to speed up their workflow.</li>
+<li>TeX was open source, which also meant it was free.</li>
+<li>TeX was portable, which meant it would run on almost any system and still produce the same output.</li>
+</ol>
+<p>Knuth was more focused on stability and backwards compatibility than new features, and TeX was declared feature-complete in 1989 with version 3.0, with only minor bug fixes being applied since then (you can still download and use TeX today).</p>
+<p>The main issue with TeX was that it focused mainly on the <em>format</em> of documents, which was great if you knew the TeX language really well. However, it was difficult for writers to get it working correctly, which made focusing on <em>content</em> difficult.</p>
+<h3 id="latex">LaTeX<a hidden class="anchor" aria-hidden="true" href="#latex">#</a></h3>
+<p>To solve this, Leslie Lamport created LaTeX in 1983. LaTeX is essentially a collection of helpful TeX macros that Lamport created himself. When you use LaTeX commands, you&rsquo;re really just running a series of TeX commands. Because of these easy to use commands, LaTeX was simpler for writers to learn than TeX itself. In fact, the focus of LaTeX is more on the <em>separation</em> of format and content (whereas TeX focused on the format itself). In a way, you can think of a LaTeX document like HTML and CSS. One file holds the content, while the other file holds the formatting for that content.</p>
+<p>Because LaTeX was even easier to use than TeX, its popularity soared. It gained a huge following in academia, and is still mainly used for writing books and scientific papers. It also excels in writing tasks that require mathematical expressions or non-Latin scripts, such as Chinese or Sanskrit.</p>
+<p>For example, below is piece of LaTeX code (taken from <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Adding_math_to_LaTeX">Overleaf</a>) with multiple mathematical expressions.</p>
+<pre tabindex="0"><code>Subscripts in math mode are written as $a_b$ and superscripts are written as $a^b$. These can be combined an nested to write expressions such as
+
+$$T^{i_1 i_2 \dots i_p}_{j_1 j_2 \dots j_q} = T(x^{i_1},\dots,x^{i_p},e_{j_1},\dots,e_{j_q})$$
+
+We write integrals using $\int$ and fractions using $\frac{a}{b}$. Limits are placed on integrals using superscripts and subscripts:
+
+$$\int_0^1 \frac{1}{e^x} = \frac{e-1}{e}$$
+
+Lower case Greek letters are written as $\omega$ $\delta$ etc. while upper case Greek letters are written as $\Omega$ $\Delta$.
+
+Mathematical operators are prefixed with a backslash as $\sin(\beta)$, $\cos(\alpha)$, $\log(x)$ etc.
+</code></pre><p>Below is the same piece of code (taken from <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Adding_math_to_LaTeX">Overleaf</a>), but formatted via LaTeX. As I mentioned, one of the advantages of LaTeX is that the piece of code above will produce this exact output on any system running LaTeX.</p>
+
+<p><img src="/2019/03/why-i-write-my-resume-in-latex/20190228_002.png" loading="lazy" alt="latex example screenshot"></p>
+<p>As if that wasn&rsquo;t enough, LaTeX also has the ability to load custom packages to add features/functionality. These packages include typical typesetting features, like:</p>
+<ul>
+<li>Adding custom fonts</li>
+<li>Customizing links</li>
+<li>Adding tables</li>
+<li>Adding image annotations</li>
+<li>Creating a table of contents</li>
+</ul>
+<p>However, some fun packages that have absolutely nothing to do with typesetting include:</p>
+<ul>
+<li>Playing <a href="https://ctan.org/tex-archive/macros/plain/contrib/reverxii">Reversi</a></li>
+<li>Creating <a href="https://www.ctan.org/pkg/musixtex">sheet music</a></li>
+<li>Putting <a href="http://hanno-rein.de/archives/349">coffee stains</a> on your documents</li>
+<li>Playing <a href="https://ctan.org/pkg/sudokubundle">sudoku</a></li>
+<li>Creating <a href="https://www.ctan.org/pkg/knitting">knitting</a> patterns</li>
+</ul>
+<h1 id="advantages-of-a-latex-resume">Advantages of a LaTeX resume<a hidden class="anchor" aria-hidden="true" href="#advantages-of-a-latex-resume">#</a></h1>
+<p>Now, onto the reason I&rsquo;m writing this post. These are, in my opinion, the biggest advantages of using LaTeX to write your resume (in order).</p>
+<h2 id="less-formatting-more-content">Less formatting, more content<a hidden class="anchor" aria-hidden="true" href="#less-formatting-more-content">#</a></h2>
+<p>This is the entire reason I moved away from Word. I wrote a template (called a <em>class</em> in LaTeX) one time. Now, I know exactly how each piece of my resume will behave, because I&rsquo;m using a template that is predictable.</p>
+<h2 id="modularity">Modularity<a hidden class="anchor" aria-hidden="true" href="#modularity">#</a></h2>
+<p>Think of LaTeX as a programming language in that you write code, compile it, then execute it. When you write in LaTeX, you first write your plain text using any editor, let LaTeX compile the text, then output it to the screen or a file. My resume is modular because I can simply comment in/out a specific section, recompile, and I have a new resume that is tailored for a specific position.</p>
+<h2 id="version-control-git">Version control (Git)<a hidden class="anchor" aria-hidden="true" href="#version-control-git">#</a></h2>
+<p>The source of a LaTeX resume is one or two text files which are easily tracked with Git. If you want to go back in time to see a specific thing, or simply undo something, having version control will help you.</p>
+<h2 id="complex-formatting">Complex formatting<a hidden class="anchor" aria-hidden="true" href="#complex-formatting">#</a></h2>
+<p>Have you seen some of the formatting LaTeX can offer for mathematical expressions or non-Latin scripts? It&rsquo;s beautiful and consistent. Imagine trying to illustrate a quadratic equation in Microsoft Word.</p>
+<h2 id="packages">Packages<a hidden class="anchor" aria-hidden="true" href="#packages">#</a></h2>
+<p>There are literally thousands of packages available for LaTeX. In addition, there are many pre-created resume classes to choose from (some great options include <a href="https://github.com/posquit0/Awesome-CV">Awesome CV</a>, <a href="https://www.sharelatex.com/templates/cv-or-resume/fancy-cv">Fancy CV</a>, <a href="https://ctan.org/pkg/moderncv">moderncv</a>, or <a href="http://rpi.edu/dept/arc/training/latex/resumes/">any of these</a>).</p>
+<h2 id="stability">Stability<a hidden class="anchor" aria-hidden="true" href="#stability">#</a></h2>
+<p>LaTex is stable. LaTeX (written in the 80&rsquo;s) still runs on top of the original TeX (written in the 70&rsquo;s). How many times will Microsoft Word go through new file formats in the next 20 or 30 years? Will you be able to open the Word document you wrote in 2019 on Word 2050?</p>
+<h2 id="output-options">Output options<a hidden class="anchor" aria-hidden="true" href="#output-options">#</a></h2>
+<p>You don&rsquo;t want a recruiter editing your Word document, so you can output your resume to PDF. This also guarantees it will look great when printed (since you won&rsquo;t be worrying about custom fonts). PDF not enough? Need HTML? Need plain text? Need Markdown? Need Word? Need almost any other text format? Check out <a href="https://pandoc.org/">Pandoc</a>.</p>
+<h2 id="open-source">Open source<a hidden class="anchor" aria-hidden="true" href="#open-source">#</a></h2>
+<p>I love things that are open source. I love things that are free. LaTeX is both.</p>
+<h2 id="typography">Typography<a hidden class="anchor" aria-hidden="true" href="#typography">#</a></h2>
+<p>Like I mentioned, I&rsquo;m not a typography nerd. However, you have to admit, you can tell a LaTeX document when you see one, and they are always beautiful and professional. I&rsquo;ve never looked at something and said &ldquo;Was this written in Microsoft Word?!&rdquo;.</p>
+<h1 id="disadvantages-of-a-latex-resume">Disadvantages of a LaTeX resume<a hidden class="anchor" aria-hidden="true" href="#disadvantages-of-a-latex-resume">#</a></h1>
+<p>These are, in my opinion, the biggest disadvantages of using LaTeX to write your resume (in order).</p>
+<h2 id="learning-curve">Learning curve<a hidden class="anchor" aria-hidden="true" href="#learning-curve">#</a></h2>
+<p>I&rsquo;m going to admit, I had a hard time getting my class setup and working just right. All things equal, I could create the same resume in Word in a quarter of the time. In addition, finding the correct packages to get the formatting right was also difficult at first. And, don&rsquo;t get me started on the syntax, it was not easy to master.</p>
+<h2 id="lack-of-collaboration">Lack of collaboration<a hidden class="anchor" aria-hidden="true" href="#lack-of-collaboration">#</a></h2>
+<p>If you want to get advice on your resume, you can&rsquo;t exactly send a .tex file to your friend to edit. Chances are, you&rsquo;ll need to output a PDF, which your friend will have to take notes on using a separate program. With Word, your friend could put comments directly into the .docx file and send it back to you.</p>
+<h2 id="install-footprint">Install footprint<a hidden class="anchor" aria-hidden="true" href="#install-footprint">#</a></h2>
+<p>LaTeX itself takes up a lot of space, and once you start downloading packages, it adds up quickly. In addition, if you&rsquo;re using a GUI to edit your files, you need to account for that. Don&rsquo;t be surprised if a full installation takes up 2GB.</p>
+<h1 id="source-files">Source files<a hidden class="anchor" aria-hidden="true" href="#source-files">#</a></h1>
+<h2 id="resumetex">resume.tex<a hidden class="anchor" aria-hidden="true" href="#resumetex">#</a></h2>
+<pre tabindex="0"><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Identification
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{resume}
+\geometry{letterpaper,portrait,margin=0.75in}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Contact info
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ContactName
+{First Last}                              % first and last name
+
+%\ContactInfoPhysical
+%{123 Main Street}                         % house and street
+%{City, State  ZIP}                        % city, state, zip
+%{USA}                                     % country
+
+\ContactInfoDigital
+  {tel:+019876543210}                      % phone URL (with int&#39;l code)
+  {987-654-3210}                           % phone display text
+  {mailto:email@domain.com}                % email URL
+  {email@domain.com}                       % email display text
+  {https://domain.com}                     % web URL
+  {domain.com}                             % web display text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Work experience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\faBriefcase} Experience}
+\PlaceAndLocation{Job Name}{City, State} \\
+\TitleAndYears{Title}{MM YYYY - MM YYYY} \\
+Duties \\
+\begin{itemize}
+  \item Thing 1.
+  \item Thing 2.
+  \item Thing 3.
+\end{itemize}
+Accomplishments \\
+\begin{itemize}
+  \item Thing 1.
+  \item Thing 2.
+  \item Thing 3.
+\end{itemize}
+\TitleAndYears{Title}{MM YYYY - MM YYYY} \\
+\TitleAndYears{Title}{MM YYYY - MM YYYY} \\
+
+\bigskip
+\PlaceAndLocation{Job Name}{City, State} \\
+\TitleAndYears{Title}{MM YYYY - MM YYYY} \\
+\TitleAndYears{Title}{MM YYYY - MM YYYY} \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Education
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\faGraduationCap} Education}
+\PlaceAndLocation{Job Name}{City, State} \\
+\TitleAndYears{Major}{MM YYYY - MM YYYY} \\
+\TitleAndYears{Minor}{GPA: 0.00/4.00} \\
+%Accomplishments \\
+\begin{itemize}
+  \item Thing 1.
+  \item Thing 2.
+  \item Thing 3.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Skills
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{{\faCheck} Skills}
+Put some text here.
+\begin{itemize}
+  \item Thing 1.
+  \item Thing 2.
+  \item Thing 3.
+\end{itemize}
+
+\end{document}
+</code></pre><h2 id="resumecls">resume.cls<a hidden class="anchor" aria-hidden="true" href="#resumecls">#</a></h2>
+<pre tabindex="0"><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Introduction
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This class (resume.cls) is to define the layout/structure of the template (resume.tex)
+% All content should go in the template file (resume.tex), not this file
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                OS Packages (Arch Linux)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Arch packages
+% sudo pacman -S texmaker texlive-most
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Identification
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesClass{resume}
+\NeedsTeXFormat{LaTeX2e}
+\LoadClass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nofiles                                   % Don&#39;t create .aux files
+\pagestyle{empty}                          % Don&#39;t use page numbers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{geometry}                  % To change page size/orientation/margins
+\RequirePackage{fontawesome5}              % To use FontAwesome5
+\RequirePackage[document]{ragged2e}        % To left-align everything (using [document])
+\RequirePackage{enumitem}                  % To change spacing between lists 
+  \setlist[itemize]{noitemsep,topsep=0pt}
+\RequirePackage{titlesec}                  % To format the title
+\RequirePackage{tabto}                     % To align text to a specific point
+  \newcommand*{\rightsidetab}{.7\linewidth}% Set the tab on the right side
+\RequirePackage{color}                     % To define specific colors
+  \definecolor{darkblue}{RGB}{6,69,173}    % Custom color for URLs
+\RequirePackage{hyperref}                  % To make clickable URLs and set PDF options       
+  \hypersetup{
+  colorlinks=true,
+  linkcolor=darkblue,
+  urlcolor=darkblue,
+  pdftitle={Name},
+  pdfauthor={Name}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contact info
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ContactName}[1]{
+  {\Huge{#1}}\\
+}
+
+\newcommand{\ContactInfoPhysical}[3]{
+  {\faHome} {#1}, {#2} {#3}\\
+}
+
+\newcommand{\ContactInfoDigital}[6]{
+  {\faPhone} \href{#1}{#2}  |  
+  {\faEnvelope} \href{#3}{#4}  |  
+  {\faGlobeAmericas} \href{#5}{#6}\\
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sections
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\section}
+  {\Large}
+  {}{0em}
+  {}
+  [\titlerule]
+
+\newcommand*{\PlaceAndLocation}[2]{
+  {\textbf{#1} \tabto{\rightsidetab}{\faMapMarker*} {#2}}
+}
+
+\newcommand*{\TitleAndYears}[2]{
+  {\textit{#1} \tabto{\rightsidetab} {#2}}
+}
+</code></pre><p>Anyways, I really like LaTeX and I hope you check it out! Even if you don&rsquo;t stick with it, it&rsquo;s still something to learn!</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2019/03/why-i-write-my-resume-in-latex/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why I write my resume in LaTeX on twitter"
+        href="https://twitter.com/intent/tweet/?text=Why%20I%20write%20my%20resume%20in%20LaTeX&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f03%2fwhy-i-write-my-resume-in-latex%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why I write my resume in LaTeX on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f03%2fwhy-i-write-my-resume-in-latex%2f&amp;title=Why%20I%20write%20my%20resume%20in%20LaTeX&amp;summary=Why%20I%20write%20my%20resume%20in%20LaTeX&amp;source=https%3a%2f%2floganmarchione.github.io%2f2019%2f03%2fwhy-i-write-my-resume-in-latex%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why I write my resume in LaTeX on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2019%2f03%2fwhy-i-write-my-resume-in-latex%2f&title=Why%20I%20write%20my%20resume%20in%20LaTeX">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why I write my resume in LaTeX on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2019%2f03%2fwhy-i-write-my-resume-in-latex%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why I write my resume in LaTeX on whatsapp"
+        href="https://api.whatsapp.com/send?text=Why%20I%20write%20my%20resume%20in%20LaTeX%20-%20https%3a%2f%2floganmarchione.github.io%2f2019%2f03%2fwhy-i-write-my-resume-in-latex%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why I write my resume in LaTeX on telegram"
+        href="https://telegram.me/share/url?text=Why%20I%20write%20my%20resume%20in%20LaTeX&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f03%2fwhy-i-write-my-resume-in-latex%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My SG-1100 died | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction I recently wrote about how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2019/07/my-sg-1100-died/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="My SG-1100 died" />
+<meta property="og:description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction I recently wrote about how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2019/07/my-sg-1100-died/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_thumb_down.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-07-17T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-07-17T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_thumb_down.svg" />
+<meta name="twitter:title" content="My SG-1100 died"/>
+<meta name="twitter:description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction I recently wrote about how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "My SG-1100 died",
+      "item": "https://loganmarchione.github.io/2019/07/my-sg-1100-died/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My SG-1100 died",
+  "name": "My SG-1100 died",
+  "description": "Hey! Listen! This post is part of a series on pfSense. Check them all out!\nDate URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction I recently wrote about how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Hey! Listen! This post is part of a series on pfSense. Check them all out!\nDate URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction I recently wrote about how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense. However, on July 9th (about two weeks after installing my SG-1100) I noticed my internet connection died, and I was unable to ping the router. I used a micro-USB cable to view the console and noticed it was not pulling an IP address from my FiOS ONT.\nAt first, I thought it was an issue with Verizon, so I opened a ticket and had them reset/reboot my ONT remotely, without resolution. However, I then noticed the device randomly rebooted while I was connected to the console. After it started back up, it rebooted again. Thinking it was not an issue with Verizon, I removed the SG-1100 and replaced it with my EdgeRouter Lite, which immediately pulled an IP and restored my connectivity.\nNetgate’s response I opened a ticket with Netgate and attached my boot log. While I waited, I did some Googling and found this post, where Netgate acknowledged a power problem with the SG-1100. In less than 10 minutes, a support person from Netgate sent me a RMA. However, since this is a hardware issue, I declined a new SG-1100 and requested a refund, which they approved without issue.\nTo Netgate’s credit, they did the right thing here. They publicly disclosed the issue on their forums and immediately offered a replacement device. Again, their support is amazing.\nBack to the ERL For now, I’m using my EdgeRouter Lite, with the full intent to still move to pfSense (albeit, on new hardware). I declined a new SG-1100, because I’m not sure if the new device will be affected by the same issue. My other choice is install pfSense on an x86 box, as I had originally planned. This option, however, does not include Netgate support, which I’d have to do without or purchase separately.\nBoot log I’m posting this log in the event someone else has this issue and stumbles upon this. Some interesting points from the log:\nLine 22 shows the Enter an option prompt, then the device starts to reboot. Lines 76, 79, and 91 show an issue with voltage. Line 279 shows that / was not dismounted correctly (from being rebooted). Line 338 shows the SG-1100 not pulling an IP from my ONT (not sure if this was a side effect the power issue or not). The full log from the console connection is below (with line numbers inserted).\n00000001 FreeBSD/arm64 (pfsense.domain.local) (ttyu0) 00000002 00000003 Netgate SG-1100 Netgate Device ID: XXXXXXXXXXXXXXXXXXXX 00000004 Serial: XXXXXXXXXXXXX Netgate Crypto ID: XXXXXXXXXXXXXXXXXX 00000005 00000006 *** Welcome to pfSense 2.4.4-RELEASE-p3 (arm64) on pfsense *** 00000007 00000008 WAN (wan) -\u003e mvneta0.4090 -\u003e 00000009 LAN (lan) -\u003e mvneta0.4091 -\u003e v4: 10.10.2.1/24 00000010 OPT (opt1) -\u003e mvneta0.4092 -\u003e 00000011 00000012 0) Logout (SSH only) 9) pfTop 00000013 1) Assign Interfaces 10) Filter Logs 00000014 2) Set interface(s) IP address 11) Restart webConfigurator 00000015 3) Reset webConfigurator password 12) PHP shell + pfSense tools 00000016 4) Reset to factory defaults 13) Update from console 00000017 5) Reboot system 14) Disable Secure Shell (sshd) 00000018 6) Halt system 15) Restore recent configuration 00000019 7) Ping host 16) Restart PHP-FPM 00000020 8) Shell 00000021 00000022 Enter an option: TIM-1.0 00000023 WTMI-armada-17.10.5-34ce216 00000024 WTMI: system early-init 00000025 SVC REV: 5, CPU VDD voltage: 1.202V 00000026 00000027 Fill memory before self refresh...done 00000028 00000029 Now in Self-refresh Mode 00000030 Exited self-refresh ... 00000031 00000032 00000033 Self refresh Pass. 00000034 DDR self test mode test done!! 00000035 Vref read training 00000036 =================== 00000037 Final vdac_value 0x0000001F 00000038 00000039 Vref write training 00000040 =================== 00000041 Final vref_value 0x0000001F 00000042 00000043 DLL TUNING 00000044 ============== 00000045 DLL 0xc0001050[21:16]: [4,32,1b] 00000046 DLL 0xc0001050[29:24]: [9,2f,1c] 00000047 DLL 0xc0001054[21:16]: [5,32,1b] 00000048 DLL 0xc0001054[29:24]: [a,30,1d] 00000049 DLL 0xc0001074[21:16]: [0,3f,1f] 00000050 DLL 0xc0001074NOTICE: Booting Trusted Firmware 00000051 NOTICE: BL1: v1.3(release):armada-17.10.8:34247e0 00000052 NOTICE: BL1: Built : 16:19:41, Nov 1 2NOTICE: BL2: v1.3(release):armada-17.10.8:34247e0 00000053 NOTICE: BL2: Built : 16:19:45, Nov 1 20NOTICE: BL31: v1.3(release):armada-17.10.8:34247e0 00000054 NOTICE: BL31: 00000055 00000056 U-Boot 2017.03-armada-17.10.2-g6a6581a-dirty (Nov 01 2018 - 16:04:57 -0300) 00000057 00000058 Model: Marvell Armada 3720 Community Board ESPRESSOBin 00000059 CPU @ 1200 [MHz] 00000060 L2 @ 800 [MHz] 00000061 TClock @ 200 [MHz] 00000062 DDR @ 750 [MHz] 00000063 DRAM: 1 GiB 00000064 U-Boot DT blob at : 000000003f716298 00000065 Comphy-0: USB3 5 Gbps 00000066 Comphy-1: PEX0 2.5 Gbps 00000067 Comphy-2: SATA0 6 Gbps 00000068 SATA link 0 timeout. 00000069 AHCI 0001.0300 32 slots 1 ports 6 Gbps 0x1 impl SATA mode 00000070 flags: ncq led only pmp fbss pio slum part sxs 00000071 PCIE-0: Link down 00000072 MMC: sdhci@d0000: 0, sdhci@d8000: 1 00000073 SF: Detected mx25u3235f with page size 256 Bytes, erase size 64 KiB, total 4 MiB 00000074 Net: eth0: neta@30000 [PRIME] 00000075 Hit any key to stop autoboot: 0 00000076 Card did not respond to voltage select! 00000077 mmc_init: -95, time 41 00000078 ** Bad device mmc 0 ** 00000079 Card did not respond to voltage select! 00000080 mmc_init: -95, time 23 00000081 ** Bad device mmc 0 ** 00000082 ## Starting EFI application at 05000000 ... 00000083 efi_load_pe: Invalid DOS Signature 00000084 ## Application terminated, r = -2 00000085 sdhci_transfer_data: Error detected in status(0x408000)! 00000086 reading efi/boot/bootaa64.efi 00000087 393216 bytes read in 31 ms (12.1 MiB/s) 00000088 reading armada-3720-sg1100.dtb 00000089 13772 bytes read in 12 ms (1.1 MiB/s) 00000090 ## Starting EFI application at 05000000 ... 00000091 Card did not respond to voltage select! 00000092 mmc_init: -95, time 23 00000093 Scanning disk sdhci@d8000.blk... 00000094 Found 4 disks 00000095 00000096 00000097 00000098 00000099 00000100 00000101 00000102 00000103 00000104 00000105 00000106 00000107 00000108 00000109 00000110 00000111 00000112 00000113 00000114 00000115 00000116 00000117 00000118 00000119 00000120 00000121 00000122 00000123 00000124 00000125 00000126 00000127 00000128 00000129 00000130 00000131 00000132 00000133 00000134 00000135 00000136 00000137 00000138 00000139 00000140 00000141 \u003e\u003e FreeBSD EFI boot block 00000142 Loader path: /boot/loader.efi 00000143 00000144 Initializing modules: ZFS UFS 00000145 Probing 4 block devices......* done 00000146 ZFS found no pools 00000147 UFS found 1 partition 00000148 command args: -S115200 00000149 00000150 Consoles: EFI console 00000151 Command line arguments: loader.efi -S115200 00000152 Image base: 0x3c595008 00000153 EFI version: 2.05 00000154 EFI Firmware: Das U-boot (rev 0.00) 00000155 00000156 FreeBSD/arm64 EFI loader, Revision 1.1 00000157 (Thu Oct 4 10:04:04 EDT 2018 root@buildbot2.nyi.netgate.com) 00000158 BootCurrent: 0000 00000159 BootOrder: 03e8 0000[*] 0000[*] 0000[*] 03e8 0000[*] 0000[*] 0000[*] 5170 3f71 0000[*] 0000[*] 30d4 0000[*] 0000[*] 0000[*] 5190 3f71 0000[*] 0000[*] 1158 3ff8 0000[*] 0000[*] 51c0 3f71 0000[*] 0000[*] 853c 3ff7 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 0004 0000[*] 0000[*] 0000[*] 35b8 3ffa 0000[*] 0000[*] 0001 0000[*] 0000[*] 0000[*] 42d0 3ff7 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 5200 3f71 0000[*] 0000[*] 853c 3ff7 0000[*] 0000[*] 4260 3f7a 0000[*] 0000[*] 0004 0000[*] 0000[*] 0000[*] 35b8 3ffa 0000[*] 0000[*] 0001 0000[*] 0000[*] 0000[*] 42d0 3ff7 0000[*] 0000[*] f000 3c52 0000[*] 0000[*] 4260 3f7a 0000[*] 0000[*] 080c 3ff6 0000[*] 0000[*] 5310 3f71 0000[*] 0000[*] 00000160 Setting currdev to disk0p3: 00000161 Loading /boot/defaults/loader.conf 00000162 /boot/kernel/kernel text=0x9802a8 data=0x877c70+0x3c7a14 syms=[0x8+0x116bf8+0x8+0xf0f51] 00000163 | 00000164 Hit [Enter] to boot immediately, or any other key for command prompt. 00000165 Booting [/boot/kernel/kernel]... 00000166 Using DTB provided by EFI at 0x7ffb000. 00000167 Copyright (c) 1992-2018 The FreeBSD Project. 00000168 Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994 00000169 The Regents of the University of California. All rights reserved. 00000170 FreeBSD is a registered trademark of The FreeBSD Foundation. 00000171 FreeBSD 11.2-RELEASE-p10 #21 10fea60fdde(factory-RELENG_2_4_4): Thu May 16 06:26:11 EDT 2019 00000172 root@buildbot1-nyi.netgate.com:/build/factory-crossbuild-244/obj/aarch64/upm8hD25/arm64.aarch64/build/factory-crossbuild-244/pfSense/tmp/FreeBSD-src/sys/pfSense arm64 00000173 FreeBSD clang version 6.0.0 (tags/RELEASE_600/final 326565) (based on LLVM 6.0.0) 00000174 VT: init without driver. 00000175 Starting CPU 1 (1) 00000176 FreeBSD/SMP: Multiprocessor System Detected: 2 CPUs 00000177 random: entropy device external interface 00000178 ipw_bss: You need to read the LICENSE file in /usr/share/doc/legal/intel_ipw.LICENSE. 00000179 ipw_bss: If you agree with the license, set legal.intel_ipw.license_ack=1 in /boot/loader.conf. 00000180 module_register_init: MOD_LOAD (ipw_bss_fw, 0xffff00000016bec0, 0) error 1 00000181 ipw_ibss: You need to read the LICENSE file in /usr/share/doc/legal/intel_ipw.LICENSE. 00000182 ipw_ibss: If you agree with the license, set legal.intel_ipw.license_ack=1 in /boot/loader.conf. 00000183 module_register_init: MOD_LOAD (ipw_ibss_fw, 0xffff00000016bf6c, 0) error 1 00000184 ipw_monitor: You need to read the LICENSE file in /usr/share/doc/legal/intel_ipw.LICENSE. 00000185 ipw_monitor: If you agree with the license, set legal.intel_ipw.license_ack=1 in /boot/loader.conf. 00000186 module_register_init: MOD_LOAD (ipw_monitor_fw, 0xffff00000016c018, 0) error 1 00000187 iwi_bss: You need to read the LICENSE file in /usr/share/doc/legal/intel_iwi.LICENSE. 00000188 iwi_bss: If you agree with the license, set legal.intel_iwi.license_ack=1 in /boot/loader.conf. 00000189 module_register_init: MOD_LOAD (iwi_bss_fw, 0xffff00000016c0c4, 0) error 1 00000190 iwi_ibss: You need to read the LICENSE file in /usr/share/doc/legal/intel_iwi.LICENSE. 00000191 iwi_ibss: If you agree with the license, set legal.intel_iwi.license_ack=1 in /boot/loader.conf. 00000192 module_register_init: MOD_LOAD (iwi_ibss_fw, 0xffff00000016c170, 0) error 1 00000193 iwi_monitor: You need to read the LICENSE file in /usr/share/doc/legal/intel_iwi.LICENSE. 00000194 iwi_monitor: If you agree with the license, set legal.intel_iwi.license_ack=1 in /boot/loader.conf. 00000195 module_register_init: MOD_LOAD (iwi_monitor_fw, 0xffff00000016c21c, 0) error 1 00000196 wlan: mac acl policy registered 00000197 kbd0 at kbdmux0 00000198 ofwbus0: 00000199 simplebus0: on ofwbus0 00000200 simplebus1: on simplebus0 00000201 psci0: on ofwbus0 00000202 gic0: mem 0x1d00000-0x1d0ffff,0x1d40000-0x1d7ffff,0x1d80000-0x1d81fff,0x1d90000-0x1d91fff,0x1da0000-0x1dbffff irq 27 on simplebus1 00000203 generic_timer0: irq 0,1,2,3 on ofwbus0 00000204 Timecounter \"ARM MPCore Timecounter\" frequency 12500000 Hz quality 1000 00000205 Event timer \"ARM MPCore Eventtimer\" frequency 12500000 Hz quality 1000 00000206 cpulist0: on ofwbus0 00000207 cpu0: on cpulist0 00000208 cpu1: on cpulist0 00000209 pmu0: irq 4 on ofwbus0 00000210 spi0: mem 0x10600-0x10fff irq 6 on simplebus1 00000211 iichb0: mem 0x11000-0x11023 irq 7 on simplebus1 00000212 iicbus0: on iichb0 00000213 iic0: on iicbus0 00000214 uart0: mem 0x12000-0x121ff irq 9,10,11 on simplebus1 00000215 uart0: console (115200,n,8,1) 00000216 pinctl0: mem 0x13800-0x138ff,0x13c00-0x13c1f on simplebus1 00000217 gpio0: on pinctl0 00000218 gpiobus0: on gpio0 00000219 gpioc0: on gpio0 00000220 pinctl1: mem 0x18800-0x188ff,0x18c00-0x18c1f on simplebus1 00000221 gpio1: on pinctl1 00000222 gpiobus1: on gpio1 00000223 gpioc1: on gpio1 00000224 mvneta0: mem 0x30000-0x33fff irq 14 on simplebus1 00000225 mvneta0: version is 10 00000226 mvneta0: Ethernet address: f0:ad:4e:0a:9e:98 00000227 mdio0: on mvneta0 00000228 e6000sw: readreg timeout 00000229 e6000sw0: Unrecognized device, id 0xfff0. 00000230 e6000sw: readreg timeout 00000231 e6000sw0: Unrecognized device, id 0xfff0. 00000232 xhci0: mem 0x58000-0x5bfff irq 16 on simplebus1 00000233 xhci0: 32 bytes context size, 32-bit DMA 00000234 usbus0 on xhci0 00000235 ehci0: mem 0x5e000-0x5ffff irq 17 on simplebus1 00000236 usbus1: EHCI version 1.0 00000237 usbus1 on ehci0 00000238 sdhci_xenon0: mem 0xd0000-0xd02ff,0x1e808-0x1e80b irq 24 on simplebus1 00000239 mmc0: on sdhci_xenon0 00000240 sdhci_xenon1: mem 0xd8000-0xd82ff,0x17808-0x1780b irq 25 on simplebus1 00000241 mmc1: on sdhci_xenon1 00000242 ahci0: mem 0xe0000-0xe1fff irq 26 on simplebus1 00000243 ahci0: AHCI v1.30 with 1 6Gbps ports, Port Multiplier supported with FBS 00000244 ahcich0: at channel 0 on ahci0 00000245 gpioled0: on ofwbus0 00000246 cryptosoft0: 00000247 Timecounters tick every 1.000 msec 00000248 mvneta0: link state changed to UP 00000249 spibus0: on spi0 00000250 mx25l0: at cs 0 mode 0 on spibus0 00000251 mx25l0: device type mx25u3235f, size 4096K in 64 sectors of 64K, erase size 4K 00000252 usbus0: 5.0Gbps Super Speed USB v3.0 00000253 usbus1: 480Mbps High Speed USB v2.0 00000254 ugen0.1: at usbus0 00000255 uhub0: on usbus0 00000256 ugen1.1: at usbus1 00000257 uhub1: on usbus1 00000258 mmc0: No compatible cards found on bus 00000259 mmcsd0: 8GB at mmc1 50.0MHz/4bit/65535-block 00000260 mmcsd0boot0: 4MB partion 1 at mmcsd0 00000261 mmcsd0boot1: 4MB partion 2 at mmcsd0 00000262 mmcsd0rpmb: 524kB partion 3 at mmcsd0 00000263 uhub0: 2 ports with 2 removable, self powered 00000264 uhub1: 1 port with 1 removable, self powered 00000265 Release APs 00000266 CPU 0: ARM Cortex-A53 r0p4 affinity: 0 00000267 Instruction Set Attributes 0 = 00000268 Instruction Set Attributes 1 = \u003c0\u003e 00000269 Processor Features 0 = 00000270 Processor Features 1 = \u003c0\u003e 00000271 Memory Model Features 0 = \u003c4k Granule,64k Granule,MixedEndian,S/NS Mem,16bit ASID,1TB PA\u003e 00000272 Memory Model Features 1 = \u003c\u003e 00000273 Debug Features 0 = \u003c2 CTX Breakpoints,4 Watchpoints,6 Breakpoints,PMUv3,Debug v8\u003e 00000274 Debug Features 1 = \u003c0\u003e 00000275 Auxiliary Features 0 = \u003c0\u003e 00000276 Auxiliary Features 1 = \u003c0\u003e 00000277 CPU 1: ARM Cortex-A53 r0p4 affinity: 1 00000278 Trying to mount root from ufs:/dev/ufsid/5c11689b7c8fb123 [rw,noatime]... 00000279 WARNING: / was not properly dismounted 00000280 Warning: no time-of-day clock registered, system time will not be set accurately 00000281 Configuring crash dumps... 00000282 dumpon: /dev/label/swap*: No such file or directory 00000283 Unable to specify /dev/label/swap* as a dump device. 00000284 No suitable dump device was found. 00000285 ** SU+J Recovering /dev/ufsid/5c11689b7c8fb123 00000286 ** Reading 11730944 byte journal from inode 4. 00000287 ** Building recovery table. 00000288 ** Resolving unreferenced inode list. 00000289 ** Processing journal entries. 00000290 ** 288 journal records in 38912 bytes for 23.68% utilization 00000291 ** Freed 1 inodes (0 dirs) 4 blocks, and 0 frags. 00000292 00000293 ***** FILE SYSTEM MARKED CLEAN ***** 00000294 Filesystems are clean, continuing... 00000295 Mounting filesystems... 00000296 random: unblocking device. 00000297 00000298 __ 00000299 _ __ / _|___ ___ _ __ ___ ___ 00000300 | '_ \\| |_/ __|/ _ \\ '_ \\/ __|/ _ \\ 00000301 | |_) | _ \\__ \\ __/ | | \\__ \\ __/ 00000302 | .__/|_| |___/\\___|_| |_|___/\\___| 00000303 |_| 00000304 00000305 00000306 Welcome to pfSense 2.4.4-RELEASE (Patch 3)... 00000307 00000308 ...ELF ldconfig path: /lib /usr/lib /usr/lib/compat /usr/local/lib /usr/local/lib/ipsec /usr/local/lib/perl5/5.26/mach/CORE 00000309 done. 00000310 \u003e\u003e\u003e Removing vital flag from lang/php72... done. 00000311 External config loader 1.0 is now starting... mmcsd0s1 mmcsd0s2 mmcsd0s3 00000312 Launching the init system......... done. 00000313 Initializing.................. done. 00000314 Starting device manager (devd)...done. 00000315 Loading configuration......done. 00000316 Updating configuration...done. 00000317 Checking config backups consistency.................................done. 00000318 Setting up extended sysctls...done. 00000319 Setting timezone...done. 00000320 Configuring loopback interface...done. 00000321 Starting syslog...done. 00000322 Starting Secure Shell Services...done. 00000323 Configuring switch...done. 00000324 Setting up interfaces microcode...done. 00000325 Configuring loopback interface...done. 00000326 Creating wireless clone interfaces...done. 00000327 Configuring LAGG interfaces...done. 00000328 Configuring VLAN interfaces...done. 00000329 Configuring QinQ interfaces...done. 00000330 Configuring IPsec VTI interfaces...done. 00000331 Configuring WAN interface...done. 00000332 Configuring LAN interface...done. 00000333 Configuring CARP settings...done. 00000334 Syncing OpenVPN settings...done. 00000335 Configuring firewall......done. 00000336 Starting PFLOG...done. 00000337 Setting up gateway monitors...done. 00000338 Setting up static routes...route: writing to routing socket: Network is unreachable 00000339 route: route has not been found 00000340 done. 00000341 Setting up DNSs... 00000342 Starting DNS Resolver...done. 00000343 Synchronizing user settings...done. 00000344 Starting webConfigurator...done. 00000345 Configuring CRON...done. 00000346 Starting NTP time client...done. 00000347 Starting DHCP service...done. 00000348 Configuring firewall......done. 00000349 Generating RRD graphs...done. 00000350 Starting syslog...done. 00000351 Starting CRON... done. 00000352 Starting package acme...done. 00000353 pfSense 2.4.4-RELEASE (Patch 3) arm64 Thu May 16 06:01:19 EDT 2019 00000354 Bootup complete 00000355 00000356 FreeBSD/arm64 (pfsense.domain.local) (ttyu0) 00000357 00000358 Netgate SG-1100 Netgate Device ID: XXXXXXXXXXXXXXXXXXXX 00000359 Serial: XXXXXXXXXXXXX Netgate Crypto ID: XXXXXXXXXXXXXXXXXX 00000360 00000361 *** Welcome to pfSense 2.4.4-RELEASE-p3 (arm64) on pfsense *** 00000362 00000363 WAN (wan) -\u003e mvneta0.4090 -\u003e 00000364 LAN (lan) -\u003e mvneta0.4091 -\u003e v4: 10.10.2.1/24 00000365 OPT (opt1) -\u003e mvneta0.4092 -\u003e 00000366 00000367 0) Logout (SSH only) 9) pfTop 00000368 1) Assign Interfaces 10) Filter Logs 00000369 2) Set interface(s) IP address 11) Restart webConfigurator 00000370 3) Reset webConfigurator password 12) PHP shell + pfSense tools 00000371 4) Reset to factory defaults 13) Update from console 00000372 5) Reboot system 14) Disable Secure Shell (sshd) 00000373 6) Halt system 15) Restore recent configuration 00000374 7) Ping host 16) Restart PHP-FPM 00000375 8) Shell 00000376 00000377 Enter an option: -Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "2727",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_generic_thumb_down.svg","datePublished": "2019-07-17T00:00:00Z",
+  "dateModified": "2019-07-17T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2019/07/my-sg-1100-died/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      My SG-1100 died
+    </h1>
+    <div class="post-meta"><span title='2019-07-17 00:00:00 +0000 UTC'>2019-07-17</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_generic_thumb_down.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#netgates-response" aria-label="Netgate&amp;rsquo;s response">Netgate&rsquo;s response</a></li>
+                <li>
+                    <a href="#back-to-the-erl" aria-label="Back to the ERL">Back to the ERL</a></li>
+                <li>
+                    <a href="#boot-log" aria-label="Boot log">Boot log</a></li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Hey! Listen! This post is part of a series on pfSense. Check them all out!</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>URL</th>
+<th>Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-08-25</td>
+<td><a href="/2019/08/pfsense-on-the-pc-engines-apu2/">pfSense on the PC Engines APU2</a></td>
+<td>Migrated to a PC Engines APU2D4</td>
+</tr>
+<tr>
+<td>2019-07-17</td>
+<td><a href="/2019/07/my-sg-1100-died/">My SG-1100 died</a></td>
+<td>Migrated back the the EdgeRouter Lite</td>
+</tr>
+<tr>
+<td>2019-06-28</td>
+<td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
+<td>Migrated to a Netgate SG-1100</td>
+</tr>
+</tbody>
+</table>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I recently <a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">wrote about</a> how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense. However, on July 9th (about two weeks after installing my SG-1100) I noticed my internet connection died, and I was unable to ping the router. I used a micro-USB cable to view the console and noticed it was not pulling an IP address from my FiOS ONT.</p>
+<p>At first, I thought it was an issue with Verizon, so I opened a ticket and had them reset/reboot my ONT remotely, without resolution. However, I then noticed the device randomly rebooted while I was connected to the console. After it started back up, it rebooted again. Thinking it was not an issue with Verizon, I removed the SG-1100 and replaced it with my EdgeRouter Lite, which immediately pulled an IP and restored my connectivity.</p>
+<h1 id="netgates-response">Netgate&rsquo;s response<a hidden class="anchor" aria-hidden="true" href="#netgates-response">#</a></h1>
+<p>I opened a ticket with Netgate and attached my boot log. While I waited, I did some Googling and found <a href="https://forum.netgate.com/topic/144636/sg-1100-intermittent-reboots">this post</a>, where Netgate acknowledged a power problem with the SG-1100. In less than 10 minutes, a support person from Netgate sent me a RMA. However, since this is a hardware issue, I declined a new SG-1100 and requested a refund, which they approved without issue.</p>
+<p>To Netgate&rsquo;s credit, they did the right thing here. They publicly disclosed the issue on their forums and immediately offered a replacement device. Again, their support is amazing.</p>
+<h1 id="back-to-the-erl">Back to the ERL<a hidden class="anchor" aria-hidden="true" href="#back-to-the-erl">#</a></h1>
+<p>For now, I&rsquo;m using my EdgeRouter Lite, with the full intent to still move to pfSense (albeit, on new hardware). I declined a new SG-1100, because I&rsquo;m not sure if the new device will be affected by the same issue. My other choice is install pfSense on an x86 box, as I had <a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/#hardware">originally planned</a>. This option, however, does not include Netgate support, which I&rsquo;d have to do without or purchase separately.</p>
+<h1 id="boot-log">Boot log<a hidden class="anchor" aria-hidden="true" href="#boot-log">#</a></h1>
+<p>I&rsquo;m posting this log in the event someone else has this issue and stumbles upon this. Some interesting points from the log:</p>
+<ul>
+<li>Line 22 shows the <em>Enter an option</em> prompt, then the device starts to reboot.</li>
+<li>Lines 76, 79, and 91 show an issue with voltage.</li>
+<li>Line 279 shows that / was not dismounted correctly (from being rebooted).</li>
+<li>Line 338 shows the SG-1100 not pulling an IP from my ONT (not sure if this was a side effect the power issue or not).</li>
+</ul>
+<p>The full log from the console connection is below (with line numbers inserted).</p>
+<pre tabindex="0"><code>00000001 FreeBSD/arm64 (pfsense.domain.local) (ttyu0)
+00000002 
+00000003 Netgate SG-1100 Netgate Device ID: XXXXXXXXXXXXXXXXXXXX
+00000004 Serial: XXXXXXXXXXXXX Netgate Crypto ID: XXXXXXXXXXXXXXXXXX
+00000005 
+00000006 *** Welcome to pfSense 2.4.4-RELEASE-p3 (arm64) on pfsense ***
+00000007 
+00000008 WAN (wan) -&gt; mvneta0.4090 -&gt;
+00000009 LAN (lan) -&gt; mvneta0.4091 -&gt; v4: 10.10.2.1/24
+00000010 OPT (opt1) -&gt; mvneta0.4092 -&gt;
+00000011 
+00000012 0) Logout (SSH only) 9) pfTop
+00000013 1) Assign Interfaces 10) Filter Logs
+00000014 2) Set interface(s) IP address 11) Restart webConfigurator
+00000015 3) Reset webConfigurator password 12) PHP shell + pfSense tools
+00000016 4) Reset to factory defaults 13) Update from console
+00000017 5) Reboot system 14) Disable Secure Shell (sshd)
+00000018 6) Halt system 15) Restore recent configuration
+00000019 7) Ping host 16) Restart PHP-FPM
+00000020 8) Shell
+00000021 
+00000022 Enter an option: TIM-1.0
+00000023 WTMI-armada-17.10.5-34ce216
+00000024 WTMI: system early-init
+00000025 SVC REV: 5, CPU VDD voltage: 1.202V
+00000026 
+00000027 Fill memory before self refresh...done
+00000028 
+00000029 Now in Self-refresh Mode
+00000030 Exited self-refresh ...
+00000031 
+00000032 
+00000033 Self refresh Pass.
+00000034 DDR self test mode test done!!
+00000035 Vref read training
+00000036 ===================
+00000037 Final vdac_value 0x0000001F
+00000038 
+00000039 Vref write training
+00000040 ===================
+00000041 Final vref_value 0x0000001F
+00000042 
+00000043 DLL TUNING
+00000044 ==============
+00000045 DLL 0xc0001050[21:16]: [4,32,1b]
+00000046 DLL 0xc0001050[29:24]: [9,2f,1c]
+00000047 DLL 0xc0001054[21:16]: [5,32,1b]
+00000048 DLL 0xc0001054[29:24]: [a,30,1d]
+00000049 DLL 0xc0001074[21:16]: [0,3f,1f]
+00000050 DLL 0xc0001074NOTICE: Booting Trusted Firmware
+00000051 NOTICE: BL1: v1.3(release):armada-17.10.8:34247e0
+00000052 NOTICE: BL1: Built : 16:19:41, Nov 1 2NOTICE: BL2: v1.3(release):armada-17.10.8:34247e0
+00000053 NOTICE: BL2: Built : 16:19:45, Nov 1 20NOTICE: BL31: v1.3(release):armada-17.10.8:34247e0
+00000054 NOTICE: BL31:
+00000055 
+00000056 U-Boot 2017.03-armada-17.10.2-g6a6581a-dirty (Nov 01 2018 - 16:04:57 -0300)
+00000057 
+00000058 Model: Marvell Armada 3720 Community Board ESPRESSOBin
+00000059 CPU @ 1200 [MHz]
+00000060 L2 @ 800 [MHz]
+00000061 TClock @ 200 [MHz]
+00000062 DDR @ 750 [MHz]
+00000063 DRAM: 1 GiB
+00000064 U-Boot DT blob at : 000000003f716298
+00000065 Comphy-0: USB3 5 Gbps
+00000066 Comphy-1: PEX0 2.5 Gbps
+00000067 Comphy-2: SATA0 6 Gbps
+00000068 SATA link 0 timeout.
+00000069 AHCI 0001.0300 32 slots 1 ports 6 Gbps 0x1 impl SATA mode
+00000070 flags: ncq led only pmp fbss pio slum part sxs
+00000071 PCIE-0: Link down
+00000072 MMC: sdhci@d0000: 0, sdhci@d8000: 1
+00000073 SF: Detected mx25u3235f with page size 256 Bytes, erase size 64 KiB, total 4 MiB
+00000074 Net: eth0: neta@30000 [PRIME]
+00000075 Hit any key to stop autoboot: 0
+00000076 Card did not respond to voltage select!
+00000077 mmc_init: -95, time 41
+00000078 ** Bad device mmc 0 **
+00000079 Card did not respond to voltage select!
+00000080 mmc_init: -95, time 23
+00000081 ** Bad device mmc 0 **
+00000082 ## Starting EFI application at 05000000 ...
+00000083 efi_load_pe: Invalid DOS Signature
+00000084 ## Application terminated, r = -2
+00000085 sdhci_transfer_data: Error detected in status(0x408000)!
+00000086 reading efi/boot/bootaa64.efi
+00000087 393216 bytes read in 31 ms (12.1 MiB/s)
+00000088 reading armada-3720-sg1100.dtb
+00000089 13772 bytes read in 12 ms (1.1 MiB/s)
+00000090 ## Starting EFI application at 05000000 ...
+00000091 Card did not respond to voltage select!
+00000092 mmc_init: -95, time 23
+00000093 Scanning disk sdhci@d8000.blk...
+00000094 Found 4 disks
+00000095 
+00000096 
+00000097 
+00000098 
+00000099 
+00000100 
+00000101 
+00000102 
+00000103 
+00000104 
+00000105 
+00000106 
+00000107 
+00000108 
+00000109 
+00000110 
+00000111 
+00000112 
+00000113 
+00000114 
+00000115 
+00000116 
+00000117 
+00000118 
+00000119 
+00000120 
+00000121 
+00000122 
+00000123 
+00000124 
+00000125 
+00000126 
+00000127 
+00000128 
+00000129 
+00000130 
+00000131 
+00000132 
+00000133 
+00000134 
+00000135 
+00000136 
+00000137 
+00000138 
+00000139 
+00000140 
+00000141 &gt;&gt; FreeBSD EFI boot block
+00000142 Loader path: /boot/loader.efi
+00000143 
+00000144 Initializing modules: ZFS UFS
+00000145 Probing 4 block devices......* done
+00000146 ZFS found no pools
+00000147 UFS found 1 partition
+00000148 command args: -S115200
+00000149 
+00000150 Consoles: EFI console
+00000151 Command line arguments: loader.efi -S115200
+00000152 Image base: 0x3c595008
+00000153 EFI version: 2.05
+00000154 EFI Firmware: Das U-boot (rev 0.00)
+00000155 
+00000156 FreeBSD/arm64 EFI loader, Revision 1.1
+00000157 (Thu Oct 4 10:04:04 EDT 2018 root@buildbot2.nyi.netgate.com)
+00000158 BootCurrent: 0000
+00000159 BootOrder: 03e8 0000[*] 0000[*] 0000[*] 03e8 0000[*] 0000[*] 0000[*] 5170 3f71 0000[*] 0000[*] 30d4 0000[*] 0000[*] 0000[*] 5190 3f71 0000[*] 0000[*] 1158 3ff8 0000[*] 0000[*] 51c0 3f71 0000[*] 0000[*] 853c 3ff7 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 0004 0000[*] 0000[*] 0000[*] 35b8 3ffa 0000[*] 0000[*] 0001 0000[*] 0000[*] 0000[*] 42d0 3ff7 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 0000[*] 5200 3f71 0000[*] 0000[*] 853c 3ff7 0000[*] 0000[*] 4260 3f7a 0000[*] 0000[*] 0004 0000[*] 0000[*] 0000[*] 35b8 3ffa 0000[*] 0000[*] 0001 0000[*] 0000[*] 0000[*] 42d0 3ff7 0000[*] 0000[*] f000 3c52 0000[*] 0000[*] 4260 3f7a 0000[*] 0000[*] 080c 3ff6 0000[*] 0000[*] 5310 3f71 0000[*] 0000[*]
+00000160 Setting currdev to disk0p3:
+00000161 Loading /boot/defaults/loader.conf
+00000162 /boot/kernel/kernel text=0x9802a8 data=0x877c70+0x3c7a14 syms=[0x8+0x116bf8+0x8+0xf0f51]
+00000163 |
+00000164 Hit [Enter] to boot immediately, or any other key for command prompt.
+00000165 Booting [/boot/kernel/kernel]...
+00000166 Using DTB provided by EFI at 0x7ffb000.
+00000167 Copyright (c) 1992-2018 The FreeBSD Project.
+00000168 Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
+00000169 The Regents of the University of California. All rights reserved.
+00000170 FreeBSD is a registered trademark of The FreeBSD Foundation.
+00000171 FreeBSD 11.2-RELEASE-p10 #21 10fea60fdde(factory-RELENG_2_4_4): Thu May 16 06:26:11 EDT 2019
+00000172 root@buildbot1-nyi.netgate.com:/build/factory-crossbuild-244/obj/aarch64/upm8hD25/arm64.aarch64/build/factory-crossbuild-244/pfSense/tmp/FreeBSD-src/sys/pfSense arm64
+00000173 FreeBSD clang version 6.0.0 (tags/RELEASE_600/final 326565) (based on LLVM 6.0.0)
+00000174 VT: init without driver.
+00000175 Starting CPU 1 (1)
+00000176 FreeBSD/SMP: Multiprocessor System Detected: 2 CPUs
+00000177 random: entropy device external interface
+00000178 ipw_bss: You need to read the LICENSE file in /usr/share/doc/legal/intel_ipw.LICENSE.
+00000179 ipw_bss: If you agree with the license, set legal.intel_ipw.license_ack=1 in /boot/loader.conf.
+00000180 module_register_init: MOD_LOAD (ipw_bss_fw, 0xffff00000016bec0, 0) error 1
+00000181 ipw_ibss: You need to read the LICENSE file in /usr/share/doc/legal/intel_ipw.LICENSE.
+00000182 ipw_ibss: If you agree with the license, set legal.intel_ipw.license_ack=1 in /boot/loader.conf.
+00000183 module_register_init: MOD_LOAD (ipw_ibss_fw, 0xffff00000016bf6c, 0) error 1
+00000184 ipw_monitor: You need to read the LICENSE file in /usr/share/doc/legal/intel_ipw.LICENSE.
+00000185 ipw_monitor: If you agree with the license, set legal.intel_ipw.license_ack=1 in /boot/loader.conf.
+00000186 module_register_init: MOD_LOAD (ipw_monitor_fw, 0xffff00000016c018, 0) error 1
+00000187 iwi_bss: You need to read the LICENSE file in /usr/share/doc/legal/intel_iwi.LICENSE.
+00000188 iwi_bss: If you agree with the license, set legal.intel_iwi.license_ack=1 in /boot/loader.conf.
+00000189 module_register_init: MOD_LOAD (iwi_bss_fw, 0xffff00000016c0c4, 0) error 1
+00000190 iwi_ibss: You need to read the LICENSE file in /usr/share/doc/legal/intel_iwi.LICENSE.
+00000191 iwi_ibss: If you agree with the license, set legal.intel_iwi.license_ack=1 in /boot/loader.conf.
+00000192 module_register_init: MOD_LOAD (iwi_ibss_fw, 0xffff00000016c170, 0) error 1
+00000193 iwi_monitor: You need to read the LICENSE file in /usr/share/doc/legal/intel_iwi.LICENSE.
+00000194 iwi_monitor: If you agree with the license, set legal.intel_iwi.license_ack=1 in /boot/loader.conf.
+00000195 module_register_init: MOD_LOAD (iwi_monitor_fw, 0xffff00000016c21c, 0) error 1
+00000196 wlan: mac acl policy registered
+00000197 kbd0 at kbdmux0
+00000198 ofwbus0: &lt;Open Firmware Device Tree&gt;
+00000199 simplebus0: &lt;Flattened device tree simple bus&gt; on ofwbus0
+00000200 simplebus1: &lt;Flattened device tree simple bus&gt; on simplebus0
+00000201 psci0: &lt;ARM Power State Co-ordination Interface Driver&gt; on ofwbus0
+00000202 gic0: &lt;ARM Generic Interrupt Controller v3.0&gt; mem 0x1d00000-0x1d0ffff,0x1d40000-0x1d7ffff,0x1d80000-0x1d81fff,0x1d90000-0x1d91fff,0x1da0000-0x1dbffff irq 27 on simplebus1
+00000203 generic_timer0: &lt;ARMv8 Generic Timer&gt; irq 0,1,2,3 on ofwbus0
+00000204 Timecounter &#34;ARM MPCore Timecounter&#34; frequency 12500000 Hz quality 1000
+00000205 Event timer &#34;ARM MPCore Eventtimer&#34; frequency 12500000 Hz quality 1000
+00000206 cpulist0: &lt;Open Firmware CPU Group&gt; on ofwbus0
+00000207 cpu0: &lt;Open Firmware CPU&gt; on cpulist0
+00000208 cpu1: &lt;Open Firmware CPU&gt; on cpulist0
+00000209 pmu0: &lt;Performance Monitoring Unit&gt; irq 4 on ofwbus0
+00000210 spi0: &lt;Armada 37x0 SPI controller&gt; mem 0x10600-0x10fff irq 6 on simplebus1
+00000211 iichb0: &lt;Marvell Armada 37x0 IIC controller&gt; mem 0x11000-0x11023 irq 7 on simplebus1
+00000212 iicbus0: &lt;OFW I2C bus&gt; on iichb0
+00000213 iic0: &lt;I2C generic I/O&gt; on iicbus0
+00000214 uart0: &lt;Marvell Armada 3700 UART&gt; mem 0x12000-0x121ff irq 9,10,11 on simplebus1
+00000215 uart0: console (115200,n,8,1)
+00000216 pinctl0: &lt;Armada 37x0 North Bridge pinctl Controller&gt; mem 0x13800-0x138ff,0x13c00-0x13c1f on simplebus1
+00000217 gpio0: &lt;Armada 37x0 GPIO Controller&gt; on pinctl0
+00000218 gpiobus0: &lt;OFW GPIO bus&gt; on gpio0
+00000219 gpioc0: &lt;GPIO controller&gt; on gpio0
+00000220 pinctl1: &lt;Armada 37x0 South Bridge pinctl Controller&gt; mem 0x18800-0x188ff,0x18c00-0x18c1f on simplebus1
+00000221 gpio1: &lt;Armada 37x0 GPIO Controller&gt; on pinctl1
+00000222 gpiobus1: &lt;OFW GPIO bus&gt; on gpio1
+00000223 gpioc1: &lt;GPIO controller&gt; on gpio1
+00000224 mvneta0: &lt;NETA controller&gt; mem 0x30000-0x33fff irq 14 on simplebus1
+00000225 mvneta0: version is 10
+00000226 mvneta0: Ethernet address: f0:ad:4e:0a:9e:98
+00000227 mdio0: &lt;MDIO&gt; on mvneta0
+00000228 e6000sw: readreg timeout
+00000229 e6000sw0: Unrecognized device, id 0xfff0.
+00000230 e6000sw: readreg timeout
+00000231 e6000sw0: Unrecognized device, id 0xfff0.
+00000232 xhci0: &lt;Marvell Integrated USB 3.0 controller&gt; mem 0x58000-0x5bfff irq 16 on simplebus1
+00000233 xhci0: 32 bytes context size, 32-bit DMA
+00000234 usbus0 on xhci0
+00000235 ehci0: &lt;Marvell Integrated USB 2.0 controller&gt; mem 0x5e000-0x5ffff irq 17 on simplebus1
+00000236 usbus1: EHCI version 1.0
+00000237 usbus1 on ehci0
+00000238 sdhci_xenon0: &lt;Armada Xenon SDHCI controller&gt; mem 0xd0000-0xd02ff,0x1e808-0x1e80b irq 24 on simplebus1
+00000239 mmc0: &lt;MMC/SD bus&gt; on sdhci_xenon0
+00000240 sdhci_xenon1: &lt;Armada Xenon SDHCI controller&gt; mem 0xd8000-0xd82ff,0x17808-0x1780b irq 25 on simplebus1
+00000241 mmc1: &lt;MMC/SD bus&gt; on sdhci_xenon1
+00000242 ahci0: &lt;AHCI SATA controller&gt; mem 0xe0000-0xe1fff irq 26 on simplebus1
+00000243 ahci0: AHCI v1.30 with 1 6Gbps ports, Port Multiplier supported with FBS
+00000244 ahcich0: &lt;AHCI channel&gt; at channel 0 on ahci0
+00000245 gpioled0: &lt;GPIO LEDs&gt; on ofwbus0
+00000246 cryptosoft0: &lt;software crypto&gt;
+00000247 Timecounters tick every 1.000 msec
+00000248 mvneta0: link state changed to UP
+00000249 spibus0: &lt;OFW SPI bus&gt; on spi0
+00000250 mx25l0: &lt;M25Pxx Flash Family&gt; at cs 0 mode 0 on spibus0
+00000251 mx25l0: device type mx25u3235f, size 4096K in 64 sectors of 64K, erase size 4K
+00000252 usbus0: 5.0Gbps Super Speed USB v3.0
+00000253 usbus1: 480Mbps High Speed USB v2.0
+00000254 ugen0.1: &lt;Marvell XHCI root HUB&gt; at usbus0
+00000255 uhub0: &lt;Marvell XHCI root HUB, class 9/0, rev 3.00/1.00, addr 1&gt; on usbus0
+00000256 ugen1.1: &lt;Marvell EHCI root HUB&gt; at usbus1
+00000257 uhub1: &lt;Marvell EHCI root HUB, class 9/0, rev 2.00/1.00, addr 1&gt; on usbus1
+00000258 mmc0: No compatible cards found on bus
+00000259 mmcsd0: 8GB &lt;MMCHC M8G1GC 0.3 SN F49C4805 MFG 07/2013 by 21 0x0000&gt; at mmc1 50.0MHz/4bit/65535-block
+00000260 mmcsd0boot0: 4MB partion 1 at mmcsd0
+00000261 mmcsd0boot1: 4MB partion 2 at mmcsd0
+00000262 mmcsd0rpmb: 524kB partion 3 at mmcsd0
+00000263 uhub0: 2 ports with 2 removable, self powered
+00000264 uhub1: 1 port with 1 removable, self powered
+00000265 Release APs
+00000266 CPU 0: ARM Cortex-A53 r0p4 affinity: 0
+00000267 Instruction Set Attributes 0 = &lt;AES+PMULL,SHA1,SHA2,CRC32&gt;
+00000268 Instruction Set Attributes 1 = &lt;0&gt;
+00000269 Processor Features 0 = &lt;GIC,AdvSIMD,Float,EL3 32,EL2 32,EL1 32,EL0 32&gt;
+00000270 Processor Features 1 = &lt;0&gt;
+00000271 Memory Model Features 0 = &lt;4k Granule,64k Granule,MixedEndian,S/NS Mem,16bit ASID,1TB PA&gt;
+00000272 Memory Model Features 1 = &lt;&gt;
+00000273 Debug Features 0 = &lt;2 CTX Breakpoints,4 Watchpoints,6 Breakpoints,PMUv3,Debug v8&gt;
+00000274 Debug Features 1 = &lt;0&gt;
+00000275 Auxiliary Features 0 = &lt;0&gt;
+00000276 Auxiliary Features 1 = &lt;0&gt;
+00000277 CPU 1: ARM Cortex-A53 r0p4 affinity: 1
+00000278 Trying to mount root from ufs:/dev/ufsid/5c11689b7c8fb123 [rw,noatime]...
+00000279 WARNING: / was not properly dismounted
+00000280 Warning: no time-of-day clock registered, system time will not be set accurately
+00000281 Configuring crash dumps...
+00000282 dumpon: /dev/label/swap*: No such file or directory
+00000283 Unable to specify /dev/label/swap* as a dump device.
+00000284 No suitable dump device was found.
+00000285 ** SU+J Recovering /dev/ufsid/5c11689b7c8fb123
+00000286 ** Reading 11730944 byte journal from inode 4.
+00000287 ** Building recovery table.
+00000288 ** Resolving unreferenced inode list.
+00000289 ** Processing journal entries.
+00000290 ** 288 journal records in 38912 bytes for 23.68% utilization
+00000291 ** Freed 1 inodes (0 dirs) 4 blocks, and 0 frags.
+00000292 
+00000293 ***** FILE SYSTEM MARKED CLEAN *****
+00000294 Filesystems are clean, continuing...
+00000295 Mounting filesystems...
+00000296 random: unblocking device.
+00000297 
+00000298         __
+00000299  _ __  / _|___  ___ _ __  ___  ___
+00000300 | &#39;_ \| |_/ __|/ _ \ &#39;_ \/ __|/ _ \
+00000301 | |_) | _ \__ \  __/ | | \__ \ __/
+00000302 | .__/|_| |___/\___|_| |_|___/\___|
+00000303 |_|
+00000304 
+00000305 
+00000306 Welcome to pfSense 2.4.4-RELEASE (Patch 3)...
+00000307 
+00000308 ...ELF ldconfig path: /lib /usr/lib /usr/lib/compat /usr/local/lib /usr/local/lib/ipsec /usr/local/lib/perl5/5.26/mach/CORE
+00000309 done.
+00000310 &gt;&gt;&gt; Removing vital flag from lang/php72... done.
+00000311 External config loader 1.0 is now starting... mmcsd0s1 mmcsd0s2 mmcsd0s3
+00000312 Launching the init system......... done.
+00000313 Initializing.................. done.
+00000314 Starting device manager (devd)...done.
+00000315 Loading configuration......done.
+00000316 Updating configuration...done.
+00000317 Checking config backups consistency.................................done.
+00000318 Setting up extended sysctls...done.
+00000319 Setting timezone...done.
+00000320 Configuring loopback interface...done.
+00000321 Starting syslog...done.
+00000322 Starting Secure Shell Services...done.
+00000323 Configuring switch...done.
+00000324 Setting up interfaces microcode...done.
+00000325 Configuring loopback interface...done.
+00000326 Creating wireless clone interfaces...done.
+00000327 Configuring LAGG interfaces...done.
+00000328 Configuring VLAN interfaces...done.
+00000329 Configuring QinQ interfaces...done.
+00000330 Configuring IPsec VTI interfaces...done.
+00000331 Configuring WAN interface...done.
+00000332 Configuring LAN interface...done.
+00000333 Configuring CARP settings...done.
+00000334 Syncing OpenVPN settings...done.
+00000335 Configuring firewall......done.
+00000336 Starting PFLOG...done.
+00000337 Setting up gateway monitors...done.
+00000338 Setting up static routes...route: writing to routing socket: Network is unreachable
+00000339 route: route has not been found
+00000340 done.
+00000341 Setting up DNSs...
+00000342 Starting DNS Resolver...done.
+00000343 Synchronizing user settings...done.
+00000344 Starting webConfigurator...done.
+00000345 Configuring CRON...done.
+00000346 Starting NTP time client...done.
+00000347 Starting DHCP service...done.
+00000348 Configuring firewall......done.
+00000349 Generating RRD graphs...done.
+00000350 Starting syslog...done.
+00000351 Starting CRON... done.
+00000352 Starting package acme...done.
+00000353 pfSense 2.4.4-RELEASE (Patch 3) arm64 Thu May 16 06:01:19 EDT 2019
+00000354 Bootup complete
+00000355 
+00000356 FreeBSD/arm64 (pfsense.domain.local) (ttyu0)
+00000357 
+00000358 Netgate SG-1100 Netgate Device ID: XXXXXXXXXXXXXXXXXXXX
+00000359 Serial: XXXXXXXXXXXXX Netgate Crypto ID: XXXXXXXXXXXXXXXXXX
+00000360 
+00000361 *** Welcome to pfSense 2.4.4-RELEASE-p3 (arm64) on pfsense ***
+00000362 
+00000363 WAN (wan) -&gt; mvneta0.4090 -&gt;
+00000364 LAN (lan) -&gt; mvneta0.4091 -&gt; v4: 10.10.2.1/24
+00000365 OPT (opt1) -&gt; mvneta0.4092 -&gt;
+00000366 
+00000367 0) Logout (SSH only) 9) pfTop
+00000368 1) Assign Interfaces 10) Filter Logs
+00000369 2) Set interface(s) IP address 11) Restart webConfigurator
+00000370 3) Reset webConfigurator password 12) PHP shell + pfSense tools
+00000371 4) Reset to factory defaults 13) Update from console
+00000372 5) Reboot system 14) Disable Secure Shell (sshd)
+00000373 6) Halt system 15) Restore recent configuration
+00000374 7) Ping host 16) Restart PHP-FPM
+00000375 8) Shell
+00000376 
+00000377 Enter an option:
+</code></pre><p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2019/07/my-sg-1100-died/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My SG-1100 died on twitter"
+        href="https://twitter.com/intent/tweet/?text=My%20SG-1100%20died&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f07%2fmy-sg-1100-died%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My SG-1100 died on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f07%2fmy-sg-1100-died%2f&amp;title=My%20SG-1100%20died&amp;summary=My%20SG-1100%20died&amp;source=https%3a%2f%2floganmarchione.github.io%2f2019%2f07%2fmy-sg-1100-died%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My SG-1100 died on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2019%2f07%2fmy-sg-1100-died%2f&title=My%20SG-1100%20died">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My SG-1100 died on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2019%2f07%2fmy-sg-1100-died%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My SG-1100 died on whatsapp"
+        href="https://api.whatsapp.com/send?text=My%20SG-1100%20died%20-%20https%3a%2f%2floganmarchione.github.io%2f2019%2f07%2fmy-sg-1100-died%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My SG-1100 died on telegram"
+        href="https://telegram.me/share/url?text=My%20SG-1100%20died&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f07%2fmy-sg-1100-died%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

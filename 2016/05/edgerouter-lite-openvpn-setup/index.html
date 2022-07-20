@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>EdgeRouter Lite OpenVPN setup | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In my last post, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="EdgeRouter Lite OpenVPN setup" />
+<meta property="og:description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In my last post, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2016-05-12T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2016-05-12T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg" />
+<meta name="twitter:title" content="EdgeRouter Lite OpenVPN setup"/>
+<meta name="twitter:description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In my last post, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "EdgeRouter Lite OpenVPN setup",
+      "item": "https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "EdgeRouter Lite OpenVPN setup",
+  "name": "EdgeRouter Lite OpenVPN setup",
+  "description": "Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!\nDate URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In my last post, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!\nDate URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In my last post, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall. Is this post, I’ll be going over the setup of an OpenVPN server. In the past, I used an Archer C7 running OpenWrt to host OpenVPN, so I’ll be applying most of those principles again here.\nVPN types If you need a refresher on the different types of VPNs, see below.\nSoftware Advantage Disadvantage PPTP Available in most operating systems by default Uses IP protocol 47 (GRE) and UDP port 1723, making it easily detectable and blockable by a firewall Encryption is not strong First on NSA's \"to-hack\" list L2TP/IPSec Available in most operating systems by default More secure than PPTP No known security flaws Uses UDP ports 50, 500, 1701, and 4500, making it easily detectable and blockable by a firewall Slightly more overhead than OpenVPN, since traffic is passing through the tunnel and encryption in two separate steps OpenVPN Very configurable Uses open source software More secure than PPTP No known security flaws Can use any port, setting to TCP 443 makes it almost indistinguishable from HTTPS traffic Not available in most operating systems by default, requires a third-party application Split-tunnel vs full-tunnel When setting up a VPN, you’ll have to choose whether to use split-tunnel or full-tunnel for the clients.\nSplit-tunnel - Allows your local client to access resources on the remote server network (e.g., network shares, file servers, email servers, etc…). Regular internet traffic does not flow through the tunnel and is not encrypted. Full-tunnel - Allows your local client to access resources on the remote server network (e.g., network shares, file servers, email servers, etc…). Regular internet traffic does flow through the tunnel and is encrypted. However, this might cut your client off from local resources. Typically, clients will have to connect/disconnect based on which group of resources they want to access (local or remote). I usually choose to go full-tunnel, since I’m usually trying to get access to resources at home and I’m not concerned about local resources. This is easy enough to change on each client by adding or removing one option.\nHardware acceleration A big advantage of the ERL is that it allows you to offload some functions to hardware. One of these is the IPSec VPN, which greatly improves the throughput. Expect to get about 10Mbps (with one CPU at 100%) while using OpenVPN, and expect up to 150Mbps while using IPSec/L2TP with hardware offload enabled.\nI’m choosing to use OpenVPN because it’s what I’m more familiar with. If the performance is really bad, I’ll switch to IPSec/L2TP.\nOpenVPN security By default, OpenVPN developers tend to favor compatibility and speed over security. That’s not necessarily a bad thing, but in this case, I’m going to be changing a few default options. OpenVPN defaults to the following:\ncipher - Blowfish in Cipher Block Chaining mode (BF-CBC) authentication digest - SHA1 OpenVPN themselves recommend AES-256 for more security. In addition, SHA1 is outdated, and shouldn’t be used if SHA2 is available. I’m going to be using the following:\ncipher - AES-256-CBC authentication digest - SHA256 For more security reading, check out the resources here, here, and here.\nOpenVPN setup We’re basically going to create our own Certificate Authority (CA) on the router and use it to sign certificates for authentication. This isn’t best-practice, since the CA should be on its own machine, but it will do for this situation.\nCreate CA First, you’ll need to become root.\nsudo su - Next, move into the necessary directory and create a new CA certificate.\ncd /usr/lib/ssl/misc/ ./CA.sh -newca Once this completes, you’ll have a new directory called demoCA. The two most important files in here are as follows:\nprivate/cakey.pem - This is the private key for your CA (keep this secret) cacert.pem - This the public key for your CA (you’ll be giving this out to your clients) Create server certificate Next, we’ll generate a public/private key for the server. The Common Name (CN) of your server certificate should be something unique (I used my dynamic DNS name).\n./CA.sh -newreq Once this completes, you’ll have two new files, as follows:\nnewkey.pem - This is the private key for your server (keep this secret) newreq.pem - This is the unsigned public key of the server (this needs to be signed by your CA) Now, sign the request.\n./CA.sh -sign You’ll have one more file, shown below.\nnewcert.pem - This is the public key for your server Move files I recommend moving the important files to a directory where they won’t be wiped out during a firmware upgrade. In addition to moving the files, we’re also renaming them.\ncp /usr/lib/ssl/misc/demoCA/cacert.pem /config/auth/ cp /usr/lib/ssl/misc/demoCA/private/cakey.pem /config/auth/ mv /usr/lib/ssl/misc/newcert.pem /config/auth/host.pem mv /usr/lib/ssl/misc/newkey.pem /config/auth/host.key DH parameters Next, generate Diffie-Hellman (DH) parameters to ensure Perfect Forward Secrecy (PFS). Expect this to take 5-10 minutes with one CPU at 100%.\nopenssl dhparam -out /config/auth/dh2048.pem -2 2048 A good explanation of DH parameters and why you need them is located here.\nCreate user certificate(s) Next, generate a request and sign it for a new user certificate. The Common Name (CN) of your user certificate should be something unique (I used my client’s host name).\n./CA.sh -newreq ./CA.sh -sign Move the new files into your preserved directory while renaming them.\nmv newcert.pem /config/auth/client1.pem mv newkey.pem /config/auth/client1.key Repeat this as necessary for each client.\nDecrypt keys You’ll need to remove the password from the host and client(s) keys so that OpenVPN can run in interactive mode.\nopenssl rsa -in /config/auth/host.key -out /config/auth/host-decrypted.key openssl rsa -in /config/auth/client1.key -out /config/auth/client1-decrypted.key Repeat this as necessary for each client(s).\nEdgeRouter setup First, I would recommend exiting back to the normal ubnt user.\nexit whoami The following steps were pretty straight-forward, since I’ve already setup an OpenVPN server on my Archer C7.\nCreate interface Now, we’ll need to create a new interface for the VPN and set a few settings.\nconfigure set interfaces openvpn vtun0 set interfaces openvpn vtun0 description \"OpenVPN server\" set interfaces openvpn vtun0 mode server set interfaces openvpn vtun0 encryption aes256 set interfaces openvpn vtun0 hash sha256 set interfaces openvpn vtun0 server subnet 10.10.10.0/24 set interfaces openvpn vtun0 server push-route 10.10.2.0/24 set interfaces openvpn vtun0 server name-server 10.10.2.1 set interfaces openvpn vtun0 tls ca-cert-file /config/auth/cacert.pem set interfaces openvpn vtun0 tls cert-file /config/auth/host.pem set interfaces openvpn vtun0 tls key-file /config/auth/host-decrypted.key set interfaces openvpn vtun0 tls dh-file /config/auth/dh2048.pem set interfaces openvpn vtun0 openvpn-option \"--port 1194\" set interfaces openvpn vtun0 openvpn-option --tls-server set interfaces openvpn vtun0 openvpn-option \"--comp-lzo yes\" set interfaces openvpn vtun0 openvpn-option --persist-key set interfaces openvpn vtun0 openvpn-option --persist-tun set interfaces openvpn vtun0 openvpn-option \"--keepalive 10 120\" set interfaces openvpn vtun0 openvpn-option \"--user nobody\" set interfaces openvpn vtun0 openvpn-option \"--group nogroup\" commit save A few notes on these settings:\nThe VPN subnet can’t be the same as your LAN subnet. In my case, my VPN subnet is 10.10.10.0/24 and my LAN subnet is 10.10.2.0/24. You’ll need to push a route from the VPN subnet to your LAN subnet. You’ll need to set a name server for the VPN subnet (I’m using my router, but you can use a public DNS server). The standard OpenVPN port is 1194, but setting it to 443 would make it almost indistinguishable from HTTPS traffic ;-) The rest of the settings are explained in the OpenVPN manuals. Setup firewall We’ll need to open a port in the firewall for OpenVPN. If you’re not using the standard port (1194), change it appropriately.\nconfigure set firewall name WAN_LOCAL rule 50 action accept set firewall name WAN_LOCAL rule 50 description \"OpenVPN\" set firewall name WAN_LOCAL rule 50 destination port 1194 set firewall name WAN_LOCAL rule 50 log enable set firewall name WAN_LOCAL rule 50 protocol udp commit save Set DNS Tell DNS to listen for requests on the new vtun0 interface.\nconfigure set service dns forwarding listen-on vtun0 commit save Setup client configuration The client configuration will vary from client-to-client, but the configuration below should work for Android phones or Linux clients. If you’re using Windows, you’re going to have a tougher time, because it needs some extra options.\necho \"client\" \u003e\u003e /config/auth/client1.ovpn echo \"dev tun\" \u003e\u003e /config/auth/client1.ovpn echo \"proto udp\" \u003e\u003e /config/auth/client1.ovpn echo \"remote yourhostname.dyndns.com 1194\" \u003e\u003e /config/auth/client1.ovpn echo \"cipher AES-256-CBC\" \u003e\u003e /config/auth/client1.ovpn echo \"auth SHA256\" \u003e\u003e /config/auth/client1.ovpn echo \"resolv-retry infinite\" \u003e\u003e /config/auth/client1.ovpn echo \"redirect-gateway def1\" \u003e\u003e /config/auth/client1.ovpn echo \"nobind\" \u003e\u003e /config/auth/client1.ovpn echo \"comp-lzo yes\" \u003e\u003e /config/auth/client1.ovpn echo \"persist-key\" \u003e\u003e /config/auth/client1.ovpn echo \"persist-tun\" \u003e\u003e /config/auth/client1.ovpn echo \"user nobody\" \u003e\u003e /config/auth/client1.ovpn echo \"group nogroup\" \u003e\u003e /config/auth/client1.ovpn echo \"verb 3\" \u003e\u003e /config/auth/client1.ovpn echo \"ca cacert.pem\" \u003e\u003e /config/auth/client1.ovpn echo \"cert client1.pem\" \u003e\u003e /config/auth/client1.ovpn echo \"key client1-decrypted.key\" \u003e\u003e /config/auth/client1.ovpn A few notes on these settings:\nObviously, subsititue your dynamic DNS hostname and port as needed. To use full-tunnel, include the option redirect-gateway def1. To use split tunnel, leave it out. The rest of the settings are explained in the OpenVPN manuals. Distribute keys You’ll need to move the following files from the router, to your client(s). All four files should be saved in the same folder/location on your client.\ncacert.pem (CA certificate) client1.pem (client1 certificate) client1-decrypted.key (client1 key) client1.ovpn (client1 configuration) You should use SFTP, SSH, or SCP to move the files to your client(s). DO NOT EMAIL THESE FILES TO YOURSELF!\nClient setup Android In this case, I’m going to be using the official OpenVPN Android app.\nOnce installed, tap on the Option button, then tap on Import, then tap on Import Profile from SD Card.\nBrowse to the client1.ovpn file and import it into the OpenVPN Connect app.\nThe profile should be imported successfully, and you should be able to see your server’s name. Click Connect to establish a connection.\nVerify your connection on the next screen.\niOS In this case, I’m going to be using the official OpenVPN iOS app.\nYou should use iTunes to move the files to your iOS device, since emailing them is not secure. An example of how to transfer files with iTunes is shown here.\nWindows 10 If you’re using a Windows client, check out Randy’s .ovpn file in the comments!\nCommenter Chris was nice enough to email me a configuration for Windows 10, shown below. For certificate/key generation he used this guide instead of the built-in scripts.\nServer ​xxxxx@​xxxxx# show interfaces openvpn vtun0 description \"OpenVPN Server\" encryption aes256 hash sha256 mode server openvpn-option \"--port ​xxxx\" openvpn-option --tls-server openvpn-option \"--comp-lzo yes\" openvpn-option --persist-key openvpn-option --persist-tun openvpn-option \"--keepalive 10 120\" openvpn-option \"--user nobody\" openvpn-option \"--group nogroup\" openvpn-option \"--tls-auth /config/auth/ta.key 0\" openvpn-option \"--tls-cipher TLS-DHE-RSA-WITH-AES-256-CBC-SHA\" server { name-server 10.10.0.1 push-route 10.10.0.0/24 push-route 0.0.0.0/0 subnet 10.10.10.0/24 } tls { ca-cert-file /config/auth/ca-chain.cert.pem cert-file /config/auth/openvpn.host.cert.pem dh-file /config/auth/dh2048.pem key-file /config/auth/openvpn.host.key.pem }​ Client (Win10) pull tls-client dev tun proto udp remote ​xxx.xxx.xxx.xxx ​xxxx cipher AES-256-CBC tls-cipher TLS-DHE-RSA-WITH-AES-256-CBC-SHA auth SHA256 resolv-retry infinite redirect-gateway def1 nobind comp-lzo yes persist-key persist-tun verb 3 ca ca-chain.cert.pem cert openvpn.client01.cert.pem key openvpn.client01.key.pem tls-auth ta.key 1​ Verify connection Try to browse a public site (e.g., www.google.com), then try to browse to your router’s IP (e.g., 10.10.2.1). If everything is setup correctly, both should load. You can also check your IP with an external tool, such as WhatIsMyIP, and you should see your router’s public IP. I’d also advise to check for DNS leaks (your DNS should be set to the DNS servers we set on the router).\nSpeedtest On a Nexus 5 on AT\u0026T LTE, I get 25.61Mbps down, and 23.37Mbps up.\nWhen connected to the VPN while on the same LTE, I get 11.52Mbps down and 5.35Mbps up. Not great, but certainly not bad.\nBackup CA Thanks to commenter Axel for pointing this out. You should backup the entire /usr/lib/ssl/misc directory because it is wiped on a firmware upgrade, and you won’t be able to create any new certificates without creating a new CA from scratch.\ncp -r /usr/lib/ssl/misc /config/ Then, after an upgrade, you can restore the misc directory from /config back to /usr/lib/ssl.\nLet me know how you setup OpenVPN!\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "2094",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg","datePublished": "2016-05-12T00:00:00Z",
+  "dateModified": "2016-05-12T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      EdgeRouter Lite OpenVPN setup
+    </h1>
+    <div class="post-meta"><span title='2016-05-12 00:00:00 +0000 UTC'>2016-05-12</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                        
+                <li>
+                    <a href="#vpn-types" aria-label="VPN types">VPN types</a></li>
+                <li>
+                    <a href="#split-tunnel-vs-full-tunnel" aria-label="Split-tunnel vs full-tunnel">Split-tunnel vs full-tunnel</a></li>
+                <li>
+                    <a href="#hardware-acceleration" aria-label="Hardware acceleration">Hardware acceleration</a></li>
+                <li>
+                    <a href="#openvpn-security" aria-label="OpenVPN security">OpenVPN security</a></li></ul>
+                </li>
+                <li>
+                    <a href="#openvpn-setup" aria-label="OpenVPN setup">OpenVPN setup</a><ul>
+                        
+                <li>
+                    <a href="#create-ca" aria-label="Create CA">Create CA</a></li>
+                <li>
+                    <a href="#create-server-certificate" aria-label="Create server certificate">Create server certificate</a></li>
+                <li>
+                    <a href="#move-files" aria-label="Move files">Move files</a></li>
+                <li>
+                    <a href="#dh-parameters" aria-label="DH parameters">DH parameters</a></li>
+                <li>
+                    <a href="#create-user-certificates" aria-label="Create user certificate(s)">Create user certificate(s)</a></li>
+                <li>
+                    <a href="#decrypt-keys" aria-label="Decrypt keys">Decrypt keys</a></li></ul>
+                </li>
+                <li>
+                    <a href="#edgerouter-setup" aria-label="EdgeRouter setup">EdgeRouter setup</a><ul>
+                        
+                <li>
+                    <a href="#create-interface" aria-label="Create interface">Create interface</a></li>
+                <li>
+                    <a href="#setup-firewall" aria-label="Setup firewall">Setup firewall</a></li>
+                <li>
+                    <a href="#set-dns" aria-label="Set DNS">Set DNS</a></li>
+                <li>
+                    <a href="#setup-client-configuration" aria-label="Setup client configuration">Setup client configuration</a></li>
+                <li>
+                    <a href="#distribute-keys" aria-label="Distribute keys">Distribute keys</a></li></ul>
+                </li>
+                <li>
+                    <a href="#client-setup" aria-label="Client setup">Client setup</a><ul>
+                        
+                <li>
+                    <a href="#android" aria-label="Android">Android</a></li>
+                <li>
+                    <a href="#ios" aria-label="iOS">iOS</a></li>
+                <li>
+                    <a href="#windows-10" aria-label="Windows 10">Windows 10</a><ul>
+                        
+                <li>
+                    <a href="#server" aria-label="Server">Server</a></li>
+                <li>
+                    <a href="#client-win10" aria-label="Client (Win10)">Client (Win10)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#verify-connection" aria-label="Verify connection">Verify connection</a></li>
+                <li>
+                    <a href="#speedtest" aria-label="Speedtest">Speedtest</a></li></ul>
+                </li>
+                <li>
+                    <a href="#backup-ca" aria-label="Backup CA">Backup CA</a></li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>URL</th>
+<th>Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-06-28</td>
+<td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
+<td>Migrated to a Netgate SG-1100</td>
+</tr>
+<tr>
+<td>2019-02-03</td>
+<td><a href="/2019/02/edgerouter-cname-records/">EdgeRouter CNAME records</a></td>
+<td>Setup CNAME records</td>
+</tr>
+<tr>
+<td>2017-10-03</td>
+<td><a href="/2017/10/dyn-ddns-edgerouter/">Dyn DDNS on EdgeRouter</a></td>
+<td>Setup DynDNS</td>
+</tr>
+<tr>
+<td>2017-04-25</td>
+<td><a href="/2017/04/duckdns-on-edgerouter/">DuckDNS on EdgeRouter</a></td>
+<td>Setup DuckDNS</td>
+</tr>
+<tr>
+<td>2017-01-08</td>
+<td><a href="/2017/01/ubiquiti-edgerouter-serial-console-settings/">Ubiquiti EdgeRouter serial console settings</a></td>
+<td>Serial console settings</td>
+</tr>
+<tr>
+<td>2016-11-29</td>
+<td><a href="/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/">Ubiquiti UniFi controller setup on Raspberry Pi 3</a></td>
+<td>Install UniFi Controller</td>
+</tr>
+<tr>
+<td>2016-08-30</td>
+<td><a href="/2016/08/edgerouter-lite-dnsmasq-setup/">EdgeRouter Lite Dnsmasq setup</a></td>
+<td>Setup dnsmasq</td>
+</tr>
+<tr>
+<td>2016-06-13</td>
+<td><a href="/2016/06/edgerouter-lite-software-upgrade/">EdgeRouter Lite software upgrade</a></td>
+<td>Firmware upgrade</td>
+</tr>
+<tr>
+<td>2016-05-12</td>
+<td><a href="/2016/05/edgerouter-lite-openvpn-setup/">EdgeRouter Lite OpenVPN setup</a></td>
+<td>OpenVPN server setup</td>
+</tr>
+<tr>
+<td>2016-04-29</td>
+<td><a href="/2016/04/ubiquiti-edgerouter-lite-setup/">Ubiquiti EdgeRouter Lite setup</a></td>
+<td>Initial setup</td>
+</tr>
+</tbody>
+</table>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>In my <a href="/2016/04/ubiquiti-edgerouter-lite-setup/">last post</a>, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall. Is this post, I&rsquo;ll be going over the setup of an OpenVPN server. In the past, I used an Archer C7 running OpenWrt to <a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">host OpenVPN</a>, so I&rsquo;ll be applying most of those principles again here.</p>
+<h2 id="vpn-types">VPN types<a hidden class="anchor" aria-hidden="true" href="#vpn-types">#</a></h2>
+<p>If you need a refresher on the different types of VPNs, see below.</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Software</th>
+        <th>Advantage</th>
+        <th>Disadvantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>PPTP</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Available in most operating systems by default</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Uses IP protocol 47 (GRE) and UDP port 1723, making it easily detectable and blockable by a firewall</li>
+            <li>Encryption is not strong</li>
+            <li>First on NSA's "to-hack" list</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>L2TP/IPSec</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Available in most operating systems by default</li>
+            <li>More secure than PPTP</li>
+            <li>No known security flaws</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Uses UDP ports 50, 500, 1701, and 4500, making it easily detectable and blockable by a firewall</li>
+            <li>Slightly more overhead than OpenVPN, since traffic is passing through the tunnel and encryption in two separate steps</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>OpenVPN</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Very configurable</li>
+            <li>Uses open source software</li>
+            <li>More secure than PPTP</li>
+            <li>No known security flaws</li>
+            <li>Can use any port, setting to TCP 443 makes it almost indistinguishable from HTTPS traffic</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Not available in most operating systems by default, requires a third-party application</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="split-tunnel-vs-full-tunnel">Split-tunnel vs full-tunnel<a hidden class="anchor" aria-hidden="true" href="#split-tunnel-vs-full-tunnel">#</a></h2>
+<p>When setting up a VPN, you&rsquo;ll have to choose whether to use split-tunnel or full-tunnel for the clients.</p>
+<ul>
+<li>Split-tunnel - Allows your local client to access resources on the remote server network (e.g., network shares, file servers, email servers, etc&hellip;). Regular internet traffic does not flow through the tunnel and is not encrypted.</li>
+<li>Full-tunnel - Allows your local client to access resources on the remote server network (e.g., network shares, file servers, email servers, etc&hellip;). Regular internet traffic does flow through the tunnel and is encrypted. However, this might cut your client off from local resources. Typically, clients will have to connect/disconnect based on which group of resources they want to access (local or remote).</li>
+</ul>
+<p>I usually choose to go full-tunnel, since I&rsquo;m usually trying to get access to resources at home and I&rsquo;m not concerned about local resources. This is easy enough to change on each client by adding or removing one option.</p>
+<h2 id="hardware-acceleration">Hardware acceleration<a hidden class="anchor" aria-hidden="true" href="#hardware-acceleration">#</a></h2>
+<p>A big advantage of the ERL is that it allows you to offload some functions to hardware. One of these is the IPSec VPN, which greatly improves the throughput. Expect to get about 10Mbps (with one CPU at 100%) while using OpenVPN, and expect up to 150Mbps while using IPSec/L2TP with hardware offload enabled.</p>
+<p>I&rsquo;m choosing to use OpenVPN because it&rsquo;s what I&rsquo;m more familiar with. If the performance is really bad, I&rsquo;ll switch to IPSec/L2TP.</p>
+<h2 id="openvpn-security">OpenVPN security<a hidden class="anchor" aria-hidden="true" href="#openvpn-security">#</a></h2>
+<p>By default, OpenVPN developers tend to favor compatibility and speed over security. That&rsquo;s not necessarily a bad thing, but in this case, I&rsquo;m going to be changing a few default options. OpenVPN defaults to the following:</p>
+<ul>
+<li>cipher - Blowfish in Cipher Block Chaining mode (BF-CBC)</li>
+<li>authentication digest - SHA1</li>
+</ul>
+<p>OpenVPN themselves <a href="https://openvpn.net/index.php/open-source/documentation/howto.html#security">recommend</a> AES-256 for more security. In addition, <a href="https://konklone.com/post/why-google-is-hurrying-the-web-to-kill-sha-1">SHA1 is outdated</a>, and shouldn&rsquo;t be used if SHA2 is available. I&rsquo;m going to be using the following:</p>
+<ul>
+<li>cipher - AES-256-CBC</li>
+<li>authentication digest - SHA256</li>
+</ul>
+<p>For more security reading, check out the resources <a href="https://blog.g3rt.nl/openvpn-security-tips.html">here</a>, <a href="https://community.openvpn.net/openvpn/wiki/Hardening">here</a>, and <a href="https://openvpn.net/index.php/open-source/documentation/howto.html#security">here</a>.</p>
+<h1 id="openvpn-setup">OpenVPN setup<a hidden class="anchor" aria-hidden="true" href="#openvpn-setup">#</a></h1>
+<p>We&rsquo;re basically going to create our own Certificate Authority (CA) on the router and use it to sign certificates for authentication. This isn&rsquo;t best-practice, since the CA should be on its own machine, but it will do for this situation.</p>
+<h2 id="create-ca">Create CA<a hidden class="anchor" aria-hidden="true" href="#create-ca">#</a></h2>
+<p>First, you&rsquo;ll need to become root.</p>
+<pre tabindex="0"><code>sudo su -
+</code></pre><p>Next, move into the necessary directory and create a new CA certificate.</p>
+<pre tabindex="0"><code>cd /usr/lib/ssl/misc/
+./CA.sh -newca
+</code></pre><p>Once this completes, you&rsquo;ll have a new directory called <em>demoCA</em>. The two most important files in here are as follows:</p>
+<ul>
+<li><em>private/cakey.pem</em> - This is the private key for your CA (keep this secret)</li>
+<li><em>cacert.pem</em> - This the public key for your CA (you&rsquo;ll be giving this out to your clients)</li>
+</ul>
+<h2 id="create-server-certificate">Create server certificate<a hidden class="anchor" aria-hidden="true" href="#create-server-certificate">#</a></h2>
+<p>Next, we&rsquo;ll generate a public/private key for the server. The Common Name (CN) of your server certificate should be something unique (I used my dynamic DNS name).</p>
+<pre tabindex="0"><code>./CA.sh -newreq
+</code></pre><p>Once this completes, you&rsquo;ll have two new files, as follows:</p>
+<ul>
+<li><em>newkey.pem</em> - This is the private key for your server (keep this secret)</li>
+<li><em>newreq.pem</em> - This is the unsigned public key of the server (this needs to be signed by your CA)</li>
+</ul>
+<p>Now, sign the request.</p>
+<pre tabindex="0"><code>./CA.sh -sign
+</code></pre><p>You&rsquo;ll have one more file, shown below.</p>
+<ul>
+<li><em>newcert.pem</em> - This is the public key for your server</li>
+</ul>
+<h2 id="move-files">Move files<a hidden class="anchor" aria-hidden="true" href="#move-files">#</a></h2>
+<p>I recommend moving the important files to a directory where they won&rsquo;t be wiped out during a firmware upgrade. In addition to moving the files, we&rsquo;re also renaming them.</p>
+<pre tabindex="0"><code>cp /usr/lib/ssl/misc/demoCA/cacert.pem /config/auth/
+cp /usr/lib/ssl/misc/demoCA/private/cakey.pem /config/auth/
+mv /usr/lib/ssl/misc/newcert.pem /config/auth/host.pem
+mv /usr/lib/ssl/misc/newkey.pem /config/auth/host.key
+</code></pre><h2 id="dh-parameters">DH parameters<a hidden class="anchor" aria-hidden="true" href="#dh-parameters">#</a></h2>
+<p>Next, generate Diffie-Hellman (DH) parameters to ensure <a href="https://en.wikipedia.org/wiki/Forward_secrecy">Perfect Forward Secrecy</a> (PFS). Expect this to take 5-10 minutes with one CPU at 100%.</p>
+<pre tabindex="0"><code>openssl dhparam -out /config/auth/dh2048.pem -2 2048
+</code></pre><p>A good explanation of DH parameters and why you need them is located <a href="http://security.stackexchange.com/questions/38206/can-someone-explain-a-little-better-what-exactly-is-accomplished-by-generation-o">here</a>.</p>
+<h2 id="create-user-certificates">Create user certificate(s)<a hidden class="anchor" aria-hidden="true" href="#create-user-certificates">#</a></h2>
+<p>Next, generate a request and sign it for a new user certificate. The Common Name (CN) of your user certificate should be something unique (I used my client&rsquo;s host name).</p>
+<pre tabindex="0"><code>./CA.sh -newreq
+./CA.sh -sign
+</code></pre><p>Move the new files into your preserved directory while renaming them.</p>
+<pre tabindex="0"><code>mv newcert.pem /config/auth/client1.pem
+mv newkey.pem /config/auth/client1.key
+</code></pre><p>Repeat this as necessary for each client.</p>
+<h2 id="decrypt-keys">Decrypt keys<a hidden class="anchor" aria-hidden="true" href="#decrypt-keys">#</a></h2>
+<p>You&rsquo;ll need to remove the password from the host and client(s) keys so that OpenVPN can run in interactive mode.</p>
+<pre tabindex="0"><code>openssl rsa -in /config/auth/host.key -out /config/auth/host-decrypted.key
+openssl rsa -in /config/auth/client1.key -out /config/auth/client1-decrypted.key
+</code></pre><p>Repeat this as necessary for each client(s).</p>
+<h1 id="edgerouter-setup">EdgeRouter setup<a hidden class="anchor" aria-hidden="true" href="#edgerouter-setup">#</a></h1>
+<p>First, I would recommend exiting back to the normal <em>ubnt</em> user.</p>
+<pre tabindex="0"><code>exit
+whoami
+</code></pre><p>The following steps were pretty straight-forward, since I&rsquo;ve already setup an <a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">OpenVPN server</a> on my Archer C7.</p>
+<h2 id="create-interface">Create interface<a hidden class="anchor" aria-hidden="true" href="#create-interface">#</a></h2>
+<p>Now, we&rsquo;ll need to create a new interface for the VPN and set a few settings.</p>
+<pre tabindex="0"><code>configure
+set interfaces openvpn vtun0
+set interfaces openvpn vtun0 description &#34;OpenVPN server&#34;
+set interfaces openvpn vtun0 mode server
+set interfaces openvpn vtun0 encryption aes256
+set interfaces openvpn vtun0 hash sha256
+set interfaces openvpn vtun0 server subnet 10.10.10.0/24
+set interfaces openvpn vtun0 server push-route 10.10.2.0/24
+set interfaces openvpn vtun0 server name-server 10.10.2.1
+set interfaces openvpn vtun0 tls ca-cert-file /config/auth/cacert.pem
+set interfaces openvpn vtun0 tls cert-file /config/auth/host.pem
+set interfaces openvpn vtun0 tls key-file /config/auth/host-decrypted.key
+set interfaces openvpn vtun0 tls dh-file /config/auth/dh2048.pem
+set interfaces openvpn vtun0 openvpn-option &#34;--port 1194&#34;
+set interfaces openvpn vtun0 openvpn-option --tls-server
+set interfaces openvpn vtun0 openvpn-option &#34;--comp-lzo yes&#34;
+set interfaces openvpn vtun0 openvpn-option --persist-key
+set interfaces openvpn vtun0 openvpn-option --persist-tun
+set interfaces openvpn vtun0 openvpn-option &#34;--keepalive 10 120&#34;
+set interfaces openvpn vtun0 openvpn-option &#34;--user nobody&#34;
+set interfaces openvpn vtun0 openvpn-option &#34;--group nogroup&#34;
+commit
+save
+</code></pre><p>A few notes on these settings:</p>
+<ul>
+<li>The VPN subnet can&rsquo;t be the same as your LAN subnet. In my case, my VPN subnet is 10.10.10.0/24 and my LAN subnet is 10.10.2.0/24.</li>
+<li>You&rsquo;ll need to push a route from the VPN subnet to your LAN subnet.</li>
+<li>You&rsquo;ll need to set a name server for the VPN subnet (I&rsquo;m using my router, but you can use a public DNS server).</li>
+<li>The standard OpenVPN port is 1194, but setting it to 443 would make it almost indistinguishable from HTTPS traffic ;-)</li>
+<li>The rest of the settings are explained in the <a href="https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage">OpenVPN manuals</a>.</li>
+</ul>
+<h2 id="setup-firewall">Setup firewall<a hidden class="anchor" aria-hidden="true" href="#setup-firewall">#</a></h2>
+<p>We&rsquo;ll need to open a port in the firewall for OpenVPN. If you&rsquo;re not using the standard port (1194), change it appropriately.</p>
+<pre tabindex="0"><code>configure
+set firewall name WAN_LOCAL rule 50 action accept
+set firewall name WAN_LOCAL rule 50 description &#34;OpenVPN&#34;
+set firewall name WAN_LOCAL rule 50 destination port 1194
+set firewall name WAN_LOCAL rule 50 log enable
+set firewall name WAN_LOCAL rule 50 protocol udp
+commit
+save
+</code></pre><h2 id="set-dns">Set DNS<a hidden class="anchor" aria-hidden="true" href="#set-dns">#</a></h2>
+<p>Tell DNS to listen for requests on the new <em>vtun0</em> interface.</p>
+<pre tabindex="0"><code>configure
+set service dns forwarding listen-on vtun0
+commit
+save
+</code></pre><h2 id="setup-client-configuration">Setup client configuration<a hidden class="anchor" aria-hidden="true" href="#setup-client-configuration">#</a></h2>
+<p>The client configuration will vary from client-to-client, but the configuration below should work for Android phones or Linux clients. If you&rsquo;re using Windows, you&rsquo;re going to have a tougher time, because it needs some extra options.</p>
+<pre tabindex="0"><code>echo &#34;client&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;dev tun&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;proto udp&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;remote yourhostname.dyndns.com 1194&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;cipher AES-256-CBC&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;auth SHA256&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;resolv-retry infinite&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;redirect-gateway def1&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;nobind&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;comp-lzo yes&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;persist-key&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;persist-tun&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;user nobody&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;group nogroup&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;verb 3&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;ca cacert.pem&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;cert client1.pem&#34; &gt;&gt; /config/auth/client1.ovpn
+echo &#34;key client1-decrypted.key&#34; &gt;&gt; /config/auth/client1.ovpn
+</code></pre><p>A few notes on these settings:</p>
+<ul>
+<li>Obviously, subsititue your dynamic DNS hostname and port as needed.</li>
+<li>To use full-tunnel, include the option <em>redirect-gateway def1</em>. To use split tunnel, leave it out.</li>
+<li>The rest of the settings are explained in the <a href="https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage">OpenVPN manuals</a>.</li>
+</ul>
+<h2 id="distribute-keys">Distribute keys<a hidden class="anchor" aria-hidden="true" href="#distribute-keys">#</a></h2>
+<p>You’ll need to move the following files from the router, to your client(s). All four files should be saved in the same folder/location on your client.</p>
+<ul>
+<li>cacert.pem (CA certificate)</li>
+<li>client1.pem (client1 certificate)</li>
+<li>client1-decrypted.key (client1 key)</li>
+<li>client1.ovpn (client1 configuration)</li>
+</ul>
+<p>You should use SFTP, SSH, or SCP to move the files to your client(s). <strong>DO NOT EMAIL THESE FILES TO YOURSELF</strong>!</p>
+<h1 id="client-setup">Client setup<a hidden class="anchor" aria-hidden="true" href="#client-setup">#</a></h1>
+<h2 id="android">Android<a hidden class="anchor" aria-hidden="true" href="#android">#</a></h2>
+<p>In this case, I&rsquo;m going to be using the official OpenVPN <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn">Android app</a>.</p>
+<p>Once installed, tap on the <em>Option</em> button, then tap on <em>Import</em>, then tap on <em>Import Profile from SD Card</em>.</p>
+
+<p><img src="/2016/05/edgerouter-lite-openvpn-setup/20160512_001.png" loading="lazy" alt="screenshot"></p>
+
+<p><img src="/2016/05/edgerouter-lite-openvpn-setup/20160512_002.png" loading="lazy" alt="screenshot"></p>
+<p>Browse to the <em>client1.ovpn</em> file and import it into the OpenVPN Connect app.</p>
+
+<p><img src="/2016/05/edgerouter-lite-openvpn-setup/20160512_003.png" loading="lazy" alt="screenshot"></p>
+<p>The profile should be imported successfully, and you should be able to see your server&rsquo;s name. Click <em>Connect</em> to establish a connection.</p>
+
+<p><img src="/2016/05/edgerouter-lite-openvpn-setup/20160512_004.png" loading="lazy" alt="screenshot"></p>
+<p>Verify your connection on the next screen.</p>
+
+<p><img src="/2016/05/edgerouter-lite-openvpn-setup/20160512_005.png" loading="lazy" alt="screenshot"></p>
+<h2 id="ios">iOS<a hidden class="anchor" aria-hidden="true" href="#ios">#</a></h2>
+<p>In this case, I&rsquo;m going to be using the official OpenVPN <a href="https://itunes.apple.com/us/app/openvpn-connect/id590379981?mt=8">iOS app</a>.</p>
+<p>You should use iTunes to move the files to your iOS device, since emailing them is not secure. An example of how to transfer files with iTunes is shown <a href="https://www.linode.com/docs/networking/vpn/configuring-openvpn-client-devices#ios">here</a>.</p>
+<h2 id="windows-10">Windows 10<a hidden class="anchor" aria-hidden="true" href="#windows-10">#</a></h2>
+<p>If you&rsquo;re using a Windows client, check out Randy&rsquo;s .ovpn file in the comments!</p>
+<p>Commenter Chris was nice enough to email me a configuration for Windows 10, shown below. For certificate/key generation he used <a href="https://jamielinux.com/docs/openssl-certificate-authority/introduction.html">this</a> guide instead of the built-in scripts.</p>
+<h3 id="server">Server<a hidden class="anchor" aria-hidden="true" href="#server">#</a></h3>
+<pre tabindex="0"><code>​xxxxx@​xxxxx# show interfaces openvpn vtun0
+ description &#34;OpenVPN Server&#34;
+ encryption aes256
+ hash sha256
+ mode server
+ openvpn-option &#34;--port ​xxxx&#34;
+ openvpn-option --tls-server
+ openvpn-option &#34;--comp-lzo yes&#34;
+ openvpn-option --persist-key
+ openvpn-option --persist-tun
+ openvpn-option &#34;--keepalive 10 120&#34;
+ openvpn-option &#34;--user nobody&#34;
+ openvpn-option &#34;--group nogroup&#34;
+ openvpn-option &#34;--tls-auth /config/auth/ta.key 0&#34;
+ openvpn-option &#34;--tls-cipher TLS-DHE-RSA-WITH-AES-256-CBC-SHA&#34;
+ server {
+ name-server 10.10.0.1
+ push-route 10.10.0.0/24
+ push-route 0.0.0.0/0
+ subnet 10.10.10.0/24
+ }
+ tls {
+ ca-cert-file /config/auth/ca-chain.cert.pem
+ cert-file /config/auth/openvpn.host.cert.pem
+ dh-file /config/auth/dh2048.pem
+ key-file /config/auth/openvpn.host.key.pem
+ }​
+</code></pre><h3 id="client-win10">Client (Win10)<a hidden class="anchor" aria-hidden="true" href="#client-win10">#</a></h3>
+<pre tabindex="0"><code>pull
+tls-client
+dev tun
+proto udp
+remote ​xxx.xxx.xxx.xxx ​xxxx
+cipher AES-256-CBC
+tls-cipher TLS-DHE-RSA-WITH-AES-256-CBC-SHA
+auth SHA256
+resolv-retry infinite
+redirect-gateway def1
+nobind
+comp-lzo yes
+persist-key
+persist-tun
+verb 3
+ca ca-chain.cert.pem
+cert openvpn.client01.cert.pem
+key openvpn.client01.key.pem
+tls-auth ta.key 1​
+</code></pre><h2 id="verify-connection">Verify connection<a hidden class="anchor" aria-hidden="true" href="#verify-connection">#</a></h2>
+<p>Try to browse a public site (e.g., <a href="https://www.google.com">www.google.com</a>), then try to browse to your router&rsquo;s IP (e.g., 10.10.2.1). If everything is setup correctly, both should load. You can also check your IP with an external tool, such as <a href="http://www.whatismyip.com/">WhatIsMyIP</a>, and you should see your router&rsquo;s public IP. I&rsquo;d also advise to check for <a href="http://dnsleak.com/">DNS leaks</a> (your DNS should be set to the DNS servers we set on the router).</p>
+<h2 id="speedtest">Speedtest<a hidden class="anchor" aria-hidden="true" href="#speedtest">#</a></h2>
+<p>On a Nexus 5 on AT&amp;T LTE, I get 25.61Mbps down, and 23.37Mbps up.</p>
+<p>When connected to the VPN while on the same LTE, I get 11.52Mbps down and 5.35Mbps up. Not great, but certainly not bad.</p>
+<h1 id="backup-ca">Backup CA<a hidden class="anchor" aria-hidden="true" href="#backup-ca">#</a></h1>
+<p>Thanks to commenter Axel for pointing this out. You should backup the entire <em>/usr/lib/ssl/misc</em> directory because it is wiped on a firmware upgrade, and you won&rsquo;t be able to create any new certificates without creating a new CA from scratch.</p>
+<pre tabindex="0"><code>cp -r /usr/lib/ssl/misc /config/
+</code></pre><p>Then, after an upgrade, you can restore the <em>misc</em> directory from <em>/config</em> back to <em>/usr/lib/ssl</em>.</p>
+<p>Let me know how you setup OpenVPN!</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2016/05/edgerouter-lite-openvpn-setup/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share EdgeRouter Lite OpenVPN setup on twitter"
+        href="https://twitter.com/intent/tweet/?text=EdgeRouter%20Lite%20OpenVPN%20setup&amp;url=https%3a%2f%2floganmarchione.github.io%2f2016%2f05%2fedgerouter-lite-openvpn-setup%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share EdgeRouter Lite OpenVPN setup on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2016%2f05%2fedgerouter-lite-openvpn-setup%2f&amp;title=EdgeRouter%20Lite%20OpenVPN%20setup&amp;summary=EdgeRouter%20Lite%20OpenVPN%20setup&amp;source=https%3a%2f%2floganmarchione.github.io%2f2016%2f05%2fedgerouter-lite-openvpn-setup%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share EdgeRouter Lite OpenVPN setup on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2016%2f05%2fedgerouter-lite-openvpn-setup%2f&title=EdgeRouter%20Lite%20OpenVPN%20setup">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share EdgeRouter Lite OpenVPN setup on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2016%2f05%2fedgerouter-lite-openvpn-setup%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share EdgeRouter Lite OpenVPN setup on whatsapp"
+        href="https://api.whatsapp.com/send?text=EdgeRouter%20Lite%20OpenVPN%20setup%20-%20https%3a%2f%2floganmarchione.github.io%2f2016%2f05%2fedgerouter-lite-openvpn-setup%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share EdgeRouter Lite OpenVPN setup on telegram"
+        href="https://telegram.me/share/url?text=EdgeRouter%20Lite%20OpenVPN%20setup&amp;url=https%3a%2f%2floganmarchione.github.io%2f2016%2f05%2fedgerouter-lite-openvpn-setup%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

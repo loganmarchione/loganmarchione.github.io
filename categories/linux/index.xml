@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on Logan Marchione</title>
+    <link>https://loganmarchione.github.io/categories/linux/</link>
+    <description>Recent content in linux on Logan Marchione</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Darlings of the self-hosted, open-source world</title>
+      <link>https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/</guid>
+      <description>TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
+Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.</description>
+    </item>
+    
+    <item>
+      <title>Impressions from a first-time Mac user</title>
+      <link>https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/</link>
+      <pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/</guid>
+      <description>Update: 2022-04-15 I typically average around 100 unique visitors to this site per day. Below is a screenshot from my Plausible analytics setup showing the traffic spike up to almost 14k unique visitors from HackerNews (and other sources).
+Update: 2022-04-12 I posted this article to that orange site and it blew up more than I expected. I reached #3 of the front page (screenshot below) and am officially on the top 10 list for 2022-04-11.</description>
+    </item>
+    
+    <item>
+      <title>The &#39;best&#39; way to run DokuWiki in Docker</title>
+      <link>https://loganmarchione.github.io/2022/03/the-best-way-to-run-dokuwiki-in-docker/</link>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/03/the-best-way-to-run-dokuwiki-in-docker/</guid>
+      <description>Introduction I&amp;rsquo;ve been trying to get my homelab applications moved from running on VM/LXC to Docker. There&amp;rsquo;s nothing wrong with VMs or LXC containers, but I&amp;rsquo;m trying to manage fewer servers and &amp;ldquo;snowflakes&amp;rdquo; (even though I do my installs with Ansible).
+The application that started my homelab journey was DokuWiki. It&amp;rsquo;s a self-hosted wiki, written in PHP, that requires no database. You write in a Markdown-like syntax (not Markdown) and your data is stored in plain TXT files on the filesystem.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes GUIs</title>
+      <link>https://loganmarchione.github.io/2022/03/kubernetes-guis/</link>
+      <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/03/kubernetes-guis/</guid>
+      <description>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
+Date URL Part 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction In my last post, I setup a K3s single-node cluster and an example application. While everything was done through the command-line, as a noob, it&amp;rsquo;s nice to have a graphical user interface (GUI) of some kind.</description>
+    </item>
+    
+    <item>
+      <title>K3s single-node cluster for noobs</title>
+      <link>https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/</guid>
+      <description>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
+Date URL Part 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I&amp;rsquo;m starting a new job in the next few days that will require me to learn Kubernetes (often stylized as k8s). This post is not about what k8s is or why you want it (you can read about that here).</description>
+    </item>
+    
+    <item>
+      <title>Deploying Hugo with Netlify</title>
+      <link>https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/</link>
+      <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/</guid>
+      <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
+Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with CloudFront and S3. My main complaints came from the complicated Terraform setup and the lack of easy redirects.</description>
+    </item>
+    
+    <item>
+      <title>Deploying Hugo with CloudFront and S3</title>
+      <link>https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/</link>
+      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/</guid>
+      <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
+Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with AWS Amplify. My only complaint was that Amplify doesn&amp;rsquo;t support IPv6.</description>
+    </item>
+    
+    <item>
+      <title>Deploying Hugo with AWS Amplify</title>
+      <link>https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/</link>
+      <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/</guid>
+      <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
+Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Since I migrated from WordPress to Hugo, I&amp;rsquo;ve dropped the need to run PHP and MySQL on my server. This means my server is now only running Nginx, serving up static HTML/CSS/JS files.</description>
+    </item>
+    
+    <item>
+      <title>Raspi-config&#39;s mostly undocumented non-interactive mode</title>
+      <link>https://loganmarchione.github.io/2021/07/raspi-configs-mostly-undocumented-non-interactive-mode/</link>
+      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2021/07/raspi-configs-mostly-undocumented-non-interactive-mode/</guid>
+      <description>Introduction If you&amp;rsquo;ve ever used a Raspberry Pi, you&amp;rsquo;ve probably used the raspi-config configuration tool. This text-based user interface (TUI) is great for changing 99% of basic settings on the Raspberry Pi, such as the hostname, WiFi country, locale, memory split, etc&amp;hellip;
+However, if you&amp;rsquo;re managing a fleet of Raspberry Pi devices, or just really like configuration management tools, you&amp;rsquo;re probably looking for a way to automate setting these items from the command line.</description>
+    </item>
+    
+    <item>
+      <title>ASRock DeskMini H470 as a compact hypervisor</title>
+      <link>https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/</guid>
+      <description>Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I&amp;rsquo;ve outgrown the CPU and cooling solution.
+The search for a new hypervisor Size, noise, and power As outlined in my homelab mini-rack post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room.</description>
+    </item>
+    
+    <item>
+      <title>Analytics with Hugo</title>
+      <link>https://loganmarchione.github.io/2021/03/analytics-with-hugo/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2021/03/analytics-with-hugo/</guid>
+      <description>Introduction When I was running WordPress, I was using Matomo (formerly Piwik) for analytics. This solution worked for me, but was more complicated than I needed, and I didn&amp;rsquo;t make use of 99% of the features. It also required PHP and MySQL/MariaDB, which were not installed on the new server hosting my Hugo-based blog. Because of this, I wanted to switch to a simpler analytics solution.
+Self-hosted vs SaaS For a long time, I&amp;rsquo;ve hosted a Matomo instance on my server and proudly stated in my privacy policy:</description>
+    </item>
+    
+    <item>
+      <title>Migrating from WordPress to Hugo</title>
+      <link>https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo/</link>
+      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo/</guid>
+      <description>Introduction Hopefully this page is coming at you blazing fast, and with a new look! If so, you&amp;rsquo;re seeing my static site generated by Hugo. Here&amp;rsquo;s some high-level thoughts about the migration from WordPress, which I&amp;rsquo;ve been using since 2014, to Hugo.
+Why I&amp;rsquo;m switching You can Google &amp;ldquo;wordpress to hugo&amp;rdquo; and read 1000 posts about why people make the switch. Here are my reasons:
+Security WordPress is written in PHP, which has an unfairly bad reputation.</description>
+    </item>
+    
+    <item>
+      <title>Homelab 10&#34; mini-rack</title>
+      <link>https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/</guid>
+      <description>Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:
+Replaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera) Introduction I don&amp;rsquo;t have space in my house for a full-size 19&amp;quot; server rack (but a man can dream).</description>
+    </item>
+    
+    <item>
+      <title>Securing Postgres connections using Let&#39;s Encrypt certificates</title>
+      <link>https://loganmarchione.github.io/2020/10/securing-postgres-connections-using-lets-encrypt-certificates/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2020/10/securing-postgres-connections-using-lets-encrypt-certificates/</guid>
+      <description>Introduction I&amp;rsquo;m on a quest to SSL all the things on my local network. I work in IT security, and am more than paranoid when it comes to my homelab (shout-out to r/homelab and r/selfhosted).
+For my web applications, everything is accessed through a Nginx reverse proxy that uses Let&amp;rsquo;s Encrypt wildcard certificates (using the DNS challenge) for encryption. It provides a single choke-point for all my traffic, all using one wildcard certificate, and all my clients accept it with the green lock.</description>
+    </item>
+    
+    <item>
+      <title>Always-on Grafana dashboard using Raspberry Pi touchscreen</title>
+      <link>https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/</guid>
+      <description>Introduction I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc&amp;hellip; I already monitor my pfSense firewall logs using Graylog, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc&amp;hellip;) as well as software processes (e.g., containers using network, current download/upload speed, etc&amp;hellip;).
+I stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from InfluxData:</description>
+    </item>
+    
+    <item>
+      <title>Linting Ansible playbooks using Drone</title>
+      <link>https://loganmarchione.github.io/2020/04/linting-ansible-playbooks-using-drone/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2020/04/linting-ansible-playbooks-using-drone/</guid>
+      <description>Introduction In my last post, I went over linting Ansible playbooks manually. In this post, I&amp;rsquo;m going to give you a brief introduction on how to lint playbooks automatically, using Drone.
+I was inspired to post this after watching Jeff Geerling&amp;rsquo;s (geerlingguy on Github) Ansible 101 YouTube series. In it, he mentions using automated testing/linting of his playbooks. If you haven&amp;rsquo;t seen it, give it a watch.
+As with before, I&amp;rsquo;m not a developer or professional DevOps person.</description>
+    </item>
+    
+    <item>
+      <title>How and why you should lint your Ansible playbooks</title>
+      <link>https://loganmarchione.github.io/2020/04/how-and-why-you-should-lint-your-ansible-playbooks/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2020/04/how-and-why-you-should-lint-your-ansible-playbooks/</guid>
+      <description>Introduction What is Ansible? If you&amp;rsquo;re reading this, you probably already know what Ansible is, so I won&amp;rsquo;t spend a lot of time here.
+Ansible is open-source configuration management software. It lets you configure one machine, or 100 machines, in the same way, every time. You can use Ansible to install software, create users, update files, etc&amp;hellip; Basically, if it&amp;rsquo;s a task that can be automated, Ansible can do it.</description>
+    </item>
+    
+    <item>
+      <title>pfSense on the PC Engines APU2</title>
+      <link>https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/</guid>
+      <description>Introduction Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 In the past few weeks, I replaced my EdgeRouter Lite with a Netgate SG-1100. Two weeks later, my SG-1100 died, and I had to put the EdgeRouter Lite back.</description>
+    </item>
+    
+    <item>
+      <title>My SG-1100 died</title>
+      <link>https://loganmarchione.github.io/2019/07/my-sg-1100-died/</link>
+      <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2019/07/my-sg-1100-died/</guid>
+      <description>Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction I recently wrote about how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense.</description>
+    </item>
+    
+    <item>
+      <title>Migrating away from the Ubiquiti EdgeRouter Lite</title>
+      <link>https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction For years, I&amp;rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite.</description>
+    </item>
+    
+    <item>
+      <title>Why I write my resume in LaTeX</title>
+      <link>https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/</guid>
+      <description>TL;DR Skip to the bottom.
+Introduction I receive a lot of email questions about my resume, specifically asking why I use LaTeX, and also asking for the source (which is at the very bottom). I thought I&amp;rsquo;d take a few minutes to discuss why I use LaTeX.
+For the past 10 years, I&amp;rsquo;ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content.</description>
+    </item>
+    
+    <item>
+      <title>EdgeRouter CNAME records</title>
+      <link>https://loganmarchione.github.io/2019/02/edgerouter-cname-records/</link>
+      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2019/02/edgerouter-cname-records/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction What is a CNAME record?</description>
+    </item>
+    
+    <item>
+      <title>I just setup WireGuard, and I&#39;ll never go back to OpenVPN</title>
+      <link>https://loganmarchione.github.io/2018/12/i-just-setup-wireguard-and-ill-never-go-back-to-openvpn/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2018/12/i-just-setup-wireguard-and-ill-never-go-back-to-openvpn/</guid>
+      <description>Introduction WireGuard released their official iOS app today, and I wasted no time jumping on setting up a WireGuard server at home (based mostly on this guide). This is not going to be a tutorial, but instead, I&amp;rsquo;m going to talk about why WireGuard is a game-changer.
+OpenVPN drawbacks For years, I&amp;rsquo;ve used OpenVPN to connect back to my home network. Don&amp;rsquo;t get me wrong, OpenVPN is great, especially compared to dated, insecure alternatives like PPTP or L2TP/IPSec.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt wildcard certificates with Certbot on Nginx</title>
+      <link>https://loganmarchione.github.io/2018/09/lets-encrypt-wildcard-certificates-with-certbot-on-nginx/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2018/09/lets-encrypt-wildcard-certificates-with-certbot-on-nginx/</guid>
+      <description>Introduction In March of 2018, Let&amp;rsquo;s Encrypt (the free Certificate Authority) announced they added support for wildcard certificates through the upgraded ACMEv2 protocol. I&amp;rsquo;ve been hosting most of my services on subdirectories (e.g., loganmarchione.com/rss) but have been wanting to move them to subdomains (e.g., rss.loganmarchione.com), and thought this was the perfect chance to do just that.
+What are wildcard certificates? Wildcard certificates cover any subdomain of a specific domain. For example, I own loganmarchione.</description>
+    </item>
+    
+    <item>
+      <title>Rclone on ODROID-HC2</title>
+      <link>https://loganmarchione.github.io/2018/06/rclone-on-odroid-hc2/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2018/06/rclone-on-odroid-hc2/</guid>
+      <description>Introduction In my last post, I talked about setting up an ODROID-HC2 as a NAS using OpenMediaVault. I have that up and running, and I&amp;rsquo;ve also written a few scripts to backup my data to a few of the SMB shares.
+Now, I need to get that data shipped offsite to an external location to cover my 3-2-1 backup strategy:
+3 backups 2 different types of media 1 backup offsite Software My cloud storage provider of choice is B2.</description>
+    </item>
+    
+    <item>
+      <title>ODROID-HC2 as an entry-level NAS</title>
+      <link>https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/</link>
+      <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/</guid>
+      <description>Introduction I&amp;rsquo;ve been doing some work on my homelab that I haven&amp;rsquo;t documented here.
+I recently decommissioned my Raspberry Pi 3 that was running my Unifi controller, Dokuwiki, and Network UPS Tools (NUT). I replaced the RPi3 with an Intel i3 NUC with 12GB RAM and a Crucial 2.5&amp;quot; SSD. I chose to use Proxmox as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve.</description>
+    </item>
+    
+    <item>
+      <title>Celebrating 1000 comments by giving away a Raspberry Pi 3!</title>
+      <link>https://loganmarchione.github.io/2017/12/celebrating-1000-comments-by-giving-away-a-raspberry-pi-3/</link>
+      <pubDate>Tue, 05 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/12/celebrating-1000-comments-by-giving-away-a-raspberry-pi-3/</guid>
+      <description>Winners An update:
+Comments are locked as-of 12:05pm Eastern time.
+I received 363 comments, but 4 were mine, so 359 comments gives you a 1-in-359 chance of winning (.27%).
+Congrats to the two winners, Dan and Michael! I&amp;rsquo;ll be emailing you shortly!
+-Logan
+Introduction Since 2014, I&amp;rsquo;ve been blogging about security, open source, Linux, and routers. Since then, I&amp;rsquo;ve hit the 1000 comment mark (although technically, some comments are my own replies to your comments).</description>
+    </item>
+    
+    <item>
+      <title>Dyn DDNS on EdgeRouter</title>
+      <link>https://loganmarchione.github.io/2017/10/dyn-ddns-on-edgerouter/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/10/dyn-ddns-on-edgerouter/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In the past, I&amp;rsquo;ve posted about my DuckDNS dynamic DNS settings, and mentioned I use Dyn as well.</description>
+    </item>
+    
+    <item>
+      <title>How to host a website</title>
+      <link>https://loganmarchione.github.io/2017/09/how-to-host-a-website/</link>
+      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/09/how-to-host-a-website/</guid>
+      <description>Introduction While creating CAA records, I found myself needing a new DNS provider. During that process, I thought it would be a good idea to document what it take to host a website and how the internet works (in a very limited sense). To host a website on the public internet, you need three things:
+domain name DNS record(s) web host Typically, most domain registrars offer basic DNS support. In addition, most web hosts also offer basic DNS support.</description>
+    </item>
+    
+    <item>
+      <title>Creating CAA records</title>
+      <link>https://loganmarchione.github.io/2017/09/creating-caa-records/</link>
+      <pubDate>Thu, 21 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/09/creating-caa-records/</guid>
+      <description>Introduction Certification Authority Authorization (CAA) is a new DNS record specifying which Certificate Authorities (CAs) are allowed to issue certificates for a domain. Introduced by RFC 6844, CAA protects websites by only allowing certificates to be issued by specific CAs. If an attacker were to take over a website, they would only be able to obtain a certificate from a CA specified in DNS CAA records, limiting the damage they could do.</description>
+    </item>
+    
+    <item>
+      <title>Backblaze B2 backup setup</title>
+      <link>https://loganmarchione.github.io/2017/07/backblaze-b2-backup-setup/</link>
+      <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/07/backblaze-b2-backup-setup/</guid>
+      <description>Introduction Recently, I&amp;rsquo;ve been thinking more and more about backups for my small (but growing) homelab. The golden rule is to follow the 3-2-1 method for backups:
+3 backups 2 different types of media 1 backup offsite Current setup Currently, I keep an encrypted external HDD at home and another at work. Every couple weeks, I perform a backup to both and rotate the drives (this covers a 2-1-1 backup).</description>
+    </item>
+    
+    <item>
+      <title>DuckDNS on EdgeRouter</title>
+      <link>https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/</link>
+      <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction I&amp;rsquo;ve been using Dyn for my dynamic DNS for years.</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi UPS monitor (with Nginx web monitoring)</title>
+      <link>https://loganmarchione.github.io/2017/02/raspberry-pi-ups-monitor-with-nginx-web-monitoring/</link>
+      <pubDate>Fri, 24 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/02/raspberry-pi-ups-monitor-with-nginx-web-monitoring/</guid>
+      <description>Introduction With the winter weather, we&amp;rsquo;ve been having brownouts and power losses more frequently. I wanted to purchase a UPS to protect my equipment from this, but I also wanted to receive alerts when the power goes out, and possibly shutdown equipment. For this, I need an Uninterruptible Power Supply (UPS) and a computer to monitor it with.
+Hardware As you guessed by now, I&amp;rsquo;m going to be using my Raspberry Pi to monitor the UPS.</description>
+    </item>
+    
+    <item>
+      <title>Ubiquiti EdgeRouter serial console settings</title>
+      <link>https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/</link>
+      <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction I&amp;rsquo;m planning on upgrading my EdgeRouter Lite (ERL) to the newly-released v1.</description>
+    </item>
+    
+    <item>
+      <title>Ubiquiti UniFi controller setup on Raspberry Pi 3</title>
+      <link>https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/</link>
+      <pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction As you know, I love my Ubiquiti EdgeRouter Lite.</description>
+    </item>
+    
+    <item>
+      <title>EdgeRouter Lite Dnsmasq setup</title>
+      <link>https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/</link>
+      <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction One of my only complaints about the EdgeRouter Lite is the usage of the Internet Systems Consortium (ISC) DHCP server.</description>
+    </item>
+    
+    <item>
+      <title>Verizon FiOS Router Maintenance Charge</title>
+      <link>https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/</link>
+      <pubDate>Mon, 22 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/</guid>
+      <description>Hey! Listen! This post is part of a series on using your own router with Verizon FiOS. Check them all out!
+Date URL Part 2016-08-22 Verizon FiOS Router Maintenance Charge Maintenance Charges 2015-07-11 Use your own router with Verizon FiOS Initial Post Introduction If you&amp;rsquo;ve read my other post, you already know how to use your own router with Verizon FiOS. Interestingly enough, that post is my most popular, but I was surprised to see my pageviews double one day in July.</description>
+    </item>
+    
+    <item>
+      <title>EdgeRouter Lite software upgrade</title>
+      <link>https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/</link>
+      <pubDate>Mon, 13 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction Ubiquiti just released the new v1.</description>
+    </item>
+    
+    <item>
+      <title>EdgeRouter Lite OpenVPN setup</title>
+      <link>https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/</link>
+      <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In my last post, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall.</description>
+    </item>
+    
+    <item>
+      <title>Ubiquiti EdgeRouter Lite setup</title>
+      <link>https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/</link>
+      <pubDate>Fri, 29 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/</guid>
+      <description>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction As much as I love my C7 running OpenWrt, I&amp;rsquo;ve been hearing a lot of good things about Ubiquiti devices.</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt upgrade process</title>
+      <link>https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/</link>
+      <pubDate>Thu, 28 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/</guid>
+      <description>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction Typically, when a new version of OpenWrt is released, I completely wipe the router and start over. However, with the recent release of 15.</description>
+    </item>
+    
+    <item>
+      <title>A brief introduction to GPG</title>
+      <link>https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/</link>
+      <pubDate>Thu, 31 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/</guid>
+      <description>Introduction Put on your tinfoil hats, boys and girls! Today, we&amp;rsquo;re talking about security, encryption, and GPG!
+PGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.
+Fun fact - in 1993 the US government charged Zimmerman with &amp;ldquo;munitions export without a license&amp;rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law.</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt with OpenVPN server on TP-Link Archer C7</title>
+      <link>https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/</link>
+      <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/</guid>
+      <description>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I&amp;rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&amp;rsquo;re here, you know that already.</description>
+    </item>
+    
+    <item>
+      <title>Use your own router with Verizon FiOS</title>
+      <link>https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/</link>
+      <pubDate>Sat, 11 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/</guid>
+      <description>Hey! Listen! This post is part of a series on using your own router with Verizon FiOS. Check them all out!
+Date URL Part 2016-08-22 Verizon FiOS Router Maintenance Charge Maintenance Charges 2015-07-11 Use your own router with Verizon FiOS Initial Post Introduction At the new house, we have Verizon FiOS. If you&amp;rsquo;re not familiar, FiOS is a FTTP (Fiber-to-the-Premises) multimedia service that offers phone service, internet, and TV. If fiber is strung in your area, Verizon taps into the fiber line on the telephone pole and runs it to your house.</description>
+    </item>
+    
+    <item>
+      <title>Encrypted external drive with LUKS</title>
+      <link>https://loganmarchione.github.io/2015/05/encrypted-external-drive-with-luks/</link>
+      <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2015/05/encrypted-external-drive-with-luks/</guid>
+      <description>Update: LUKS2 is out, use it instead! LUKS2 was released in 2018, you should double-check the documentation for it before you blindly follow this guide. 🙃
+Introduction Since TrueCrypt is no longer under active development, I&amp;rsquo;ve decided to wipe my external drives and re-encrypt them with LUKS and dm-crypt. These are standard Linux tools that are available by default in most distributions. I&amp;rsquo;ve used LUKS and dm-crypt in the past, when I installed Arch Linux on my laptop.</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt with OpenVPN client on TP-Link TL-MR3020</title>
+      <link>https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/</link>
+      <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/</guid>
+      <description>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:</description>
+    </item>
+    
+    <item>
+      <title>UPDATE: TrueCrypt may not be secure</title>
+      <link>https://loganmarchione.github.io/2014/06/update-truecrypt-may-not-be-secure/</link>
+      <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2014/06/update-truecrypt-may-not-be-secure/</guid>
+      <description>Ever since TrueCrypt disappeared a few days ago, there has been a lot of speculation as to what happened. There are plenty of theories on r/netsec, r/linx, and r/crypto. Even Bruce Schneier doesn&amp;rsquo;t know what&amp;rsquo;s going on.
+There is a theory that the developer threw in the towel, however, the most popular theory going around is that the NSA/FBI/other-three-letter-organization was involved and this is TrueCrypt&amp;rsquo;s warrant canary. Because they would not legally be allowed to divulge the fact that they were being forced to backdoor their software, they decided to suggest alternatives known to be backdoored, knowing that users would understand the secret message.</description>
+    </item>
+    
+    <item>
+      <title>TrueCrypt may not be secure</title>
+      <link>https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/</link>
+      <pubDate>Wed, 28 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/</guid>
+      <description>Recently, I posted three articles of a four-part series showing how to encrypt an external drive with TrueCrypt on Fedora 20. As-of today, May 28th, TrueCrypt may not be secure after-all.
+The truecrypt.org website now redirects to truecrypt.sourceforge.net. A warning is displayed that reads, &amp;ldquo;WARNING: Using TrueCrypt is not secure as it may contain unfixed security issues&amp;rdquo; and it directs users to alternative encryption packages for Windows, Mac, and Linux.</description>
+    </item>
+    
+    <item>
+      <title>UPDATE: Dropping Dropbox</title>
+      <link>https://loganmarchione.github.io/2014/04/update-dropping-dropbox/</link>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2014/04/update-dropping-dropbox/</guid>
+      <description>In March, I cancelled my subscription to Dropbox over privacy concerns. Seems like that was a good idea.
+Dropbox just announced that they&amp;rsquo;re adding Dr. Condoleezza Rice to their Board of Directors. I don&amp;rsquo;t have to tell you why this is a terrible idea.
+See the official petition here, and my letter to Dropbox customer service below.
+To whom it may concern,
+I have been a paid subscriber to Dropbox since 2010, and have loved every minute of your service since day 1.</description>
+    </item>
+    
+    <item>
+      <title>Dropping Dropbox</title>
+      <link>https://loganmarchione.github.io/2014/03/dropping-dropbox/</link>
+      <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2014/03/dropping-dropbox/</guid>
+      <description>I dropped Dropbox! Well, not entirely.
+I&amp;rsquo;ve been a Dropbox user since Day 1. I remember when their service was first introduced. Cloud storage was just coming out and it was so convenient to be able to access your data anywhere.
+I quickly outgrew the 2GB free limit, earned a few extra GB through DropQuest, and then decided to start paying for their storage. For the past few years, I&amp;rsquo;ve been paying $99/yr for 100GB of space.</description>
+    </item>
+    
+  </channel>
+</rss>

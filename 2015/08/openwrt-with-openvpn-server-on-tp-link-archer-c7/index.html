@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OpenWrt with OpenVPN server on TP-Link Archer C7 | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I&rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&rsquo;re here, you know that already.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="OpenWrt with OpenVPN server on TP-Link Archer C7" />
+<meta property="og:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I&rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&rsquo;re here, you know that already." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2015-08-26T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2015-08-26T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" />
+<meta name="twitter:title" content="OpenWrt with OpenVPN server on TP-Link Archer C7"/>
+<meta name="twitter:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I&rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&rsquo;re here, you know that already."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "OpenWrt with OpenVPN server on TP-Link Archer C7",
+      "item": "https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenWrt with OpenVPN server on TP-Link Archer C7",
+  "name": "OpenWrt with OpenVPN server on TP-Link Archer C7",
+  "description": "Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!\nDate URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I\u0026rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you\u0026rsquo;re here, you know that already.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!\nDate URL Part 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I’m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you’re here, you know that already. If you need a refresher on the different types of VPNs, see below.\nSoftware Advantage Disadvantage PPTP Available in most operating systems by default Uses IP protocol 47 (GRE) and UDP port 1723, making it easily detectable and blockable by a firewall Encryption is not strong First on NSA's \"to-hack\" list L2TP/IPSec Available in most operating systems by default More secure than PPTP No known security flaws Uses UDP ports 50, 500, 1701, and 4500, making it easily detectable and blockable by a firewall Slightly more overhead than OpenVPN, since traffic is passing through the tunnel and encryption in two separate steps OpenVPN Very configurable Uses open source software More secure than PPTP No known security flaws Can use any port, setting to TCP 443 makes it almost indistinguishable from HTTPS traffic Not available in most operating systems by default, requires a third-party application Looking at my Piwik data, my most popular posts by far are the guides about setting up an OpenVPN client on a MR3020. After that, I receive the most questions about how to setup an OpenVPN server. Until now, I’ve been running a PPTP server on an e2000 running DD-WRT, because PPTP is easy to setup in DD-WRT (assuming you have the correct build). However, PPTP has its flaws (as shown above). I’ve also setup OpenVPN Access Server on Ubuntu Server, but that is for connecting to a VPS, not your home network (though, you could build the same setup in your home).\nThis tutorial is going to be about setting up your own OpenVPN server on OpenWrt. This setup is taken mainly from this guide.\nHardware Since I’ve had luck with TP-Link in the past, I chose to use a TP-Link Archer C7 for my main router/OpenVPN server. I was looking for something that had dual-band technology (since the 2.4GHz spectrum is pretty crowded around my house), as well as 802.11ac technology (since it’s several times faster than 802.11n).\nIf you’re purchasing a C7, make sure it is hardware version 2.0. From the C7’s wiki page:\nFor the Archer C7 v1.x and WDR7500 v2.x, the 5GHz 802.11a/n/ac functionality is not supported, and likely will never be, since support for the AR1A (v1) variant of QCA9880 chip is not included in the open source ath10k driver. The Archer C7 v2.x uses the BR4A (v2) variant which is supported in ath10k.\nSoftware Obviously, I’m using OpenWrt again. In this case, I’m going to be using Chaos Calmer, even though it’s still on release candidate 3 and not a “stable” release yet. I’m choosing CC because LuCI for BB does not supporting configuring 802.11ac via the web.\nWhen choosing a download for OpenWrt CC RC3 on the C7, be careful which one you choose. There is a download for v1 and v2, then a file for flashing from factory or from a previous release of OpenWrt.\nC7 v1 factory C7 v1 OpenWrt upgrade C7 v2 factory \u003c–I’m using this file, since my C7 is v2 and on factory firmware C7 v2 OpenWrt upgrade Install OpenWrt I’m going to assume you’re running the factory firmware and want to install OpenWrt. If you haven’t already, make sure you check the MD5 hash of the file you downloaded.\nDisconnect your PC from all wired and wireless networks, then connect the LAN port of the C7 to your PC. You should pull an IP in the 192.168.0.X range, so your C7’s IP should be 192.168.0.1. Open your browser, navigate to 192.168.0.1, and enter the username/password combination of admin/admin.\nOnce you’re logged into the router, go to System Tools, then Firmware Upgrade. Browse to your file and click Upgrade.\nIf you receive a message reading Please choose a file to upgrade!, you’ll need to rename the file to something shorter, like openwrt.bin.\nConfigure OpenWrt Set a password After the router reboots, you’ll need to login via telnet (since SSH is disabled, and LuCI isn’t installed in non-final releases of CC). Check your IP address and login via telnet, as shown below.\n/home/logan logan@arch --\u003e telnet 192.168.1.1 Trying 192.168.1.1... Connected to 192.168.1.1. Escape character is '^]'. === IMPORTANT ============================ Use 'passwd' to set your login password this will disable telnet and enable SSH ------------------------------------------ BusyBox v1.23.2 (2015-06-18 21:35:30 CEST) built-in shell (ash) _______ ________ __ | |.-----.-----.-----.| | | |.----.| |_ | - || _ | -__| || | | || _|| _| |_______|| __|_____|__|__||________||__| |____| |__| W I R E L E S S F R E E D O M ----------------------------------------------------- CHAOS CALMER (15.05-rc3, r46163) ----------------------------------------------------- * 1 1/2 oz Gin Shake with a glassful * 1/4 oz Triple Sec of broken ice and pour * 3/4 oz Lime Juice unstrained into a goblet. * 1 1/2 oz Orange Juice * 1 tsp. Grenadine Syrup ----------------------------------------------------- root@OpenWrt:/# After you’re in through telnet, use passwd to change your password (which will enable SSH).\nroot@OpenWrt:/# passwd Changing password for root New password: Retype password: Password for root changed by root Logout of telnet, then SSH in using root and the password you just set.\n/home/logan logan@arch --\u003e ssh root@192.168.1.1 root@192.168.1.1's password: BusyBox v1.23.2 (2015-06-18 21:35:30 CEST) built-in shell (ash) _______ ________ __ | |.-----.-----.-----.| | | |.----.| |_ | - || _ | -__| || | | || _|| _| |_______|| __|_____|__|__||________||__| |____| |__| W I R E L E S S F R E E D O M ----------------------------------------------------- CHAOS CALMER (15.05-rc3, r46163) ----------------------------------------------------- * 1 1/2 oz Gin Shake with a glassful * 1/4 oz Triple Sec of broken ice and pour * 3/4 oz Lime Juice unstrained into a goblet. * 1 1/2 oz Orange Juice * 1 tsp. Grenadine Syrup ----------------------------------------------------- root@OpenWrt:~# After you’re in, we can start setting up OpenWrt. Most of these steps will be taken from my previous guides, as well as the OpenWrt basic config guide.\nSetup NTP The C7 doesn’t have a real-time clock or CMOS battery. Because of this, every time it loses power, the clock resets to a specific date. To circumvent this, we’re going to use NTP to get our time from the internet. You don’t have to setup NTP, but it makes troubleshooting easier when you’re looking at timestamped log files. Keep in mind, since the C7 is connected directly to your PC (not the internet), this won’t take effect until after we get it online.\nFirst, set a hostname, zone name, and time zone for your router. The list of zone names/time zones can be found here. Make note of the tick marks around the zonename.\nuci set system.@system[0].hostname=\"c7main\" uci set system.@system[0].zonename=\"America/New York\" uci set system.@system[0].timezone=\"EST5EDT,M3.2.0,M11.1.0\" uci commit system Next, we’re going to enable the NTP client. I’m using US servers from the NTP Pool Project, but change your servers as needed. Again, don’t forget the tick marks.\nuci set system.ntp=\"timeserver\" uci set system.ntp.enabled=\"1\" uci delete system.ntp.server uci add_list system.ntp.server=\"0.us.pool.ntp.org\" uci add_list system.ntp.server=\"1.us.pool.ntp.org\" uci add_list system.ntp.server=\"2.us.pool.ntp.org\" uci add_list system.ntp.server=\"3.us.pool.ntp.org\" uci commit system Set default IP Next, we’re going to change the default IP of the router from 192.168.1.1 to 10.10.1.1 (or whatever scheme you want). Most devices ship with 192.168.1.1 as the default, but I like to change to a different subnet.\nuci set network.lan.ipaddr=\"10.10.1.1\" uci commit network You can also limit the number of addresses available in the DHCP pool (optional).\nuci set dhcp.lan.start=\"10\" uci set dhcp.lan.limit=\"50\" uci commit dhcp reboot Verify internet access At this point, plug your internet connection into the WAN port of the C7. Assuming it receives an IP from your modem via DHCP, you should be able to access the internet on a client PC, as well as ping websites through SSH. If you check the date with the date command, you should see the date/time are correct because of NTP.\nSetup wireless Next, I’m going to setup the wireless. However, I’m going to opt to configure the wireless from the web interface, also known as LuCI. I’m choosing to do this because the C7 has two radios and it’s easier to configure through LuCI than SSH. If I lose nerd-points in your eyes, I’m sorry.\nInstall LuCI LuCI isn’t installed in non-final releases of CC, so we need to install it.\nopkg update opkg install luci luci-ssl /etc/init.d/uhttpd start /etc/init.d/uhttpd enable After LuCI is installed, navigate to 10.10.1.1 in your browser, and enter the username/password combination you were using for SSH.\nCreate wireless network Go to the Network dropdown, then select Wifi. Enable your radios as necessary. I enabled a 802.11n radio at 2.4GHz and a 802.11ac radio at 5GHz to test with. Press Save \u0026 Apply to continue.\nSetup DDNS First, we’ll need to setup dynamic DNS (DDNS). We’ll be running a server out of our house, and since our ISP regularly changes our IP address, we’ll never know when the address changes. Instead, we can run a small program on OpenWrt that will reach out to a DDNS provider, tell them what our IP address currently is, and associate it to a DNS name. This way, when setting up our OpenVPN clients, we’ll use the DDNS name, not our IP.\nIf you don’t have one already, you’ll need a DDNS provider. I’ve been a Dyn customer since before all the drama about discontinuing their free accounts. Make sure you choose a provider that is supported by OpenWrt. Once you choose a provider, you’ll need to register a DNS name with them.\nYou’ll also need the following info about your account:\nDDNS service name (as listed here, or in /usr/lib/ddns/services) Host name/domain Username Password (some providers offer an updater key instead of exposing your password) Interface you’ll be using to get DNS info (e.g., wan, wan6, lan, etc…) Start by installing the necessary DDNS packages. If you want to configure DDNS via LuCI, you’ll need the package for that as well. I’m also installing two extra packages to make DDNS requests over SSL, as described here.\nopkg update opkg install ddns-scripts luci-app-ddns ca-certificates wget I’m going to be configuring via command line, but you could perform the same steps in LuCI. Here, I’m using the IP of the eth0 interface to update my DDNS entry. Obviously, substitute your service/hostname/username/password as needed.\nuci delete ddns.myddns_ipv4 uci delete ddns.myddns_ipv6 uci set ddns.myddns=\"service\" uci set ddns.myddns.service_name=\"ddnsprovider.com\" uci set ddns.myddns.domain=\"yournamehere.yourproviderhere.com\" uci set ddns.myddns.username=\"username\" uci set ddns.myddns.password=\"p@ssw0rd\" uci set ddns.myddns.interface=\"wan\" uci set ddns.myddns.ip_source=\"interface\" uci set ddns.myddns.ip_interface=\"eth0\" uci set ddns.myddns.enabled=\"1\" uci set ddns.myddns.use_https=\"1\" uci set ddns.myddns.cacert=\"/etc/ssl/certs\" uci commit ddns When you’re finished, be sure to start and enable the DDNS client.\n/etc/init.d/ddns start /etc/init.d/ddns enable Check your DDNS provider’s website to make sure your address is updating. If you’re having issues, run the command below to manually update your DDNS. It should give you some insight as to where the error is.\n/usr/lib/ddns/dynamic_dns_updater.sh myddns Setup OpenVPN Install packages Start by installing the necessary OpenVPN packages. If you want to configure OpenVPN via LuCI, you’ll need the package for that as well.\nopkg update opkg install openvpn-openssl openvpn-easy-rsa luci-app-openvpn openssh-sftp-server It’s a good idea to move the /etc/easy-rsa directory to somewhere else, in case you do an upgrade and overwrite your files.\nmkdir /etc/config/openvpn-config mv /etc/easy-rsa/* /etc/config/openvpn-config/ rm -rf /etc/easy-rsa/ ln -s /etc/config/openvpn-config/ /etc/easy-rsa rm /etc/config/openvpn_recipes touch /etc/config/openvpn-config/client.ovpn Create certificates Next, we’re going to generate the certificates for the server and client(s). We need to start by editing a few lines in the /etc/easy-rsa/vars file.\nSet the key size to at least 2048 bits. A key size of 4096 is preferred, but your client has to support it, plus it adds additional encryption overhead.\nexport KEY_SIZE=2048 Fill out the certificate info as necessary.\nexport KEY_COUNTRY=\"US\" export KEY_PROVINCE=\"CA\" export KEY_CITY=\"SanFrancisco\" export KEY_ORG=\"Fort-Funston\" export KEY_EMAIL=\"me@myhost.mydomain\" export KEY_OU=\"MyOrganizationalUnit\" Next, create your certificate authority, Diffie-Hellman parameters (this will take 40+ minutes), and certificates. If you want more client certificates, run the last command again, specifying a different name.\ncd /etc/easy-rsa source vars clean-all build-ca build-dh build-key-server c7 build-key-pkcs12 user1 Note - I’m choosing to use the PKCS12 format for the client certificates, since it combines the key and CA certificate into one file. Your client may want the two certificates to be separate.\nConfigure network/firewall Next, we need to configure a new network interface and assign a firewall zone to it.\nuci set network.vpn0=\"interface\" uci set network.vpn0.ifname=\"tun0\" uci set network.vpn0.proto=\"none\" uci set network.vpn0.auto=\"1\" uci commit network uci add firewall rule uci set firewall.@rule[-1].name=\"Allow-OpenVPN-Inbound\" uci set firewall.@rule[-1].target=\"ACCEPT\" uci set firewall.@rule[-1].src=\"wan\" uci set firewall.@rule[-1].proto=\"udp\" uci set firewall.@rule[-1].dest_port=\"1194\" uci add firewall zone uci set firewall.@zone[-1].name=\"vpn\" uci set firewall.@zone[-1].input=\"ACCEPT\" uci set firewall.@zone[-1].forward=\"ACCEPT\" uci set firewall.@zone[-1].output=\"ACCEPT\" uci set firewall.@zone[-1].masq=\"1\" uci set firewall.@zone[-1].network=\"vpn0\" uci add firewall forwarding uci set firewall.@forwarding[-1].src=\"vpn\" uci set firewall.@forwarding[-1].dest=\"wan\" uci add firewall forwarding uci set firewall.@forwarding[-1].src=\"vpn\" uci set firewall.@forwarding[-1].dest=\"lan\" uci commit firewall /etc/init.d/network reload /etc/init.d/firewall reload Enable packet forwarding We also need to check if packet forwarding is enabled (it should be by default).\ncat /proc/sys/net/ipv4/ip_forward If it is not enabled, edit the file above and set the value to 1.\nOpenVPN server config Here, we’re going to be configuring the OpenVPN server. See the comments in the commands below for more information.\ntouch /etc/config/openvpn uci delete openvpn.sample_server uci delete openvpn.sample_client #set and enable vpn uci set openvpn.myvpn=\"openvpn\" uci set openvpn.myvpn.enabled=\"1\" #specify TUN vs. TAP (if you're not sure, you want TUN) uci set openvpn.myvpn.dev=\"tun\" #specify port to use (default is 1194) uci set openvpn.myvpn.port=\"1194\" #specify protocol to use (default is UDP) uci set openvpn.myvpn.proto=\"udp\" #specify to use compression uci set openvpn.myvpn.comp_lzo=\"yes\" #logging uci set openvpn.myvpn.status=\"/var/log/openvpn_status.log\" uci set openvpn.myvpn.log=\"/tmp/openvpn.log\" uci set openvpn.myvpn.verb=\"3\" uci set openvpn.myvpn.mute=\"5\" #ping every 10 seconds, assume not responding after 120 seconds uci set openvpn.myvpn.keepalive=\"10 120\" #keep key and tunnel persistent across restarts uci set openvpn.myvpn.persist_key=\"1\" uci set openvpn.myvpn.persist_tun=\"1\" #set user and group to less-privileged account (UNIX/Linux only) uci set openvpn.myvpn.user=\"nobody\" uci set openvpn.myvpn.group=\"nogroup\" #certificate information uci set openvpn.myvpn.ca=\"/etc/easy-rsa/keys/ca.crt\" uci set openvpn.myvpn.cert=\"/etc/easy-rsa/keys/c7.crt\" uci set openvpn.myvpn.key=\"/etc/easy-rsa/keys/c7.key\" uci set openvpn.myvpn.dh=\"/etc/easy-rsa/keys/dh2048.pem\" #server settings uci set openvpn.myvpn.mode=\"server\" uci set openvpn.myvpn.tls_server=\"1\" uci set openvpn.myvpn.server=\"10.8.0.0 255.255.255.0\" #specify topology to use uci set openvpn.myvpn.topology=\"subnet\" #specify gateway to use uci set openvpn.myvpn.route_gateway=\"dhcp\" #allow clients to \"see\" one another uci set openvpn.myvpn.client_to_client=\"1\" #options to push to clients uci add_list openvpn.myvpn.push=\"comp-lzo yes\" #keep key and tunnel persistent across restarts uci add_list openvpn.myvpn.push=\"persist-key\" uci add_list openvpn.myvpn.push=\"persist-tun\" #set user and group to less-privileged account (UNIX/Linux only) uci add_list openvpn.myvpn.push=\"user nobody\" uci add_list openvpn.myvpn.push=\"user nogroup\" #specify topology to use uci add_list openvpn.myvpn.push=\"topology subnet\" #specify gateway to use uci add_list openvpn.myvpn.push=\"route-gateway dhcp\" #redirect ALL traffic through the VPN server (this is IMPORTANT if you don't trust your local network) uci add_list openvpn.myvpn.push=\"redirect-gateway def1\" #push a local route to your clients (allow your clients to access the server's network) uci add_list openvpn.myvpn.push=\"route 10.10.1.0 255.255.255.0\" #push DNS to your clients (this is IMPORTANT if you don't trust your local network) uci add_list openvpn.myvpn.push=\"dhcp-option DNS 107.170.95.180\" uci add_list openvpn.myvpn.push=\"dhcp-option DNS 50.116.40.226\" uci commit openvpn Be sure to start and enable the OpenVPN server.\n/etc/init.d/openvpn start /etc/init.d/openvpn enable Next, look at the logfile at /tmp/openvpn.log. With any luck, you should see Initialization Sequence Completed, showing that your OpenVPN server is up!\nroot@c7main:/etc/config/openvpn-config/keys# cat /tmp/openvpn.log Thu Aug 20 20:49:02 2015 OpenVPN 2.3.6 mips-openwrt-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [MH] [IPv6] built on Jun 18 2015 Thu Aug 20 20:49:02 2015 library versions: OpenSSL 1.0.2d 9 Jul 2015, LZO 2.08 Thu Aug 20 20:49:03 2015 Diffie-Hellman initialized with 2048 bit key Thu Aug 20 20:49:03 2015 Socket Buffers: R=[163840-\u003e131072] S=[163840-\u003e131072] Thu Aug 20 20:49:03 2015 TUN/TAP device tun0 opened Thu Aug 20 20:49:03 2015 TUN/TAP TX queue length set to 100 Thu Aug 20 20:49:03 2015 do_ifconfig, tt-\u003eipv6=0, tt-\u003edid_ifconfig_ipv6_setup=0 Thu Aug 20 20:49:03 2015 /sbin/ifconfig tun0 10.8.0.1 netmask 255.255.255.0 mtu 1500 broadcast 10.8.0.255 Thu Aug 20 20:49:03 2015 GID set to nogroup Thu Aug 20 20:49:03 2015 UID set to nobody Thu Aug 20 20:49:03 2015 UDPv4 link local (bound): [undef] Thu Aug 20 20:49:03 2015 UDPv4 link remote: [undef] Thu Aug 20 20:49:03 2015 MULTI: multi_init called, r=256 v=256 Thu Aug 20 20:49:03 2015 IFCONFIG POOL: base=10.8.0.2 size=252, ipv6=0 Thu Aug 20 20:49:03 2015 Initialization Sequence Completed OpenVPN client config Edit the OpenVPN client configuration file at /etc/config/openvpn-config/client.ovpn. I’m purposely keeping the client configuration file as thin as possible, so that most settings can be setup on the server and pushed to clients.\n#specify TUN vs. TAP (if you're not sure, you want TUN) dev tun #specify protocol to use (default is UDP) proto udp #Certificate information ca ca.crt cert user1.crt key user1.key #client settings client remote-cert-tls server remote YOUR_DNS_ENTRY_OR_IP 1194 Distribute keys You’ll need to move the following files from the router, to your client(s). All four files should be saved in the same folder/location on your client.\nCA certificate (ca.crt) client certificate (user1.crt) client keyfile (user1.key) client config file (client.ovpn) You can use SFTP, SSH, or copy them to a USB drive. You could email them, but I would advise against it (since the key isn’t encrypted).\nConfigure OpenVPN client In this case, I’m going to be using the official OpenVPN Android app, but there are also clients for iOS, Windows, Mac, and Linux.\nOnce installed, tap on the Option button, then tap on Import, then tap on Import Profile from SD Card.\nBrowse to the client.ovpn file and import it into the OpenVPN Connect app.\nThe profile should be imported successfully, and you should be able to see your server’s name or IP. Click Connect to establish a connection.\nVerify your connection on the next screen.\nVerify connection Try to browse a public site (e.g., www.google.com), then try to browse to your router’s IP (e.g., 10.10.1.1). If everything is setup correctly, both should load. You can also check your IP with an external tool, such as WhatIsMyIP, and you should see your OpenWrt router’s public IP. I’d also advise to check for DNS leaks (your DNS should be set to the DNS servers we pushed to the clients).\nLet me know how your setup went!\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "3047",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_openwrt.svg","datePublished": "2015-08-26T00:00:00Z",
+  "dateModified": "2015-08-26T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      OpenWrt with OpenVPN server on TP-Link Archer C7
+    </h1>
+    <div class="post-meta"><span title='2015-08-26 00:00:00 +0000 UTC'>2015-08-26</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                        
+                <li>
+                    <a href="#hardware" aria-label="Hardware">Hardware</a></li>
+                <li>
+                    <a href="#software" aria-label="Software">Software</a></li></ul>
+                </li>
+                <li>
+                    <a href="#install-openwrt" aria-label="Install OpenWrt">Install OpenWrt</a></li>
+                <li>
+                    <a href="#configure-openwrt" aria-label="Configure OpenWrt">Configure OpenWrt</a><ul>
+                        
+                <li>
+                    <a href="#set-a-password" aria-label="Set a password">Set a password</a></li>
+                <li>
+                    <a href="#setup-ntp" aria-label="Setup NTP">Setup NTP</a></li>
+                <li>
+                    <a href="#set-default-ip" aria-label="Set default IP">Set default IP</a></li>
+                <li>
+                    <a href="#verify-internet-access" aria-label="Verify internet access">Verify internet access</a></li></ul>
+                </li>
+                <li>
+                    <a href="#setup-wireless" aria-label="Setup wireless">Setup wireless</a><ul>
+                        
+                <li>
+                    <a href="#install-luci" aria-label="Install LuCI">Install LuCI</a></li>
+                <li>
+                    <a href="#create-wireless-network" aria-label="Create wireless network">Create wireless network</a></li></ul>
+                </li>
+                <li>
+                    <a href="#setup-ddns" aria-label="Setup DDNS">Setup DDNS</a></li>
+                <li>
+                    <a href="#setup-openvpn" aria-label="Setup OpenVPN">Setup OpenVPN</a><ul>
+                        
+                <li>
+                    <a href="#install-packages" aria-label="Install packages">Install packages</a></li>
+                <li>
+                    <a href="#create-certificates" aria-label="Create certificates">Create certificates</a></li>
+                <li>
+                    <a href="#configure-networkfirewall" aria-label="Configure network/firewall">Configure network/firewall</a></li>
+                <li>
+                    <a href="#enable-packet-forwarding" aria-label="Enable packet forwarding">Enable packet forwarding</a></li>
+                <li>
+                    <a href="#openvpn-server-config" aria-label="OpenVPN server config">OpenVPN server config</a></li>
+                <li>
+                    <a href="#openvpn-client-config" aria-label="OpenVPN client config">OpenVPN client config</a></li>
+                <li>
+                    <a href="#distribute-keys" aria-label="Distribute keys">Distribute keys</a></li>
+                <li>
+                    <a href="#configure-openvpn-client" aria-label="Configure OpenVPN client">Configure OpenVPN client</a></li></ul>
+                </li>
+                <li>
+                    <a href="#verify-connection" aria-label="Verify connection">Verify connection</a></li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>URL</th>
+<th>Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2016-04-28</td>
+<td><a href="/2016/04/openwrt-upgrade-process/">OpenWrt upgrade process</a></td>
+<td>OpenWrt upgrade</td>
+</tr>
+<tr>
+<td>2015-08-26</td>
+<td><a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">OpenWrt with OpenVPN server on TP-Link Archer C7</a></td>
+<td>Initial post</td>
+</tr>
+<tr>
+<td>2015-02-15</td>
+<td><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/">OpenWrt with OpenVPN client on TP-Link TL-MR3020</a></td>
+<td>Initial post</td>
+</tr>
+</tbody>
+</table>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I&rsquo;m not going to spend any time talking about why <a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/#the-why">you should be using a VPN</a>, or how a VPN works. If you&rsquo;re here, you know that already. If you need a refresher on the different types of VPNs, see below.</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Software</th>
+        <th>Advantage</th>
+        <th>Disadvantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>PPTP</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Available in most operating systems by default</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Uses IP protocol 47 (GRE) and UDP port 1723, making it easily detectable and blockable by a firewall</li>
+            <li>Encryption is not strong</li>
+            <li>First on NSA's "to-hack" list</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>L2TP/IPSec</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Available in most operating systems by default</li>
+            <li>More secure than PPTP</li>
+            <li>No known security flaws</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Uses UDP ports 50, 500, 1701, and 4500, making it easily detectable and blockable by a firewall</li>
+            <li>Slightly more overhead than OpenVPN, since traffic is passing through the tunnel and encryption in two separate steps</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>OpenVPN</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Very configurable</li>
+            <li>Uses open source software</li>
+            <li>More secure than PPTP</li>
+            <li>No known security flaws</li>
+            <li>Can use any port, setting to TCP 443 makes it almost indistinguishable from HTTPS traffic</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Not available in most operating systems by default, requires a third-party application</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Looking at my Piwik data, my most popular posts by far are the guides about setting up an OpenVPN client on a MR3020. After that, I receive the most questions about how to setup an OpenVPN server. Until now, I&rsquo;ve been running a <a href="https://en.wikipedia.org/wiki/Point-to-Point_Tunneling_Protocol">PPTP</a> server on an <a href="https://www.dd-wrt.com/wiki/index.php/Linksys_E2000">e2000 running DD-WRT</a>, because PPTP is <a href="https://www.dd-wrt.com/wiki/index.php/PPTP_Server_Configuration#PPTP_Server">easy to setup</a> in DD-WRT (assuming you have the correct build). However, PPTP has its flaws (as shown above). I&rsquo;ve also setup OpenVPN Access Server on Ubuntu Server, but that is for connecting to a VPS, not your home network (though, you could build the same setup in your home).</p>
+<p>This tutorial is going to be about setting up your own OpenVPN server on OpenWrt. This setup is taken mainly from <a href="http://wiki.openwrt.org/doc/howto/vpn.openvpn">this</a> guide.</p>
+<h2 id="hardware">Hardware<a hidden class="anchor" aria-hidden="true" href="#hardware">#</a></h2>
+<p>Since I&rsquo;ve had luck with TP-Link in the past, I chose to use a <a href="http://amzn.com/B00BUSDVBQ">TP-Link Archer C7</a> for my main router/OpenVPN server. I was looking for something that had dual-band technology (since the 2.4GHz spectrum is pretty crowded around my house), as well as 802.11ac technology (since it&rsquo;s several times faster than 802.11n).</p>
+<p>If you&rsquo;re purchasing a C7, make sure it is hardware version 2.0. From the C7&rsquo;s <a href="http://wiki.openwrt.org/toh/tp-link/tl-wdr7500#supported_versions">wiki page</a>:</p>
+<blockquote>
+<p>For the Archer C7 v1.x and WDR7500 v2.x, the 5GHz 802.11a/n/ac functionality is not supported, and likely will never be, since support for the AR1A (v1) variant of QCA9880 chip is not included in the open source ath10k driver. The Archer C7 v2.x uses the BR4A (v2) variant which is supported in ath10k.</p>
+</blockquote>
+<h2 id="software">Software<a hidden class="anchor" aria-hidden="true" href="#software">#</a></h2>
+<p>Obviously, I&rsquo;m using <a href="https://openwrt.org/">OpenWrt</a> again. In this case, I&rsquo;m going to be using <a href="http://wiki.openwrt.org/about/latest">Chaos Calmer</a>, even though it&rsquo;s still on release candidate 3 and not a &ldquo;stable&rdquo; release yet. I&rsquo;m choosing CC because LuCI for BB does not supporting configuring 802.11ac via the web.</p>
+<p>When choosing a download for OpenWrt CC RC3 on the C7, be careful which one you choose. There is a download for v1 and v2, then a file for flashing from factory or from a previous release of OpenWrt.</p>
+<ul>
+<li><a href="https://downloads.openwrt.org/chaos_calmer/15.05-rc3/ar71xx/generic/openwrt-15.05-rc3-ar71xx-generic-archer-c7-v1-squashfs-factory.bin">C7 v1 factory</a></li>
+<li><a href="https://downloads.openwrt.org/chaos_calmer/15.05-rc3/ar71xx/generic/openwrt-15.05-rc3-ar71xx-generic-archer-c7-v1-squashfs-sysupgrade.bin">C7 v1 OpenWrt upgrade</a></li>
+<li><a href="https://downloads.openwrt.org/chaos_calmer/15.05-rc3/ar71xx/generic/openwrt-15.05-rc3-ar71xx-generic-archer-c7-v2-squashfs-factory.bin">C7 v2 factory</a>  &lt;&ndash;I&rsquo;m using this file, since my C7 is v2 and on factory firmware</li>
+<li><a href="https://downloads.openwrt.org/chaos_calmer/15.05-rc3/ar71xx/generic/openwrt-15.05-rc3-ar71xx-generic-archer-c7-v2-squashfs-sysupgrade.bin">C7 v2 OpenWrt upgrade</a></li>
+</ul>
+<h1 id="install-openwrt">Install OpenWrt<a hidden class="anchor" aria-hidden="true" href="#install-openwrt">#</a></h1>
+<p>I’m going to assume you’re running the factory firmware and want to install OpenWrt. If you haven&rsquo;t already, make sure you check the <a href="https://downloads.openwrt.org/chaos_calmer/15.05-rc3/ar71xx/generic/md5sums">MD5 hash</a> of the file you downloaded.</p>
+<p>Disconnect your PC from all wired and wireless networks, then connect the LAN port of the C7 to your PC. You should pull an IP in the 192.168.0.X range, so your C7&rsquo;s IP should be 192.168.0.1. Open your browser, navigate to 192.168.0.1, and enter the username/password combination of <em>admin/admin</em>.</p>
+<p>Once you’re logged into the router, go to <em>System Tools</em>, then <em>Firmware Upgrade</em>. Browse to your file and click <em>Upgrade</em>.</p>
+
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_001_hu0dc5a91994b78b68c87580a0a7109c87_179825_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>If you receive a message reading <em>Please choose a file to upgrade!</em>, you&rsquo;ll need to rename the file to something shorter, like <em>openwrt.bin</em>.</p>
+<h1 id="configure-openwrt">Configure OpenWrt<a hidden class="anchor" aria-hidden="true" href="#configure-openwrt">#</a></h1>
+<h2 id="set-a-password">Set a password<a hidden class="anchor" aria-hidden="true" href="#set-a-password">#</a></h2>
+<p>After the router reboots, you&rsquo;ll need to login via telnet (since SSH is disabled, and LuCI isn&rsquo;t installed in non-final releases of CC). Check your IP address and login via telnet, as shown below.</p>
+<pre tabindex="0"><code>/home/logan
+logan@arch
+--&gt; telnet 192.168.1.1
+Trying 192.168.1.1...
+Connected to 192.168.1.1.
+Escape character is &#39;^]&#39;.
+ === IMPORTANT ============================
+  Use &#39;passwd&#39; to set your login password
+  this will disable telnet and enable SSH
+ ------------------------------------------
+
+
+BusyBox v1.23.2 (2015-06-18 21:35:30 CEST) built-in shell (ash)
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ CHAOS CALMER (15.05-rc3, r46163)
+ -----------------------------------------------------
+  * 1 1/2 oz Gin            Shake with a glassful
+  * 1/4 oz Triple Sec       of broken ice and pour
+  * 3/4 oz Lime Juice       unstrained into a goblet.
+  * 1 1/2 oz Orange Juice
+  * 1 tsp. Grenadine Syrup
+ -----------------------------------------------------
+root@OpenWrt:/#
+</code></pre><p>After you&rsquo;re in through telnet, use <em>passwd</em> to change your password (which will enable SSH).</p>
+<pre tabindex="0"><code>root@OpenWrt:/# passwd
+Changing password for root
+New password:
+Retype password:
+Password for root changed by root
+</code></pre><p>Logout of telnet, then SSH in using <em>root</em> and the password you just set.</p>
+<pre tabindex="0"><code>/home/logan
+logan@arch
+--&gt; ssh root@192.168.1.1
+root@192.168.1.1&#39;s password: 
+
+
+BusyBox v1.23.2 (2015-06-18 21:35:30 CEST) built-in shell (ash)
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ CHAOS CALMER (15.05-rc3, r46163)
+ -----------------------------------------------------
+  * 1 1/2 oz Gin            Shake with a glassful
+  * 1/4 oz Triple Sec       of broken ice and pour
+  * 3/4 oz Lime Juice       unstrained into a goblet.
+  * 1 1/2 oz Orange Juice
+  * 1 tsp. Grenadine Syrup
+ -----------------------------------------------------
+root@OpenWrt:~#
+</code></pre><p>After you&rsquo;re in, we can start setting up OpenWrt. Most of these steps will be taken from my previous guides, as well as the OpenWrt <a href="http://wiki.openwrt.org/doc/howto/basic.config">basic config</a> guide.</p>
+<h2 id="setup-ntp">Setup NTP<a hidden class="anchor" aria-hidden="true" href="#setup-ntp">#</a></h2>
+<p>The C7 doesn’t have a <a href="https://en.wikipedia.org/wiki/Real-time_clock">real-time clock</a> or CMOS battery. Because of this, every time it loses power, the clock resets to a specific date. To circumvent this, we’re going to use <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">NTP</a> to get our time from the internet. You don’t have to setup NTP, but it makes troubleshooting easier when you’re looking at timestamped log files. Keep in mind, since the C7 is connected directly to your PC (not the internet), this won’t take effect until after we get it online.</p>
+<p>First, set a hostname, zone name, and time zone for your router. The list of zone names/time zones can be found <a href="http://wiki.openwrt.org/doc/uci/system#time.zones">here</a>. Make note of the tick marks around the <em>zonename</em>.</p>
+<pre tabindex="0"><code>uci set system.@system[0].hostname=&#34;c7main&#34;
+uci set system.@system[0].zonename=&#34;America/New York&#34;
+uci set system.@system[0].timezone=&#34;EST5EDT,M3.2.0,M11.1.0&#34;
+uci commit system
+</code></pre><p>Next, we’re going to enable the NTP client. I’m using <a href="http://www.pool.ntp.org/zone/us">US servers</a> from the <a href="http://www.pool.ntp.org/">NTP Pool Project</a>, but change your servers as needed. Again, don’t forget the tick marks.</p>
+<pre tabindex="0"><code>uci set system.ntp=&#34;timeserver&#34;
+uci set system.ntp.enabled=&#34;1&#34;
+uci delete system.ntp.server
+uci add_list system.ntp.server=&#34;0.us.pool.ntp.org&#34;
+uci add_list system.ntp.server=&#34;1.us.pool.ntp.org&#34;
+uci add_list system.ntp.server=&#34;2.us.pool.ntp.org&#34;
+uci add_list system.ntp.server=&#34;3.us.pool.ntp.org&#34;
+uci commit system
+</code></pre><h2 id="set-default-ip">Set default IP<a hidden class="anchor" aria-hidden="true" href="#set-default-ip">#</a></h2>
+<p>Next, we’re going to change the default IP of the router from 192.168.1.1 to 10.10.1.1 (or whatever scheme you want). Most devices ship with 192.168.1.1 as the default, but I like to change to a different subnet.</p>
+<pre tabindex="0"><code>uci set network.lan.ipaddr=&#34;10.10.1.1&#34;
+uci commit network
+</code></pre><p>You can also limit the number of addresses available in the DHCP pool (optional).</p>
+<pre tabindex="0"><code>uci set dhcp.lan.start=&#34;10&#34;
+uci set dhcp.lan.limit=&#34;50&#34;
+uci commit dhcp
+reboot
+</code></pre><h2 id="verify-internet-access">Verify internet access<a hidden class="anchor" aria-hidden="true" href="#verify-internet-access">#</a></h2>
+<p>At this point, plug your internet connection into the WAN port of the C7. Assuming it receives an IP from your modem via DHCP, you should be able to access the internet on a client PC, as well as ping websites through SSH. If you check the date with the <em>date</em> command, you should see the date/time are correct because of NTP.</p>
+<h1 id="setup-wireless">Setup wireless<a hidden class="anchor" aria-hidden="true" href="#setup-wireless">#</a></h1>
+<p>Next, I&rsquo;m going to setup the wireless. However, I&rsquo;m going to opt to configure the wireless from the web interface, also known as LuCI. I&rsquo;m choosing to do this because the C7 has two radios and it&rsquo;s easier to configure through LuCI than SSH. If I lose nerd-points in your eyes, I&rsquo;m sorry.</p>
+<h2 id="install-luci">Install LuCI<a hidden class="anchor" aria-hidden="true" href="#install-luci">#</a></h2>
+<p>LuCI isn’t installed in non-final releases of CC, so we need to install it.</p>
+<pre tabindex="0"><code>opkg update
+opkg install luci luci-ssl
+/etc/init.d/uhttpd start
+/etc/init.d/uhttpd enable
+</code></pre><p>After LuCI is installed, navigate to 10.10.1.1 in your browser, and enter the username/password combination you were using for SSH.</p>
+<h2 id="create-wireless-network">Create wireless network<a hidden class="anchor" aria-hidden="true" href="#create-wireless-network">#</a></h2>
+<p>Go to the <em>Network</em> dropdown, then select <em>Wifi</em>. Enable your radios as necessary. I enabled a 802.11n radio at 2.4GHz and a 802.11ac radio at 5GHz to test with. Press <em>Save &amp; Apply</em> to continue.</p>
+
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_002.png" loading="lazy" alt="screenshot"></p>
+<h1 id="setup-ddns">Setup DDNS<a hidden class="anchor" aria-hidden="true" href="#setup-ddns">#</a></h1>
+<p>First, we&rsquo;ll need to setup <a href="https://en.wikipedia.org/wiki/Dynamic_DNS">dynamic DNS</a> (DDNS). We&rsquo;ll be running a server out of our house, and since our ISP regularly changes our IP address, we&rsquo;ll never know when the address changes. Instead, we can run a small program on OpenWrt that will reach out to a DDNS provider, tell them what our IP address currently is, and associate it to a DNS name. This way, when setting up our OpenVPN clients, we&rsquo;ll use the DDNS name, not our IP.</p>
+<p>If you don&rsquo;t have one already, you&rsquo;ll need a DDNS provider. I&rsquo;ve been a <a href="http://dyn.com/">Dyn</a> customer since before all the drama about <a href="https://help.dyn.com/free-user-discontinuation-faqs/">discontinuing</a> their free accounts. Make sure you choose a provider that is <a href="http://wiki.openwrt.org/doc/howto/ddns.client#requirements">supported</a> by OpenWrt. Once you choose a provider, you&rsquo;ll need to register a DNS name with them.</p>
+<p>You&rsquo;ll also need the <a href="http://wiki.openwrt.org/doc/howto/ddns.client#basics">following info</a> about your account:</p>
+<ul>
+<li>DDNS service name (as listed <a href="http://wiki.openwrt.org/doc/howto/ddns.client#requirements">here</a>, or in <em>/usr/lib/ddns/services</em>)</li>
+<li>Host name/domain</li>
+<li>Username</li>
+<li>Password (some providers offer an updater key instead of exposing your password)</li>
+<li>Interface you&rsquo;ll be using to get DNS info (e.g., wan, wan6, lan, etc&hellip;)</li>
+</ul>
+<p>Start by installing the necessary DDNS packages. If you want to configure DDNS via LuCI, you&rsquo;ll need the package for that as well. I&rsquo;m also installing two extra packages to make DDNS requests over SSL, as described <a href="http://wiki.openwrt.org/doc/howto/ddns.client#ssl_support">here</a>.</p>
+<pre tabindex="0"><code>opkg update
+opkg install ddns-scripts luci-app-ddns ca-certificates wget
+</code></pre><p>I&rsquo;m going to be <a href="http://wiki.openwrt.org/doc/howto/ddns.client#via_console1">configuring via command line</a>, but you could perform the <a href="http://wiki.openwrt.org/doc/howto/ddns.client#using_luci1">same steps in LuCI</a>. Here, I&rsquo;m using the IP of the eth0 <a href="http://wiki.openwrt.org/doc/uci/ddns#section_service">interface</a> to update my DDNS entry. Obviously, substitute your service/hostname/username/password as needed.</p>
+<pre tabindex="0"><code>uci delete ddns.myddns_ipv4
+uci delete ddns.myddns_ipv6
+uci set ddns.myddns=&#34;service&#34;
+uci set ddns.myddns.service_name=&#34;ddnsprovider.com&#34;
+uci set ddns.myddns.domain=&#34;yournamehere.yourproviderhere.com&#34;
+uci set ddns.myddns.username=&#34;username&#34;
+uci set ddns.myddns.password=&#34;p@ssw0rd&#34;
+uci set ddns.myddns.interface=&#34;wan&#34;
+uci set ddns.myddns.ip_source=&#34;interface&#34;
+uci set ddns.myddns.ip_interface=&#34;eth0&#34;
+uci set ddns.myddns.enabled=&#34;1&#34;
+uci set ddns.myddns.use_https=&#34;1&#34;
+uci set ddns.myddns.cacert=&#34;/etc/ssl/certs&#34;
+uci commit ddns
+</code></pre><p>When you&rsquo;re finished, be sure to start and enable the DDNS client.</p>
+<pre tabindex="0"><code>/etc/init.d/ddns start
+/etc/init.d/ddns enable
+</code></pre><p>Check your DDNS provider&rsquo;s website to make sure your address is updating. If you&rsquo;re having issues, run the command below to manually update your DDNS. It should give you some insight as to where the error is.</p>
+<pre tabindex="0"><code>/usr/lib/ddns/dynamic_dns_updater.sh myddns
+</code></pre><h1 id="setup-openvpn">Setup OpenVPN<a hidden class="anchor" aria-hidden="true" href="#setup-openvpn">#</a></h1>
+<h2 id="install-packages">Install packages<a hidden class="anchor" aria-hidden="true" href="#install-packages">#</a></h2>
+<p>Start by installing the necessary OpenVPN packages. If you want to configure OpenVPN via LuCI, you&rsquo;ll need the package for that as well.</p>
+<pre tabindex="0"><code>opkg update
+opkg install openvpn-openssl openvpn-easy-rsa luci-app-openvpn openssh-sftp-server
+</code></pre><p>It&rsquo;s a good idea to move the /etc/easy-rsa directory to somewhere else, in case you do an upgrade and overwrite your files.</p>
+<pre tabindex="0"><code>mkdir /etc/config/openvpn-config
+mv /etc/easy-rsa/* /etc/config/openvpn-config/
+rm -rf /etc/easy-rsa/
+ln -s /etc/config/openvpn-config/ /etc/easy-rsa
+rm /etc/config/openvpn_recipes
+touch /etc/config/openvpn-config/client.ovpn
+</code></pre><h2 id="create-certificates">Create certificates<a hidden class="anchor" aria-hidden="true" href="#create-certificates">#</a></h2>
+<p>Next, we&rsquo;re going to generate the certificates for the server and client(s). We need to start by editing a few lines in the <em>/etc/easy-rsa/vars</em> file.</p>
+<p>Set the key size to at least 2048 bits. A key size of 4096 is preferred, but your client has to support it, plus it adds additional encryption overhead.</p>
+<pre tabindex="0"><code>export KEY_SIZE=2048
+</code></pre><p>Fill out the certificate info as necessary.</p>
+<pre tabindex="0"><code>export KEY_COUNTRY=&#34;US&#34;
+export KEY_PROVINCE=&#34;CA&#34;
+export KEY_CITY=&#34;SanFrancisco&#34;
+export KEY_ORG=&#34;Fort-Funston&#34;
+export KEY_EMAIL=&#34;me@myhost.mydomain&#34;
+export KEY_OU=&#34;MyOrganizationalUnit&#34;
+</code></pre><p>Next, create your certificate authority, Diffie-Hellman parameters (this will take 40+ minutes), and certificates. If you want more client certificates, run the last command again, specifying a different name.</p>
+<pre tabindex="0"><code>cd /etc/easy-rsa
+source vars
+clean-all
+build-ca
+build-dh
+build-key-server c7
+build-key-pkcs12 user1
+</code></pre><p>Note - I&rsquo;m choosing to use the PKCS12 format for the client certificates, since it combines the key and CA certificate into one file. Your client may want the two certificates to be separate.</p>
+<h2 id="configure-networkfirewall">Configure network/firewall<a hidden class="anchor" aria-hidden="true" href="#configure-networkfirewall">#</a></h2>
+<p>Next, we need to configure a new network interface and assign a firewall zone to it.</p>
+<pre tabindex="0"><code>uci set network.vpn0=&#34;interface&#34;
+uci set network.vpn0.ifname=&#34;tun0&#34;
+uci set network.vpn0.proto=&#34;none&#34;
+uci set network.vpn0.auto=&#34;1&#34;
+uci commit network
+
+uci add firewall rule
+uci set firewall.@rule[-1].name=&#34;Allow-OpenVPN-Inbound&#34;
+uci set firewall.@rule[-1].target=&#34;ACCEPT&#34;
+uci set firewall.@rule[-1].src=&#34;wan&#34;
+uci set firewall.@rule[-1].proto=&#34;udp&#34;
+uci set firewall.@rule[-1].dest_port=&#34;1194&#34;
+uci add firewall zone
+uci set firewall.@zone[-1].name=&#34;vpn&#34;
+uci set firewall.@zone[-1].input=&#34;ACCEPT&#34;
+uci set firewall.@zone[-1].forward=&#34;ACCEPT&#34;
+uci set firewall.@zone[-1].output=&#34;ACCEPT&#34;
+uci set firewall.@zone[-1].masq=&#34;1&#34;
+uci set firewall.@zone[-1].network=&#34;vpn0&#34;
+uci add firewall forwarding
+uci set firewall.@forwarding[-1].src=&#34;vpn&#34;
+uci set firewall.@forwarding[-1].dest=&#34;wan&#34;
+uci add firewall forwarding
+uci set firewall.@forwarding[-1].src=&#34;vpn&#34;
+uci set firewall.@forwarding[-1].dest=&#34;lan&#34;
+uci commit firewall
+
+/etc/init.d/network reload
+/etc/init.d/firewall reload
+</code></pre><h2 id="enable-packet-forwarding">Enable packet forwarding<a hidden class="anchor" aria-hidden="true" href="#enable-packet-forwarding">#</a></h2>
+<p>We also need to check if packet forwarding is enabled (it should be by default).</p>
+<pre tabindex="0"><code>cat /proc/sys/net/ipv4/ip_forward
+</code></pre><p>If it is not enabled, edit the file above and set the value to <em>1</em>.</p>
+<h2 id="openvpn-server-config">OpenVPN server config<a hidden class="anchor" aria-hidden="true" href="#openvpn-server-config">#</a></h2>
+<p>Here, we&rsquo;re going to be configuring the OpenVPN server. See the comments in the commands below for more information.</p>
+<pre tabindex="0"><code>touch /etc/config/openvpn
+uci delete openvpn.sample_server
+uci delete openvpn.sample_client
+
+
+#set and enable vpn
+uci set openvpn.myvpn=&#34;openvpn&#34;
+uci set openvpn.myvpn.enabled=&#34;1&#34;
+
+#specify TUN vs. TAP (if you&#39;re not sure, you want TUN)
+uci set openvpn.myvpn.dev=&#34;tun&#34;
+
+#specify port to use (default is 1194)
+uci set openvpn.myvpn.port=&#34;1194&#34;
+
+#specify protocol to use (default is UDP)
+uci set openvpn.myvpn.proto=&#34;udp&#34;
+
+#specify to use compression
+uci set openvpn.myvpn.comp_lzo=&#34;yes&#34;
+
+#logging
+uci set openvpn.myvpn.status=&#34;/var/log/openvpn_status.log&#34;
+uci set openvpn.myvpn.log=&#34;/tmp/openvpn.log&#34;
+uci set openvpn.myvpn.verb=&#34;3&#34;
+uci set openvpn.myvpn.mute=&#34;5&#34;
+
+#ping every 10 seconds, assume not responding after 120 seconds
+uci set openvpn.myvpn.keepalive=&#34;10 120&#34;
+
+#keep key and tunnel persistent across restarts
+uci set openvpn.myvpn.persist_key=&#34;1&#34;
+uci set openvpn.myvpn.persist_tun=&#34;1&#34;
+
+#set user and group to less-privileged account (UNIX/Linux only)
+uci set openvpn.myvpn.user=&#34;nobody&#34;
+uci set openvpn.myvpn.group=&#34;nogroup&#34;
+
+#certificate information
+uci set openvpn.myvpn.ca=&#34;/etc/easy-rsa/keys/ca.crt&#34;
+uci set openvpn.myvpn.cert=&#34;/etc/easy-rsa/keys/c7.crt&#34;
+uci set openvpn.myvpn.key=&#34;/etc/easy-rsa/keys/c7.key&#34;
+uci set openvpn.myvpn.dh=&#34;/etc/easy-rsa/keys/dh2048.pem&#34;
+
+#server settings
+uci set openvpn.myvpn.mode=&#34;server&#34;
+uci set openvpn.myvpn.tls_server=&#34;1&#34;
+uci set openvpn.myvpn.server=&#34;10.8.0.0 255.255.255.0&#34;
+
+#specify topology to use
+uci set openvpn.myvpn.topology=&#34;subnet&#34;
+
+#specify gateway to use
+uci set openvpn.myvpn.route_gateway=&#34;dhcp&#34;
+
+#allow clients to &#34;see&#34; one another
+uci set openvpn.myvpn.client_to_client=&#34;1&#34;
+
+#options to push to clients
+uci add_list openvpn.myvpn.push=&#34;comp-lzo yes&#34;
+#keep key and tunnel persistent across restarts
+uci add_list openvpn.myvpn.push=&#34;persist-key&#34;
+uci add_list openvpn.myvpn.push=&#34;persist-tun&#34;
+#set user and group to less-privileged account (UNIX/Linux only)
+uci add_list openvpn.myvpn.push=&#34;user nobody&#34;
+uci add_list openvpn.myvpn.push=&#34;user nogroup&#34;
+#specify topology to use
+uci add_list openvpn.myvpn.push=&#34;topology subnet&#34;
+#specify gateway to use
+uci add_list openvpn.myvpn.push=&#34;route-gateway dhcp&#34;
+#redirect ALL traffic through the VPN server (this is IMPORTANT if you don&#39;t trust your local network)
+uci add_list openvpn.myvpn.push=&#34;redirect-gateway def1&#34;
+#push a local route to your clients (allow your clients to access the server&#39;s network)
+uci add_list openvpn.myvpn.push=&#34;route 10.10.1.0 255.255.255.0&#34;
+#push DNS to your clients (this is IMPORTANT if you don&#39;t trust your local network)
+uci add_list openvpn.myvpn.push=&#34;dhcp-option DNS 107.170.95.180&#34;
+uci add_list openvpn.myvpn.push=&#34;dhcp-option DNS 50.116.40.226&#34;
+uci commit openvpn
+</code></pre><p>Be sure to start and enable the OpenVPN server.</p>
+<pre tabindex="0"><code>/etc/init.d/openvpn start
+/etc/init.d/openvpn enable
+</code></pre><p>Next, look at the logfile at <em>/tmp/openvpn.log</em>. With any luck, you should see <em>Initialization Sequence Completed</em>, showing that your OpenVPN server is up!</p>
+<pre tabindex="0"><code>root@c7main:/etc/config/openvpn-config/keys# cat /tmp/openvpn.log 
+Thu Aug 20 20:49:02 2015 OpenVPN 2.3.6 mips-openwrt-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [MH] [IPv6] built on Jun 18 2015
+Thu Aug 20 20:49:02 2015 library versions: OpenSSL 1.0.2d 9 Jul 2015, LZO 2.08
+Thu Aug 20 20:49:03 2015 Diffie-Hellman initialized with 2048 bit key
+Thu Aug 20 20:49:03 2015 Socket Buffers: R=[163840-&gt;131072] S=[163840-&gt;131072]
+Thu Aug 20 20:49:03 2015 TUN/TAP device tun0 opened
+Thu Aug 20 20:49:03 2015 TUN/TAP TX queue length set to 100
+Thu Aug 20 20:49:03 2015 do_ifconfig, tt-&gt;ipv6=0, tt-&gt;did_ifconfig_ipv6_setup=0
+Thu Aug 20 20:49:03 2015 /sbin/ifconfig tun0 10.8.0.1 netmask 255.255.255.0 mtu 1500 broadcast 10.8.0.255
+Thu Aug 20 20:49:03 2015 GID set to nogroup
+Thu Aug 20 20:49:03 2015 UID set to nobody
+Thu Aug 20 20:49:03 2015 UDPv4 link local (bound): [undef]
+Thu Aug 20 20:49:03 2015 UDPv4 link remote: [undef]
+Thu Aug 20 20:49:03 2015 MULTI: multi_init called, r=256 v=256
+Thu Aug 20 20:49:03 2015 IFCONFIG POOL: base=10.8.0.2 size=252, ipv6=0
+Thu Aug 20 20:49:03 2015 Initialization Sequence Completed
+</code></pre><h2 id="openvpn-client-config">OpenVPN client config<a hidden class="anchor" aria-hidden="true" href="#openvpn-client-config">#</a></h2>
+<p>Edit the OpenVPN client configuration file at <em>/etc/config/openvpn-config/client.ovpn</em>. I&rsquo;m purposely keeping the client configuration file as thin as possible, so that most settings can be setup on the server and pushed to clients.</p>
+<pre tabindex="0"><code>#specify TUN vs. TAP (if you&#39;re not sure, you want TUN)
+dev tun
+
+#specify protocol to use (default is UDP)
+proto udp
+
+#Certificate information
+ca   ca.crt
+cert user1.crt
+key  user1.key
+
+#client settings
+client
+remote-cert-tls server
+remote YOUR_DNS_ENTRY_OR_IP 1194
+</code></pre><h2 id="distribute-keys">Distribute keys<a hidden class="anchor" aria-hidden="true" href="#distribute-keys">#</a></h2>
+<p>You’ll need to move the following files from the router, to your client(s). All four files should be saved in the same folder/location on your client.</p>
+<ul>
+<li>CA certificate (ca.crt)</li>
+<li>client certificate (user1.crt)</li>
+<li>client keyfile (user1.key)</li>
+<li>client config file (client.ovpn)</li>
+</ul>
+<p>You can use SFTP, SSH, or copy them to a USB drive. You could email them, but I would advise against it (since the key isn&rsquo;t encrypted).</p>
+<h2 id="configure-openvpn-client">Configure OpenVPN client<a hidden class="anchor" aria-hidden="true" href="#configure-openvpn-client">#</a></h2>
+<p>In this case, I&rsquo;m going to be using the official OpenVPN <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn">Android app</a>, but there are also clients for iOS, Windows, Mac, and Linux.</p>
+<p>Once installed, tap on the <em>Option</em> button, then tap on <em>Import</em>, then tap on <em>Import Profile from SD Card</em>.</p>
+
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_004.png" loading="lazy" alt="screenshot"></p>
+
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_005.png" loading="lazy" alt="screenshot"></p>
+<p>Browse to the <em>client.ovpn</em> file and import it into the OpenVPN Connect app.</p>
+
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_006.png" loading="lazy" alt="screenshot"></p>
+<p>The profile should be imported successfully, and you should be able to see your server&rsquo;s name or IP. Click <em>Connect</em> to establish a connection.</p>
+
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_007.png" loading="lazy" alt="screenshot"></p>
+<p>Verify your connection on the next screen.</p>
+
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_008.png" loading="lazy" alt="screenshot"></p>
+<h1 id="verify-connection">Verify connection<a hidden class="anchor" aria-hidden="true" href="#verify-connection">#</a></h1>
+<p>Try to browse a public site (e.g., <a href="https://www.google.com">www.google.com</a>), then try to browse to your router&rsquo;s IP (e.g., 10.10.1.1). If everything is setup correctly, both should load. You can also check your IP with an external tool, such as <a href="http://www.whatismyip.com/">WhatIsMyIP</a>, and you should see your OpenWrt router&rsquo;s public IP. I&rsquo;d also advise to check for <a href="http://dnsleak.com/">DNS leaks</a> (your DNS should be set to the DNS servers we pushed to the clients).</p>
+<p>Let me know how your setup went!</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN server on TP-Link Archer C7 on twitter"
+        href="https://twitter.com/intent/tweet/?text=OpenWrt%20with%20OpenVPN%20server%20on%20TP-Link%20Archer%20C7&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f08%2fopenwrt-with-openvpn-server-on-tp-link-archer-c7%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN server on TP-Link Archer C7 on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f08%2fopenwrt-with-openvpn-server-on-tp-link-archer-c7%2f&amp;title=OpenWrt%20with%20OpenVPN%20server%20on%20TP-Link%20Archer%20C7&amp;summary=OpenWrt%20with%20OpenVPN%20server%20on%20TP-Link%20Archer%20C7&amp;source=https%3a%2f%2floganmarchione.github.io%2f2015%2f08%2fopenwrt-with-openvpn-server-on-tp-link-archer-c7%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN server on TP-Link Archer C7 on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2015%2f08%2fopenwrt-with-openvpn-server-on-tp-link-archer-c7%2f&title=OpenWrt%20with%20OpenVPN%20server%20on%20TP-Link%20Archer%20C7">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN server on TP-Link Archer C7 on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2015%2f08%2fopenwrt-with-openvpn-server-on-tp-link-archer-c7%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN server on TP-Link Archer C7 on whatsapp"
+        href="https://api.whatsapp.com/send?text=OpenWrt%20with%20OpenVPN%20server%20on%20TP-Link%20Archer%20C7%20-%20https%3a%2f%2floganmarchione.github.io%2f2015%2f08%2fopenwrt-with-openvpn-server-on-tp-link-archer-c7%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share OpenWrt with OpenVPN server on TP-Link Archer C7 on telegram"
+        href="https://telegram.me/share/url?text=OpenWrt%20with%20OpenVPN%20server%20on%20TP-Link%20Archer%20C7&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f08%2fopenwrt-with-openvpn-server-on-tp-link-archer-c7%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

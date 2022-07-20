@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pfSense on the PC Engines APU2 | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Introduction Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 In the past few weeks, I replaced my EdgeRouter Lite with a Netgate SG-1100. Two weeks later, my SG-1100 died, and I had to put the EdgeRouter Lite back.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="pfSense on the PC Engines APU2" />
+<meta property="og:description" content="Introduction Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 In the past few weeks, I replaced my EdgeRouter Lite with a Netgate SG-1100. Two weeks later, my SG-1100 died, and I had to put the EdgeRouter Lite back." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_pfsense.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-08-25T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-08-25T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_pfsense.svg" />
+<meta name="twitter:title" content="pfSense on the PC Engines APU2"/>
+<meta name="twitter:description" content="Introduction Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 In the past few weeks, I replaced my EdgeRouter Lite with a Netgate SG-1100. Two weeks later, my SG-1100 died, and I had to put the EdgeRouter Lite back."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "pfSense on the PC Engines APU2",
+      "item": "https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "pfSense on the PC Engines APU2",
+  "name": "pfSense on the PC Engines APU2",
+  "description": "Introduction Hey! Listen! This post is part of a series on pfSense. Check them all out!\nDate URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 In the past few weeks, I replaced my EdgeRouter Lite with a Netgate SG-1100. Two weeks later, my SG-1100 died, and I had to put the EdgeRouter Lite back.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Introduction Hey! Listen! This post is part of a series on pfSense. Check them all out!\nDate URL Part 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 In the past few weeks, I replaced my EdgeRouter Lite with a Netgate SG-1100. Two weeks later, my SG-1100 died, and I had to put the EdgeRouter Lite back. However, I still wanted to replace the ERL with a pfSense device (albeit, not Netgate hardware).\nPC Engines APU2 Again, my requirements for hardware were as follows:\nHardware that is small, low power, and fanless (this device is in my living room, not a server rack) Have Intel NICs (they generally have better compatibility with Linux/BSD than Realtek) Be around $250 or less, including RAM (but not storage) Going back to my hardware chart, I further narrowed it down to the PC Engines APU2 and the Shuttle DS77U (in fact, the DS10U was just released, which is a DS77U with an 8th Gen Intel processor). While the Shuttle DS77U/DS10U would have better hardware (newer CPU, DDR4 instead of DDR3, etc…), I chose to go with the APU2. The APU2 comes highly recommended on reddit and the pfSense forums, and it receives frequent BIOS updates (including Coreboot support, and most recently AMD Core Performance Boost).\nThere are four main differentiators of the APU2 lineup (thanks to commenter Cee Jay for clearing this up):\nthe APU platform generation (e.g., 2, 3, 4, etc…) - this is where you get APU2, APU3, APU4, etc… the board revision (e.g., a, b, c, d, etc…) - this is where you get APU2A, APU2B, APU2C, etc… the amount of RAM (2GB or 4GB) - this is where you get APU2D2, APU2D4, etc… the type of NIC (Intel i210AT vs i211AT) When purchasing an APU model, do not assume that a bigger model number is better. For example, the APU4 is not “better” than the APU2 because the model number is larger. You should always do your research to determine what model you need for your application.\nFor networking applications, it’s generally known that the i210AT is considered “better” than the i211AT because it has four transmit and four receive queues per port, while the i211AT only has two transmit and two receive queues per port. So when purchasing an APU, I made sure to look for one with an i210AT.\nI ended up purchasing the following items directly from PC Engines directly. Shipping took a total of 10 days from Switzerland to Pennsylvania. It arrived via USPS and required a signature, since it originated outside the United States.\napu2d4 - $120 (this has the i210AT) case1d2blku - $10 ac12vus2 - $4.40 Samsung 860 EVO 250GB mSATA SSD - $67.90 usbcom1a - $8.00 (optional - the drivers for Windows 10 are here) apufix1a - $5.00 (optional - this makes positioning the thermal pad much easier) hexbit - $3.50 (optional) Pre-install Assembly I chose to assemble my APU2 myself, but there is an option to pay to have it assembled. If you choose to assemble it yourself, there is a really good video here. Pro-tip, make sure you remove the screws on the serial connection before you try to assemble anything.\nConnect to serial Connect the serial cable using the settings from the manual. These are the same settings that pfSense uses as well.\nSpeed: 115200 Data Bits: 8 Parity Bits: None Stop Bits: 1 These are the PuTTY settings I used (your COM port may be different).\nPress F10 at boot when connected via the console cable and you will see the boot menu.\nMemtest86 I always test my memory before I use it, and I always recommend Memtest86 (not to be confused with Memtest86+, which is no longer maintained). There is a build of Memtest86 built-in to the APU2 BIOS, just press F10 at boot when connected via the console cable and you can run a memory test with option 3.\nSetup Install Installing pfSense was easy enough, especially if you’re using the amazing install guide (seriously, use it). For my install, I chose the options below from the download page. The APU2 does not have a VGA port, so you don’t have any option other than to do an install over serial.\nConfiguration The initial configuration was easy. The middle port is the LAN port, which will give you a 192.168.1.1/24 address. From a browser, follow the prompts to do your initial setup. I won’t detail exactly what I did to my setup, since everyone’s install will be different.\nI recommend getting a cheap label maker and labeling the interfaces, since they are not marked on the case anywhere. I also make a label for the boot menu shortcut key and the serial settings.\nBIOS update This is personal preference, but I always try to update the BIOS on my devices. With the recent Meltdown and Spectre vulnerabilities, it is crucial to keep your BIOS updated (since these vulnerabilities can only be mitigated with firmware updates). For the APU2, the BIOS updates are located here.\nPC Engines recommends you flash the firmware from a separate Linux-based USB drive, but you can do it from inside pfSense, after pfSense is installed, as shown here.\nSpeedtest Here are the iPerf results when running a test with my ERL as the router. Keep in mind, my internet at home is only 400/400, so that’s my current maximum speed.\nConnecting to host loganmarchione.com, port 5201 [ 4] local 10.10.2.34 port 55818 connected to 68.183.148.132 port 5201 [ ID] Interval Transfer Bandwidth Retr Cwnd [ 4] 0.00-1.00 sec 48.0 MBytes 402 Mbits/sec 28 1.62 MBytes [ 4] 1.00-2.00 sec 64.8 MBytes 543 Mbits/sec 23 1.35 MBytes [ 4] 2.00-3.00 sec 67.2 MBytes 564 Mbits/sec 0 1.42 MBytes [ 4] 3.00-4.00 sec 67.2 MBytes 564 Mbits/sec 0 1.47 MBytes [ 4] 4.00-5.00 sec 67.2 MBytes 564 Mbits/sec 0 1.50 MBytes [ 4] 5.00-6.00 sec 67.2 MBytes 564 Mbits/sec 0 1.52 MBytes [ 4] 6.00-7.00 sec 66.4 MBytes 557 Mbits/sec 0 1.53 MBytes [ 4] 7.00-8.00 sec 66.6 MBytes 559 Mbits/sec 0 1.54 MBytes [ 4] 8.00-9.00 sec 67.2 MBytes 564 Mbits/sec 0 1.54 MBytes [ 4] 9.00-10.00 sec 67.2 MBytes 564 Mbits/sec 0 1.56 MBytes - - - - - - - - - - - - - - - - - - - - - - - - - [ ID] Interval Transfer Bandwidth Retr [ 4] 0.00-10.00 sec 649 MBytes 544 Mbits/sec 51 sender [ 4] 0.00-10.00 sec 647 MBytes 542 Mbits/sec receiver And here are the results of same test, but with the APU2 acting as the router. As you can see, it’s able to max out my connection without breaking a sweat.\nConnecting to host loganmarchione.com, port 5201 [ 4] local 10.10.2.34 port 51548 connected to 68.183.148.132 port 5201 [ ID] Interval Transfer Bandwidth Retr Cwnd [ 4] 0.00-1.00 sec 53.7 MBytes 450 Mbits/sec 9 2.21 MBytes [ 4] 1.00-2.00 sec 67.2 MBytes 563 Mbits/sec 1 2.23 MBytes [ 4] 2.00-3.00 sec 67.2 MBytes 564 Mbits/sec 0 2.25 MBytes [ 4] 3.00-4.00 sec 67.2 MBytes 564 Mbits/sec 0 2.27 MBytes [ 4] 4.00-5.00 sec 67.2 MBytes 563 Mbits/sec 0 2.29 MBytes [ 4] 5.00-6.00 sec 67.2 MBytes 564 Mbits/sec 0 2.32 MBytes [ 4] 6.00-7.00 sec 67.2 MBytes 563 Mbits/sec 0 2.34 MBytes [ 4] 7.00-8.00 sec 67.2 MBytes 564 Mbits/sec 0 2.38 MBytes [ 4] 8.00-9.00 sec 67.1 MBytes 563 Mbits/sec 0 2.47 MBytes [ 4] 9.00-10.00 sec 67.2 MBytes 564 Mbits/sec 1 2.51 MBytes - - - - - - - - - - - - - - - - - - - - - - - - - [ ID] Interval Transfer Bandwidth Retr [ 4] 0.00-10.00 sec 658 MBytes 552 Mbits/sec 11 sender [ 4] 0.00-10.00 sec 657 MBytes 551 Mbits/sec receiver I have heard nothing but good things about the APU2, and am so far impressed!\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "1344",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_pfsense.svg","datePublished": "2019-08-25T00:00:00Z",
+  "dateModified": "2019-08-25T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      pfSense on the PC Engines APU2
+    </h1>
+    <div class="post-meta"><span title='2019-08-25 00:00:00 +0000 UTC'>2019-08-25</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_pfsense.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#pc-engines-apu2" aria-label="PC Engines APU2">PC Engines APU2</a></li>
+                <li>
+                    <a href="#pre-install" aria-label="Pre-install">Pre-install</a><ul>
+                        
+                <li>
+                    <a href="#assembly" aria-label="Assembly">Assembly</a></li>
+                <li>
+                    <a href="#connect-to-serial" aria-label="Connect to serial">Connect to serial</a></li>
+                <li>
+                    <a href="#memtest86" aria-label="Memtest86">Memtest86</a></li></ul>
+                </li>
+                <li>
+                    <a href="#setup" aria-label="Setup">Setup</a><ul>
+                        
+                <li>
+                    <a href="#install" aria-label="Install">Install</a></li>
+                <li>
+                    <a href="#configuration" aria-label="Configuration">Configuration</a></li>
+                <li>
+                    <a href="#bios-update" aria-label="BIOS update">BIOS update</a></li></ul>
+                </li>
+                <li>
+                    <a href="#speedtest" aria-label="Speedtest">Speedtest</a></li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>Hey! Listen! This post is part of a series on pfSense. Check them all out!</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>URL</th>
+<th>Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-08-25</td>
+<td><a href="/2019/08/pfsense-on-the-pc-engines-apu2/">pfSense on the PC Engines APU2</a></td>
+<td>Migrated to a PC Engines APU2D4</td>
+</tr>
+<tr>
+<td>2019-07-17</td>
+<td><a href="/2019/07/my-sg-1100-died/">My SG-1100 died</a></td>
+<td>Migrated back the the EdgeRouter Lite</td>
+</tr>
+<tr>
+<td>2019-06-28</td>
+<td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
+<td>Migrated to a Netgate SG-1100</td>
+</tr>
+</tbody>
+</table>
+<p>In the past few weeks, I <a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">replaced my EdgeRouter Lite with a Netgate SG-1100</a>. Two weeks later, <a href="/2019/07/my-sg-1100-died/">my SG-1100 died,</a> and I had to put the EdgeRouter Lite back. However, I still wanted to replace the ERL with a pfSense device (albeit, not Netgate hardware).</p>
+<h1 id="pc-engines-apu2">PC Engines APU2<a hidden class="anchor" aria-hidden="true" href="#pc-engines-apu2">#</a></h1>
+<p>Again, my requirements for hardware were as follows:</p>
+<ul>
+<li>Hardware that is small, low power, and fanless (this device is in my living room, not a server rack)</li>
+<li>Have Intel NICs (they generally have better compatibility with Linux/BSD than Realtek)</li>
+<li>Be around $250 or less, including RAM (but not storage)</li>
+</ul>
+<p>Going back to my <a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/#hardware">hardware chart</a>, I further narrowed it down to the PC Engines APU2 and the Shuttle DS77U (in fact, the DS10U was just released, which is a DS77U with an 8th Gen Intel processor). While the Shuttle DS77U/DS10U would have better hardware (newer CPU, DDR4 instead of DDR3, etc&hellip;), I chose to go with the APU2. The APU2 comes highly recommended on <a href="https://www.reddit.com/r/PFSENSE/">reddit</a> and the <a href="https://forum.netgate.com/topic/95148/pc-engines-apu2-experiences">pfSense forums</a>, and it receives <a href="https://pcengines.github.io/">frequent BIOS updates</a> (including Coreboot support, and most recently AMD Core Performance Boost).</p>
+<p>There are four main differentiators of the APU2 lineup (thanks to commenter Cee Jay for clearing this up):</p>
+<ul>
+<li>the APU platform generation (e.g., 2, 3, 4, etc&hellip;) - this is where you get APU2, APU3, APU4, etc&hellip;</li>
+<li>the board revision (e.g., a, b, c, d, etc&hellip;) - this is where you get APU2A, APU2B, APU2C, etc&hellip;</li>
+<li>the amount of RAM (2GB or 4GB) - this is where you get APU2D2, APU2D4, etc&hellip;</li>
+<li>the type of NIC (Intel i210AT vs i211AT)</li>
+</ul>
+<p>When purchasing an APU model, do not assume that a bigger model number is better. For example, <strong>the APU4 is not &ldquo;better&rdquo; than the APU2</strong> because the model number is larger. You should always do your research to determine what model you need for your application.</p>
+<p>For networking applications, it&rsquo;s generally known that the i210AT is considered &ldquo;better&rdquo; than the i211AT because it has four transmit and four receive queues per port, while the i211AT only has two transmit and two receive queues per port. So when purchasing an APU, I made sure to look for one with an i210AT.</p>
+<p>I ended up purchasing the following items directly from <a href="https://pcengines.ch/order.htm">PC Engines</a> directly. Shipping took a total of 10 days from Switzerland to Pennsylvania. It arrived via USPS and required a signature, since it originated outside the United States.</p>
+<ul>
+<li><a href="https://pcengines.ch/apu2d4.htm">apu2d4</a> - $120 (this has the i210AT)</li>
+<li><a href="https://pcengines.ch/case1d2blku.htm">case1d2blku</a> - $10</li>
+<li><a href="https://pcengines.ch/ac12vus2.htm">ac12vus2</a> - $4.40</li>
+<li><a href="https://www.amazon.com/dp/B07864YNTZ/">Samsung 860 EVO 250GB mSATA SSD</a> - $67.90</li>
+<li><a href="https://www.pcengines.ch/usbcom1a.htm">usbcom1a</a> - $8.00 (optional - the drivers for Windows 10 are <a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">here</a>)</li>
+<li><a href="https://www.pcengines.ch/apufix1a.htm">apufix1a</a> - $5.00 (optional - this makes positioning the thermal pad much easier)</li>
+<li><a href="https://www.pcengines.ch/hexbit.htm">hexbit</a> - $3.50 (optional)</li>
+</ul>
+<h1 id="pre-install">Pre-install<a hidden class="anchor" aria-hidden="true" href="#pre-install">#</a></h1>
+<h2 id="assembly">Assembly<a hidden class="anchor" aria-hidden="true" href="#assembly">#</a></h2>
+<p>I chose to assemble my APU2 myself, but there is an option to pay to have it assembled. If you choose to assemble it yourself, there is a really good video <a href="https://www.youtube.com/watch?v=ft_Ic2ZdLHw">here</a>. Pro-tip, make sure you remove the screws on the serial connection before you try to assemble anything.</p>
+
+<p><img src="/2019/08/pfsense-on-the-pc-engines-apu2/20190823_001_hub809d6f5b03e600f69b6ff119217b793_1983999_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="apu2"></p>
+
+<p><img src="/2019/08/pfsense-on-the-pc-engines-apu2/20190823_002_hub809d6f5b03e600f69b6ff119217b793_1964736_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="apu2"></p>
+<h2 id="connect-to-serial">Connect to serial<a hidden class="anchor" aria-hidden="true" href="#connect-to-serial">#</a></h2>
+<p>Connect the serial cable using the settings from the <a href="https://pcengines.ch/pdf/apu2.pdf">manual</a>. These are the same settings that pfSense uses as well.</p>
+<ul>
+<li>Speed: 115200</li>
+<li>Data Bits: 8</li>
+<li>Parity Bits: None</li>
+<li>Stop Bits: 1</li>
+</ul>
+<p>These are the PuTTY settings I used (your COM port may be different).</p>
+
+<p><img src="/2019/08/pfsense-on-the-pc-engines-apu2/20190823_003.png" loading="lazy" alt="screenshot"></p>
+<p>Press <em>F10</em> at boot when connected via the console cable and you will see the boot menu.</p>
+
+<p><img src="/2019/08/pfsense-on-the-pc-engines-apu2/20190823_004.png" loading="lazy" alt="screenshot"></p>
+<h2 id="memtest86">Memtest86<a hidden class="anchor" aria-hidden="true" href="#memtest86">#</a></h2>
+<p>I always test my memory before I use it, and I always recommend <a href="https://www.memtest86.com/download.htm">Memtest86</a> (not to be confused with <a href="https://www.memtest.org/">Memtest86+</a>, which is no longer maintained). There is a build of Memtest86 built-in to the APU2 BIOS, just press <em>F10</em> at boot when connected via the console cable and you can run a memory test with option <em>3</em>.</p>
+
+<p><img src="/2019/08/pfsense-on-the-pc-engines-apu2/20190823_005.png" loading="lazy" alt="screenshot"></p>
+<h1 id="setup">Setup<a hidden class="anchor" aria-hidden="true" href="#setup">#</a></h1>
+<h2 id="install">Install<a hidden class="anchor" aria-hidden="true" href="#install">#</a></h2>
+<p>Installing pfSense was easy enough, especially if you&rsquo;re using the <a href="https://docs.netgate.com/pfsense/en/latest/install/index.html#installing">amazing install guide</a> (seriously, use it). For my install, I chose the options below from the <a href="https://www.pfsense.org/download/">download page</a>. The APU2 does not have a VGA port, so you don&rsquo;t have any option other than to do an install over serial.</p>
+
+<p><img src="/2019/08/pfsense-on-the-pc-engines-apu2/20190823_006.png" loading="lazy" alt="screenshot"></p>
+<h2 id="configuration">Configuration<a hidden class="anchor" aria-hidden="true" href="#configuration">#</a></h2>
+<p>The initial configuration was easy. The middle port is the LAN port, which will give you a 192.168.1.1/24 address. From a browser, follow the prompts to do your initial setup. I won&rsquo;t detail exactly what I did to my setup, since everyone&rsquo;s install will be different.</p>
+<p>I recommend getting a cheap label maker and labeling the interfaces, since they are not marked on the case anywhere. I also make a label for the boot menu shortcut key and the serial settings.</p>
+<h2 id="bios-update">BIOS update<a hidden class="anchor" aria-hidden="true" href="#bios-update">#</a></h2>
+<p>This is personal preference, but I always try to update the BIOS on my devices. With the recent <a href="https://meltdownattack.com/">Meltdown and Spectre</a> vulnerabilities, it is crucial to keep your BIOS updated (since these vulnerabilities can only be mitigated with firmware updates). For the APU2, the BIOS updates are located <a href="https://pcengines.github.io/">here</a>.</p>
+<p>PC Engines recommends you flash the firmware from a separate Linux-based USB drive, but you can do it from inside pfSense, <em>after</em> pfSense is installed, as shown <a href="https://forum.netgate.com/topic/95148/pc-engines-apu2-experiences/214">here</a>.</p>
+<h1 id="speedtest">Speedtest<a hidden class="anchor" aria-hidden="true" href="#speedtest">#</a></h1>
+<p>Here are the iPerf results when running a test with my ERL as the router. Keep in mind, my internet at home is only 400/400, so that&rsquo;s my current maximum speed.</p>
+<pre tabindex="0"><code>Connecting to host loganmarchione.com, port 5201
+[ 4] local 10.10.2.34 port 55818 connected to 68.183.148.132 port 5201
+[ ID] Interval Transfer Bandwidth Retr Cwnd
+[ 4] 0.00-1.00 sec 48.0 MBytes 402 Mbits/sec 28 1.62 MBytes 
+[ 4] 1.00-2.00 sec 64.8 MBytes 543 Mbits/sec 23 1.35 MBytes 
+[ 4] 2.00-3.00 sec 67.2 MBytes 564 Mbits/sec 0 1.42 MBytes 
+[ 4] 3.00-4.00 sec 67.2 MBytes 564 Mbits/sec 0 1.47 MBytes 
+[ 4] 4.00-5.00 sec 67.2 MBytes 564 Mbits/sec 0 1.50 MBytes 
+[ 4] 5.00-6.00 sec 67.2 MBytes 564 Mbits/sec 0 1.52 MBytes 
+[ 4] 6.00-7.00 sec 66.4 MBytes 557 Mbits/sec 0 1.53 MBytes 
+[ 4] 7.00-8.00 sec 66.6 MBytes 559 Mbits/sec 0 1.54 MBytes 
+[ 4] 8.00-9.00 sec 67.2 MBytes 564 Mbits/sec 0 1.54 MBytes 
+[ 4] 9.00-10.00 sec 67.2 MBytes 564 Mbits/sec 0 1.56 MBytes 
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval Transfer Bandwidth Retr
+[ 4] 0.00-10.00 sec 649 MBytes 544 Mbits/sec 51 sender
+[ 4] 0.00-10.00 sec 647 MBytes 542 Mbits/sec receiver
+</code></pre><p>And here are the results of same test, but with the APU2 acting as the router. As you can see, it&rsquo;s able to max out my connection without breaking a sweat.</p>
+<pre tabindex="0"><code>Connecting to host loganmarchione.com, port 5201
+[ 4] local 10.10.2.34 port 51548 connected to 68.183.148.132 port 5201
+[ ID] Interval Transfer Bandwidth Retr Cwnd
+[ 4] 0.00-1.00 sec 53.7 MBytes 450 Mbits/sec 9 2.21 MBytes
+[ 4] 1.00-2.00 sec 67.2 MBytes 563 Mbits/sec 1 2.23 MBytes
+[ 4] 2.00-3.00 sec 67.2 MBytes 564 Mbits/sec 0 2.25 MBytes
+[ 4] 3.00-4.00 sec 67.2 MBytes 564 Mbits/sec 0 2.27 MBytes
+[ 4] 4.00-5.00 sec 67.2 MBytes 563 Mbits/sec 0 2.29 MBytes
+[ 4] 5.00-6.00 sec 67.2 MBytes 564 Mbits/sec 0 2.32 MBytes
+[ 4] 6.00-7.00 sec 67.2 MBytes 563 Mbits/sec 0 2.34 MBytes
+[ 4] 7.00-8.00 sec 67.2 MBytes 564 Mbits/sec 0 2.38 MBytes
+[ 4] 8.00-9.00 sec 67.1 MBytes 563 Mbits/sec 0 2.47 MBytes
+[ 4] 9.00-10.00 sec 67.2 MBytes 564 Mbits/sec 1 2.51 MBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval Transfer Bandwidth Retr
+[ 4] 0.00-10.00 sec 658 MBytes 552 Mbits/sec 11 sender
+[ 4] 0.00-10.00 sec 657 MBytes 551 Mbits/sec receiver
+</code></pre><p>I have heard nothing but good things about the APU2, and am so far impressed!</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2019/08/pfsense-on-the-pc-engines-apu2/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share pfSense on the PC Engines APU2 on twitter"
+        href="https://twitter.com/intent/tweet/?text=pfSense%20on%20the%20PC%20Engines%20APU2&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f08%2fpfsense-on-the-pc-engines-apu2%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share pfSense on the PC Engines APU2 on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f08%2fpfsense-on-the-pc-engines-apu2%2f&amp;title=pfSense%20on%20the%20PC%20Engines%20APU2&amp;summary=pfSense%20on%20the%20PC%20Engines%20APU2&amp;source=https%3a%2f%2floganmarchione.github.io%2f2019%2f08%2fpfsense-on-the-pc-engines-apu2%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share pfSense on the PC Engines APU2 on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2019%2f08%2fpfsense-on-the-pc-engines-apu2%2f&title=pfSense%20on%20the%20PC%20Engines%20APU2">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share pfSense on the PC Engines APU2 on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2019%2f08%2fpfsense-on-the-pc-engines-apu2%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share pfSense on the PC Engines APU2 on whatsapp"
+        href="https://api.whatsapp.com/send?text=pfSense%20on%20the%20PC%20Engines%20APU2%20-%20https%3a%2f%2floganmarchione.github.io%2f2019%2f08%2fpfsense-on-the-pc-engines-apu2%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share pfSense on the PC Engines APU2 on telegram"
+        href="https://telegram.me/share/url?text=pfSense%20on%20the%20PC%20Engines%20APU2&amp;url=https%3a%2f%2floganmarchione.github.io%2f2019%2f08%2fpfsense-on-the-pc-engines-apu2%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

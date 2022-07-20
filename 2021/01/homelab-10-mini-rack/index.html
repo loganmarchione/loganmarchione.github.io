@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Homelab 10&#34; mini-rack | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:
+Replaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera) Introduction I don&rsquo;t have space in my house for a full-size 19&quot; server rack (but a man can dream).">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Homelab 10&#34; mini-rack" />
+<meta property="og:description" content="Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:
+Replaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera) Introduction I don&rsquo;t have space in my house for a full-size 19&quot; server rack (but a man can dream)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-05T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-01-05T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" />
+<meta name="twitter:title" content="Homelab 10&#34; mini-rack"/>
+<meta name="twitter:description" content="Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:
+Replaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera) Introduction I don&rsquo;t have space in my house for a full-size 19&quot; server rack (but a man can dream)."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Homelab 10\" mini-rack",
+      "item": "https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Homelab 10\" mini-rack",
+  "name": "Homelab 10\u0022 mini-rack",
+  "description": "Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:\nReplaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera) Introduction I don\u0026rsquo;t have space in my house for a full-size 19\u0026quot; server rack (but a man can dream).",
+  "keywords": [
+    
+  ],
+  "articleBody": "Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:\nReplaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera) Introduction I don’t have space in my house for a full-size 19\" server rack (but a man can dream). My fiber internet service comes into the basement and terminates at the ONT. A Cat6 cable runs from the ONT in the basement, up through the ceiling directly above it where it plugs into my router. The hole drilled through the first floor is hidden by the entertainment center that houses all the equipment. My entire homelab lives on the bottom shelf of that piece of furniture and is designed to be low-power and quiet (since it’s in my living room):\npfSense router (APU2D4) Netgear switch (GS108PE) UniFi AP (UAP-AC-PRO) Intel NUC (NUC7i3BNH) Synology DS 718+ CyberPower UPS (CP1500PFCLCD) It’s a pretty small setup that only draws 50-60 watts, but lets me run 10+ VMs and 25+ containers. However, physically organizing it has been a pain. I’ve been using a small cabinet shelf (made for kitchen plates) and zip-ties to separate the router, switch, and AP, but it was ugly and various lengths of Cat6 were everywhere.\nRacks typically come in 19\" widths, but I had seen a few Reddit posts about 10\" racks (one, two) and a bunch of 3D printed solutions (one, two, three, four, five, six). However, these racks were usually custom-made, or typically sourced from parts in Europe (apparently 10\" is a popular rack size there).\nThen, I stumbled onto this post. It stuck out to me because the user was based in the US, it required very little metal-work, no 3D printing, and he included a parts list. It was a proper rack, just shrunk down to 10\". This is my attempt to recreate that rack.\nPresenting: The mini-rack Pictures And here is the obligatory GIF of the blinkenlights.\nYour browser does not support video. Parts This rack is based on the post from u/othugmuffin, but I changed a few things to better suit my needs.\nPart Link Quantity Price (per unit) Total price Comments Rack posts Penn Elcom Online 4 $1.94 $7.76 The shelf where this rack is going only fits a full 4U rack (5U is too tall), but I was able to cut off 1/3-of-a-U on a 5U rack (for a total of 4.66U height) Cage nuts Penn Elcom Online 50 $0.18 $9.00 I’m only using 24 Cage screws (M6) Penn Elcom Online 1 $12.24 $12.24 The ones with the tapered ends make catching the threads so much easier Cage nut tool Penn Elcom Online 1 $16.05 $16.05 Optional, but makes life much easier 10\" blank patch panel Amazon 1 $25.39 $25.39 This patch panel has a mounting plate for the keystones, whereas the panel u/othugmuffin used did not (which would cause the keystones to stick out in the front) 10\" rack shelf Amazon 3 $15.95 $47.85 I wish these were a little deeper 10\" vent panel Amazon 2 $12.00 $24.00 These are used on the back (where u/othugmuffin used aluminum bars that he had to cut/drill) 7.8” mending plate 6-pack Amazon 1 $14.97 $14.97 Used on the sides. I was originally using the 10\" vent panels but ended up switching to these Cat6 RJ45 shielded coupler keystones FS.com 12 $2.00 $24.00 I only used shielded because I liked the silver color Cat6 patch cables 5-pack (1ft) Amazon 2 $9.99 $19.98 I tried 6-inch cables, but they were so stiff they lifted the switch off the shelf Rubber feet Amazon 1 $8.22 $8.22 To cover the cut ends of the rack posts Misc screws/washers/nuts Lowes ~$8 ~$8 $217.46 total Physical layout Here is how everything is physically connected.\n----------------------------------------------------------- | | | ------------ | ------|-\u003e| UniFi AP | | | | ------------ | | | | | ----------------------------------------------------------- | | | ----------------------------------------------------------- | | AP Camera NAS NUC Roku LAN | | | ------ ------ ------ ------ ------ ------ ------ ------ | ----------------- | | | 01 | | 02 | | 03 | | 04 | | 05 | | 06 | | 07 | | 08 | | | | | | ------ ------ ------ ------ ------ ------ ------ ------ | | FiOS Internet | | | ^ ^ ^ ^ ^ ^ | | ^ | | -----|------|--------------------|------|------|------|---- ------------|---- | | | | | | | | | | | | | | -------------------------------------- | | | | | | | | | -----|------|--------------------|------|------|----------------------------------|---- | | | v v v v v v | | | | ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ | | | | | 01 | | 02 | | 03 | | 04 | | 05 | | 06 | | 07 | | 08 | | 09 | | 10 | | 11 | | 12 | | | | | ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ | | | | ^ ^ | | | -----|----------------------------------------------------------------------------|---- | | | | | ------------ | | | | ----------------------------------------------------------- | | | | | | | ------- ------- ------- | | | | | WAN | | LAN | | OPT | | | | | ------- ------- ------- | | | | ^ ^ | | | --------|--------------------|----------------------------- | | | | | | ---------------------|----------------------------------------------------- | | | --------------------------------------------------------------- To-do Replace side vent panels with metal bars (will require cutting and drilling) Cheaper Custom length Add labels to patch panel Try Monoprice SlimRun Cat6 patch cables (which should bend easier) Find deeper shelves https://commsonline.co.uk/products/1u-10-inch-mini-cabinet-shelf Conclusion If you have a 10\" rack, let me know about it! I’m looking to improve mine and would love to find other parts retailers in the US.\nAlso, shout-out to my wife for letting me put this monstrosity in the living room. Her only complaint during the whole thing was “it’s no uglier than what you have there now”.\nThanks for reading!\n-Logan\n",
+  "wordCount" : "1038",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg","datePublished": "2021-01-05T00:00:00Z",
+  "dateModified": "2021-01-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Homelab 10&#34; mini-rack
+    </h1>
+    <div class="post-meta"><span title='2021-01-05 00:00:00 +0000 UTC'>2021-01-05</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#update-2021-01-10" aria-label="Update: 2021-01-10">Update: 2021-01-10</a></li>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#presenting-the-mini-rack" aria-label="Presenting: The mini-rack">Presenting: The mini-rack</a><ul>
+                        
+                <li>
+                    <a href="#pictures" aria-label="Pictures">Pictures</a></li>
+                <li>
+                    <a href="#parts" aria-label="Parts">Parts</a></li>
+                <li>
+                    <a href="#physical-layout" aria-label="Physical layout">Physical layout</a></li></ul>
+                </li>
+                <li>
+                    <a href="#to-do" aria-label="To-do">To-do</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="update-2021-01-10">Update: 2021-01-10<a hidden class="anchor" aria-hidden="true" href="#update-2021-01-10">#</a></h1>
+<p>I made the following changes and updated the post below (not the pictures) to reflect those changes:</p>
+<ul>
+<li>Replaced <a href="https://smile.amazon.com/Middle-Atlantic-HR-EVT1-Slotted-Aluminum/dp/B00HE8FMHC">side vent panels</a> with <a href="https://smile.amazon.com/gp/product/B07YYY64NK/">metal bars</a></li>
+<li>Added labels to patch panel</li>
+<li>One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera)</li>
+</ul>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I don&rsquo;t have space in my house for a full-size 19&quot; server rack (but a man can dream). My fiber internet service comes into the basement and terminates at the ONT. A Cat6 cable runs from the ONT in the basement, up through the ceiling directly above it where it plugs into my router. The hole drilled through the first floor is hidden by the entertainment center that houses all the equipment. My entire homelab lives on the bottom shelf of that piece of furniture and is designed to be low-power and quiet (since it&rsquo;s in my living room):</p>
+<ul>
+<li>pfSense router (APU2D4)</li>
+<li>Netgear switch (GS108PE)</li>
+<li>UniFi AP (UAP-AC-PRO)</li>
+<li>Intel NUC (NUC7i3BNH)</li>
+<li>Synology DS 718+</li>
+<li>CyberPower UPS (CP1500PFCLCD)</li>
+</ul>
+<p>It&rsquo;s a pretty small setup that only draws 50-60 watts, but lets me run 10+ VMs and 25+ containers. However, physically organizing it has been a pain. I&rsquo;ve been using a small cabinet shelf (made for kitchen plates) and zip-ties to separate the router, switch, and AP, but it was ugly and various lengths of Cat6 were everywhere.</p>
+
+<p><img src="/2021/01/homelab-10-mini-rack/20201203_001_hu2c8724d52e6fd373dc12f0051bfb2183_78670_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="mini-rack"></p>
+<p>Racks typically come in 19&quot; widths, but I had seen a few Reddit posts about 10&quot; racks (<a href="https://www.reddit.com/r/Ubiquiti/comments/c1zysd/low_on_space_so_built_a_10_rack/">one</a>, <a href="https://www.reddit.com/r/Ubiquiti/comments/cwr7hk/10_mini_rack/">two</a>) and a bunch of 3D printed solutions (<a href="https://www.reddit.com/r/homelab/comments/bempjc/micro_homelab/">one</a>, <a href="https://www.reddit.com/r/3Dprinting/comments/brbjvi/3d_printed_a_miniature_raspberry_pi_server_rack/">two</a>, <a href="https://www.reddit.com/r/Ubiquiti/comments/8y7lcy/my_mini_rack/">three</a>, <a href="https://www.reddit.com/r/Ubiquiti/comments/cy8h13/selfmade_10_rack/">four</a>, <a href="https://www.reddit.com/r/UNIFI/comments/h8eld9/my_3d_printed_unifi_rack/">five</a>, <a href="https://www.reddit.com/r/homelab/comments/kmt8uh/keeping_my_holidays_busy_3d_printed_a_small/">six</a>). However, these racks were usually custom-made, or typically sourced from parts in Europe (apparently 10&quot; is a <a href="https://www.netstoredirect.com/ccs-home-cabinets/9508-8u-10-mini-office-cabinet-350mm-deep.html">popular rack size there</a>).</p>
+<p>Then, I stumbled onto <a href="https://www.reddit.com/r/homelab/comments/k47m0t/5_months_and_all_i_got_was_this_10_rack/">this post</a>. It stuck out to me because the user was based in the US, it required very little metal-work, no 3D printing, and he included a parts list. It was a proper rack, just shrunk down to 10&quot;. This is my attempt to recreate that rack.</p>
+<h1 id="presenting-the-mini-rack">Presenting: The mini-rack<a hidden class="anchor" aria-hidden="true" href="#presenting-the-mini-rack">#</a></h1>
+<h2 id="pictures">Pictures<a hidden class="anchor" aria-hidden="true" href="#pictures">#</a></h2>
+
+<p><img src="/2021/01/homelab-10-mini-rack/20210104_001_hub9b084cbebef58d427c83458eff6bb54_2246157_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="mini-rack"></p>
+
+<p><img src="/2021/01/homelab-10-mini-rack/20210104_002_hu155f91eafed0a68ac7626eeaad616768_2336324_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="mini-rack"></p>
+
+<p><img src="/2021/01/homelab-10-mini-rack/20210104_003_hu155f91eafed0a68ac7626eeaad616768_2171199_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="mini-rack on shelf"></p>
+<p>And here is the obligatory GIF of the <a href="https://en.wikipedia.org/wiki/Blinkenlights">blinkenlights</a>.</p>
+<video autoplay loop muted playsinline style="width: 100%; height: auto;">
+    <source src="20210104_004.mp4" type="video/mp4">
+    
+    <p> Your browser does not support video. </p>
+</video>
+<h2 id="parts">Parts<a hidden class="anchor" aria-hidden="true" href="#parts">#</a></h2>
+<p>This rack is based on the post from <a href="https://www.reddit.com/user/othugmuffin">u/othugmuffin</a>, but I changed a few things to better suit my needs.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Link</th>
+<th>Quantity</th>
+<th>Price (per unit)</th>
+<th>Total price</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rack posts</td>
+<td><a href="https://www.pennelcomonline.com/us/Penn-Elcom-5U-Full-Hole-Rack-Strip-with-Square-Holes-2mm008-R08632MM-05/m-6533.aspx">Penn Elcom Online</a></td>
+<td>4</td>
+<td>$1.94</td>
+<td>$7.76</td>
+<td>The shelf where this rack is going only fits a full 4U rack (5U is too tall), but I was able to cut off 1/3-of-a-U on a 5U rack (for a total of 4.66U height)</td>
+</tr>
+<tr>
+<td>Cage nuts</td>
+<td><a href="https://www.pennelcomonline.com/us/Penn-Elcom-Cage-Nut-For-2mm-S1172/m-6130.aspx">Penn Elcom Online</a></td>
+<td>50</td>
+<td>$0.18</td>
+<td>$9.00</td>
+<td>I&rsquo;m only using 24</td>
+</tr>
+<tr>
+<td>Cage screws (M6)</td>
+<td><a href="https://www.pennelcomonline.com/us/Penn-Elcom-Pack-of-100-x-M6-High-Point-Screws-SM6HPWA100/m-9897.aspx">Penn Elcom Online</a></td>
+<td>1</td>
+<td>$12.24</td>
+<td>$12.24</td>
+<td>The ones with the tapered ends make catching the threads so much easier</td>
+</tr>
+<tr>
+<td>Cage nut tool</td>
+<td><a href="https://www.pennelcomonline.com/us/Penn-Elcom-Delux-Cage-Nut-Tool-CN01/m-6134.aspx">Penn Elcom Online</a></td>
+<td>1</td>
+<td>$16.05</td>
+<td>$16.05</td>
+<td>Optional, but makes life much easier</td>
+</tr>
+<tr>
+<td>10&quot; blank patch panel</td>
+<td><a href="https://smile.amazon.com/uxcell-12-Port-Keystone-Rackmount-Shielded/dp/B0744XHTK3">Amazon</a></td>
+<td>1</td>
+<td>$25.39</td>
+<td>$25.39</td>
+<td>This patch panel has a mounting plate for the keystones, whereas the panel u/othugmuffin used did not (which would cause the keystones to stick out in the front)</td>
+</tr>
+<tr>
+<td>10&quot; rack shelf</td>
+<td><a href="https://smile.amazon.com/Intellinet-714839-Cantilever-Shelf-Vented/dp/B078WCBFFM">Amazon</a></td>
+<td>3</td>
+<td>$15.95</td>
+<td>$47.85</td>
+<td>I wish these were a little deeper</td>
+</tr>
+<tr>
+<td>10&quot; vent panel</td>
+<td><a href="https://smile.amazon.com/Middle-Atlantic-HR-EVT1-Slotted-Aluminum/dp/B00HE8FMHC">Amazon</a></td>
+<td>2</td>
+<td>$12.00</td>
+<td>$24.00</td>
+<td>These are used on the back (where u/othugmuffin used aluminum bars that he had to cut/drill)</td>
+</tr>
+<tr>
+<td>7.8” mending plate 6-pack</td>
+<td><a href="https://smile.amazon.com/gp/product/B07YYY64NK/">Amazon</a></td>
+<td>1</td>
+<td>$14.97</td>
+<td>$14.97</td>
+<td>Used on the sides. I was originally using the 10&quot; vent panels but ended up switching to these</td>
+</tr>
+<tr>
+<td>Cat6 RJ45 shielded coupler keystones</td>
+<td><a href="https://www.fs.com/products/41312.html">FS.com</a></td>
+<td>12</td>
+<td>$2.00</td>
+<td>$24.00</td>
+<td>I only used shielded because I liked the silver color</td>
+</tr>
+<tr>
+<td>Cat6 patch cables 5-pack (1ft)</td>
+<td><a href="https://smile.amazon.com/gp/product/B00C2DZ85U">Amazon</a></td>
+<td>2</td>
+<td>$9.99</td>
+<td>$19.98</td>
+<td>I tried 6-inch cables, but they were so stiff they lifted the switch off the shelf</td>
+</tr>
+<tr>
+<td>Rubber feet</td>
+<td><a href="https://smile.amazon.com/gp/product/B07K198ZH4">Amazon</a></td>
+<td>1</td>
+<td>$8.22</td>
+<td>$8.22</td>
+<td>To cover the cut ends of the rack posts</td>
+</tr>
+<tr>
+<td>Misc screws/washers/nuts</td>
+<td>Lowes</td>
+<td></td>
+<td>~$8</td>
+<td>~$8</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>$217.46 total</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="physical-layout">Physical layout<a hidden class="anchor" aria-hidden="true" href="#physical-layout">#</a></h2>
+<p>Here is how everything is physically connected.</p>
+<pre tabindex="0"><code>      -----------------------------------------------------------
+      |                                                         |
+      |  ------------                                           |
+------|-&gt;| UniFi AP |                                           |
+|     |  ------------                                           |
+|     |                                                         |
+|     -----------------------------------------------------------
+|     
+|
+|     -----------------------------------------------------------
+|     |   AP     Camera               NAS    NUC    Roku   LAN  |
+|     | ------ ------ ------ ------ ------ ------ ------ ------ |           -----------------
+|     | | 01 | | 02 | | 03 | | 04 | | 05 | | 06 | | 07 | | 08 | |           |               |
+|     | ------ ------ ------ ------ ------ ------ ------ ------ |           | FiOS Internet |
+|     |    ^      ^                    ^      ^      ^      ^   |           |           ^   |
+|     -----|------|--------------------|------|------|------|----           ------------|----
+|          |      |                    |      |      |      |                           |
+|          |      |                    |      |      |      --------------------------------------
+|          |      |                    |      |      |                                  |        |
+|     -----|------|--------------------|------|------|----------------------------------|----    |
+|     |    v      v                    v      v      v                                  v   |    |
+|     | ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ |    |
+|     | | 01 | | 02 | | 03 | | 04 | | 05 | | 06 | | 07 | | 08 | | 09 | | 10 | | 11 | | 12 | |    |
+|     | ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ |    |
+|     |    ^                                                                            ^   |    |
+|     -----|----------------------------------------------------------------------------|----    |
+|          |                                                                            |        |
+------------                                                                            |        |
+                                                                                        |        |
+      -----------------------------------------------------------                       |        |
+      |                                                         |                       |        |
+      |    -------              -------              -------    |                       |        |
+      |    | WAN |              | LAN |              | OPT |    |                       |        |
+      |    -------              -------              -------    |                       |        |
+      |       ^                    ^                            |                       |        |
+      --------|--------------------|-----------------------------                       |        |
+              |                    |                                                    |        |
+              ---------------------|-----------------------------------------------------        |
+                                   |                                                             |
+                                   ---------------------------------------------------------------
+</code></pre><h1 id="to-do">To-do<a hidden class="anchor" aria-hidden="true" href="#to-do">#</a></h1>
+<ul>
+<li><del>Replace side vent panels with metal bars (will require cutting and drilling)</del>
+<ul>
+<li><del>Cheaper</del></li>
+<li><del>Custom length</del></li>
+</ul>
+</li>
+<li><del>Add labels to patch panel</del></li>
+<li>Try <a href="https://www.monoprice.com/product?p_id=13527">Monoprice SlimRun Cat6 patch cables</a> (which should bend easier)</li>
+<li>Find deeper shelves
+<ul>
+<li><a href="https://commsonline.co.uk/products/1u-10-inch-mini-cabinet-shelf">https://commsonline.co.uk/products/1u-10-inch-mini-cabinet-shelf</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p>If you have a 10&quot; rack, let me know about it! I&rsquo;m looking to improve mine and would love to find other parts retailers in the US.</p>
+<p>Also, shout-out to my wife for letting me put this monstrosity in the living room. Her only complaint during the whole thing was &ldquo;it&rsquo;s no uglier than what you have there now&rdquo;.</p>
+<p><img loading="lazy" src="20210104_005.gif" alt=""  />
+</p>
+<p>Thanks for reading!</p>
+<p>-Logan</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Homelab 10&#34; mini-rack on twitter"
+        href="https://twitter.com/intent/tweet/?text=Homelab%2010%22%20mini-rack&amp;url=https%3a%2f%2floganmarchione.github.io%2f2021%2f01%2fhomelab-10-mini-rack%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Homelab 10&#34; mini-rack on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2021%2f01%2fhomelab-10-mini-rack%2f&amp;title=Homelab%2010%22%20mini-rack&amp;summary=Homelab%2010%22%20mini-rack&amp;source=https%3a%2f%2floganmarchione.github.io%2f2021%2f01%2fhomelab-10-mini-rack%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Homelab 10&#34; mini-rack on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2021%2f01%2fhomelab-10-mini-rack%2f&title=Homelab%2010%22%20mini-rack">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Homelab 10&#34; mini-rack on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2021%2f01%2fhomelab-10-mini-rack%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Homelab 10&#34; mini-rack on whatsapp"
+        href="https://api.whatsapp.com/send?text=Homelab%2010%22%20mini-rack%20-%20https%3a%2f%2floganmarchione.github.io%2f2021%2f01%2fhomelab-10-mini-rack%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Homelab 10&#34; mini-rack on telegram"
+        href="https://telegram.me/share/url?text=Homelab%2010%22%20mini-rack&amp;url=https%3a%2f%2floganmarchione.github.io%2f2021%2f01%2fhomelab-10-mini-rack%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

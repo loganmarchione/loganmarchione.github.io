@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Darlings of the self-hosted, open-source world | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
+Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Darlings of the self-hosted, open-source world" />
+<meta property="og:description" content="TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
+Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-05T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-05-05T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" />
+<meta name="twitter:title" content="Darlings of the self-hosted, open-source world"/>
+<meta name="twitter:description" content="TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
+Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Darlings of the self-hosted, open-source world",
+      "item": "https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Darlings of the self-hosted, open-source world",
+  "name": "Darlings of the self-hosted, open-source world",
+  "description": "TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.\nHome Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.",
+  "keywords": [
+    
+  ],
+  "articleBody": "TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.\nHome Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.\nThis got me thinking about other self-hosted, open-source applications that are truly amazing works of engineering and community collaboration. Below is what I came up with.\nProject Category Paid tier? Language Home Assistant Home Assistant Home automation Nabu Casa Python Jellyfin Jellyfin Media server N/A C# Pi-hole Pi-hole Network-level ad-block N/A Shell/Python/PHP Nextcloud Nextcloud Personal cloud NextCloud Enterprise PHP/JS WordPress WordPress Blogging WordPress.com PHP/JS I’m aware that this is not an exhaustive list, and that most of these applications stand on the shoulders of giants. However, when trying to sell “regular people” on self-hosted, open-source applications, this is the list to start with.\nHome Assistant I’m certainly not a Home Assistant power user, but I will say this is one of the most useful applications that I self-host. Even if I’m not logging into the application itself on a consistent basis, Home Assistant is always there, running in the background, automating my life.\nIf you’re not aware, Home Assistant, is a home automation tool (e.g., turn on the lights when I get home, if the living room is above 75 F turn on the A/C, etc…). What makes Home Assistant so special is that it allows you to break out of the walled gardens of vendors (Philips, Aqara, SmartThings, Wyze, etc…). Home Assistant acts as a “hub”, allowing you to collect data (and act on it) from multiple different sources.\nWant your Samsung WiFi-connected smart A/C unit to turn on when your Aqara Zibgee-connected temperature sensor reads 75 F? Want your Wyze camera to detect motion and send you snapshot via Telegram message? Want your Philips lights and SmartThings switches to display natively in your iPhone’s Home app? Home Assistant can do all of that, and more!\nHome Assistant has a paid tier called Nabu Casa that offers (among other things) secure, remote access to your locally-hosted Home Assistant instance.\nJellyfin For those not in the know, Plex/Jellyfin/Emby, are in the “be your own Netflix” category.\nI will start off by saying that I’m a lifetime Plex Pass holder, but I haven’t used it in years. I had grown increasingly frustrated with Plex’s internet-connected login requirements, their branching into other services (live TV, DVR, etc…), and their phone-home requirments, all when I just wanted to play media locally.\nTo that end, I almost cannot believe that something as simple, convenient, and powerful as Jellyfin is a free product. It is a local-first and private-first media server, allowing you to consume your media (movies, TV, music, books, comics, and audiobooks) on almost any device. It offers a ton of clients for all major platforms, including web, iOS, Android, Roku, Android TV, and more. Jellyfin also has hardware-accelerated transcoding, metadata downloading, 4K support, sync-play, plugins, and has a huge community of contributors.\nIn the past year, Jellyfin has really come a long way and is a viable alternative to Plex. Its clients might not be as polished as Plex’s, and it may lack some next-level features (skip intros, no-setup remote access), but Jellyfin does 99.9% of what Plex does, while being 100% open-source and local-first.\nPi-hole I don’t run Pi-hole personally, but it’s mentioned everywhere online. It is a DNS-based sinkhole used to block ads on your entire network. This means that instead of setting up ad-block on every browser, you can setup Pi-hole on your network, and it will block ads on every device on your network (including mobile apps and smart TVs). Because the traffic is blocked on a network level, network performance will be improved and your browsing experience will feel faster (because it is). Blocking ads isn’t just about convenience, it’s also about security, since Pi-hole’s blocklists block potential spam and malware, as well as known bad-actors.\nPi-hole (as the name implies) originally started as a Raspberry Pi project, but now runs on x86 hardware, as well as Docker. It also offers a DHCP server, and a web-based dashboard for configuration and viewing statistics (screenshot below).\nNextcloud I don’t run Nextcloud personally, but it’s a stand-out in its field. Competing with giants like Google and Microsoft, Nextcloud is a “personal cloud”, offering self-hosted versions of mail, contact, calendar, kanban, video/audio calls, web hosting, file storage/sync, document editing, an app store, and more. If there is one application you could use to build your digital life around, it would be Nextcloud.\nNextcloud also has a ton of business-centered administration features, such as logging/monitoring, 2FA, file access control, LDAP integration, compliance (e.g., HIPAA, GDPR, etc…), encryption in-transit and at-rest, and more.\nNextCloud offers a paid tier called NextCloud Enterprise, but the code base for both the home and enterprise versions are the same. The enterprise subscription gets you access to their support and technical teams, as well as some optional features and plugins.\nWordPress I couldn’t make this list without mentioning WordPress. WordPress is the platform that powers 43% of all websites in the world. It’s used by some huge websites, including Rolling Stone, Time magazine, Snoop Dogg, TechCrunch, and the freaking White House.\nWordPress has a seemingly infinite number of features, including a “store” with free/paid themes and plugins, WYSIWYG editor, post scheduling and versioning, user management tools, media management tools, comments, SEO, and more. Oh, and did I mention they allow you to import/export your data to/from almost any other blogging platform? No lock-in here.\nWordPress is technically a content-management system (CMS), so it needs a filesystem, MySQL database, and webserver in order to work. However, if that sounds confusing or intimidating to you, WordPress offers a paid tier at WordPress.com to handle everything for you, and let you get down to creating.\nWordPress gets a bad rap because of PHP, but it is the gateway drug to blogging. I started this blog almost 10 years ago, using WordPress. I’ve since transitioned away from it (because I’m a nerd and like to make things complicated), but I wouldn’t be here without it.\nConclusion All of these applications have a few things in common. They are all:\nopen-source privacy-first community-driven They are true technical (as well as collaborative) marvels, and are the first step into self-hosting and the open-source world. I could add 50 other applications to this list (WireGuard, Gitea, Traefik, OPNsense, Proxmox, etc…), but these five are, in my opinion, success stories that are unrivaled.\n-Logan\n",
+  "wordCount" : "1125",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg","datePublished": "2022-05-05T00:00:00Z",
+  "dateModified": "2022-05-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Darlings of the self-hosted, open-source world
+    </h1>
+    <div class="post-meta"><span title='2022-05-05 00:00:00 +0000 UTC'>2022-05-05</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#tldr" aria-label="TL;DR">TL;DR</a></li>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#home-assistant" aria-label="Home Assistant">Home Assistant</a></li>
+                <li>
+                    <a href="#jellyfin" aria-label="Jellyfin">Jellyfin</a></li>
+                <li>
+                    <a href="#pi-hole" aria-label="Pi-hole">Pi-hole</a></li>
+                <li>
+                    <a href="#nextcloud" aria-label="Nextcloud">Nextcloud</a></li>
+                <li>
+                    <a href="#wordpress" aria-label="WordPress">WordPress</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="tldr">TL;DR<a hidden class="anchor" aria-hidden="true" href="#tldr">#</a></h1>
+<p>In my opinion, these self-hosted, open-source applications are the best of what open-source can be.</p>
+<ul>
+<li><a href="https://www.home-assistant.io/">Home Assistant</a></li>
+<li><a href="https://jellyfin.org/">Jellyfin</a></li>
+<li><a href="https://pi-hole.net/">Pi-hole</a></li>
+<li><a href="https://nextcloud.com/">Nextcloud</a></li>
+<li><a href="https://wordpress.org/">WordPress</a></li>
+</ul>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.</p>
+<p>This got me thinking about other self-hosted, open-source applications that are truly amazing works of engineering and community collaboration. Below is what I came up with.</p>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Category</th>
+<th>Paid tier?</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+
+
+<span class="simple-icons-inline" style="fill:#41BDF5" ><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Home Assistant</title><path d="M11.9922 1.3945a.7041.7041 0 00-.498.211L.1621 13.0977A.5634.5634 0 000 13.494a.567.567 0 00.5664.5664H2.67v8.0743c0 .2603.2104.4707.4707.4707h7.9473v-3.6836L8.037 15.8672a2.42 2.42 0 01-.9473.1933c-1.3379 0-2.4218-1.0868-2.4218-2.4257 0-1.339 1.084-2.4239 2.4218-2.4239 1.338 0 2.422 1.085 2.422 2.4239 0 .3359-.068.6563-.1915.9472l1.7676 1.7676v-5.375C10.2 10.615 9.5723 9.744 9.5723 8.7266c0-1.339 1.0859-2.4258 2.4238-2.4258 1.338 0 2.4219 1.0868 2.4219 2.4258 0 1.0174-.6259 1.8884-1.5137 2.248v5.375l1.7656-1.7676a2.4205 2.4205 0 01-.1914-.9472c0-1.339 1.086-2.4239 2.4238-2.4239 1.338 0 2.422 1.085 2.422 2.4239 0 1.3389-1.084 2.4257-2.422 2.4257a2.42 2.42 0 01-.9472-.1933l-3.0508 3.0547v3.6836h7.9473a.4702.4702 0 00.4707-.4707v-8.0743h2.1113a.5686.5686 0 00.3965-.162c.2233-.2185.2262-.5775.0078-.8008l-2.5156-2.5723V6.4707c0-.2603-.2104-.4727-.4707-.4727h-1.9649c-.2603 0-.4707.2124-.4707.4727v1.1035L12.5 1.6035a.7056.7056 0 00-.5078-.209zm.0039 6.3614c-.5352 0-.9688.4351-.9688.9707 0 .5355.4336.9687.9688.9687a.9683.9683 0 00.9687-.9687c0-.5356-.4335-.9707-.9687-.9707zM7.0898 12.666a.9683.9683 0 00-.9687.9688c0 .5355.4336.9707.9687.9707.5352 0 .9688-.4352.9688-.9707a.9683.9683 0 00-.9688-.9688zm9.8125 0c-.5351 0-.9707.4332-.9707.9688 0 .5355.4356.9707.9707.9707.5352 0 .9688-.4352.9688-.9707a.9683.9683 0 00-.9688-.9688Z"/></svg></span> <a href="https://www.home-assistant.io/">Home Assistant</a></td>
+<td>Home automation</td>
+<td><a href="https://www.nabucasa.com/">Nabu Casa</a></td>
+<td><a href="https://github.com/home-assistant/core">Python</a></td>
+</tr>
+<tr>
+<td>
+
+
+
+<span class="simple-icons-inline" style="fill:#AA5CC3" ><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Jellyfin</title><path d="M12 .002C8.826.002-1.398 18.537.16 21.666c1.56 3.129 22.14 3.094 23.682 0C25.384 18.573 15.177 0 12 0zm7.76 18.949c-1.008 2.028-14.493 2.05-15.514 0C3.224 16.9 9.92 4.755 12.003 4.755c2.081 0 8.77 12.166 7.759 14.196zM12 9.198c-1.054 0-4.446 6.15-3.93 7.189.518 1.04 7.348 1.027 7.86 0 .511-1.027-2.874-7.19-3.93-7.19z"/></svg></span> <a href="https://jellyfin.org/">Jellyfin</a></td>
+<td>Media server</td>
+<td>N/A</td>
+<td><a href="https://github.com/jellyfin/jellyfin">C#</a></td>
+</tr>
+<tr>
+<td>
+
+
+
+<span class="simple-icons-inline" style="fill:#96060C" ><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Pi-hole</title><path d="M4.344 0c.238 4.792 3.256 7.056 6.252 7.376.165-1.692-4.319-5.6-4.319-5.6-.008-.011.009-.025.019-.014 0 0 4.648 4.01 5.423 5.645 2.762-.15 5.196-1.947 5-4.912 0 0-4.12-.613-5 4.618C11.48 2.753 8.993 0 4.344 0zM12 7.682v.002a3.68 3.68 0 0 0-2.591 1.077L4.94 13.227a3.683 3.683 0 0 0-.86 1.356 3.31 3.31 0 0 0-.237 1.255A3.681 3.681 0 0 0 4.92 18.45l4.464 4.466a3.69 3.69 0 0 0 2.251 1.06l.002.001c.093.01.187.015.28.017l-.1-.008c.06.003.117.009.177.009l-.077-.001L12 24l-.004-.005a3.68 3.68 0 0 0 2.61-1.077l4.469-4.465a3.683 3.683 0 0 0 1.006-1.888l.012-.063a3.682 3.682 0 0 0 .057-.541l.003-.061c0-.017.003-.05.004-.06h-.002a3.683 3.683 0 0 0-1.077-2.607l-4.466-4.468a3.694 3.694 0 0 0-1.564-.927l-.07-.02a3.43 3.43 0 0 0-.946-.133L12 7.682zm3.165 3.357c.023 1.748-1.33 3.078-1.33 4.806.164 2.227 1.733 3.207 3.266 3.146-.035.003-.068.007-.104.009-1.847.135-3.209-1.326-5.002-1.326-2.23.164-3.21 1.736-3.147 3.27l-.008-.104c-.133-1.847 1.328-3.21 1.328-5.002-.173-2.32-1.867-3.284-3.46-3.132.1-.011.203-.021.31-.027 1.847-.133 3.209 1.328 5.002 1.328 2.082-.155 3.074-1.536 3.145-2.968zM4.344 0c.238 4.792 3.256 7.056 6.252 7.376.165-1.692-4.319-5.6-4.319-5.6-.008-.011.009-.025.019-.014 0 0 4.648 4.01 5.423 5.645 2.762-.15 5.196-1.947 5-4.912 0 0-4.12-.613-5 4.618C11.48 2.753 8.993 0 4.344 0zM12 7.682v.002a3.68 3.68 0 0 0-2.591 1.077L4.94 13.227a3.683 3.683 0 0 0-.86 1.356 3.31 3.31 0 0 0-.237 1.255A3.681 3.681 0 0 0 4.92 18.45l4.464 4.466a3.69 3.69 0 0 0 2.251 1.06l.002.001c.093.01.187.015.28.017l-.1-.008c.06.003.117.009.177.009l-.077-.001L12 24l-.004-.005a3.68 3.68 0 0 0 2.61-1.077l4.469-4.465a3.683 3.683 0 0 0 1.006-1.888l.012-.063a3.682 3.682 0 0 0 .057-.541l.003-.061c0-.017.003-.05.004-.06h-.002a3.683 3.683 0 0 0-1.077-2.607l-4.466-4.468a3.694 3.694 0 0 0-1.564-.927l-.07-.02a3.43 3.43 0 0 0-.946-.133L12 7.682zm3.165 3.357c.023 1.748-1.33 3.078-1.33 4.806.164 2.227 1.733 3.207 3.266 3.146-.035.003-.068.007-.104.009-1.847.135-3.209-1.326-5.002-1.326-2.23.164-3.21 1.736-3.147 3.27l-.008-.104c-.133-1.847 1.328-3.21 1.328-5.002-.173-2.32-1.867-3.284-3.46-3.132.1-.011.203-.021.31-.027 1.847-.133 3.209 1.328 5.002 1.328 2.082-.155 3.074-1.536 3.145-2.968z"/></svg></span> <a href="https://pi-hole.net/">Pi-hole</a></td>
+<td>Network-level ad-block</td>
+<td>N/A</td>
+<td><a href="https://github.com/pi-hole/pi-hole">Shell/Python/PHP</a></td>
+</tr>
+<tr>
+<td>
+
+
+
+<span class="simple-icons-inline" style="fill:#0082C9" ><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Nextcloud</title><path d="M12.018 6.537c-2.5 0-4.6 1.712-5.241 4.015-.56-1.232-1.793-2.105-3.225-2.105A3.569 3.569 0 0 0 0 12a3.569 3.569 0 0 0 3.552 3.553c1.432 0 2.664-.874 3.224-2.106.641 2.304 2.742 4.016 5.242 4.016 2.487 0 4.576-1.693 5.231-3.977.569 1.21 1.783 2.067 3.198 2.067A3.568 3.568 0 0 0 24 12a3.569 3.569 0 0 0-3.553-3.553c-1.416 0-2.63.858-3.199 2.067-.654-2.284-2.743-3.978-5.23-3.977zm0 2.085c1.878 0 3.378 1.5 3.378 3.378 0 1.878-1.5 3.378-3.378 3.378A3.362 3.362 0 0 1 8.641 12c0-1.878 1.5-3.378 3.377-3.378zm-8.466 1.91c.822 0 1.467.645 1.467 1.468s-.644 1.467-1.467 1.468A1.452 1.452 0 0 1 2.085 12c0-.823.644-1.467 1.467-1.467zm16.895 0c.823 0 1.468.645 1.468 1.468s-.645 1.468-1.468 1.468A1.452 1.452 0 0 1 18.98 12c0-.823.644-1.467 1.467-1.467z"/></svg></span> <a href="https://nextcloud.com/">Nextcloud</a></td>
+<td>Personal cloud</td>
+<td><a href="https://nextcloud.com/enterprise/">NextCloud Enterprise</a></td>
+<td><a href="https://github.com/nextcloud/server">PHP/JS</a></td>
+</tr>
+<tr>
+<td>
+
+
+
+<span class="simple-icons-inline" style="fill:#21759B" ><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WordPress</title><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/></svg></span> <a href="https://wordpress.org/">WordPress</a></td>
+<td>Blogging</td>
+<td><a href="https://wordpress.com/">WordPress.com</a></td>
+<td><a href="https://build.trac.wordpress.org/browser">PHP/JS</a></td>
+</tr>
+</tbody>
+</table>
+<p>I&rsquo;m aware that this is not an exhaustive list, and that most of these applications stand on the shoulders of giants. However, when trying to sell &ldquo;regular people&rdquo; on self-hosted, open-source applications, this is the list to start with.</p>
+
+<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_001_hu47afe957080c4c105c9978c043b80e4b_118513_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="your opinion, man"></p>
+<h1 id="home-assistant">Home Assistant<a hidden class="anchor" aria-hidden="true" href="#home-assistant">#</a></h1>
+<p>I&rsquo;m certainly not a Home Assistant power user, but I will say this is one of the most useful applications that I self-host. Even if I&rsquo;m not logging into the application itself on a consistent basis, Home Assistant is always there, running in the background, automating my life.</p>
+<p>If you&rsquo;re not aware, <a href="https://www.home-assistant.io/">Home Assistant</a>, is a home automation tool (e.g., turn on the lights when I get home, if the living room is above 75 F turn on the A/C, etc&hellip;). What makes Home Assistant so special is that it allows you to break out of the walled gardens of vendors (Philips, Aqara, SmartThings, Wyze, etc&hellip;). Home Assistant acts as a &ldquo;hub&rdquo;, allowing you to collect data (and act on it) from multiple different sources.</p>
+<p><img loading="lazy" src="20220504_002.svg" alt="home assistant"  />
+</p>
+<p>Want your Samsung WiFi-connected smart A/C unit to turn on when your Aqara Zibgee-connected temperature sensor reads 75 F? Want your Wyze camera to detect motion and send you snapshot via Telegram message? Want your Philips lights and SmartThings switches to display natively in your iPhone&rsquo;s Home app? Home Assistant can do all of that, <a href="https://www.home-assistant.io/docs/automation/basics/">and more</a>!</p>
+<p>Home Assistant has a paid tier called <a href="https://www.nabucasa.com/">Nabu Casa</a> that offers (among other things) secure, remote access to your locally-hosted Home Assistant instance.</p>
+<h1 id="jellyfin">Jellyfin<a hidden class="anchor" aria-hidden="true" href="#jellyfin">#</a></h1>
+<p>For those not in the know, Plex/Jellyfin/Emby, are in the &ldquo;be your own Netflix&rdquo; category.</p>
+<p>I will start off by saying that I&rsquo;m a lifetime <a href="https://www.plex.tv/plex-pass/">Plex Pass</a> holder, but I haven&rsquo;t used it in years. I had grown increasingly frustrated with Plex&rsquo;s internet-connected login requirements, their branching into other services (live TV, DVR, etc&hellip;), and their phone-home requirments, all when I just wanted to play media locally.</p>
+<p>To that end, I almost cannot believe that something as simple, convenient, and powerful as <a href="https://jellyfin.org/">Jellyfin</a> is a free product. It is a local-first and private-first media server, allowing you to consume your media (movies, TV, music, books, comics, and audiobooks) on almost any device. It offers a ton of <a href="https://jellyfin.org/clients/">clients</a> for all major platforms, including web, iOS, Android, Roku, Android TV, and more. Jellyfin also has hardware-accelerated transcoding, metadata downloading, 4K support, sync-play, plugins, and has a huge <a href="https://github.com/jellyfin/jellyfin/graphs/contributors">community of contributors</a>.</p>
+<p>In the past year, Jellyfin has really come a long way and is a viable alternative to Plex. Its clients might not be as polished as Plex&rsquo;s, and it may lack some next-level features (skip intros, no-setup remote access), but Jellyfin does 99.9% of what Plex does, while being 100% open-source and local-first.</p>
+<h1 id="pi-hole">Pi-hole<a hidden class="anchor" aria-hidden="true" href="#pi-hole">#</a></h1>
+<p>I don&rsquo;t run <a href="https://pi-hole.net/">Pi-hole</a> personally, but it&rsquo;s mentioned everywhere online. It is a DNS-based sinkhole used to block ads on your <em>entire network</em>. This means that instead of setting up ad-block on every browser, you can setup Pi-hole on your network, and it will block ads on every device on your network (including mobile apps and smart TVs). Because the traffic is blocked on a network level, network performance will be improved and your browsing experience will feel faster (because it is). Blocking ads isn&rsquo;t just about convenience, it&rsquo;s also about security, since Pi-hole&rsquo;s blocklists block potential spam and malware, as well as known bad-actors.</p>
+<p>Pi-hole (as the name implies) originally started as a Raspberry Pi project, but now runs on x86 hardware, as well as Docker. It also offers a DHCP server, and a web-based dashboard for configuration and viewing statistics (screenshot below).</p>
+
+<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_003_hu151526c98c01e1de57c090ed69714623_148570_800x0_resize_catmullrom_3.png" loading="lazy" alt="pi-hole dashboard"></p>
+<h1 id="nextcloud">Nextcloud<a hidden class="anchor" aria-hidden="true" href="#nextcloud">#</a></h1>
+<p>I don&rsquo;t run <a href="https://nextcloud.com/">Nextcloud</a> personally, but it&rsquo;s a stand-out in its field. Competing with giants like Google and Microsoft, Nextcloud is a &ldquo;personal cloud&rdquo;, offering self-hosted versions of mail, contact, calendar, kanban, video/audio calls, web hosting, file storage/sync, document editing, an <a href="https://apps.nextcloud.com/">app store</a>, and more. If there is one application you could use to build your digital life around, it would be Nextcloud.</p>
+<p>Nextcloud also has a ton of business-centered administration features, such as logging/monitoring, 2FA, file access control, LDAP integration, compliance (e.g., HIPAA, GDPR, etc&hellip;), encryption in-transit and at-rest, and more.</p>
+<p>NextCloud offers a paid tier called <a href="https://nextcloud.com/enterprise/">NextCloud Enterprise</a>, but the code base for both the home and enterprise versions are the same. The enterprise subscription gets you access to their support and technical teams, as well as some optional features and plugins.</p>
+<h1 id="wordpress">WordPress<a hidden class="anchor" aria-hidden="true" href="#wordpress">#</a></h1>
+<p>I couldn&rsquo;t make this list without mentioning <a href="https://wordpress.org/">WordPress</a>. WordPress is the platform that powers <a href="https://kinsta.com/wordpress-market-share/">43% of all websites</a> <em>in the world</em>. It&rsquo;s <a href="https://wordpress.org/showcase/">used by some huge websites</a>, including <a href="https://wordpress.org/showcase/rolling-stone/">Rolling Stone</a>, <a href="https://wordpress.org/showcase/time-com/">Time magazine</a>, <a href="https://wordpress.org/showcase/snoop-dogg/">Snoop Dogg</a>, <a href="https://wordpress.org/showcase/techcrunch/">TechCrunch</a>, and the <em>freaking</em> <a href="https://wordpress.org/showcase/the-white-house/">White House</a>.</p>
+<p>WordPress has a seemingly infinite number of features, including a &ldquo;store&rdquo; with free/paid themes and plugins, <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> editor, post scheduling and versioning, user management tools, media management tools, comments, SEO, and more. Oh, and did I mention they allow you to import/export your data to/from almost any other blogging platform? No lock-in here.</p>
+<p>WordPress is technically a content-management system (CMS), so it needs a filesystem, MySQL database, and webserver in order to work. However, if that sounds confusing or intimidating to you, WordPress offers a paid tier at <a href="https://wordpress.com/">WordPress.com</a> to handle everything for you, and let you get down to creating.</p>
+<p>WordPress gets a bad rap because of PHP, but it is <em>the gateway drug</em> to blogging. I started this blog almost 10 years ago, using WordPress. I&rsquo;ve since transitioned away from it (because I&rsquo;m a nerd and like to make things complicated), but I wouldn&rsquo;t be here without it.</p>
+<h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p>All of these applications have a few things in common. They are all:</p>
+<ul>
+<li>open-source</li>
+<li>privacy-first</li>
+<li>community-driven</li>
+</ul>
+<p>They are true technical (as well as collaborative) marvels, and are the first step into self-hosting and the open-source world. I could add 50 other applications to this list (WireGuard, Gitea, Traefik, OPNsense, Proxmox, etc&hellip;), but these five are, in my opinion, success stories that are unrivaled.</p>
+<p>-Logan</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on twitter"
+        href="https://twitter.com/intent/tweet/?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&amp;title=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;summary=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;source=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&title=Darlings%20of%20the%20self-hosted%2c%20open-source%20world">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on whatsapp"
+        href="https://api.whatsapp.com/send?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world%20-%20https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on telegram"
+        href="https://telegram.me/share/url?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Always-on Grafana dashboard using Raspberry Pi touchscreen | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Introduction I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc&hellip; I already monitor my pfSense firewall logs using Graylog, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc&hellip;) as well as software processes (e.g., containers using network, current download/upload speed, etc&hellip;).
+I stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from InfluxData:">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Always-on Grafana dashboard using Raspberry Pi touchscreen" />
+<meta property="og:description" content="Introduction I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc&hellip; I already monitor my pfSense firewall logs using Graylog, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc&hellip;) as well as software processes (e.g., containers using network, current download/upload speed, etc&hellip;).
+I stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from InfluxData:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_grafana.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-17T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2020-05-17T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_grafana.svg" />
+<meta name="twitter:title" content="Always-on Grafana dashboard using Raspberry Pi touchscreen"/>
+<meta name="twitter:description" content="Introduction I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc&hellip; I already monitor my pfSense firewall logs using Graylog, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc&hellip;) as well as software processes (e.g., containers using network, current download/upload speed, etc&hellip;).
+I stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from InfluxData:"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Always-on Grafana dashboard using Raspberry Pi touchscreen",
+      "item": "https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Always-on Grafana dashboard using Raspberry Pi touchscreen",
+  "name": "Always-on Grafana dashboard using Raspberry Pi touchscreen",
+  "description": "Introduction I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc\u0026hellip; I already monitor my pfSense firewall logs using Graylog, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc\u0026hellip;) as well as software processes (e.g., containers using network, current download/upload speed, etc\u0026hellip;).\nI stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from InfluxData:",
+  "keywords": [
+    
+  ],
+  "articleBody": "Introduction I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc… I already monitor my pfSense firewall logs using Graylog, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc…) as well as software processes (e.g., containers using network, current download/upload speed, etc…).\nI stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from InfluxData:\nTelegraf - collect and send metrics InfluxDB - database to store metrics Chronograf - graph metrics Kapacitor - alerting based on metrics Second is the TIG stack:\nTelegraf - collect and send metrics InfluxDB - database to store metrics Grafana - graph metrics Ultimately, I chose the TIG stack because Grafana can handle more data sources than Chronograf (e.g., ElasticSearch, Prometheus, SQL, etc…). I setup my TIG stack pretty easily, and Grafana has a marketplace where users can upload dashboards, so I was able to quickly find some working examples.\nHowever, to monitor my homelab, I needed to be logged into Grafana, which would distract from my primary display. Instead, I wanted a separate display with a mini-version of the Network Operations Center from somewhere like NASA or Akamai.\nHardware setup For this setup, I purchased the following hardware:\nRaspberry Pi - $35.00 (I had a 3B+ lying around from a kit) MicroSD card - $5.79 Raspberry Pi 7\" Touchscreen Display - $61 Pibow Touchscreen Frame - $12.20 Be warned, however, the power supply with my kit was giving me the Under-voltage detected! warning. I will eventually upgrade to the official Raspberry Pi Universal Power Supply and a dual microB USB power cable.\nThe assembly was pretty easy:\nRemove the display from the package (leave the protective film on for now) Follow these instructions to install the display in the Pibow frame Follow these instructions to attach the Raspberry Pi to the display Raspbian setup Raspbian Because I’m using the official Raspberry Pi touchscreen, I wanted to use Raspbian to ensure the touchscreen would work properly (e.g., drivers, calibration, etc…). Because the Raspberry Pi is limited on both memory and storage space, I always prefer to use Raspbian Lite and then add a desktop, as opposed to using Raspbian Desktop and then stripping out unneeded packages (e.g., LibreOffice, Wolfram, Sonic Pi, Scratch, etc…).\nI won’t cover how to install Raspbian to a SD card, since the Raspberry Pi Foundation already has a pretty good guide on their site. I’ll be assuming you have already:\nInstalled Raspbian and have it booted properly (you can login via SSH, or a local keyboard/mouse) Used sudo raspi-config to Expand the filesystem Set the hostname Set the locale Setup a network connection or WiFi Set boot mode to Desktop Autologin Screen rotation My screen was upside-down on the initial boot. Use the command below to rotate both the screen and touch input 180°.\necho \"lcd_rotate=2\" | sudo tee -a /boot/config.txt sudo reboot Here is the boot process (ignore my bad GIF-making skills, the bright spot on the screen is a light in my kitchen).\nYour browser does not support video. Desktop installation First, make sure you’re up-to-date with all packages.\nsudo apt update \u0026\u0026 sudo apt dist-upgrade \u0026\u0026 sudo apt autoclean Next, install the X Window server.\nsudo apt install --no-install-recommends xserver-xorg xinit Next, install the LXDE desktop. This will pull in all the required dependencies.\nsudo apt install --no-install-recommends task-lxde-desktop lxappearance lxsession raspberrypi-ui-mods rpd-icons unclutter Now, reboot the Pi and you should see it boot up and auto-login to a desktop.\nBrowser installation We need a browser that supports launching a web page automatically, at fullscreen, with no other controls on the page (this is commonly called kiosk-mode). For a long time, only Chromium had this, but Mozilla finally fixed an 11yr old request and added kiosk mode in Firefox 71. Unfortunately, Firefox on the Raspberry Pi is using the Extended Support Release (ESR) version, which is stuck at 68.8.0 (as-of this writing), so we need to install Chromium.\nsudo apt install chromium-browser Grafana setup Grafana server Because there an a million ways to setup Grafana, I’m going to assume you already have the following things setup:\nA Grafana instance (mine is running on a separate Docker server hosted internally at https://grafana.mydomain.com) One or more dashboards A playlist (allows you to auto-cycle through dashboards) A user that is not admin (the username/password will be stored on the Raspberry Pi in plain-text) The viewer role setup for that user (so this user will be view-only) Grafana kiosk mode Conveniently, Grafana provides an official tool to run Grafana in kiosk mode called Grafana Kiosk. This tool will use Chromium to login to Grafana and display a dashboard/playlist (as well as control LXDE) on a local or remote Grafana instance.\nStart by downloading Grafana Kiosk. As-of this writing, it is currently at version 1.0.1, but check for updates and substitute the version number as needed. The commands below will place the executables (for all architectures) in ~/grafana-kiosk/bin.\ncd ~ wget https://github.com/grafana/grafana-kiosk/releases/download/v1.0.1/grafana-kiosk-1.0.1.zip unzip grafana-kiosk-1.0.1.zip \u0026\u0026 rm grafana-kiosk-1.0.1.zip Next, you need to determine the architecture of your CPU. Run the command below on your Raspberry Pi.\nlscpu | grep Architecture My Raspberry Pi is a 3B+, so my architecture is armv7l., which means my executable will be ~/grafana-kiosk/bin/grafana-kiosk.linux.armv7.\nAutostart I tried using the session-based startup method, but it wasn’t working. For me, the easiest way was to use systemd startup and place a slight pause in the startup (without it, I was getting errors about the display not being ready).\nFirst, create the new systemd service file.\nsudo touch /etc/systemd/system/grafana-kiosk.service sudo chmod 600 /etc/systemd/system/grafana-kiosk.service Run the command below to create the new service. Replace the user’s path (in two places), the URL, the username, and the password as needed.\nsudo bash -c 'cat \u003c\u003c 'EOF' \u003e /etc/systemd/system/grafana-kiosk.service [Unit] Description=Grafana Kiosk Documentation=https://github.com/grafana/grafana-kiosk Documentation=https://grafana.com/blog/2019/05/02/grafana-tutorial-how-to-create-kiosks-to-display-dashboards-on-a-tv After=network.target [Service] User=logan Environment=\"DISPLAY=:0\" Environment=\"XAUTHORITY=/home/pi/.Xauthority\" ExecStartPre=/bin/sleep 30 ExecStart=/home/pi/grafana-kiosk/bin/grafana-kiosk.linux.armv7 -URL https://grafana.mydomain.com/playlists/play/1 -login-method local -username username_here -password password_here -playlist true -lxde [Install] WantedBy=graphical.target EOF' Reload systemd and then start the service. After sleeping for 30 seconds, Grafana should start.\nsudo systemctl daemon-reload sudo systemctl enable grafana-kiosk sudo systemctl start grafana-kiosk sudo systemctl status grafana-kiosk If you have any issues, use the command below to look at the logs.\njournalctl -u grafana-kiosk Here is my completed display with my first dashboard loading (ignore my bad GIF-making skills, the bright spot on the screen is a light in my kitchen).\nYour browser does not support video. Timed display control You can also configure the display settings using cron. For example, I have setup a pair of cronjobs to turn the display off and on at specific times (e.g., off at 11pm, on at 7am), as well as another job to set the brightness. This should be added under root’s crontab.\n#Crontab Schedule # +---------------- minute (0 - 59) *=all # | +------------- hour (0 - 23) *=all # | | +---------- day of month (1 - 31) *=all # | | | +------- month (1 - 12) *=all # | | | | +---- day of week (0 - 6) *=all # | | | | | # * * * * * command to be executed # -- -- -- -- - --------------------------------- # 00 12 * * * some_command # will run some_command at 12:00 (noon) daily ##============================================================================ #Turn display off at 11pm every day 0 23 * * * echo 1 \u003e /sys/class/backlight/rpi_backlight/bl_power #Turn display on at 7am every day 0 7 * * * echo 0 \u003e /sys/class/backlight/rpi_backlight/bl_power #Set the display brightness on every reboot #Choose a value between 0 (min) and 255 (max) @reboot echo 75 \u003e /sys/class/backlight/rpi_backlight/brightness Conclusion I’ve had this running for the past few days without issue. My only complaint is that the screen resolution is only 800x480, so the dashboards are pretty small. Looking around, there a number of larger displays available, but I could also use a spare monitor connected via HDMI.\nThanks for reading!\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "1340",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_grafana.svg","datePublished": "2020-05-17T00:00:00Z",
+  "dateModified": "2020-05-17T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Always-on Grafana dashboard using Raspberry Pi touchscreen
+    </h1>
+    <div class="post-meta"><span title='2020-05-17 00:00:00 +0000 UTC'>2020-05-17</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_grafana.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#hardware-setup" aria-label="Hardware setup">Hardware setup</a></li>
+                <li>
+                    <a href="#raspbian-setup" aria-label="Raspbian setup">Raspbian setup</a><ul>
+                        
+                <li>
+                    <a href="#raspbian" aria-label="Raspbian">Raspbian</a></li>
+                <li>
+                    <a href="#screen-rotation" aria-label="Screen rotation">Screen rotation</a></li>
+                <li>
+                    <a href="#desktop-installation" aria-label="Desktop installation">Desktop installation</a></li>
+                <li>
+                    <a href="#browser-installation" aria-label="Browser installation">Browser installation</a></li></ul>
+                </li>
+                <li>
+                    <a href="#grafana-setup" aria-label="Grafana setup">Grafana setup</a><ul>
+                        
+                <li>
+                    <a href="#grafana-server" aria-label="Grafana server">Grafana server</a></li>
+                <li>
+                    <a href="#grafana-kiosk-mode" aria-label="Grafana kiosk mode">Grafana kiosk mode</a></li>
+                <li>
+                    <a href="#autostart" aria-label="Autostart">Autostart</a></li>
+                <li>
+                    <a href="#timed-display-control" aria-label="Timed display control">Timed display control</a></li></ul>
+                </li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a></li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc&hellip; I already monitor my pfSense firewall logs using <a href="https://www.graylog.org/">Graylog</a>, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc&hellip;) as well as software processes (e.g., containers using network, current download/upload speed, etc&hellip;).</p>
+<p>I stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from <a href="https://www.influxdata.com/">InfluxData</a>:</p>
+<ul>
+<li><a href="https://www.influxdata.com/time-series-platform/telegraf/">Telegraf</a> - collect and send metrics</li>
+<li><a href="https://www.influxdata.com/products/influxdb-overview/">InfluxDB</a> - database to store metrics</li>
+<li><a href="https://www.influxdata.com/time-series-platform/chronograf/">Chronograf</a> - graph metrics</li>
+<li><a href="https://www.influxdata.com/time-series-platform/kapacitor/">Kapacitor</a> - alerting based on metrics</li>
+</ul>
+<p>Second is the TIG stack:</p>
+<ul>
+<li><a href="https://www.influxdata.com/time-series-platform/telegraf/">Telegraf</a> - collect and send metrics</li>
+<li><a href="https://www.influxdata.com/products/influxdb-overview/">InfluxDB</a> - database to store metrics</li>
+<li><a href="https://grafana.com/">Grafana</a> - graph metrics</li>
+</ul>
+<p>Ultimately, I chose the TIG stack because Grafana can handle more <a href="https://grafana.com/docs/grafana/latest/features/datasources/">data sources</a> than Chronograf (e.g., ElasticSearch, Prometheus, SQL, etc&hellip;). I setup my TIG stack pretty easily, and Grafana has a <a href="https://grafana.com/grafana/dashboards">marketplace</a> where users can upload dashboards, so I was able to quickly find some working examples.</p>
+<p>However, to monitor my homelab, I needed to be logged into Grafana, which would distract from my primary display. Instead, I wanted a separate display with a mini-version of the Network Operations Center from somewhere like <a href="https://www.nasa.gov/sites/default/files/thumbnails/image/mmoc-1.png">NASA</a> or <a href="https://www.nasdaq.com/sites/acquia.prod/files/styles/1370x700/public/image/9b96fac9e0ed0f3169b21acdc5344174cc87a6ff_akam-control_large.jpg">Akamai</a>.</p>
+<h1 id="hardware-setup">Hardware setup<a hidden class="anchor" aria-hidden="true" href="#hardware-setup">#</a></h1>
+<p>For this setup, I purchased the following hardware:</p>
+<ul>
+<li>Raspberry Pi - $35.00 (I had a 3B+ lying around from <a href="https://www.amazon.com/gp/product/B07BC6WH7V/">a kit</a>)</li>
+<li><a href="https://www.amazon.com/dp/B073K14CVB/">MicroSD card</a> - $5.79</li>
+<li><a href="https://shop.pimoroni.com/products/raspberry-pi-7-touchscreen-display-with-frame">Raspberry Pi 7&quot; Touchscreen Display</a> - $61</li>
+<li><a href="https://shop.pimoroni.com/products/raspberry-pi-7-touchscreen-display-frame?variant=6337432321">Pibow Touchscreen Frame</a> - $12.20</li>
+</ul>
+<p>Be warned, however, the power supply with my kit was giving me the <code>Under-voltage detected!</code> warning. I will eventually upgrade to the official <a href="https://shop.pimoroni.com/products/raspberry-pi-universal-power-supply">Raspberry Pi Universal Power Supply</a> and a <a href="https://shop.pimoroni.com/products/split-microb-usb-power-cable">dual microB USB power cable</a>.</p>
+<p>The assembly was pretty easy:</p>
+<ol>
+<li>Remove the display from the package (leave the protective film on for now)</li>
+<li>Follow <a href="https://cdn.shopify.com/s/files/1/0174/1800/files/Pimoroni_Display_Frame_Instructions_V1.pdf">these instructions</a> to install the display in the Pibow frame</li>
+<li>Follow <a href="https://cdn.shopify.com/s/files/1/0174/1800/files/how_to_assemble_the_rpi_touchscreen_display.jpg">these instructions</a> to attach the Raspberry Pi to the display</li>
+</ol>
+
+<p><img src="/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/20200517_002_hu32b3caab2594fc09bf3321a39215bb7d_1978554_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="front of display"></p>
+
+<p><img src="/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/20200517_001_huba3c87f70dd1a50c2716fc028955b4c5_2107091_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="back of display"></p>
+<h1 id="raspbian-setup">Raspbian setup<a hidden class="anchor" aria-hidden="true" href="#raspbian-setup">#</a></h1>
+<h2 id="raspbian">Raspbian<a hidden class="anchor" aria-hidden="true" href="#raspbian">#</a></h2>
+<p>Because I&rsquo;m using the official Raspberry Pi touchscreen, I wanted to use <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian</a> to ensure the touchscreen would work properly (e.g., drivers, calibration, etc&hellip;). Because the Raspberry Pi is limited on both memory and storage space, I always prefer to use Raspbian Lite and then add a desktop, as opposed to using Raspbian Desktop and then stripping out unneeded packages (e.g., LibreOffice, Wolfram, Sonic Pi, Scratch, etc&hellip;).</p>
+<p>I won&rsquo;t cover how to install Raspbian to a SD card, since the Raspberry Pi Foundation already has a <a href="https://www.raspberrypi.org/documentation/installation/installing-images/README.md">pretty good guide</a> on their site. I&rsquo;ll be assuming you have already:</p>
+<ul>
+<li>Installed Raspbian and have it booted properly (you can login via SSH, or a local keyboard/mouse)</li>
+<li>Used <code>sudo raspi-config</code> to
+<ul>
+<li>Expand the filesystem</li>
+<li>Set the hostname</li>
+<li>Set the locale</li>
+<li>Setup a network connection or WiFi</li>
+<li>Set boot mode to <code>Desktop Autologin</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="screen-rotation">Screen rotation<a hidden class="anchor" aria-hidden="true" href="#screen-rotation">#</a></h2>
+<p>My screen was upside-down on the initial boot. Use the command below to rotate both the screen and touch input 180°.</p>
+<pre tabindex="0"><code>echo &#34;lcd_rotate=2&#34; | sudo tee -a /boot/config.txt
+sudo reboot
+</code></pre><p>Here is the boot process (ignore my bad GIF-making skills, the bright spot on the screen is a light in my kitchen).</p>
+<video autoplay loop muted playsinline style="width: 100%; height: auto;">
+    <source src="20200517_003.mp4" type="video/mp4">
+    
+    <p> Your browser does not support video. </p>
+</video>
+<h2 id="desktop-installation">Desktop installation<a hidden class="anchor" aria-hidden="true" href="#desktop-installation">#</a></h2>
+<p>First, make sure you&rsquo;re up-to-date with all packages.</p>
+<pre tabindex="0"><code>sudo apt update &amp;&amp; sudo apt dist-upgrade &amp;&amp; sudo apt autoclean
+</code></pre><p>Next, install the X Window server.</p>
+<pre tabindex="0"><code>sudo apt install --no-install-recommends xserver-xorg xinit
+</code></pre><p>Next, install the LXDE desktop. This will pull in all the required dependencies.</p>
+<pre tabindex="0"><code>sudo apt install --no-install-recommends task-lxde-desktop lxappearance lxsession raspberrypi-ui-mods rpd-icons unclutter
+</code></pre><p>Now, reboot the Pi and you should see it boot up and auto-login to a desktop.</p>
+<h2 id="browser-installation">Browser installation<a hidden class="anchor" aria-hidden="true" href="#browser-installation">#</a></h2>
+<p>We need a browser that supports launching a web page automatically, at fullscreen, with no other controls on the page (this is commonly called kiosk-mode). For a long time, only Chromium had this, but Mozilla finally fixed an <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=491588">11yr old request</a> and added kiosk mode in Firefox 71. Unfortunately, Firefox on the Raspberry Pi is using the Extended Support Release (ESR) version, which is stuck at 68.8.0 (as-of this writing), so we need to install Chromium.</p>
+<pre tabindex="0"><code>sudo apt install chromium-browser
+</code></pre><h1 id="grafana-setup">Grafana setup<a hidden class="anchor" aria-hidden="true" href="#grafana-setup">#</a></h1>
+<h2 id="grafana-server">Grafana server<a hidden class="anchor" aria-hidden="true" href="#grafana-server">#</a></h2>
+<p>Because there an a million ways to setup Grafana, I&rsquo;m going to assume you already have the following things setup:</p>
+<ul>
+<li>A Grafana instance (mine is running on a separate Docker server hosted internally at <a href="https://grafana.mydomain.com">https://grafana.mydomain.com</a>)</li>
+<li>One or more <a href="https://grafana.com/docs/grafana/latest/features/dashboard/dashboards/">dashboards</a></li>
+<li>A <a href="https://grafana.com/docs/grafana/latest/reference/playlist/">playlist</a> (allows you to auto-cycle through dashboards)</li>
+<li>A <a href="https://grafana.com/docs/grafana/latest/manage-users/add-or-remove-user/">user</a> that is not <em>admin</em> (the username/password will be stored on the Raspberry Pi in plain-text)</li>
+<li>The <a href="https://grafana.com/docs/grafana/latest/permissions/organization_roles/#viewer-role">viewer role</a> setup for that user (so this user will be view-only)</li>
+</ul>
+<h2 id="grafana-kiosk-mode">Grafana kiosk mode<a hidden class="anchor" aria-hidden="true" href="#grafana-kiosk-mode">#</a></h2>
+<p>Conveniently, Grafana provides an official tool to run Grafana in kiosk mode called <a href="https://github.com/grafana/grafana-kiosk">Grafana Kiosk</a>. This tool will use Chromium to login to Grafana and display a dashboard/playlist (as well as control LXDE) on a local or remote Grafana instance.</p>
+<p>Start by downloading Grafana Kiosk. As-of this writing, it is currently at version 1.0.1, but check for updates and substitute the version number as needed. The commands below will place the executables (for all architectures) in <code>~/grafana-kiosk/bin</code>.</p>
+<pre tabindex="0"><code>cd ~
+wget https://github.com/grafana/grafana-kiosk/releases/download/v1.0.1/grafana-kiosk-1.0.1.zip
+unzip grafana-kiosk-1.0.1.zip &amp;&amp; rm grafana-kiosk-1.0.1.zip
+</code></pre><p>Next, you need to determine the architecture of your CPU. Run the command below on your Raspberry Pi.</p>
+<pre tabindex="0"><code>lscpu | grep Architecture
+</code></pre><p>My Raspberry Pi is a 3B+, so my architecture is <code>armv7l</code>., which means my executable will be <code>~/grafana-kiosk/bin/grafana-kiosk.linux.armv7</code>.</p>
+<h2 id="autostart">Autostart<a hidden class="anchor" aria-hidden="true" href="#autostart">#</a></h2>
+<p>I tried using the <a href="https://github.com/grafana/grafana-kiosk#session-based">session-based</a> startup method, but it wasn&rsquo;t working. For me, the easiest way was to use <a href="https://github.com/grafana/grafana-kiosk#systemd-startup">systemd startup</a> and place a slight pause in the startup (without it, I was getting errors about the display not being ready).</p>
+<p>First, create the new systemd service file.</p>
+<pre tabindex="0"><code>sudo touch /etc/systemd/system/grafana-kiosk.service
+sudo chmod 600 /etc/systemd/system/grafana-kiosk.service
+</code></pre><p>Run the command below to create the new service. Replace the user&rsquo;s path (in two places), the URL, the username, and the password as needed.</p>
+<pre tabindex="0"><code>sudo bash -c &#39;cat &lt;&lt; &#39;EOF&#39; &gt; /etc/systemd/system/grafana-kiosk.service
+[Unit]
+Description=Grafana Kiosk
+Documentation=https://github.com/grafana/grafana-kiosk
+Documentation=https://grafana.com/blog/2019/05/02/grafana-tutorial-how-to-create-kiosks-to-display-dashboards-on-a-tv
+After=network.target
+
+[Service]
+User=logan
+Environment=&#34;DISPLAY=:0&#34;
+Environment=&#34;XAUTHORITY=/home/pi/.Xauthority&#34;
+ExecStartPre=/bin/sleep 30
+ExecStart=/home/pi/grafana-kiosk/bin/grafana-kiosk.linux.armv7 -URL https://grafana.mydomain.com/playlists/play/1 -login-method local -username username_here -password password_here -playlist true -lxde
+
+[Install]
+WantedBy=graphical.target
+EOF&#39;
+</code></pre><p>Reload systemd and then start the service. After sleeping for 30 seconds, Grafana should start.</p>
+<pre tabindex="0"><code>sudo systemctl daemon-reload
+sudo systemctl enable grafana-kiosk
+sudo systemctl start grafana-kiosk
+sudo systemctl status grafana-kiosk
+</code></pre><p>If you have any issues, use the command below to look at the logs.</p>
+<pre tabindex="0"><code>journalctl -u grafana-kiosk
+</code></pre><p>Here is my completed display with my first dashboard loading (ignore my bad GIF-making skills, the bright spot on the screen is a light in my kitchen).</p>
+<video autoplay loop muted playsinline style="width: 100%; height: auto;">
+    <source src="20200517_004.mp4" type="video/mp4">
+    
+    <p> Your browser does not support video. </p>
+</video>
+<h2 id="timed-display-control">Timed display control<a hidden class="anchor" aria-hidden="true" href="#timed-display-control">#</a></h2>
+<p>You can also configure the display settings using cron. For example, I have setup a pair of cronjobs to turn the display off and on at specific times (e.g., off at 11pm, on at 7am), as well as another job to set the brightness. This should be added under root&rsquo;s crontab.</p>
+<pre tabindex="0"><code>#Crontab Schedule
+# +---------------- minute        (0 - 59)  *=all
+# |  +------------- hour          (0 - 23)  *=all
+# |  |  +---------- day of month  (1 - 31)  *=all
+# |  |  |  +------- month         (1 - 12)  *=all
+# |  |  |  |  +---- day of week   (0 - 6)   *=all
+# |  |  |  |  |
+# *  *  *  *  * command to be executed
+# -- -- -- -- - ---------------------------------
+# 00 12 *  *  * some_command      # will run some_command at 12:00 (noon) daily
+##============================================================================
+#Turn display off at 11pm every day
+0 23 * * * echo 1 &gt; /sys/class/backlight/rpi_backlight/bl_power
+
+#Turn display on at 7am every day
+0 7 * * * echo 0 &gt; /sys/class/backlight/rpi_backlight/bl_power
+
+#Set the display brightness on every reboot
+#Choose a value between 0 (min) and 255 (max)
+@reboot echo 75 &gt; /sys/class/backlight/rpi_backlight/brightness
+</code></pre><h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p>I&rsquo;ve had this running for the past few days without issue. My only complaint is that the screen resolution is only 800x480, so the dashboards are pretty small. Looking around, there a number of larger displays available, but I could also use a spare monitor connected via HDMI.</p>
+<p>Thanks for reading!</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Always-on Grafana dashboard using Raspberry Pi touchscreen on twitter"
+        href="https://twitter.com/intent/tweet/?text=Always-on%20Grafana%20dashboard%20using%20Raspberry%20Pi%20touchscreen&amp;url=https%3a%2f%2floganmarchione.github.io%2f2020%2f05%2falways-on-grafana-dashboard-using-raspberry-pi-touchscreen%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Always-on Grafana dashboard using Raspberry Pi touchscreen on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2020%2f05%2falways-on-grafana-dashboard-using-raspberry-pi-touchscreen%2f&amp;title=Always-on%20Grafana%20dashboard%20using%20Raspberry%20Pi%20touchscreen&amp;summary=Always-on%20Grafana%20dashboard%20using%20Raspberry%20Pi%20touchscreen&amp;source=https%3a%2f%2floganmarchione.github.io%2f2020%2f05%2falways-on-grafana-dashboard-using-raspberry-pi-touchscreen%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Always-on Grafana dashboard using Raspberry Pi touchscreen on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2020%2f05%2falways-on-grafana-dashboard-using-raspberry-pi-touchscreen%2f&title=Always-on%20Grafana%20dashboard%20using%20Raspberry%20Pi%20touchscreen">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Always-on Grafana dashboard using Raspberry Pi touchscreen on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2020%2f05%2falways-on-grafana-dashboard-using-raspberry-pi-touchscreen%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Always-on Grafana dashboard using Raspberry Pi touchscreen on whatsapp"
+        href="https://api.whatsapp.com/send?text=Always-on%20Grafana%20dashboard%20using%20Raspberry%20Pi%20touchscreen%20-%20https%3a%2f%2floganmarchione.github.io%2f2020%2f05%2falways-on-grafana-dashboard-using-raspberry-pi-touchscreen%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Always-on Grafana dashboard using Raspberry Pi touchscreen on telegram"
+        href="https://telegram.me/share/url?text=Always-on%20Grafana%20dashboard%20using%20Raspberry%20Pi%20touchscreen&amp;url=https%3a%2f%2floganmarchione.github.io%2f2020%2f05%2falways-on-grafana-dashboard-using-raspberry-pi-touchscreen%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

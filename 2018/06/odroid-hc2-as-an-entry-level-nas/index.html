@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>ODROID-HC2 as an entry-level NAS | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Introduction I&rsquo;ve been doing some work on my homelab that I haven&rsquo;t documented here.
+I recently decommissioned my Raspberry Pi 3 that was running my Unifi controller, Dokuwiki, and Network UPS Tools (NUT). I replaced the RPi3 with an Intel i3 NUC with 12GB RAM and a Crucial 2.5&quot; SSD. I chose to use Proxmox as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="ODROID-HC2 as an entry-level NAS" />
+<meta property="og:description" content="Introduction I&rsquo;ve been doing some work on my homelab that I haven&rsquo;t documented here.
+I recently decommissioned my Raspberry Pi 3 that was running my Unifi controller, Dokuwiki, and Network UPS Tools (NUT). I replaced the RPi3 with an Intel i3 NUC with 12GB RAM and a Crucial 2.5&quot; SSD. I chose to use Proxmox as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-06-13T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2018-06-13T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" />
+<meta name="twitter:title" content="ODROID-HC2 as an entry-level NAS"/>
+<meta name="twitter:description" content="Introduction I&rsquo;ve been doing some work on my homelab that I haven&rsquo;t documented here.
+I recently decommissioned my Raspberry Pi 3 that was running my Unifi controller, Dokuwiki, and Network UPS Tools (NUT). I replaced the RPi3 with an Intel i3 NUC with 12GB RAM and a Crucial 2.5&quot; SSD. I chose to use Proxmox as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "ODROID-HC2 as an entry-level NAS",
+      "item": "https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ODROID-HC2 as an entry-level NAS",
+  "name": "ODROID-HC2 as an entry-level NAS",
+  "description": "Introduction I\u0026rsquo;ve been doing some work on my homelab that I haven\u0026rsquo;t documented here.\nI recently decommissioned my Raspberry Pi 3 that was running my Unifi controller, Dokuwiki, and Network UPS Tools (NUT). I replaced the RPi3 with an Intel i3 NUC with 12GB RAM and a Crucial 2.5\u0026quot; SSD. I chose to use Proxmox as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Introduction I’ve been doing some work on my homelab that I haven’t documented here.\nI recently decommissioned my Raspberry Pi 3 that was running my Unifi controller, Dokuwiki, and Network UPS Tools (NUT). I replaced the RPi3 with an Intel i3 NUC with 12GB RAM and a Crucial 2.5\" SSD. I chose to use Proxmox as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve. At the time of this writing, I’m running five KVM virtual machines:\nmgmt01 - Jump server and Ansible master unifi01 - Unifi controller nginx01 - LEMP stack, running Dokuwiki and NUT vpn01 - Pritunl log01 - Graylog However, the one thing I’m missing is a backup server.\n3-2-1 backup The golden rule is to follow the 3-2-1 method for backups:\n3 backups 2 different types of media 1 backup offsite Currently, I’m following the 3-2-1 backup method, except the central location is my desktop PC. This is both inconvenient and a waste of space on my desktop. Ideally, I’d like have all the backups go to a NAS-type device, and have that device push the backups to a cloud provider (I already use Backblaze B2).\nDevices I looked at quite a few options, from single-board devices to full NAS devices, but ruled most of them out.\nSoftware Advantage Disadvantage Raspberry Pi 3 Model B+ Cheap Small form-factor Large community and great aftermarket support CPU/memory is limited Fastest storage connection is USB2.0 Gigabit ethernet, but bound to USB bus, so max throughput is 300Mbps Any Raspberry Pi clone (e.g., BananaPi, OrangePi, NanoPi, etc…) Cheap Small form-factor Typically isn’t in mainline kernel Any x86 single-board device (e.g., Udoo, UP board, Minnowboard, etc…) Small form-factor SATA3 and USB3.0 x86 architecture Small community and limited aftermarket support Expensive for what the devices offer ODROID C2 Cheap Small form-factor Gigabit ethernet Fastest storage connection is USB2.0 ODROID XU4 Cheap Small form-factor Gigabit ethernet USB3.0 No SATA ports ESPRESSObin Cheap Small form-factor Gigabit ethernet SATA3 and USB3.0 Relatively new Small community and limited aftermarket support Helios4 NAS form-factor Gigabit ethernet SATA3 and USB3.0 Relatively new Small community and limited aftermarket support For the same price, I could get a NAS from Synology or QNAP GnuBee PC2 NAS form-factor Gigabit ethernet SATA3 and USB3.0 CPU/memory is limited Relatively new Small community and limited aftermarket support For the same price, I could get a NAS from Synology or QNAP An actual 2-bay NAS (e.g., Synology, QNAP, etc…) NAS form-factor Gigabit ethernet SATA3 and USB3.0 Official support and updates CPU/memory is limited Expensive In the end, I decided on the ODROID-HC2. The HC2 is the larger version of the HC1 (the HC1 holds 2.5\" drives, while the HC2 holds 3.5\" drives).\nBoth the HC2 and HC1 are based on the XU4, but lack the XU4’s HDMI port, USB 3.0 ports, eMMC slot, and GPIO connectors. The HC2 features:\nSamsung Exynos 5422 eight-core CPU 2GB DDR3 RAM USB3.0-based SATA3 port Gigabit ethernet (Realtek chipset) USB2.0 port MicroSD slot UART for serial console Stackable aluminum frame that acts as a heatsink and drive cage I purchased the HC2 from ameriDroid, along with a power cable and clear top cover. I also picked up a WD Red 4TB 5400 RPM hard drive. The Red drives are WD’s NAS drives, and the 5400 RPM speed will keep the unit quiet.\nI chose the HC2, which is only a single-drive device, because I’m not looking for a 2-bay NAS with RAID support. The primary purpose of this device will be to backup all my other devices, then ship those backups offsite. If the drive dies, I’ll put a new drive in and the only thing I’ll have lost is old backups (locally, anyways).\nSoftware The HC2 has wide support for Linux, including an Ubuntu image from ODROID, Armbian, Arch Linux Arm, and OpenMediaVault. From these, I decided to go with OpenMediaVault (OMV). OMV is a NAS solution based on (at the time of this writing) Debian 9 (Stretch). It runs services like SSH, FTP, SFTP, SMB/CIFS, NFS, rsync and many more. It also features a nice web interface, S.M.A.R.T. monitoring, and a plugin system to enhance functionality (e.g., LDAP, iSCSI, etc…).\nCurrently, OMV3 is being retired, to be replaced with OMV4. However, OMV4 is still being tested for ARM boards. Because of this, you can install OMV4 one of three ways:\nInstall Armbian first, then install OMV on top of Armbian Install OMV3, then upgrade to OMV4 Install the current OMV4 test image For this install, I chose to use the OMV4 test image.\nInstallation The installation of OMV4 was pretty straight-forward, and there are plenty of guides for the XU4 that apply to the HC1 and HC2 (e.g., here, here, and here). You can also use any guide for OMV (e.g., here, here, and here) and take just the parts you need. I’m going to document what worked for me and what I enabled, but you can enable/disable whatever services you like.\nWriting the MicroSD card First, download the newest OMV4 image for the XU4/HC1/HC2 from here. You’ll need to extract the .img file from the .xz file, then pipe that through dd to write to your MicroSD card (I’m assuming you’re running Linux here).\nsudo unxz OMV_4_Odroid_XU4_HC1_HC2.img.xz sudo dd status=progress bs=4M if=OMV_4_Odroid_XU4_HC1_HC2.img of=/dev/sdX sudo sync First boot When you boot the HC2 for the very first time, expect it to take 30 minutes or so. Since this server is headless (i.e., it has no graphics output), you won’t have the option to watch a screen to verify its state. Wait for the server to ping, then head to the web interface. By default, the web interface username/password is admin/openmediavault.\nDate and time settings Navigate to System, then Date \u0026 Time, set your timezone, and enable NTP.\nUpdate packages Navigate to System, then Update Management. Click Check at the top of the page to check for available updates.\nCheck the box next to each package, then click Upgrade at the top of the page to update the package(s).\nOnce completed, reboot the HC2 from the menu at the top-right of the page.\nEnable HTTPS Navigate to System, then Certificates, then select the SSL tab, click Add, then click Create. Fill in the information as necessary.\nNavigate to System, then General Settings. In the Secure connection section, enable SSL/TLS and select the certificate you created. You will need to open a new tab using HTTPS instead of HTTP.\nChange default web admin password Navigate to System, then General Settings, then select the Web Administrator Password tab to update the password.\nEnable SSH I do most of my updating and management through Ansible, which requires SSH access.\nNavigate to Services, then SSH, and enable the SSH service. Also, enable Permit root login.\nChange default root password By default, the root username/password is root/openmediavault.\nNow that SSH is enabled, you can SSH to the server as root. Upon login, you should be prompted to change root’s password\nssh root@IP_goes_here Once you’ve changed the password, logout.\nexit Disable SSH for root Navigate to Services, then SSH, and disable Permit root login.\nAdd a secondary user Navigate to Access Rights Management, then User. Click Add, name your user, and set a password.\nEnable S.M.A.R.T Navigate to Storage, then S.M.A.R.T., then select the Settings tab, and enable S.M.A.R.T. monitoring.\nNavigate to the Devices tab, select your device and click Edit at the top of the page, then enable S.M.A.R.T. monitoring.\nDrive setup Physical setup Navigate to Storage, then Disks. Select your hard drive (e.g., /dev/sda) and click Wipe at the top of the page.\nSetup LVM - SKIP THIS STEP I tried to setup LVM so that I could have one encrypted partition, and one unencrypted partition. I was able to get it working, however, every reboot would break the setup. Specifically, under Filesystems, the filesystem would be marked Missing after a reboot. Checking dmesg, I would see the drive was offline with the error Medium access timeout failure. Offlining disk!.\nroot@backup01:~# dmesg | grep sda [ 14.588107] sd 0:0:0:0: [sda] 7814037168 512-byte logical blocks: (4.00 TB/3.64 TiB) [ 14.588119] sd 0:0:0:0: [sda] 4096-byte physical blocks [ 14.589011] sd 0:0:0:0: [sda] Write Protect is off [ 14.589025] sd 0:0:0:0: [sda] Mode Sense: 53 00 00 08 [ 14.589455] sd 0:0:0:0: [sda] Disabling FUA [ 14.589466] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA [ 14.603406] sd 0:0:0:0: [sda] Attached SCSI disk [ 14.868930] device-mapper: table: 254:0: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=33553920 [ 14.868939] device-mapper: table: 254:0: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=33553920 [ 14.870900] device-mapper: table: 254:1: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=2194476629504 [ 14.870908] device-mapper: table: 254:1: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=2194476629504 [ 30.572176] sd 0:0:0:0: [sda] tag#0 uas_eh_abort_handler 0 uas-tag 1 inflight: CMD IN [ 30.572231] sd 0:0:0:0: [sda] tag#0 CDB: opcode=0x85 85 08 0e 00 00 00 01 00 00 00 00 00 00 40 ec 00 [ 45.597301] sd 0:0:0:0: [sda] tag#1 uas_eh_abort_handler 0 uas-tag 2 inflight: CMD IN [ 45.597352] sd 0:0:0:0: [sda] tag#1 CDB: opcode=0x88 88 00 00 00 00 00 ff 78 7f 7f 00 00 00 08 00 00 [ 61.612177] sd 0:0:0:0: [sda] tag#1 uas_eh_abort_handler 0 uas-tag 2 inflight: CMD IN [ 61.612228] sd 0:0:0:0: [sda] tag#1 CDB: opcode=0x85 85 08 0e 00 00 00 01 00 00 00 00 00 00 40 a1 00 [ 76.637308] sd 0:0:0:0: [sda] tag#0 uas_eh_abort_handler 0 uas-tag 1 inflight: CMD IN [ 76.637361] sd 0:0:0:0: [sda] tag#0 CDB: opcode=0x88 88 00 00 00 00 00 ff 78 7f 7f 00 00 00 08 00 00 [ 76.786240] sd 0:0:0:0: [sda] tag#0 Medium access timeout failure. Offlining disk! [ 76.786522] sd 0:0:0:0: [sda] killing request [ 76.786690] sd 0:0:0:0: [sda] UNKNOWN(0x2003) Result: hostbyte=0x01 driverbyte=0x00 [ 76.786787] sd 0:0:0:0: [sda] CDB: opcode=0x88 88 00 00 00 00 00 ff 78 7f 7f 00 00 00 08 00 00 [ 76.786834] blk_update_request: I/O error, dev sda, sector 4286087039 [ 76.859645] blk_update_request: I/O error, dev sda, sector 0 [ 1462.638016] blk_update_request: I/O error, dev sda, sector 0 [ 1462.640632] blk_update_request: I/O error, dev sda, sector 0 [ 1462.655726] blk_update_request: I/O error, dev sda, sector 0 [ 1462.674249] blk_update_request: I/O error, dev sda, sector 0 [ 1462.678512] blk_update_request: I/O error, dev sda, sector 0 [ 1462.697718] blk_update_request: I/O error, dev sda, sector 0 [ 2675.814067] blk_update_request: I/O error, dev sda, sector 0 [ 2698.300818] blk_update_request: I/O error, dev sda, sector 0 I could verify this by checking the file below.\ncat /sys/block/sda/device/state The only way to bring the device back online was to echo running to that file. In fact, this is the official “fix” according to RedHat.\necho running \u003e /sys/block/sda/device/state Upon reboot, the device would go offline again. Because of this, I recommend skipping the LVM setup and moving straight onto creating one large filesystem.\nInstead of having shares that are at a fixed size, I’m going to use Logical Volume Manager (LVM) to create smaller volumes that I can extend/shrink as needed. If you want to skip this setup, you can move on to Format and mount volumes.\nNavigate to System, then Plugins. From the search box, search for lvm. Select openmediavault-lvm2 and click Install at the top of the page.\nFor LVM to work, we need to create three types of groups\na physical volume a volume group one or more logical volumes Navigate to Storage, then Logical Volume Management.\nNavigate to the Physical volumes tab, click Add, and select your primary drive.\nNavigate to the Volume groups tab, click Add, name your volume group, and select the physical volume you just created.\nNavigate to the Logical volumes tab, click Add, name your logical volume, select the volume group you just created, and choose a partition size.\nFormat and mount volumes Navigate to Storage, then File System, then click Create. Select the logical volume you just created, then choose a name and filesystem type (I’m using XFS).\nOnce the filesystem is created, select your new filesystem and click Mount at the top of the page.\nCreate shared folder Navigate to Access Rights Management, then Shared Folders. Click Add, name your folder, and select the filesystem we created earlier.\nEnable SMB/CIFS I have Windows, Linux, and Mac clients on my network. Because of this, I’m choosing to use Server Message Block (SMB) to share files.\nNavigate to Services, then SMB/CIFS. On the Settings tab, enable the SMB service.\nNavigate to the Shares tab, click Add, then enable the share and select the shared folder we created earlier.\nGrant privileges Navigate to Access Rights Management, then Shared Folders, select your shared folder, and click Privileges. Here, grant Read/Write privileges to the user you created earlier.\nClient setup I won’t cover how to setup every single type of client. In this case, Google “how to connect to smb from YOUR DEVICE HERE”.\nPerformance As you can see below, the performance is close to 1Gbps, which means the HC2 is able to almost saturate the network connection. Because of this, I don’t believe any of the tweaks suggested here or here apply. Specifically, the CPU governor is set to ondemand by default (shown in the command below) and since we’re using XFS, the NTFS tweaks don’t apply.\nsudo grep GOVERNOR /etc/default/openmediavault Write performance Here, I’m copying a 1GB file from a Windows 10 laptop to OMV4 over wired ethernet.\nHere is the same test, but with a 10GB file.\nRead performance Here, I’m copying a 1GB file from a OMV4 to aWindows 10 laptop over wired ethernet.\nHere is the same test, but with a 10GB file.\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "2303",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg","datePublished": "2018-06-13T00:00:00Z",
+  "dateModified": "2018-06-13T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      ODROID-HC2 as an entry-level NAS
+    </h1>
+    <div class="post-meta"><span title='2018-06-13 00:00:00 +0000 UTC'>2018-06-13</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                        
+                <li>
+                    <a href="#3-2-1-backup" aria-label="3-2-1 backup">3-2-1 backup</a></li>
+                <li>
+                    <a href="#devices" aria-label="Devices">Devices</a></li>
+                <li>
+                    <a href="#software" aria-label="Software">Software</a></li></ul>
+                </li>
+                <li>
+                    <a href="#installation" aria-label="Installation">Installation</a><ul>
+                        
+                <li>
+                    <a href="#writing-the-microsd-card" aria-label="Writing the MicroSD card">Writing the MicroSD card</a></li>
+                <li>
+                    <a href="#first-boot" aria-label="First boot">First boot</a></li>
+                <li>
+                    <a href="#date-and-time-settings" aria-label="Date and time settings">Date and time settings</a></li>
+                <li>
+                    <a href="#update-packages" aria-label="Update packages">Update packages</a></li>
+                <li>
+                    <a href="#enable-https" aria-label="Enable HTTPS">Enable HTTPS</a></li>
+                <li>
+                    <a href="#change-default-web-admin-password" aria-label="Change default web admin password">Change default web admin password</a></li>
+                <li>
+                    <a href="#enable-ssh" aria-label="Enable SSH">Enable SSH</a></li>
+                <li>
+                    <a href="#change-default-root-password" aria-label="Change default root password">Change default root password</a></li>
+                <li>
+                    <a href="#disable-ssh-for-root" aria-label="Disable SSH for root">Disable SSH for root</a></li>
+                <li>
+                    <a href="#add-a-secondary-user" aria-label="Add a secondary user">Add a secondary user</a></li>
+                <li>
+                    <a href="#enable-smart" aria-label="Enable S.M.A.R.T">Enable S.M.A.R.T</a></li></ul>
+                </li>
+                <li>
+                    <a href="#drive-setup" aria-label="Drive setup">Drive setup</a><ul>
+                        
+                <li>
+                    <a href="#physical-setup" aria-label="Physical setup">Physical setup</a></li>
+                <li>
+                    <a href="#setup-lvm---skip-this-step" aria-label="Setup LVM - SKIP THIS STEP">Setup LVM - SKIP THIS STEP</a></li>
+                <li>
+                    <a href="#format-and-mount-volumes" aria-label="Format and mount volumes">Format and mount volumes</a></li>
+                <li>
+                    <a href="#create-shared-folder" aria-label="Create shared folder">Create shared folder</a></li>
+                <li>
+                    <a href="#enable-smbcifs" aria-label="Enable SMB/CIFS">Enable SMB/CIFS</a></li>
+                <li>
+                    <a href="#grant-privileges" aria-label="Grant privileges">Grant privileges</a></li></ul>
+                </li>
+                <li>
+                    <a href="#client-setup" aria-label="Client setup">Client setup</a></li>
+                <li>
+                    <a href="#performance" aria-label="Performance">Performance</a><ul>
+                        
+                <li>
+                    <a href="#write-performance" aria-label="Write performance">Write performance</a></li>
+                <li>
+                    <a href="#read-performance" aria-label="Read performance">Read performance</a></li></ul>
+                </li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I&rsquo;ve been doing some work on my homelab that I haven&rsquo;t documented here.</p>
+<p>I recently decommissioned my Raspberry Pi 3 that was running my <a href="/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/">Unifi controller</a>, Dokuwiki, and <a href="/2017/02/raspberry-pi-ups-monitor-with-nginx-web-monitoring/">Network UPS Tools</a> (NUT). I replaced the RPi3 with an Intel i3 <a href="https://www.intel.com/content/www/us/en/products/boards-kits/nuc/kits/nuc7i3bnh.html">NUC</a> with 12GB RAM and a Crucial 2.5&quot; SSD. I chose to use <a href="https://www.proxmox.com/en/">Proxmox</a> as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve. At the time of this writing, I&rsquo;m running five KVM virtual machines:</p>
+<ul>
+<li>mgmt01 - Jump server and Ansible master</li>
+<li>unifi01 - Unifi controller</li>
+<li>nginx01 - LEMP stack, running Dokuwiki and NUT</li>
+<li>vpn01 - Pritunl</li>
+<li>log01 - Graylog</li>
+</ul>
+<p>However, the one thing I&rsquo;m missing is a backup server.</p>
+<h2 id="3-2-1-backup">3-2-1 backup<a hidden class="anchor" aria-hidden="true" href="#3-2-1-backup">#</a></h2>
+<p>The golden rule is to follow the 3-2-1 method for backups:</p>
+<ul>
+<li>3 backups</li>
+<li>2 different types of media</li>
+<li>1 backup offsite</li>
+</ul>
+<p>Currently, I&rsquo;m following the 3-2-1 backup method, except the central location is my desktop PC. This is both inconvenient and a waste of space on my desktop. Ideally, I&rsquo;d like have all the backups go to a NAS-type device, and have that device push the backups to a cloud provider (I already use <a href="/2017/07/backblaze-b2-backup-setup/">Backblaze B2</a>).</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20170612_002_hu5e11b227a6b8ee8bc9583b56aa8c74d6_152430_800x0_resize_catmullrom_3.png" loading="lazy" alt="3-2-1 backup"></p>
+<h2 id="devices">Devices<a hidden class="anchor" aria-hidden="true" href="#devices">#</a></h2>
+<p>I looked at quite a few options, from single-board devices to full NAS devices, but ruled most of them out.</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Software</th>
+        <th>Advantage</th>
+        <th>Disadvantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Raspberry Pi 3 Model B+</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Cheap</li>
+            <li>Small form-factor</li>
+            <li>Large community and great aftermarket support</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>CPU/memory is limited</li>
+            <li>Fastest storage connection is USB2.0</li>
+            <li>Gigabit ethernet, but bound to USB bus, so max throughput is 300Mbps</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Any Raspberry Pi clone (e.g., BananaPi, OrangePi, NanoPi, etc…)</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Cheap</li>
+            <li>Small form-factor</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Typically isn’t in mainline kernel</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Any x86 single-board device (e.g., Udoo, UP board, Minnowboard, etc…)</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Small form-factor</li>
+            <li>SATA3 and USB3.0</li>
+            <li>x86 architecture</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Small community and limited aftermarket support</li>
+            <li>Expensive for what the devices offer</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>ODROID C2</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Cheap</li>
+            <li>Small form-factor</li>
+            <li>Gigabit ethernet</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Fastest storage connection is USB2.0</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>ODROID XU4</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Cheap</li>
+            <li>Small form-factor</li>
+            <li>Gigabit ethernet</li>
+            <li>USB3.0</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>No SATA ports</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>ESPRESSObin</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Cheap</li>
+            <li>Small form-factor</li>
+            <li>Gigabit ethernet</li>
+            <li>SATA3 and USB3.0</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Relatively new</li>
+            <li>Small community and limited aftermarket support</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Helios4</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>NAS form-factor</li>
+            <li>Gigabit ethernet</li>
+            <li>SATA3 and USB3.0</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>Relatively new</li>
+            <li>Small community and limited aftermarket support</li>
+            <li>For the same price, I could get a NAS from Synology or QNAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>GnuBee PC2</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>NAS form-factor</li>
+            <li>Gigabit ethernet</li>
+            <li>SATA3 and USB3.0</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>CPU/memory is limited</li>
+            <li>Relatively new</li>
+            <li>Small community and limited aftermarket support</li>
+            <li>For the same price, I could get a NAS from Synology or QNAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>An actual 2-bay NAS (e.g., Synology, QNAP, etc…)</th>
+        <td style="vertical-align:top">
+          <ul>
+            <li>NAS form-factor</li>
+            <li>Gigabit ethernet</li>
+            <li>SATA3 and USB3.0</li>
+            <li>Official support and updates</li>
+          </ul>
+        </td>
+        <td style="vertical-align:top">
+          <ul>
+            <li>CPU/memory is limited</li>
+            <li>Expensive</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>In the end, I decided on the <a href="http://www.hardkernel.com/main/products/prdt_info.php?g_code=G151505170472">ODROID-HC2</a>. The HC2 is the larger version of the <a href="http://www.hardkernel.com/main/products/prdt_info.php?g_code=G150229074080">HC1</a> (the HC1 holds 2.5&quot; drives, while the HC2 holds 3.5&quot; drives).</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180601_001.jpg" loading="lazy" alt="single HC2 in case"></p>
+<p>Both the HC2 and HC1 are based on the XU4, but lack the XU4&rsquo;s HDMI port, USB 3.0 ports, eMMC slot, and GPIO connectors. The HC2 features:</p>
+<ul>
+<li>Samsung Exynos 5422 eight-core CPU</li>
+<li>2GB DDR3 RAM</li>
+<li>USB3.0-based SATA3 port</li>
+<li>Gigabit ethernet (Realtek chipset)</li>
+<li>USB2.0 port</li>
+<li>MicroSD slot</li>
+<li>UART for serial console</li>
+<li>Stackable aluminum frame that acts as a heatsink and drive cage</li>
+</ul>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180601_002.jpg" loading="lazy" alt="multiple HC2s in cases"></p>
+<p>I purchased the HC2 from <a href="https://ameridroid.com/products/odroid-hc2">ameriDroid</a>, along with a power cable and clear top cover. I also picked up a <a href="https://www.amazon.com/Red-4TB-Hard-Disk-Drive/dp/B00EHBERSE">WD Red 4TB 5400 RPM hard drive</a>. The Red drives are WD&rsquo;s NAS drives, and the 5400 RPM speed will keep the unit quiet.</p>
+<p>I chose the HC2, which is only a single-drive device, because I&rsquo;m not looking for a 2-bay NAS with RAID support. The primary purpose of this device will be to backup all my other devices, then ship those backups offsite. If the drive dies, I&rsquo;ll put a new drive in and the only thing I&rsquo;ll have lost is old backups (locally, anyways).</p>
+<h2 id="software">Software<a hidden class="anchor" aria-hidden="true" href="#software">#</a></h2>
+<p>The HC2 has wide support for Linux, including an <a href="https://wiki.odroid.com/odroid-xu4/os_images/os_images">Ubuntu image from ODROID</a>, <a href="https://www.armbian.com/odroid-hc1/">Armbian</a>, <a href="https://archlinuxarm.org/platforms/armv7/samsung/odroid-hc2">Arch Linux Arm</a>, and <a href="https://www.openmediavault.org/">OpenMediaVault</a>. From these, I decided to go with <a href="https://www.openmediavault.org/">OpenMediaVault</a> (OMV). OMV is a NAS solution based on (at the time of this writing) Debian 9 (Stretch). It runs services like SSH, FTP, SFTP, SMB/CIFS, NFS, rsync and <a href="https://www.openmediavault.org/features.html">many more</a>. It also features a nice web interface, S.M.A.R.T. monitoring, and a plugin system to enhance functionality (e.g., LDAP, iSCSI, etc&hellip;).</p>
+<p>Currently, OMV3 is being retired, to be replaced with OMV4. However, OMV4 is still being <a href="https://forum.openmediavault.org/index.php/Thread/23065-Call-for-testers-OMV4-for-ARM-boards/?postID=176131#post176131">tested</a> for ARM boards. Because of this, you can <a href="https://forum.openmediavault.org/index.php/Thread/22908-OMV4-on-ARM-boards-kind-of-a-how-to/?postID=175107#post175107">install OMV4 one of three ways</a>:</p>
+<ul>
+<li>Install Armbian first, then install OMV on top of Armbian</li>
+<li>Install OMV3, then upgrade to OMV4</li>
+<li>Install the current OMV4 <a href="https://sourceforge.net/projects/openmediavault/files/OMV%204.x%20for%20Single%20Board%20Computers/">test image</a></li>
+</ul>
+<p>For this install, I chose to use the OMV4 test image.</p>
+<h1 id="installation">Installation<a hidden class="anchor" aria-hidden="true" href="#installation">#</a></h1>
+<p>The installation of OMV4 was pretty straight-forward, and there are plenty of guides for the XU4 that apply to the HC1 and HC2 (e.g., <a href="https://obihoernchen.net/1235/odroid-xu4-with-openmediavault/">here</a>, <a href="https://magazine.odroid.com/article/build-home-server-storing-large-amount-multimedia-files/">here</a>, and <a href="https://beomagi.blogspot.com/2016/09/odroid-xu4-my-new-nas.html">here</a>). You can also use any guide for OMV (e.g., <a href="https://wiki.kobol.io/omv/">here</a>, <a href="https://ridwankhan.com/tagged/open-media-vault">here</a>, and <a href="https://thepi.io/how-to-use-your-raspberry-pi-as-a-nas-box/">here</a>) and take just the parts you need. I&rsquo;m going to document what worked for me and what I enabled, but you can enable/disable whatever services you like.</p>
+<h2 id="writing-the-microsd-card">Writing the MicroSD card<a hidden class="anchor" aria-hidden="true" href="#writing-the-microsd-card">#</a></h2>
+<p>First, download the newest OMV4 image for the XU4/HC1/HC2 from <a href="https://sourceforge.net/projects/openmediavault/files/OMV%204.x%20for%20Single%20Board%20Computers/OMV_4_Odroid_XU4_HC1_HC2.img.xz/download">here</a>. You&rsquo;ll need to extract the .img file from the .xz file, then pipe that through dd to write to your MicroSD card (I&rsquo;m assuming you&rsquo;re running Linux here).</p>
+<pre tabindex="0"><code>sudo unxz OMV_4_Odroid_XU4_HC1_HC2.img.xz
+sudo dd status=progress bs=4M if=OMV_4_Odroid_XU4_HC1_HC2.img of=/dev/sdX
+sudo sync
+</code></pre><h2 id="first-boot">First boot<a hidden class="anchor" aria-hidden="true" href="#first-boot">#</a></h2>
+<p>When you boot the HC2 for the very first time, expect it to take 30 minutes or so. Since this server is headless (i.e., it has no graphics output), you won&rsquo;t have the option to watch a screen to verify its state. Wait for the server to ping, then head to the web interface. By default, the web interface username/password is <em>admin/openmediavault</em>.</p>
+<h2 id="date-and-time-settings">Date and time settings<a hidden class="anchor" aria-hidden="true" href="#date-and-time-settings">#</a></h2>
+<p>Navigate to <em>System</em>, then <em>Date &amp; Time</em>, set your timezone, and enable NTP.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_001_hu8bd7563c590a0254a3b63eb311b1cc28_52002_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="update-packages">Update packages<a hidden class="anchor" aria-hidden="true" href="#update-packages">#</a></h2>
+<p>Navigate to <em>System</em>, then <em>Update Management</em>. Click <em>Check</em> at the top of the page to check for available updates.</p>
+<p>Check the box next to each package, then click <em>Upgrade</em> at the top of the page to update the package(s).</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_002_hue0a114463d86bb00ca013f13d9a7459e_57193_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Once completed, reboot the HC2 from the menu at the top-right of the page.</p>
+<h2 id="enable-https">Enable HTTPS<a hidden class="anchor" aria-hidden="true" href="#enable-https">#</a></h2>
+<p>Navigate to <em>System</em>, then <em>Certificates</em>, then select the <em>SSL</em> tab, click <em>Add</em>, then click <em>Create</em>. Fill in the information as necessary.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_003_hu8becacd20209d24fff4d8cb468761f00_62867_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Navigate to <em>System</em>, then <em>General Settings</em>. In the <em>Secure connection</em> section, enable SSL/TLS and select the certificate you created. You will need to open a new tab using HTTPS instead of HTTP.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_004_hu2d1d4a353a9e952e7dd4be31445b1dc4_76667_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="change-default-web-admin-password">Change default web admin password<a hidden class="anchor" aria-hidden="true" href="#change-default-web-admin-password">#</a></h2>
+<p>Navigate to <em>System</em>, then <em>General Settings</em>, then select the <em>Web Administrator Password</em> tab to update the password.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_005_hucd839916c394643563708ec4074afd60_46089_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="enable-ssh">Enable SSH<a hidden class="anchor" aria-hidden="true" href="#enable-ssh">#</a></h2>
+<p>I do most of my updating and management through Ansible, which requires SSH access.</p>
+<p>Navigate to <em>Services</em>, then <em>SSH</em>, and enable the SSH service. Also, enable <em>Permit root login</em>.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_006_huf1781c42df30ab8f3b37c4b64c26ff4c_57151_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="change-default-root-password">Change default root password<a hidden class="anchor" aria-hidden="true" href="#change-default-root-password">#</a></h2>
+<p>By default, the root username/password is <em>root</em>/<em>openmediavault</em>.</p>
+<p>Now that SSH is enabled, you can SSH to the server as root. Upon login, you should be prompted to change root&rsquo;s password</p>
+<pre tabindex="0"><code>ssh root@IP_goes_here
+</code></pre><p>Once you&rsquo;ve changed the password, logout.</p>
+<pre tabindex="0"><code>exit
+</code></pre><h2 id="disable-ssh-for-root">Disable SSH for root<a hidden class="anchor" aria-hidden="true" href="#disable-ssh-for-root">#</a></h2>
+<p>Navigate to <em>Services</em>, then <em>SSH</em>, and disable <em>Permit root login</em>.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_007_hu49e72f5a249dda6cc7922f01cbbfdb62_57088_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="add-a-secondary-user">Add a secondary user<a hidden class="anchor" aria-hidden="true" href="#add-a-secondary-user">#</a></h2>
+<p>Navigate to <em>Access Rights Management</em>, then <em>User</em>. Click <em>Add</em>, name your user, and set a password.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_008_hud0cd02ec4a5025dbe4709b7bcd692cad_60048_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="enable-smart">Enable S.M.A.R.T<a hidden class="anchor" aria-hidden="true" href="#enable-smart">#</a></h2>
+<p>Navigate to <em>Storage</em>, then <em>S.M.A.R.T.</em>, then select the <em>Settings</em> tab, and enable S.M.A.R.T. monitoring.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_009_huc78fda17ae58108f3352acdb80b34eb1_73713_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Navigate to the Devices tab, select your device and click Edit at the top of the page, then enable S.M.A.R.T. monitoring.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_010_hu8328b722c98e8c6c1631f1d47891dfc9_55150_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h1 id="drive-setup">Drive setup<a hidden class="anchor" aria-hidden="true" href="#drive-setup">#</a></h1>
+<h2 id="physical-setup">Physical setup<a hidden class="anchor" aria-hidden="true" href="#physical-setup">#</a></h2>
+<p>Navigate to <em>Storage</em>, then <em>Disks</em>. Select your hard drive (e.g., <em>/dev/sda</em>) and click <em>Wipe</em> at the top of the page.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_011_hub994082b25c40332edab3761ff74f541_48655_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="setup-lvm---skip-this-step">Setup LVM - SKIP THIS STEP<a hidden class="anchor" aria-hidden="true" href="#setup-lvm---skip-this-step">#</a></h2>
+<p>I tried to setup LVM so that I could have one encrypted partition, and one unencrypted partition. I was able to get it working, however, every reboot would break the setup. Specifically, under <em>Filesystems</em>, the filesystem would be marked <em>Missing</em> after a reboot. Checking dmesg, I would see the drive was offline with the error <em>Medium access timeout failure. Offlining disk!</em>.</p>
+<pre tabindex="0"><code>root@backup01:~# dmesg | grep sda
+[ 14.588107] sd 0:0:0:0: [sda] 7814037168 512-byte logical blocks: (4.00 TB/3.64 TiB)
+[ 14.588119] sd 0:0:0:0: [sda] 4096-byte physical blocks
+[ 14.589011] sd 0:0:0:0: [sda] Write Protect is off
+[ 14.589025] sd 0:0:0:0: [sda] Mode Sense: 53 00 00 08
+[ 14.589455] sd 0:0:0:0: [sda] Disabling FUA
+[ 14.589466] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn&#39;t support DPO or FUA
+[ 14.603406] sd 0:0:0:0: [sda] Attached SCSI disk
+[ 14.868930] device-mapper: table: 254:0: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=33553920
+[ 14.868939] device-mapper: table: 254:0: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=33553920
+[ 14.870900] device-mapper: table: 254:1: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=2194476629504
+[ 14.870908] device-mapper: table: 254:1: adding target device sda caused an alignment inconsistency: physical_block_size=4096, logical_block_size=512, alignment_offset=0, start=2194476629504
+[ 30.572176] sd 0:0:0:0: [sda] tag#0 uas_eh_abort_handler 0 uas-tag 1 inflight: CMD IN 
+[ 30.572231] sd 0:0:0:0: [sda] tag#0 CDB: opcode=0x85 85 08 0e 00 00 00 01 00 00 00 00 00 00 40 ec 00
+[ 45.597301] sd 0:0:0:0: [sda] tag#1 uas_eh_abort_handler 0 uas-tag 2 inflight: CMD IN 
+[ 45.597352] sd 0:0:0:0: [sda] tag#1 CDB: opcode=0x88 88 00 00 00 00 00 ff 78 7f 7f 00 00 00 08 00 00
+[ 61.612177] sd 0:0:0:0: [sda] tag#1 uas_eh_abort_handler 0 uas-tag 2 inflight: CMD IN 
+[ 61.612228] sd 0:0:0:0: [sda] tag#1 CDB: opcode=0x85 85 08 0e 00 00 00 01 00 00 00 00 00 00 40 a1 00
+[ 76.637308] sd 0:0:0:0: [sda] tag#0 uas_eh_abort_handler 0 uas-tag 1 inflight: CMD IN 
+[ 76.637361] sd 0:0:0:0: [sda] tag#0 CDB: opcode=0x88 88 00 00 00 00 00 ff 78 7f 7f 00 00 00 08 00 00
+[ 76.786240] sd 0:0:0:0: [sda] tag#0 Medium access timeout failure. Offlining disk!
+[ 76.786522] sd 0:0:0:0: [sda] killing request
+[ 76.786690] sd 0:0:0:0: [sda] UNKNOWN(0x2003) Result: hostbyte=0x01 driverbyte=0x00
+[ 76.786787] sd 0:0:0:0: [sda] CDB: opcode=0x88 88 00 00 00 00 00 ff 78 7f 7f 00 00 00 08 00 00
+[ 76.786834] blk_update_request: I/O error, dev sda, sector 4286087039
+[ 76.859645] blk_update_request: I/O error, dev sda, sector 0
+[ 1462.638016] blk_update_request: I/O error, dev sda, sector 0
+[ 1462.640632] blk_update_request: I/O error, dev sda, sector 0
+[ 1462.655726] blk_update_request: I/O error, dev sda, sector 0
+[ 1462.674249] blk_update_request: I/O error, dev sda, sector 0
+[ 1462.678512] blk_update_request: I/O error, dev sda, sector 0
+[ 1462.697718] blk_update_request: I/O error, dev sda, sector 0
+[ 2675.814067] blk_update_request: I/O error, dev sda, sector 0
+[ 2698.300818] blk_update_request: I/O error, dev sda, sector 0
+</code></pre><p>I could verify this by checking the file below.</p>
+<pre tabindex="0"><code>cat /sys/block/sda/device/state
+</code></pre><p>The only way to bring the device back online was to echo <em>running</em> to that file. In fact, this is the official &ldquo;fix&rdquo; according to <a href="https://access.redhat.com/solutions/1283543">RedHat</a>.</p>
+<pre tabindex="0"><code>echo running &gt; /sys/block/sda/device/state
+</code></pre><p>Upon reboot, the device would go offline again. Because of this, I recommend skipping the LVM setup and moving straight onto creating one large filesystem.</p>
+<p><del>Instead of having shares that are at a fixed size, I&rsquo;m going to use <a href="https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)">Logical Volume Manager</a> (LVM) to create smaller volumes that I can extend/shrink as needed. If you want to skip this setup, you can move on to <em>Format and mount volumes</em>.</del></p>
+<p><del>Navigate to <em>System</em>, then <em>Plugins</em>. From the search box, search for <em>lvm</em>. Select <em>openmediavault-lvm2</em> and click <em>Install</em> at the top of the page.</del></p>
+<p><del>For LVM to work, we need to create three types of groups</del></p>
+<ul>
+<li><del>a physical volume</del></li>
+<li><del>a volume group</del></li>
+<li><del>one or more logical volumes</del></li>
+</ul>
+<p><del>Navigate to <em>Storage</em>, then <em>Logical Volume Management</em>.</del></p>
+<p><del>Navigate to the <em>Physical volumes</em> tab, click <em>Add</em>, and select your primary drive.</del></p>
+<p><del>Navigate to the <em>Volume groups</em> tab, click <em>Add</em>, name your volume group, and select the physical volume you just created.</del></p>
+<p><del>Navigate to the <em>Logical volumes</em> tab, click <em>Add</em>, name your logical volume, select the volume group you just created, and choose a partition size.</del></p>
+<h2 id="format-and-mount-volumes">Format and mount volumes<a hidden class="anchor" aria-hidden="true" href="#format-and-mount-volumes">#</a></h2>
+<p>Navigate to <em>Storage</em>, then <em>File System</em>, then click <em>Create</em>. Select the logical volume you just created, then choose a name and filesystem type (I&rsquo;m using <a href="https://en.wikipedia.org/wiki/XFS">XFS</a>).</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_017_hu0f4cdac6a759bd7d76713105e177d581_63718_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Once the filesystem is created, select your new filesystem and click <em>Mount</em> at the top of the page.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_018_hu62f3bfa7e9c109849a803270e8b15797_57389_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="create-shared-folder">Create shared folder<a hidden class="anchor" aria-hidden="true" href="#create-shared-folder">#</a></h2>
+<p>Navigate to <em>Access Rights Management</em>, then <em>Shared Folders</em>. Click <em>Add</em>, name your folder, and select the filesystem we created earlier.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_019_hu3dbf5fce8b9125d30a1d6765dd8ef6b6_63771_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="enable-smbcifs">Enable SMB/CIFS<a hidden class="anchor" aria-hidden="true" href="#enable-smbcifs">#</a></h2>
+<p>I have Windows, Linux, and Mac clients on my network. Because of this, I&rsquo;m choosing to use <a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block</a> (SMB) to share files.</p>
+<p>Navigate to <em>Services</em>, then <em>SMB/CIFS</em>. On the <em>Settings</em> tab, enable the SMB service.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_020_hu92b622a9ed59c96081b732a79a5900e5_72020_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<p>Navigate to the <em>Shares</em> tab, click <em>Add</em>, then enable the share and select the shared folder we created earlier.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_021_hu7ca98958f736d97342e949d109a5ba5c_69563_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h2 id="grant-privileges">Grant privileges<a hidden class="anchor" aria-hidden="true" href="#grant-privileges">#</a></h2>
+<p>Navigate to <em>Access Rights Management</em>, then <em>Shared Folders</em>, select your shared folder, and click <em>Privileges</em>. Here, grant <em>Read/Write</em> privileges to the user you created earlier.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_022_hu59782d9adc544d5ed6b38608cc738008_94793_800x0_resize_catmullrom_3.png" loading="lazy" alt="screenshot"></p>
+<h1 id="client-setup">Client setup<a hidden class="anchor" aria-hidden="true" href="#client-setup">#</a></h1>
+<p>I won&rsquo;t cover how to setup every single type of client. In this case, Google &ldquo;<a href="https://www.google.com/search?q=how+to+connect+to+smb+from+">how to connect to smb from YOUR DEVICE HERE</a>&rdquo;.</p>
+<h1 id="performance">Performance<a hidden class="anchor" aria-hidden="true" href="#performance">#</a></h1>
+<p>As you can see below, the performance is close to 1Gbps, which means the HC2 is able to almost saturate the network connection. Because of this, I don&rsquo;t believe any of the tweaks suggested <a href="https://obihoernchen.net/1235/odroid-xu4-with-openmediavault/">here</a> or <a href="https://beomagi.blogspot.com/2016/09/odroid-xu4-my-new-nas.html">here</a> apply. Specifically, the CPU governor is set to <em>ondemand</em> by default (shown in the command below) and since we&rsquo;re using XFS, the NTFS tweaks don&rsquo;t apply.</p>
+<pre tabindex="0"><code>sudo grep GOVERNOR /etc/default/openmediavault
+</code></pre><h2 id="write-performance">Write performance<a hidden class="anchor" aria-hidden="true" href="#write-performance">#</a></h2>
+<p>Here, I&rsquo;m copying a 1GB file from a Windows 10 laptop to OMV4 over wired ethernet.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_023.png" loading="lazy" alt="screenshot"></p>
+<p>Here is the same test, but with a 10GB file.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_024.png" loading="lazy" alt="screenshot"></p>
+<h2 id="read-performance">Read performance<a hidden class="anchor" aria-hidden="true" href="#read-performance">#</a></h2>
+<p>Here, I&rsquo;m copying a 1GB file from a OMV4 to aWindows 10 laptop over wired ethernet.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_025.png" loading="lazy" alt="screenshot"></p>
+<p>Here is the same test, but with a 10GB file.</p>
+
+<p><img src="/2018/06/odroid-hc2-as-an-entry-level-nas/20180612_026.png" loading="lazy" alt="screenshot"></p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2018/06/odroid-hc2-as-an-entry-level-nas/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ODROID-HC2 as an entry-level NAS on twitter"
+        href="https://twitter.com/intent/tweet/?text=ODROID-HC2%20as%20an%20entry-level%20NAS&amp;url=https%3a%2f%2floganmarchione.github.io%2f2018%2f06%2fodroid-hc2-as-an-entry-level-nas%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ODROID-HC2 as an entry-level NAS on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2018%2f06%2fodroid-hc2-as-an-entry-level-nas%2f&amp;title=ODROID-HC2%20as%20an%20entry-level%20NAS&amp;summary=ODROID-HC2%20as%20an%20entry-level%20NAS&amp;source=https%3a%2f%2floganmarchione.github.io%2f2018%2f06%2fodroid-hc2-as-an-entry-level-nas%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ODROID-HC2 as an entry-level NAS on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2018%2f06%2fodroid-hc2-as-an-entry-level-nas%2f&title=ODROID-HC2%20as%20an%20entry-level%20NAS">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ODROID-HC2 as an entry-level NAS on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2018%2f06%2fodroid-hc2-as-an-entry-level-nas%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ODROID-HC2 as an entry-level NAS on whatsapp"
+        href="https://api.whatsapp.com/send?text=ODROID-HC2%20as%20an%20entry-level%20NAS%20-%20https%3a%2f%2floganmarchione.github.io%2f2018%2f06%2fodroid-hc2-as-an-entry-level-nas%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share ODROID-HC2 as an entry-level NAS on telegram"
+        href="https://telegram.me/share/url?text=ODROID-HC2%20as%20an%20entry-level%20NAS&amp;url=https%3a%2f%2floganmarchione.github.io%2f2018%2f06%2fodroid-hc2-as-an-entry-level-nas%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

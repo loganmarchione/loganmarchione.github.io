@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>A brief introduction to GPG | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Introduction Put on your tinfoil hats, boys and girls! Today, we&rsquo;re talking about security, encryption, and GPG!
+PGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.
+Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions export without a license&rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e6f140a2c1255e92cf70c725270d27b0fe60482cf7e297f969c49ee2a3eb70fb.css" integrity="sha256-5vFAosElXpLPcMclJw0nsP5gSCz34pf5acSe4qPrcPs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="A brief introduction to GPG" />
+<meta property="og:description" content="Introduction Put on your tinfoil hats, boys and girls! Today, we&rsquo;re talking about security, encryption, and GPG!
+PGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.
+Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions export without a license&rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_gnupg.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2015-12-31T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2015-12-31T00:00:00&#43;00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_gnupg.svg" />
+<meta name="twitter:title" content="A brief introduction to GPG"/>
+<meta name="twitter:description" content="Introduction Put on your tinfoil hats, boys and girls! Today, we&rsquo;re talking about security, encryption, and GPG!
+PGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.
+Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions export without a license&rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "A brief introduction to GPG",
+      "item": "https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A brief introduction to GPG",
+  "name": "A brief introduction to GPG",
+  "description": "Introduction Put on your tinfoil hats, boys and girls! Today, we\u0026rsquo;re talking about security, encryption, and GPG!\nPGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.\nFun fact - in 1993 the US government charged Zimmerman with \u0026ldquo;munitions export without a license\u0026rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Introduction Put on your tinfoil hats, boys and girls! Today, we’re talking about security, encryption, and GPG!\nPGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.\nFun fact - in 1993 the US government charged Zimmerman with “munitions export without a license”. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law. However, Zimmerman was able to circumvent this by publishing the entire source code of PGP in a physical book (that could be scanned with OCR and recompiled into source code), since the export of books was protected by the First Amendment. Today, PGP is no longer considered a weapon, but still cannot be exported to a specific list of individuals/countries.\nOpenPGP Because of PGP’s importance, Zimmermann decided that an open standard needed to be created so that others could write/use code that would interact with PGP. In 1997, Zimmermann proposed to the Internet Engineering Task Force (IEFT) the standard called OpenPGP. The current standard is RFC 4880. Today, any programs that use the OpenPGP standard (like PGP and GPG) will be cross-compatible.\nGPG GNU Privacy Guard (GnuPG or GPG), now part the GNU Project, was created by Werner Koch in 1997. It was designed to be an open source, OpenPGP compatible version of PGP. GPG became the de facto standard encryption software, powering almost all of the underlying encryption software that world and web depended on. However, since its creation, it has been maintained almost single-handedly by Koch, who relied only on donations and limited funding from the German government. In fact, Koch only earned an average of about $25k per year working full time on GPG, all while supporting a wife and daughter. In February 2015, ProPublica published an article outlining Koch’s labor of love with GPG. After the article went viral, Koch received over $137k in donations from users, $60k from the Linux Foundation, and recurring donations of $50k per year from both Facebook and Stripe. With the money, Koch was able to hire a full-time developer and continue work on GPG.\nPublic vs private keys This is a very quick lesson in public key cryptography, which is used by PGP and GPG. You first generate a public and private key using a program on your computer. These keys are mathematically related, but you cannot derive one from the other. You should make your public key public (anyone can see it), but keep your private key private (only you can see it).\nYou can encrypt a message with either key, then decrypt it with the other. The choice of which to use depends on the scenario, as seen below.\nEncryption If you want to send an encrypted message to someone, you would encrypt it using their public key. When they receive the message, it can only be decrypted by their private key.\nIn the example below, you can see that in order for Alice to receive a message from Bob, Bob must encrypt it using Alice’s public key. Then, only Alice can decrypt it, since she is the only one with access to her private key.\nVerification/digital signature If someone wants to verify a message is coming from you, and hasn’t been tampered with, encrypt a message with your private key.\nWhen they receive the message, it can only be decrypted by your public key. This proves you are who you say you are and that the message hasn’t been tampered with.\nNote - In the image above, the outcome of “Exact Match?” for “Yes” should not read invalid. Thanks to commenter XiaoKe for pointing that out!\nInstall GPG There are three main branches of GPG:\nClassic - Currently on version 1.4. It is usually built on older Unix systems, has almost no dependencies, but is very limited in features. Stable - Currently on version 2.0. It is modular, and supports OpenPGP, S/MIME, and SSH. Modern - Currently on version 2.1. It is the newest version, supports elliptic-curve cryptography, and will eventually replace the Stable branch. In Arch Linux, you can install GPG with the command below.\nsudo pacman -S gnupg The gnupg package will also install pinentry, a collection of simple PIN or passphrase entry dialog boxes which GPG uses.\nNote - In Arch Linux, the executable can be called from the command line with gpg, but some distributions will require you to use gpg2 instead.\nImportant! You can replace your-key-id in this document with your short key ID, long key ID, fingerprint, or email address. GPG is pretty flexible in allowing this, and I usually use my email for this option.\nYou may also see --armor in various GPG commands. Normally, GPG output is binary and can be corrupted by other programs (e.g., email clients, word processors, etc..). To circumvent this, you can use --armor to create ASCII-armor encrypted output that can be safely used by other programs.\nGenerate a key pair Using GPG, generate a key using the command below.\ngpg --gen-key Alternately, you can use the extended version of --gen-key, which uses a wizard to guide you through the process, offering non-standard options. This is the option I’ll be using.\ngpg --full-gen-key First, select what type of key you want. Typically, you’ll want option 1 (RSA and RSA).\nSecond, specify the key size. The default is 2048 bits, but I’m going to specify 4096 bits. There is some discussion about whether anything larger than 2048 bits is more secure.\nThird, choose an expiration date. I’m going to choose a key that does not expire.\nNow, GPG will construct your identity. Enter your full name, email address, and a comment (optional). Verify your information, then create a password to protect your keys. It goes without saying, but PROTECT THIS PASSWORD AND KEYFILES!\nGenerate a revocation certificate I highly recommend you generate an revocation certificate. This is used in the event that your key is lost, stolen, or somehow compromised. This should be done in advance, do not wait until after your key has been compromised.\ngpg --gen-revoke --output=RevocationCertificate.asc your-key-id This key should be protected as well as your GPG keys, since anyone who has access to key can essentially render your key obsolete (then impersonate you with a new key). Some users recommend printing this key as a backup fail-safe, since it is relatively short, and can be manually retyped if needed.\nGenerating a key fingerprint A key fingerprint is a 40 character, SHA-1 hashed version of your key. This is used to quickly verify a key, since it’s quicker than checking the entire key (which could be thousands of characters long). You can find your key fingerprint with the command below.\ngpg --fingerprint your-key-id Using a key fingerprint Having a key fingerprint doesn’t mean anything by itself, but it does help to identify yourself. For example, I can publish my public key and fingerprint on this blog, but how can you trust that its really my key? You may know me personally, you may have watched me publish it, but what if you don’t?\nTake the following scenario as an example. You could import my public key (from a keyserver or a file), generate a fingerprint of that key, then either call/email/IM/meet me and have me read back my fingerprint, generated from my private key. If the fingerprint you generated is the same as the fingerprint I’m reading you, then you can at least assume I have control of the key (whether or not I acquired it genuinely is yet to be determined).\nExport your public key A public key is no good if no one knows about it. You should try to publish your public key and fingerprint anywhere possible, including a domain/site you control (blog, Facebook, Twitter etc…).\nManually Use the command below to export your public key.\ngpg --armor --export your-key-id When published, your key should look something like this (below is my public key). The --BEGIN-- and --END-- stanzas are part of the key, do not forget them!\n-----BEGIN PGP PUBLIC KEY BLOCK----- Version: GnuPG v2 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 CiNrh1avYNQ= =ujqp -----END PGP PUBLIC KEY BLOCK----- To a keyserver Start by finding the 8 character hexadecimal ID of your key, using the command below. The hex-id will be the same as the last 8 characters of your key fingerprint as well.\ngpg --list-keys your-key-id Now, upload your key to a keyserver. You’ll need to use your hex-id, not your your-key-id, as we’ve been using in this guide.\ngpg --send-keys --keyserver pgp.mit.edu hex-id Note - The major keyservers mirror one another, so once you upload to one, they’ll eventually all be in sync.\nImport a key To trust other users, you’ll need to import their keys.\nManually Use the command below to import a key from a file.\ngpg --import filename From a keyserver Before we being, keep in mind that importing a key from a keyserver does not guarantee the key belongs to the user (e.g., look at all the entries for Richard Stallman).\nFirst, start by searching for a key on a keyserver.\ngpg --search-keys --keyserver pgp.mit.edu their-key-id Then, import the key using the command below.\ngpg --recv-keys --keyserver pgp.mit.edu their-key-id A note on short key IDs When publishing your GPG information, you typically publish the entire public key, as well as the fingerprint, long key ID, and short key ID.\nIt is highly recommended to NOT use the short key ID or long key ID when importing/exporting/publishing your GPG information. Instead, use the full 40 character fingerprint. Using a GPU, anyone can generate a key with a duplicate short key ID. More resources are available here, here, here, and a guide to publishing your information effectively is here.\nSigning keys Web of trust Before we discuss signing keys, we need to understand the web of trust (WOT). The WOT is a concept used to establish the authenticity of a public key with an individual owner. It is the decentralized version of the centralized public key infrastructure (PKI) commonly used by certificate authorities when creating SSL certificates.\nSigning Signing a key is your way of telling the world that you believe the key belongs to the name and email contained inside it.\nFirst, you’ll have to import the key of the other user (either manually or from a keyserver). Next, you’ll need to sign their key.\ngpg --sign-key their-key-id After you’ve signed their key, you should export it.\ngpg --export --armor their-key-id Send them the output, and have them import it into GPG on their machine. They can then publish their updated key on a keyserver to show the world that you trust their key.\nThis is how the web is created and expands. If someone trusts you, and they see you’ve trusted this user, they will be more likely to trust that user as well. The more users that trust each other’s keys, the more of a “web of trust” that is created.\nKey signing party The WOT wouldn’t be very useful, however, if the web wasn’t large. Imagine you have a key pair, but don’t know anyone else who uses GPG. Who would sign your keys? Fortunately, events called key signing parties exist where users gather to verify each other’s identities and exchange fingerprints of public keys printed on paper (users are often warned not to bring a computer). After the party, users sign the keys they received, upload them to keyservers, then download their newly signed public key as well. A few resources on the etiquette and procedures of key signing parties are located here, here, and here. Two site for generating paper fingerprint slips are located here and here.\nManually encrypting You MUST specify a recipient when encrypting files, including yourself! If you want only yourself to decrypt a file, you must specify only yourself as a recipient. If you want only another user to decrypt a file, you must specify only another user as a recipient. If you do not specify a recipient, no one will be able to decrypt your file (not even you)!\nEmail To manually encrypt a message, start by saving the message to a file. Then, encrypt the file for email, using the command below.\ngpg --encrypt --sign --armor --recipient your-key-id --recipient their-key-id filename You can copy/paste the ASCII output into the body of the email/forum/etc…\nNote - When GPG encrypts/decrypts a file, it usually leaves the original file intact. Be sure to securely delete this file (sdelete on Windows, shred on Linux).\nFiles Encrypting files is similar to encrypting emails.\ngpg --encrypt --sign --recipient your-key-id filename The resulting file will be named filename.gpg.\nNote - When GPG encrypts/decrypts a file, it usually leaves the original file intact. Be sure to securely delete this file (sdelete on Windows, shred on Linux).\nManually decrypting Use the command below to decrypt a file/message.\ngpg --output filename --decrypt filename.gpg Note - When GPG encrypts/decrypts a file, it usually leaves the original file intact. Be sure to securely delete this file (sdelete on Windows, shred on Linux).\nBasic key management List all keys on your system.\ngpg --list-keys Updates all keys downloaded from a keyserver.\ngpg --refresh-keys --keyserver pgp.mit.edu List all signatures on a particular key\ngpg --list-sigs your-key-id Automated tools As you have learned by now, GPG is difficult and cumbersome to use on the command line. However, there are a number of GUI tools that make using GPG a little easier.\nDesktop email Evolution - An email client that provides email, calendar, and contacts, with GPG integration Claws Mail - An email client that provides email with GPG integration. Enigmail - A plugin that brings GPG integration to Thunderbird. GpgOL - A plugin that brings GPG integration to 32bit versions of Outlook. Part of Gpg4win. The Free Software Foundation has a great guide to configuring Enigmail on Thunderbird. I won’t bother going over the same setup here.\nWebmail For webmail, Mailvelope is the most popular (still actively developed) way to encrypt email. It offers plugins for Firefox and Chrome, and integrates with Gmail, Yahoo! Mail, Outlook.com, and more. It can also create/manage/delete/import/export GPG keys, without GPG needing to be installed (it relies on OpenPGP.js).\nAgain, Mailvelope offers a great guide to installation and configuration, so I won’t bother repeating it here.\nFiles Encrypting files on your local machine is made easier with the tools below.\nGPG Desktop - Brings GUI for encrypting files to Windows. Gpg4win - Suite of components that bring a GUI for encrypting files to Windows. GPG Tools - Suite of components that bring a GUI for encrypting files/email to Mac OS X and Apple Mail. GPA - Official GPG GUI client for Linux. Seahorse - Suite of components and plugins that bring GUI to various GNOME applications. Let me know how you use GPG!\n-Logan\nComments Old comments from WordPress\n",
+  "wordCount" : "2543",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_gnupg.svg","datePublished": "2015-12-31T00:00:00Z",
+  "dateModified": "2015-12-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="logo" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      A brief introduction to GPG
+    </h1>
+    <div class="post-meta"><span title='2015-12-31 00:00:00 +0000 UTC'>2015-12-31</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_gnupg.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                        
+                <li>
+                    <a href="#pgp-vs-openpgp-vs-gpg" aria-label="PGP vs OpenPGP vs GPG">PGP vs OpenPGP vs GPG</a><ul>
+                        
+                <li>
+                    <a href="#pgp" aria-label="PGP">PGP</a></li>
+                <li>
+                    <a href="#openpgp" aria-label="OpenPGP">OpenPGP</a></li>
+                <li>
+                    <a href="#gpg" aria-label="GPG">GPG</a></li></ul>
+                </li>
+                <li>
+                    <a href="#public-vs-private-keys" aria-label="Public vs private keys">Public vs private keys</a><ul>
+                        
+                <li>
+                    <a href="#encryption" aria-label="Encryption">Encryption</a></li>
+                <li>
+                    <a href="#verificationdigital-signature" aria-label="Verification/digital signature">Verification/digital signature</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#install-gpg" aria-label="Install GPG">Install GPG</a><ul>
+                        
+                <li>
+                    <a href="#important" aria-label="Important!">Important!</a></li></ul>
+                </li>
+                <li>
+                    <a href="#generate-a-key-pair" aria-label="Generate a key pair">Generate a key pair</a></li>
+                <li>
+                    <a href="#generate-a-revocation-certificate" aria-label="Generate a revocation certificate">Generate a revocation certificate</a></li>
+                <li>
+                    <a href="#generating-a-key-fingerprint" aria-label="Generating a key fingerprint">Generating a key fingerprint</a><ul>
+                        
+                <li>
+                    <a href="#using-a-key-fingerprint" aria-label="Using a key fingerprint">Using a key fingerprint</a></li></ul>
+                </li>
+                <li>
+                    <a href="#exportyour-public-key" aria-label="Export your public key">Export your public key</a><ul>
+                        
+                <li>
+                    <a href="#manually" aria-label="Manually">Manually</a></li>
+                <li>
+                    <a href="#to-a-keyserver" aria-label="To a keyserver">To a keyserver</a></li></ul>
+                </li>
+                <li>
+                    <a href="#import-a-key" aria-label="Import a key">Import a key</a><ul>
+                        
+                <li>
+                    <a href="#manually-1" aria-label="Manually">Manually</a></li>
+                <li>
+                    <a href="#from-a-keyserver" aria-label="From a keyserver">From a keyserver</a></li></ul>
+                </li>
+                <li>
+                    <a href="#a-note-onshort-key-ids" aria-label="A note on short key IDs">A note on short key IDs</a></li>
+                <li>
+                    <a href="#signing-keys" aria-label="Signing keys">Signing keys</a><ul>
+                        
+                <li>
+                    <a href="#web-of-trust" aria-label="Web of trust">Web of trust</a></li>
+                <li>
+                    <a href="#signing" aria-label="Signing">Signing</a></li>
+                <li>
+                    <a href="#key-signing-party" aria-label="Key signing party">Key signing party</a></li></ul>
+                </li>
+                <li>
+                    <a href="#manually-encrypting" aria-label="Manually encrypting">Manually encrypting</a><ul>
+                        
+                <li>
+                    <a href="#email" aria-label="Email">Email</a></li>
+                <li>
+                    <a href="#files" aria-label="Files">Files</a></li></ul>
+                </li>
+                <li>
+                    <a href="#manually-decrypting" aria-label="Manually decrypting">Manually decrypting</a></li>
+                <li>
+                    <a href="#basic-key-management" aria-label="Basic key management">Basic key management</a></li>
+                <li>
+                    <a href="#automated-tools" aria-label="Automated tools">Automated tools</a><ul>
+                        
+                <li>
+                    <a href="#desktop-email" aria-label="Desktop email">Desktop email</a></li>
+                <li>
+                    <a href="#webmail" aria-label="Webmail">Webmail</a></li>
+                <li>
+                    <a href="#files-1" aria-label="Files">Files</a></li></ul>
+                </li>
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>Put on your tinfoil hats, boys and girls! Today, we&rsquo;re talking about security, encryption, and GPG!</p>
+<h2 id="pgp-vs-openpgp-vs-gpg">PGP vs OpenPGP vs GPG<a hidden class="anchor" aria-hidden="true" href="#pgp-vs-openpgp-vs-gpg">#</a></h2>
+<h3 id="pgp">PGP<a hidden class="anchor" aria-hidden="true" href="#pgp">#</a></h3>
+<p>Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.</p>
+<p>Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions export without a license&rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law. However, Zimmerman was able to circumvent this by publishing the entire source code of PGP in a <a href="https://www.philzimmermann.com/EN/essays/BookPreface.html">physical book</a> (that could be scanned with OCR and recompiled into source code), since the export of books was protected by the First Amendment. Today, PGP is no longer considered a weapon, but still cannot be exported to a specific list of <a href="https://www.bis.doc.gov/index.php/policy-guidance/lists-of-parties-of-concern">individuals/countries</a>.</p>
+<h3 id="openpgp">OpenPGP<a hidden class="anchor" aria-hidden="true" href="#openpgp">#</a></h3>
+<p>Because of PGP&rsquo;s importance, Zimmermann decided that an open standard needed to be created so that others could write/use code that would interact with PGP. In 1997, Zimmermann proposed to the <a href="https://en.wikipedia.org/wiki/Internet_Engineering_Task_Force">Internet Engineering Task Force</a> (IEFT) the standard called OpenPGP. The current standard is <a href="https://tools.ietf.org/html/rfc4880">RFC 4880</a>. Today, any programs that use the OpenPGP standard (like PGP and GPG) will be cross-compatible.</p>
+<h3 id="gpg">GPG<a hidden class="anchor" aria-hidden="true" href="#gpg">#</a></h3>
+<p>GNU Privacy Guard (GnuPG or GPG), now part the GNU Project, was created by Werner Koch in 1997. It was designed to be an open source, OpenPGP compatible version of PGP. GPG became the de facto standard encryption software, powering almost all of the underlying encryption software that world and web depended on. However, since its creation, it has been maintained almost single-handedly by Koch, who relied only on donations and limited funding from the German government. In fact, Koch only earned an average of about $25k per year working full time on GPG, all while supporting a wife and daughter. In February 2015, ProPublica published an <a href="https://www.propublica.org/article/the-worlds-email-encryption-software-relies-on-one-guy-who-is-going-broke">article</a> outlining Koch&rsquo;s labor of love with GPG. After the article went viral, Koch received over $137k in donations from users, $60k from the Linux Foundation, and recurring donations of $50k per year from both Facebook and Stripe. With the money, Koch was able to hire a full-time developer and continue work on GPG.</p>
+<h2 id="public-vs-private-keys">Public vs private keys<a hidden class="anchor" aria-hidden="true" href="#public-vs-private-keys">#</a></h2>
+<p>This is a very quick lesson in public key cryptography, which is used by PGP and GPG. You first generate a public and private key using a program on your computer. These keys are mathematically related, but you cannot derive one from the other. You should make your public key public (anyone can see it), but keep your private key private (only you can see it).</p>
+<p>You can encrypt a message with either key, then decrypt it with the other. The choice of which to use depends on the scenario, as seen below.</p>
+<h3 id="encryption">Encryption<a hidden class="anchor" aria-hidden="true" href="#encryption">#</a></h3>
+<p>If you want to send an encrypted message to someone, you would encrypt it using their public key. When they receive the message, it can only be decrypted by their private key.</p>
+
+<p><img src="/2015/12/a-brief-introduction-to-gpg/20160101_002.png" loading="lazy" alt="screenshot"></p>
+<p>In the example below, you can see that in order for Alice to receive a message from Bob, Bob must encrypt it using Alice&rsquo;s public key. Then, only Alice can decrypt it, since she is the only one with access to her private key.</p>
+
+<p><img src="/2015/12/a-brief-introduction-to-gpg/20160101_003.png" loading="lazy" alt="screenshot"></p>
+<h3 id="verificationdigital-signature">Verification/digital signature<a hidden class="anchor" aria-hidden="true" href="#verificationdigital-signature">#</a></h3>
+<p>If someone wants to verify a message is coming from you, and hasn&rsquo;t been tampered with, encrypt a message with your private key.</p>
+
+<p><img src="/2015/12/a-brief-introduction-to-gpg/20160101_004.png" loading="lazy" alt="screenshot"></p>
+<p>When they receive the message, it can only be decrypted by your public key. This proves you are who you say you are and that the message hasn&rsquo;t been tampered with.</p>
+
+<p><img src="/2015/12/a-brief-introduction-to-gpg/20160101_005.png" loading="lazy" alt="screenshot"></p>
+<p>Note - In the image above, the outcome of &ldquo;Exact Match?&rdquo; for &ldquo;Yes&rdquo; should not read invalid. Thanks to commenter XiaoKe for pointing that out!</p>
+<h1 id="install-gpg">Install GPG<a hidden class="anchor" aria-hidden="true" href="#install-gpg">#</a></h1>
+<p>There are three main <a href="https://www.gnupg.org/download/index.html">branches</a> of GPG:</p>
+<ul>
+<li>Classic - Currently on version 1.4. It is usually built on older Unix systems, has almost no dependencies, but is very limited in features.</li>
+<li>Stable - Currently on version 2.0. It is modular, and supports OpenPGP, S/MIME, and SSH.</li>
+<li>Modern - Currently on version 2.1. It is the newest version, supports elliptic-curve cryptography, and will eventually replace the Stable branch.</li>
+</ul>
+<p>In Arch Linux, you can install GPG with the command below.</p>
+<pre tabindex="0"><code>sudo pacman -S gnupg
+</code></pre><p>The <em>gnupg</em> package will also install <em>pinentry</em>, a collection of simple PIN or passphrase entry dialog boxes which GPG uses.</p>
+<p>Note - In Arch Linux, the executable can be called from the command line with <em>gpg</em>, but some distributions will require you to use <em>gpg2</em> instead.</p>
+<h2 id="important">Important!<a hidden class="anchor" aria-hidden="true" href="#important">#</a></h2>
+<p>You can replace <em>your-key-id</em> in this document with your short key ID, long key ID, fingerprint, or email address. GPG is pretty flexible in allowing this, and I usually use my email for this option.</p>
+<p>You may also see <code>--armor</code> in various GPG commands. Normally, GPG output is binary and can be corrupted by other programs (e.g., email clients, word processors, etc..). To circumvent this, you can use <code>--armor</code> to create ASCII-armor encrypted output that can be safely used by other programs.</p>
+<h1 id="generate-a-key-pair">Generate a key pair<a hidden class="anchor" aria-hidden="true" href="#generate-a-key-pair">#</a></h1>
+<p>Using GPG, generate a key using the command below.</p>
+<pre tabindex="0"><code>gpg --gen-key
+</code></pre><p>Alternately, you can use the extended version of <code>--gen-key</code>, which uses a wizard to guide you through the process, offering non-standard options. This is the option I&rsquo;ll be using.</p>
+<pre tabindex="0"><code>gpg --full-gen-key
+</code></pre><p>First, select what type of key you want. Typically, you&rsquo;ll want option 1 (<em>RSA and RSA</em>).</p>
+<p>Second, specify the key size. The default is 2048 bits, but I&rsquo;m going to specify 4096 bits. There is some <a href="https://www.gnupg.org/faq/gnupg-faq.html#no_default_of_rsa4096">discussion</a> about whether anything larger than 2048 bits is more secure.</p>
+<p>Third, choose an expiration date. I&rsquo;m going to choose a key that does not expire.</p>
+<p>Now, GPG will construct your identity. Enter your full name, email address, and a comment (optional). Verify your information, then create a password to protect your keys. It goes without saying, but PROTECT THIS PASSWORD AND KEYFILES!</p>
+<h1 id="generate-a-revocation-certificate">Generate a revocation certificate<a hidden class="anchor" aria-hidden="true" href="#generate-a-revocation-certificate">#</a></h1>
+<p>I highly recommend you generate an revocation certificate. This is used in the event that your key is lost, stolen, or somehow compromised. This should be done in advance, do not wait until after your key has been compromised.</p>
+<pre tabindex="0"><code>gpg --gen-revoke --output=RevocationCertificate.asc your-key-id
+</code></pre><p>This key should be protected as well as your GPG keys, since anyone who has access to key can essentially render your key obsolete (then impersonate you with a new key). Some users recommend printing this key as a backup fail-safe, since it is relatively short, and can be manually retyped if needed.</p>
+<h1 id="generating-a-key-fingerprint">Generating a key fingerprint<a hidden class="anchor" aria-hidden="true" href="#generating-a-key-fingerprint">#</a></h1>
+<p>A key fingerprint is a 40 character, SHA-1 hashed version of your key. This is used to quickly verify a key, since it&rsquo;s quicker than checking the entire key (which could be thousands of characters long). You can find your key fingerprint with the command below.</p>
+<pre tabindex="0"><code>gpg --fingerprint your-key-id
+</code></pre><h2 id="using-a-key-fingerprint">Using a key fingerprint<a hidden class="anchor" aria-hidden="true" href="#using-a-key-fingerprint">#</a></h2>
+<p>Having a key fingerprint doesn&rsquo;t mean anything by itself, but it does help to identify yourself. For example, I can publish my public key and fingerprint on this blog, but how can you trust that its really <em>my</em> key? You may know me personally, you may have watched me publish it, but what if you don&rsquo;t?</p>
+<p>Take the following scenario as an example. You could import my public key (from a keyserver or a file), generate a fingerprint of that key, then either call/email/IM/meet me and have me read back my fingerprint, generated from my private key. If the fingerprint you generated is the same as the fingerprint I&rsquo;m reading you, then you can at least assume I have control of the key (whether or not I acquired it genuinely is yet to be determined).</p>
+<h1 id="exportyour-public-key">Export your public key<a hidden class="anchor" aria-hidden="true" href="#exportyour-public-key">#</a></h1>
+<p>A public key is no good if no one knows about it. You should try to publish your public key and fingerprint anywhere possible, including a domain/site you control (blog, Facebook, Twitter etc&hellip;).</p>
+<h2 id="manually">Manually<a hidden class="anchor" aria-hidden="true" href="#manually">#</a></h2>
+<p>Use the command below to export your public key.</p>
+<pre tabindex="0"><code>gpg --armor --export your-key-id
+</code></pre><p>When published, your key should look something like this (below is my public key). The <code>--BEGIN--</code> and <code>--END--</code> stanzas are part of the key, do not forget them!</p>
+<pre tabindex="0"><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2
+
+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
+CiNrh1avYNQ=
+=ujqp
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre><h2 id="to-a-keyserver">To a keyserver<a hidden class="anchor" aria-hidden="true" href="#to-a-keyserver">#</a></h2>
+<p>Start by finding the 8 character hexadecimal ID of your key, using the command below. The <em>hex-id</em> will be the same as the last 8 characters of your key fingerprint as well.</p>
+<pre tabindex="0"><code>gpg --list-keys your-key-id
+</code></pre><p>Now, upload your key to a keyserver. You&rsquo;ll need to use your <em>hex-id</em>, not your <em>your-key-id</em>, as we&rsquo;ve been using in this guide.</p>
+<pre tabindex="0"><code>gpg --send-keys --keyserver pgp.mit.edu hex-id
+</code></pre><p>Note - The major keyservers mirror one another, so once you upload to one, they&rsquo;ll eventually all be in sync.</p>
+<h1 id="import-a-key">Import a key<a hidden class="anchor" aria-hidden="true" href="#import-a-key">#</a></h1>
+<p>To trust other users, you&rsquo;ll need to import their keys.</p>
+<h2 id="manually-1">Manually<a hidden class="anchor" aria-hidden="true" href="#manually-1">#</a></h2>
+<p>Use the command below to import a key from a file.</p>
+<pre tabindex="0"><code>gpg --import filename
+</code></pre><h2 id="from-a-keyserver">From a keyserver<a hidden class="anchor" aria-hidden="true" href="#from-a-keyserver">#</a></h2>
+<p>Before we being, keep in mind that importing a key from a keyserver does not guarantee the key belongs to the user (e.g., look at all the <a href="https://pgp.mit.edu/pks/lookup?search=Richard+Stallman&amp;op=vindex&amp;fingerprint=on">entries</a> for Richard Stallman).</p>
+<p>First, start by searching for a key on a keyserver.</p>
+<pre tabindex="0"><code>gpg --search-keys --keyserver pgp.mit.edu their-key-id
+</code></pre><p>Then, import the key using the command below.</p>
+<pre tabindex="0"><code>gpg --recv-keys --keyserver pgp.mit.edu their-key-id
+</code></pre><h1 id="a-note-onshort-key-ids">A note on short key IDs<a hidden class="anchor" aria-hidden="true" href="#a-note-onshort-key-ids">#</a></h1>
+<p>When publishing your GPG information, you typically publish the entire public key, as well as the fingerprint, long key ID, and short key ID.</p>
+<p>It is highly recommended to NOT use the short key ID or long key ID when importing/exporting/publishing your GPG information. Instead, use the full 40 character fingerprint. Using a GPU, anyone can <a href="https://evil32.com/">generate a key</a> with a duplicate short key ID.  More resources are available <a href="http://security.stackexchange.com/questions/74009/what-is-an-openpgp-key-id-collision/74010#74010">here</a>, <a href="http://security.stackexchange.com/questions/84280/short-openpgp-key-ids-are-insecure-how-to-configure-gnupg-to-use-long-key-ids-i">here</a>, <a href="http://www.asheesh.org/note/debian/short-key-ids-are-bad-news.html">here</a>, and a guide to publishing your information effectively is <a href="https://jacob.hoffman-andrews.com/README/the-safe-way-to-put-a-pgp-key-in-your-twitter-bio/">here</a>.</p>
+<h1 id="signing-keys">Signing keys<a hidden class="anchor" aria-hidden="true" href="#signing-keys">#</a></h1>
+<h2 id="web-of-trust">Web of trust<a hidden class="anchor" aria-hidden="true" href="#web-of-trust">#</a></h2>
+<p>Before we discuss signing keys, we need to understand the <a href="https://en.wikipedia.org/wiki/Web_of_trust">web of trust</a> (WOT). The WOT is a concept used to establish the authenticity of a public key with an individual owner. It is the decentralized version of the centralized public key infrastructure (PKI) commonly used by certificate authorities when creating SSL certificates.</p>
+<h2 id="signing">Signing<a hidden class="anchor" aria-hidden="true" href="#signing">#</a></h2>
+<p>Signing a key is your way of telling the world that you believe the key belongs to the name and email contained inside it.</p>
+<p>First, you&rsquo;ll have to import the key of the other user (either manually or from a keyserver). Next, you&rsquo;ll need to sign their key.</p>
+<pre tabindex="0"><code>gpg --sign-key their-key-id
+</code></pre><p>After you&rsquo;ve signed their key, you should export it.</p>
+<pre tabindex="0"><code>gpg --export --armor their-key-id
+</code></pre><p>Send them the output, and have them import it into GPG on their machine. They can then publish their updated key on a keyserver to show the world that you trust their key.</p>
+<p>This is how the web is created and expands. If someone trusts you, and they see you&rsquo;ve trusted this user, they will be more likely to trust that user as well. The more users that trust each other&rsquo;s keys, the more of a &ldquo;web of trust&rdquo; that is created.</p>
+<h2 id="key-signing-party">Key signing party<a hidden class="anchor" aria-hidden="true" href="#key-signing-party">#</a></h2>
+<p>The WOT wouldn&rsquo;t be very useful, however, if the web wasn&rsquo;t large. Imagine you have a key pair, but don&rsquo;t know anyone else who uses GPG. Who would sign your keys? Fortunately, events called <a href="https://en.wikipedia.org/wiki/Key_signing_party">key signing parties</a> exist where users gather to verify each other&rsquo;s identities and exchange fingerprints of public keys printed on paper (users are often warned not to bring a computer). After the party, users sign the keys they received, upload them to keyservers, then download their newly signed public key as well. A few resources on the etiquette and procedures of key signing parties are located <a href="https://en.wikipedia.org/wiki/Zimmermann%E2%80%93Sassaman_key-signing_protocol">here</a>, <a href="http://www.cryptnet.net/fdp/crypto/keysigning_party/en/keysigning_party.html">here</a>, and <a href="http://www.phillylinux.org/keys/terminal.html">here</a>. Two site for generating paper fingerprint slips are located <a href="http://openpgp.quelltextlich.at/slip.html">here</a> and <a href="http://keysheet.net/">here</a>.</p>
+<h1 id="manually-encrypting">Manually encrypting<a hidden class="anchor" aria-hidden="true" href="#manually-encrypting">#</a></h1>
+<p>You <strong>MUST</strong> specify a recipient when encrypting files, including yourself! If you want only yourself to decrypt a file, you must specify only yourself as a recipient. If you want only another user to decrypt a file, you must specify only another user as a recipient. If you do not specify a recipient, no one will be able to decrypt your file (not even you)!</p>
+<h2 id="email">Email<a hidden class="anchor" aria-hidden="true" href="#email">#</a></h2>
+<p>To manually encrypt a message, start by saving the message to a file. Then, encrypt the file for email, using the command below.</p>
+<pre tabindex="0"><code>gpg --encrypt --sign --armor --recipient your-key-id --recipient their-key-id filename
+</code></pre><p>You can copy/paste the ASCII output into the body of the email/forum/etc&hellip;</p>
+<p>Note - When GPG encrypts/decrypts a file, it usually leaves the original file intact. Be sure to securely delete this file (<a href="https://technet.microsoft.com/en-us/sysinternals/bb897443.aspx">sdelete</a> on Windows, <a href="http://linux.die.net/man/1/shred">shred</a> on Linux).</p>
+<h2 id="files">Files<a hidden class="anchor" aria-hidden="true" href="#files">#</a></h2>
+<p>Encrypting files is similar to encrypting emails.</p>
+<pre tabindex="0"><code>gpg --encrypt --sign --recipient your-key-id filename
+</code></pre><p>The resulting file will be named <em>filename.gpg</em>.</p>
+<p>Note - When GPG encrypts/decrypts a file, it usually leaves the original file intact. Be sure to securely delete this file (<a href="https://technet.microsoft.com/en-us/sysinternals/bb897443.aspx">sdelete</a> on Windows, <a href="http://linux.die.net/man/1/shred">shred</a> on Linux).</p>
+<h1 id="manually-decrypting">Manually decrypting<a hidden class="anchor" aria-hidden="true" href="#manually-decrypting">#</a></h1>
+<p>Use the command below to decrypt a file/message.</p>
+<pre tabindex="0"><code>gpg --output filename --decrypt filename.gpg
+</code></pre><p>Note - When GPG encrypts/decrypts a file, it usually leaves the original file intact. Be sure to securely delete this file (<a href="https://technet.microsoft.com/en-us/sysinternals/bb897443.aspx">sdelete</a> on Windows, <a href="http://linux.die.net/man/1/shred">shred</a> on Linux).</p>
+<h1 id="basic-key-management">Basic key management<a hidden class="anchor" aria-hidden="true" href="#basic-key-management">#</a></h1>
+<p>List all keys on your system.</p>
+<pre tabindex="0"><code>gpg --list-keys
+</code></pre><p>Updates all keys downloaded from a keyserver.</p>
+<pre tabindex="0"><code>gpg --refresh-keys --keyserver pgp.mit.edu
+</code></pre><p>List all signatures on a particular key</p>
+<pre tabindex="0"><code>gpg --list-sigs your-key-id
+</code></pre><h1 id="automated-tools">Automated tools<a hidden class="anchor" aria-hidden="true" href="#automated-tools">#</a></h1>
+<p>As you have learned by now, GPG is difficult and cumbersome to use on the command line. However, there are a number of GUI <a href="https://www.gnupg.org/related_software/frontends.html">tools</a> that make using GPG a little easier.</p>
+<h2 id="desktop-email">Desktop email<a hidden class="anchor" aria-hidden="true" href="#desktop-email">#</a></h2>
+<ul>
+<li><a href="https://wiki.gnome.org/Apps/Evolution">Evolution</a> - An email client that provides email, calendar, and contacts, with GPG integration</li>
+<li><a href="http://www.claws-mail.org/">Claws Mail</a> - An email client that provides email with GPG integration.</li>
+<li><a href="https://www.enigmail.net/home/index.php">Enigmail</a> - A plugin that brings GPG integration to <a href="https://www.mozilla.org/en-US/thunderbird/">Thunderbird</a>.</li>
+<li><a href="https://www.gpg4win.org/about.html">GpgOL</a> - A plugin that brings GPG integration to 32bit versions of Outlook. Part of Gpg4win.</li>
+</ul>
+<p>The Free Software Foundation has a <a href="https://emailselfdefense.fsf.org/en/">great guide</a> to configuring Enigmail on Thunderbird. I won&rsquo;t bother going over the same setup here.</p>
+<h2 id="webmail">Webmail<a hidden class="anchor" aria-hidden="true" href="#webmail">#</a></h2>
+<p>For webmail, <a href="https://www.mailvelope.com/">Mailvelope</a> is the most popular (still actively developed) way to encrypt email. It offers plugins for Firefox and Chrome, and integrates with Gmail, Yahoo! Mail, Outlook.com, and more. It can also create/manage/delete/import/export GPG keys, without GPG needing to be installed (it relies on <a href="http://www.openpgpjs.org/">OpenPGP.js</a>).</p>
+<p>Again, Mailvelope offers a <a href="https://www.mailvelope.com/help#">great guide</a> to installation and configuration, so I won&rsquo;t bother repeating it here.</p>
+<h2 id="files-1">Files<a hidden class="anchor" aria-hidden="true" href="#files-1">#</a></h2>
+<p>Encrypting files on your local machine is made easier with the tools below.</p>
+<ul>
+<li><a href="http://www.adammil.net/GPGDesktop/index.html">GPG Desktop</a> - Brings GUI for encrypting files to Windows.</li>
+<li><a href="https://www.gpg4win.org/about.html">Gpg4win</a> - Suite of components that bring a GUI for encrypting files to Windows.</li>
+<li><a href="https://gpgtools.org/gpgsuite.html">GPG Tools</a> - Suite of components that bring a GUI for encrypting files/email to Mac OS X and Apple Mail.</li>
+<li><a href="https://www.gnupg.org/related_software/gpa/index.html">GPA</a> - Official GPG GUI client for Linux.</li>
+<li><a href="https://wiki.gnome.org/Apps/Seahorse">Seahorse</a> - Suite of components and plugins that bring GUI to various GNOME applications.</li>
+</ul>
+<p>Let me know how you use GPG!</p>
+<p>-Logan</p>
+<h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
+<p><a href="/2015/12/a-brief-introduction-to-gpg/comments.txt">Old comments from WordPress</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A brief introduction to GPG on twitter"
+        href="https://twitter.com/intent/tweet/?text=A%20brief%20introduction%20to%20GPG&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f12%2fa-brief-introduction-to-gpg%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A brief introduction to GPG on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f12%2fa-brief-introduction-to-gpg%2f&amp;title=A%20brief%20introduction%20to%20GPG&amp;summary=A%20brief%20introduction%20to%20GPG&amp;source=https%3a%2f%2floganmarchione.github.io%2f2015%2f12%2fa-brief-introduction-to-gpg%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A brief introduction to GPG on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2015%2f12%2fa-brief-introduction-to-gpg%2f&title=A%20brief%20introduction%20to%20GPG">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A brief introduction to GPG on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2015%2f12%2fa-brief-introduction-to-gpg%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A brief introduction to GPG on whatsapp"
+        href="https://api.whatsapp.com/send?text=A%20brief%20introduction%20to%20GPG%20-%20https%3a%2f%2floganmarchione.github.io%2f2015%2f12%2fa-brief-introduction-to-gpg%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share A brief introduction to GPG on telegram"
+        href="https://telegram.me/share/url?text=A%20brief%20introduction%20to%20GPG&amp;url=https%3a%2f%2floganmarchione.github.io%2f2015%2f12%2fa-brief-introduction-to-gpg%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" ></a>
+</div>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
