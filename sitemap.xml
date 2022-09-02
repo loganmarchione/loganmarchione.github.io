@@ -2,8 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</loc>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://loganmarchione.github.io/categories/</loc>
-    <lastmod>2022-08-03T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/</loc>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/oc/</loc>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/pc-hardware/</loc>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/posts/</loc>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/cloud-internet/</loc>
     <lastmod>2022-08-03T00:00:00+00:00</lastmod>
@@ -12,15 +27,6 @@
     <lastmod>2022-08-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/</loc>
-    <lastmod>2022-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/</loc>
-    <lastmod>2022-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/oc/</loc>
-    <lastmod>2022-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/posts/</loc>
     <lastmod>2022-08-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/</loc>
@@ -63,9 +69,6 @@
     <lastmod>2021-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/</loc>
-    <lastmod>2021-06-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/pc-hardware/</loc>
     <lastmod>2021-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2021/03/analytics-with-hugo/</loc>

@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Adding data center SSDs to the DeskMini H470</title>
+      <link>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</link>
+      <pubDate>Fri, 02 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</guid>
+      <description>Hey! Listen! This post is part of a series on the DeskMini H470 as a hypervisor. Check them all out!
+Date URL Part 2022-09-01 Adding data center SSDs to the DeskMini H470 Add 2x Intel D3-S4510 to the DeskMini H470 2021-06-23 ASRock DeskMini H470 as a compact hypervisor Initial post about DeskMini H470 Introduction Last year, I setup the ASRock DeskMini H470 as a compact hypervisor running Proxmox. During setup, I only installed a single NVMe SSD.</description>
+    </item>
+    
+    <item>
       <title>I tried to quit Firefox. I can&#39;t.</title>
       <link>https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/</link>
       <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
@@ -114,8 +124,8 @@ However, if you&amp;rsquo;re managing a fleet of Raspberry Pi devices, or just r
       <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/</guid>
-      <description>Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I&amp;rsquo;ve outgrown the CPU and cooling solution.
-The search for a new hypervisor Size, noise, and power As outlined in my homelab mini-rack post, my homelab devices (router, switch, AP, NAS, and hypervisor) all sit on the bottom shelf of the entertainment center in my living room.</description>
+      <description>Hey! Listen! This post is part of a series on the DeskMini H470 as a hypervisor. Check them all out!
+Date URL Part 2022-09-01 Adding data center SSDs to the DeskMini H470 Add 2x Intel D3-S4510 to the DeskMini H470 2021-06-23 ASRock DeskMini H470 as a compact hypervisor Initial post about DeskMini H470 Introduction My hypervisor since 2017 has been an Intel NUC7i3BNH. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro.</description>
     </item>
     
     <item>
