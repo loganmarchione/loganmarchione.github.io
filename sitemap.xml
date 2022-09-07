@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</loc>
-    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+    <loc>https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/</loc>
+    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/</loc>
-    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/</loc>
-    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/oc/</loc>
-    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/pc-hardware/</loc>
-    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/posts/</loc>
+    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/zfs/</loc>
+    <lastmod>2022-09-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</loc>
     <lastmod>2022-09-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/cloud-internet/</loc>
