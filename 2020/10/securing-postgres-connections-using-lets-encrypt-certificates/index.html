@@ -242,8 +242,8 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
 
   <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>I&rsquo;m on a quest to SSL all the things on my local network. I work in IT security, and am more than paranoid when it comes to my homelab (shout-out to <a href="https://www.reddit.com/r/homelab/">r/homelab</a> and <a href="https://www.reddit.com/r/selfhosted/">r/selfhosted</a>).</p>
-
-<p><img src="/2020/10/securing-postgres-connections-using-lets-encrypt-certificates/20201021_001.jpg" loading="lazy" alt="meme"></p>
+<p><img loading="lazy" src="/assets/memes/ssl_all_the_things.jpg" alt="meme"  />
+</p>
 <p>For my web applications, everything is accessed through a <a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">Nginx reverse proxy</a> that uses <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> wildcard certificates (using the <a href="https://letsencrypt.org/docs/challenge-types/#dns-01-challenge">DNS challenge</a>) for encryption. It provides a single choke-point for all my traffic, all using one wildcard certificate, and all my clients accept it with the green lock.</p>
 <p>However, connections between servers/applications are usually not encrypted. For example, I run a bunch of applications in Docker, but one thing I keep on a separate VM are my databases (specifically, <a href="https://www.postgresql.org/">PostgreSQL</a>). Some of my Docker containers (specifically, <a href="https://gitea.io/">Gitea</a>, <a href="https://drone.io/">Drone</a>, and <a href="https://miniflux.app/">Miniflux</a>) connect to this database, but these connections are not encrypted.</p>
 <pre tabindex="0"><code>------------------

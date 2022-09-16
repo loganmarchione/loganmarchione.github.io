@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/zfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Homelab 10&#34; mini-rack shelves</title>
+      <link>https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/</link>
+      <pubDate>Fri, 16 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/</guid>
+      <description>Hey! Listen! This post is part of a series on 10&amp;quot; mini-racks. Check them all out!
+Date URL Part 2022-09-16 Homelab 10&amp;quot; mini-rack shelves Comparison of 10&amp;quot; shelves 2021-01-05 Homelab 10&amp;quot; mini-rack Initial post about mini-rack Introduction ⚠️ WARNING ⚠️
+This is an image-heavy post (I have lazy-loading enabled, so images should only load as you scroll) I know that the imperial system of units is inferior to the metric system, but these are 10-inch racks, not 254mm racks 🤷‍♂️ For my measurements, I&amp;rsquo;ve converted fractions (8-11/16) to decimals (8.</description>
+    </item>
+    
+    <item>
       <title>Adding a ZFS mirror to Proxmox</title>
       <link>https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/</link>
       <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
@@ -165,8 +176,9 @@ Security WordPress is written in PHP, which has an unfairly bad reputation.</des
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/</guid>
-      <description>Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:
-Replaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps. I switched it around to a device that only has a 100Mbps NIC (IP camera) Introduction I don&amp;rsquo;t have space in my house for a full-size 19&amp;quot; server rack (but a man can dream).</description>
+      <description>Hey! Listen! This post is part of a series on 10&amp;quot; mini-racks. Check them all out!
+Date URL Part 2022-09-16 Homelab 10&amp;quot; mini-rack shelves Comparison of 10&amp;quot; shelves 2021-01-05 Homelab 10&amp;quot; mini-rack Initial post about mini-rack Update: 2021-01-10 I made the following changes and updated the post below (not the pictures) to reflect those changes:
+Replaced side vent panels with metal bars Added labels to patch panel One of the RJ45 couplers was stuck in 100Mbps mode and would not transfer full 1Gbps.</description>
     </item>
     
     <item>
