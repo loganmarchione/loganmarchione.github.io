@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://loganmarchione.github.io/2022/09/asus-pce-ax3000-on-linux/</loc>
+    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://loganmarchione.github.io/categories/</loc>
+    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/</loc>
+    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/oc/</loc>
+    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/pc-hardware/</loc>
+    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/posts/</loc>
+    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/external/</loc>
     <lastmod>2022-09-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/oc/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/pc-hardware/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/posts/</loc>
     <lastmod>2022-09-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/</loc>
@@ -30,9 +36,6 @@
     <lastmod>2022-09-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/cloud-internet/</loc>
-    <lastmod>2022-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/external/</loc>
     <lastmod>2022-08-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/</loc>

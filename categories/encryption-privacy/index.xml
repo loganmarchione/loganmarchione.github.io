@@ -8,6 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 22 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/encryption-privacy/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Asus PCE-AX3000 on Linux</title>
+      <link>https://loganmarchione.github.io/2022/09/asus-pce-ax3000-on-linux/</link>
+      <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/09/asus-pce-ax3000-on-linux/</guid>
+      <description>Introduction This post serves no real purpose other than to match SEO keywords for people searching for PCIe WiFi cards for Linux.
+My desktop is on the third floor of my house, unfortunately without wired internet. I&amp;rsquo;ve been using a PCIe 802.11n (WiFi 4) card since 2016 and realized it&amp;rsquo;s time to upgrade.
+TP-Link TL-WDN4800
+Qualcomm Atheros AR9380 chipset 802.11a - 54Mbps 802.11b - 11Mbps 802.11g - 54Mbps 802.11n - 450Mbps (WiFi 4) WPA/WPA2 Comparison My access point is a UniFi UAP-AC-PRO, so at the very least, I wanted 802.</description>
+    </item>
+    
+    <item>
       <title>Homelab 10&#34; mini-rack shelves</title>
       <link>https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/</link>
       <pubDate>Fri, 16 Sep 2022 00:00:00 +0000</pubDate>
