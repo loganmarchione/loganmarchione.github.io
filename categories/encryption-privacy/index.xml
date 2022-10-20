@@ -8,6 +8,19 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 22 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/encryption-privacy/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>The best DevOps project for a beginner</title>
+      <link>https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/</link>
+      <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/</guid>
+      <description>Introduction I spend a lot of time on Reddit in r/devops, r/homelab, and r/selfhosted, where I always see different versions of the same question:
+It&amp;rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?
+I&amp;rsquo;ve posted this answer to Reddit multiple times before, but this post will have more detail.
+Static site Build a static site. That&amp;rsquo;s the answer.
+Why A static site is a great beginner project because:</description>
+    </item>
+    
+    <item>
       <title>Asus PCE-AX3000 on Linux</title>
       <link>https://loganmarchione.github.io/2022/09/asus-pce-ax3000-on-linux/</link>
       <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>

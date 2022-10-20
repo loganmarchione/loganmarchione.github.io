@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://loganmarchione.github.io/categories/</loc>
+    <lastmod>2022-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/cloud-internet/</loc>
+    <lastmod>2022-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/linux/</loc>
+    <lastmod>2022-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/</loc>
+    <lastmod>2022-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/oc/</loc>
+    <lastmod>2022-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/posts/</loc>
+    <lastmod>2022-10-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/</loc>
+    <lastmod>2022-10-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://loganmarchione.github.io/2022/09/asus-pce-ax3000-on-linux/</loc>
     <lastmod>2022-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://loganmarchione.github.io/categories/</loc>
-    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/</loc>
-    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/oc/</loc>
-    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://loganmarchione.github.io/categories/pc-hardware/</loc>
-    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/posts/</loc>
     <lastmod>2022-09-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/external/</loc>
@@ -35,16 +44,10 @@
     <loc>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</loc>
     <lastmod>2022-09-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://loganmarchione.github.io/categories/cloud-internet/</loc>
-    <lastmod>2022-08-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/</loc>
     <lastmod>2022-08-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/linux/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/</loc>
