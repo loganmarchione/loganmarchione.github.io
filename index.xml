@@ -6,7 +6,16 @@
     <description>Recent content on Logan Marchione</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux on the Lenovo ThinkPad T14 Gen2 (AMD)</title>
+      <link>https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/</link>
+      <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/</guid>
+      <description>Introduction My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that here), but I don&amp;rsquo;t use it to manage my personal servers, write personal code, browse the internet, etc&amp;hellip; But, it would be really nice to SSH to a server from my couch on a device that&amp;rsquo;s not my phone. I figured it was time to get a laptop.</description>
+    </item>
+    
     <item>
       <title>How to run Renovate on a self-hosted Gitea and Drone instance</title>
       <link>https://loganmarchione.github.io/2022/10/how-to-run-renovate-on-a-self-hosted-gitea-and-drone-instance/</link>
