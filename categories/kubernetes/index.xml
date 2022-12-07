@@ -6,7 +6,17 @@
     <description>Recent content in kubernetes on Logan Marchione</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K3s cluster updates</title>
+      <link>https://loganmarchione.github.io/2022/12/k3s-cluster-updates/</link>
+      <pubDate>Wed, 07 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2022/12/k3s-cluster-updates/</guid>
+      <description>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
+Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction It&amp;rsquo;s been a while since my last K3s post. In that time, I&amp;rsquo;ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster.</description>
+    </item>
+    
     <item>
       <title>Linux on the Lenovo ThinkPad T14 Gen2 (AMD)</title>
       <link>https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/</link>
@@ -130,7 +140,7 @@ The application that started my homelab journey was DokuWiki. It&amp;rsquo;s a s
       
       <guid>https://loganmarchione.github.io/2022/03/kubernetes-guis/</guid>
       <description>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
-Date URL Part 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction In my last post, I setup a K3s single-node cluster and an example application. While everything was done through the command-line, as a noob, it&amp;rsquo;s nice to have a graphical user interface (GUI) of some kind.</description>
+Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction In my last post, I setup a K3s single-node cluster and an example application. While everything was done through the command-line, as a noob, it&amp;rsquo;s nice to have a graphical user interface (GUI) of some kind.</description>
     </item>
     
     <item>
@@ -140,7 +150,7 @@ Date URL Part 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3
       
       <guid>https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/</guid>
       <description>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
-Date URL Part 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I&amp;rsquo;m starting a new job in the next few days that will require me to learn Kubernetes (often stylized as k8s). This post is not about what k8s is or why you want it (you can read about that here).</description>
+Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I&amp;rsquo;m starting a new job in the next few days that will require me to learn Kubernetes (often stylized as k8s). This post is not about what k8s is or why you want it (you can read about that here).</description>
     </item>
     
     <item>
