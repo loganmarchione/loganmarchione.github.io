@@ -6,7 +6,17 @@
     <description>Recent content in Categories on Logan Marchione</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My experience replacing the Steam Deck SSD</title>
+      <link>https://loganmarchione.github.io/2023/01/my-experience-replacing-the-steam-deck-ssd/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2023/01/my-experience-replacing-the-steam-deck-ssd/</guid>
+      <description>TL;DR You can purchase a large SSD for way less than Valve is charging and it&amp;rsquo;s easy to replace the SSD in your Steam Deck.
+Item Price Item Price 64GB Steam Deck $399 512GB Steam Deck $649 512GB NVMe SSD $65 Total $464 $649 Introduction I wanted to pickup a Steam Deck and was stuck on what model to purchase. The only difference between models (besides an etched glass display and a Steam Community profile bundle) is the size of the internal storage.</description>
+    </item>
+    
     <item>
       <title>K3s cluster updates</title>
       <link>https://loganmarchione.github.io/2022/12/k3s-cluster-updates/</link>
