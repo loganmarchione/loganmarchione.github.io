@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/pc-hardware/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Continuous Delivery with Docker Compose</title>
-      <link>https://loganmarchione.github.io/2023/03/continuous-delivery-with-docker-compose/</link>
+      <title>Continuous Delivery with Docker Compose and Drone</title>
+      <link>https://loganmarchione.github.io/2023/03/continuous-delivery-with-docker-compose-and-drone/</link>
       <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://loganmarchione.github.io/2023/03/continuous-delivery-with-docker-compose/</guid>
+      <guid>https://loganmarchione.github.io/2023/03/continuous-delivery-with-docker-compose-and-drone/</guid>
       <description>Introduction I&amp;rsquo;m slowly transitioning all of my applications from a Docker Compose-based setup to running on Kubernetes (specifically, K3s). Part of the reason I love Kubernetes is the tooling around it.
 I (try to) practice GitOps, so all of my Kubernetes configuration is in a public GitHub repo. I&amp;rsquo;m happily using GitHub Actions and Renovatebot for Continuous Integration (CI). For example, each PR has tests run on it, then if specific conditions are met, the PR is merged.</description>
     </item>
