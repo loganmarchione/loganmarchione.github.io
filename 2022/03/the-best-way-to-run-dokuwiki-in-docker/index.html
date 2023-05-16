@@ -101,8 +101,8 @@ The application that started my homelab journey was DokuWiki. It&rsquo;s a self-
   "keywords": [
     
   ],
-  "articleBody": "Introduction I’ve been trying to get my homelab applications moved from running on VM/LXC to Docker. There’s nothing wrong with VMs or LXC containers, but I’m trying to manage fewer servers and “snowflakes” (even though I do my installs with Ansible).\nThe application that started my homelab journey was DokuWiki. It’s a self-hosted wiki, written in PHP, that requires no database. You write in a Markdown-like syntax (not Markdown) and your data is stored in plain TXT files on the filesystem. DokuWiki, however, is not 100% straightforward to Dockerize.\nThe DokuWiki in Docker problem DokuWiki is very simple: a bunch of PHP files sit in a directory to be served by a PHP-capable webserver (e.g., Nginx or Apache). It’s so simple (and old, from 2004) that you’d think it would be easy to run in Docker in 2022, right?\nIf you search on Docker Hub, there are almost 400 DokuWiki images, none of which are the official image (because there isn’t one). An official image was requested via a GitHub issue back in 2017. However, because DokuWiki is so simple and pre-dates Docker, it wasn’t really designed to be run inside a container (see this for more details).\nAs Andreas Gohr (the creator of DokuWiki) posted in his Patreon, the best way to install DokuWiki in Docker is to setup a generic PHP+web server container with a volume, then install DokuWiki into that volume. This is approximately 0.1% more work than pulling a pre-baked, unofficial Docker image from Docker Hub, and it’s what the creator of DokuWiki himself recommends.\nOther wikis Before anyone asks, yes, I know there are other wikis out there, and they almost certainly have more features than DokuWiki, and are probably nicer looking. However, they all require a database to store content, whereas DokuWiki stores everything in plaintext files.\nMediaWiki (The wiki that Wikipedia uses) Wiki.js Bookstack Outline Installation We’re basically going to run a PHP container with a webserver, then exec into the container and install DokuWiki.\nDocker container This simple Docker Compose file will get you up and running. It’s nothing more than the official PHP image with Apache.\nversion: '3' services: dokuwiki: container_name: dokuwiki image: php:7-apache-bullseye restart: unless-stopped networks: - dokuwiki ports: - '8888:80' volumes: - 'dokuwiki_config:/var/www/html' networks: dokuwiki: volumes: dokuwiki_config: driver: local Once this is completed, visit http://your_docker_server_IP:8888 and you should see this error (since there is nothing for Apache to serve).\nDokuWiki install First, exec into the container.\ndocker exec -it dokuwiki /bin/bash Next, download DokuWiki.\ncd /var/www/html curl --remote-name https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz tar -xzvf dokuwiki-stable.tgz --strip-components=1 rm dokuwiki-stable.tgz chown -R www-data:www-data /var/www/ Now, visit http://your_docker_server_IP:8888/install.php and you will see the DokuWiki install page. Done!\nConclusion The only caveats I can think of running this way are:\nUpgrades - Normally you upgrade DokuWiki by downloading a newer tgz file and overwriting your current setup. However, this kind of a pain in Docker. It’s much easier to install the Upgrade plugin and use that from the web interface. Plugins - I don’t have a ton of plugins (I don’t use LDAP, databases, galleries, etc..). Because of this, the default PHP modules are more than enough for me. However, if you needed more, PHP offers instructions on how to build your own PHP image. -Logan\n",
-  "wordCount" : "540",
+  "articleBody": "Introduction I’ve been trying to get my homelab applications moved from running on VM/LXC to Docker. There’s nothing wrong with VMs or LXC containers, but I’m trying to manage fewer servers and “snowflakes” (even though I do my installs with Ansible).\nThe application that started my homelab journey was DokuWiki. It’s a self-hosted wiki, written in PHP, that requires no database. You write in a Markdown-like syntax (not Markdown) and your data is stored in plain TXT files on the filesystem. DokuWiki, however, is not 100% straightforward to Dockerize.\nThe DokuWiki in Docker problem DokuWiki is very simple: a bunch of PHP files sit in a directory to be served by a PHP-capable webserver (e.g., Nginx or Apache). It’s so simple (and old, from 2004) that you’d think it would be easy to run in Docker in 2022, right?\nIf you search on Docker Hub, there are almost 400 DokuWiki images, none of which are the official image (because there isn’t one). An official image was requested via a GitHub issue back in 2017. However, because DokuWiki is so simple and pre-dates Docker, it wasn’t really designed to be run inside a container (see this for more details).\nAs Andreas Gohr (the creator of DokuWiki) posted in his Patreon, the best way to install DokuWiki in Docker is to setup a generic PHP+web server container with a volume, then install DokuWiki into that volume. This is approximately 0.1% more work than pulling a pre-baked, unofficial Docker image from Docker Hub, and it’s what the creator of DokuWiki himself recommends.\nOther wikis Before anyone asks, yes, I know there are other wikis out there, and they almost certainly have more features than DokuWiki, and are probably nicer looking. However, they all require a database to store content, whereas DokuWiki stores everything in plaintext files.\nMediaWiki (The wiki that Wikipedia uses) Wiki.js Bookstack Outline Installation We’re basically going to run a PHP container with a webserver, then exec into the container and install DokuWiki.\nDocker container This simple Docker Compose file will get you up and running. It’s nothing more than the official PHP image with Apache.\nversion: '3' services: dokuwiki: container_name: dokuwiki image: php:7-apache-bullseye restart: unless-stopped networks: - dokuwiki ports: - '8888:80' volumes: - 'dokuwiki_config:/var/www/html' networks: dokuwiki: volumes: dokuwiki_config: driver: local Once this is completed, visit http://your_docker_server_IP:8888 and you should see this error (since there is nothing for Apache to serve).\nDokuWiki install First, exec into the container.\ndocker exec -it dokuwiki /bin/bash Next, download DokuWiki.\ncd /var/www/html curl --remote-name https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz tar -xzvf dokuwiki-stable.tgz --strip-components=1 rm dokuwiki-stable.tgz chown -R www-data:www-data /var/www/ Now, visit http://your_docker_server_IP:8888/install.php and you will see the DokuWiki install page. Done!\nConclusion I can only think of a few caveats of running this way and they are all easy to overcome.\nUpgrades - Normally you upgrade DokuWiki by downloading a newer tgz file and overwriting your current setup. However, this kind of a pain in Docker. It’s much easier to install the official upgrade plugin and use that from the web interface. Plugins - I don’t have a ton of plugins (I don’t use LDAP, databases, galleries, etc..). Because of this, the default PHP modules are more than enough for me. However, if you needed more, PHP offers instructions on how to build your own PHP image. PHP settings - By default, the max file upload size is 2MB. You can get around this by adding a volume for the PHP directory (compose example below), copying the demo config file (e.g., cp -p php.ini-production php.ini), editing upload_max_filesize and post_max_size in php.ini, and restarting the container. version: '3' services: dokuwiki: container_name: dokuwiki image: php:7-apache-bullseye restart: unless-stopped networks: - dokuwiki ports: - '8888:80' volumes: - 'dokuwiki_config:/var/www/html' - 'php_config:/usr/local/etc/php' networks: dokuwiki: volumes: dokuwiki_config: driver: local php_config: driver: local -Logan\n",
+  "wordCount" : "627",
   "inLanguage": "en",
   "image":"https://loganmarchione.github.io/assets/featured/featured_dokuwiki.svg","datePublished": "2022-03-31T00:00:00Z",
   "dateModified": "2022-03-31T00:00:00Z",
@@ -199,7 +199,7 @@ The application that started my homelab journey was DokuWiki. It&rsquo;s a self-
     <h1 class="post-title">
       The &#39;best&#39; way to run DokuWiki in Docker
     </h1>
-    <div class="post-meta"><span title='2022-03-31 00:00:00 +0000 UTC'>2022-03-31</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;540 words&nbsp;·&nbsp;Logan Marchione
+    <div class="post-meta"><span title='2022-03-31 00:00:00 +0000 UTC'>2022-03-31</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;627 words&nbsp;·&nbsp;Logan Marchione
 
 </div>
   </header> 
@@ -290,12 +290,35 @@ chown -R www-data:www-data /var/www/
 
 <p><img src="/2022/03/the-best-way-to-run-dokuwiki-in-docker/20220331_002.png" loading="lazy" alt="dokuwiki installer"></p>
 <h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
-<p>The only caveats I can think of running this way are:</p>
+<p>I can only think of a few caveats of running this way and they are all easy to overcome.</p>
 <ol>
-<li>Upgrades - Normally you <a href="https://www.dokuwiki.org/install:upgrade">upgrade</a> DokuWiki by downloading a newer <code>tgz</code> file and overwriting your current setup. However, this kind of a pain in Docker. It&rsquo;s much easier to install the <a href="https://www.dokuwiki.org/plugin:upgrade">Upgrade plugin</a> and use that from the web interface.</li>
+<li>Upgrades - Normally you <a href="https://www.dokuwiki.org/install:upgrade">upgrade</a> DokuWiki by downloading a newer <code>tgz</code> file and overwriting your current setup. However, this kind of a pain in Docker. It&rsquo;s much easier to install the <a href="https://www.dokuwiki.org/plugin:upgrade">official upgrade plugin</a> and use that from the web interface.</li>
 <li>Plugins - I don&rsquo;t have a ton of plugins (I don&rsquo;t use LDAP, databases, galleries, etc..). Because of this, the default PHP modules are more than enough for me. However, if you needed more, PHP offers <a href="https://github.com/docker-library/docs/blob/master/php/README.md#how-to-install-more-php-extensions">instructions</a> on how to build your own PHP image.</li>
+<li>PHP settings - By default, the <a href="https://www.dokuwiki.org/faq:uploadsize">max file upload size</a> is 2MB. You can get around this by adding a volume for the PHP directory (compose example below), copying the demo config file (e.g., <code>cp -p php.ini-production php.ini</code>), editing <code>upload_max_filesize</code> and <code>post_max_size</code> in <code>php.ini</code>, and restarting the container.</li>
 </ol>
-<p>-Logan</p>
+<pre tabindex="0"><code>version: &#39;3&#39;
+services:
+  dokuwiki:
+    container_name: dokuwiki
+    image: php:7-apache-bullseye
+    restart: unless-stopped
+    networks:
+      - dokuwiki
+    ports:
+      - &#39;8888:80&#39;
+    volumes:
+      - &#39;dokuwiki_config:/var/www/html&#39;
+      - &#39;php_config:/usr/local/etc/php&#39;
+
+networks:
+  dokuwiki:
+
+volumes:
+  dokuwiki_config:
+    driver: local
+  php_config:
+    driver: local
+</code></pre><p>-Logan</p>
 
 
   </div>
