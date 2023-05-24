@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>LoRa and Meshtastic | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Introduction I&rsquo;ve been itching to work on some hardware projects lately and kept seeing ESP32-related things pop up on Reddit. In particular, I was coming across a lot of LoRa projects, and then started down a rabbit hole.
+LoRa LoRa (from long range) is a proprietary radio technology that is owned by Semtech. It is designed for long-range (e.g., 10km), low-bandwidth (i.e., measured in Kbps), low-power communication, primarily for internet of things (IoT) networks.">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2023/05/lora-and-meshtastic/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.92af714ca533aa152c7e6a8f010bd7a3e443ea5c0968de40949facc94b5e6229.css" integrity="sha256-kq9xTKUzqhUsfmqPAQvXo&#43;RD6lwJaN5AlJ&#43;syUteYik=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="LoRa and Meshtastic" />
+<meta property="og:description" content="Introduction I&rsquo;ve been itching to work on some hardware projects lately and kept seeing ESP32-related things pop up on Reddit. In particular, I was coming across a lot of LoRa projects, and then started down a rabbit hole.
+LoRa LoRa (from long range) is a proprietary radio technology that is owned by Semtech. It is designed for long-range (e.g., 10km), low-bandwidth (i.e., measured in Kbps), low-power communication, primarily for internet of things (IoT) networks." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://loganmarchione.github.io/2023/05/lora-and-meshtastic/" />
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_meshtastic.svg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-24T00:00:00+00:00" /><meta property="og:site_name" content="Logan Marchione" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_meshtastic.svg" />
+<meta name="twitter:title" content="LoRa and Meshtastic"/>
+<meta name="twitter:description" content="Introduction I&rsquo;ve been itching to work on some hardware projects lately and kept seeing ESP32-related things pop up on Reddit. In particular, I was coming across a lot of LoRa projects, and then started down a rabbit hole.
+LoRa LoRa (from long range) is a proprietary radio technology that is owned by Semtech. It is designed for long-range (e.g., 10km), low-bandwidth (i.e., measured in Kbps), low-power communication, primarily for internet of things (IoT) networks."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "LoRa and Meshtastic",
+      "item": "https://loganmarchione.github.io/2023/05/lora-and-meshtastic/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LoRa and Meshtastic",
+  "name": "LoRa and Meshtastic",
+  "description": "Introduction I\u0026rsquo;ve been itching to work on some hardware projects lately and kept seeing ESP32-related things pop up on Reddit. In particular, I was coming across a lot of LoRa projects, and then started down a rabbit hole.\nLoRa LoRa (from long range) is a proprietary radio technology that is owned by Semtech. It is designed for long-range (e.g., 10km), low-bandwidth (i.e., measured in Kbps), low-power communication, primarily for internet of things (IoT) networks.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Introduction I’ve been itching to work on some hardware projects lately and kept seeing ESP32-related things pop up on Reddit. In particular, I was coming across a lot of LoRa projects, and then started down a rabbit hole.\nLoRa LoRa (from long range) is a proprietary radio technology that is owned by Semtech. It is designed for long-range (e.g., 10km), low-bandwidth (i.e., measured in Kbps), low-power communication, primarily for internet of things (IoT) networks.\nLoRa defines the physical layer that controls how the radio signals are modulated. Specifically, LoRa uses chirp spread spectrum (CSS) to encode information. You can view more about LoRa and CSS in this video.\nLoRa operates in a license-free, sub-gigahertz frequency band (i.e., under 1GHz or 1000MHz), but each frequency varies from region to region due to regulatory requirements. If you’re buying a LoRa device, make sure you pick one tuned to the correct frequency band for your region.\nChina - 470-510MHz and 779-787MHz Europe - 863–870MHz (typically 868MHz) India - 865–867 MHz (typically 865MHz) Japan - 920-923MHz USA - 902–928 MHz (typically 915MHz) South America - 915–928 MHz (typically 915 or 923MHz) Why LoRa? LoRa tries to bridge the gap between current communication technologies, like WiFi, Bluetooth, and cellular (4G/5G).\nImage from The Things Network\nLoRa is useful for long-range, low-bandwidth, low-power communication, which is perfect for IoT devices. Some examples include:\na water sensor in a well in a remote location a factory with hundreds of smoke alarms that all need to communicate a large nature preserve trying to track animal migration a natural gas provider needing to monitor each customer’s meter for usage a weather station that only occasionally needs to transmit information LoRa and LoRaWAN LoRaWAN builds on top of LoRa to define the communication protocol and system architecture.\nIt’s important to note that you can use LoRa without using LoRaWAN. Other LoRa-based networks (that are not LoRaWAN) include Helium, The Things Network, Disaster.radio, and Meshtastic.\nMeshtastic Meshtastic builds on LoRa (not LoraWAN) to produce a decentralized mesh network. Features include:\nText-based, encrypted communication No phone required (e.g., you can use a computer with the right hardware), but there are iOS and Android applications Decentralization Great battery life Optional GPS location sharing Open-source software Unlike the traditional cellular network, each end-user device (e.g., phone, laptop, etc…) connects to a LoRa radio running Meshtastic, and all LoRa radios running Meshtastic can mesh together. Messages are relayed through LoRa radios until they reach their destination.\nDevices Meshtastic firmware is available for a handful of devices, but I was looking for:\n915MHz support (because I’m in the US) WiFi and Bluetooth (this meant the microcontroller needed to be an ESP32 instead of the nRF52840, which lacks WiFi) USB-C display GPS (optional) I was also looking for the newer SX1262 chip instead of the older SX1276 (source here).\nThis left me with the following options:\nHeltec WiFi LoRa 32 (V3) - No GPS Heltec Wireless Stick Lite (V3) - No GPS or display LILYGO TTGO T-Beam v1.1 - MicroUSB, older NEO-6M GPS, Semtech SX1276 LILYGO TTGO T-Beam v1.1 with NEO-M8N - MicroUSB, newer NEO-M8N, Semtech SX1276 LILYGO TTGO T-Beam v1.1 with NEO-M8N and SX1262 - MicroUSB, newer NEO-M8N, Semtech SX1262 LILYGO® TTGO Lora T3S3-V1.0 - No GPS In the end, I purchased two of each of the following:\nLILYGO® TTGO Lora T3S3-V1.0 (the SX1262 915MHz version, this took about 2 weeks to arrive) 3D printed case 915MHz antenna (with SMA male connector) Device flashing First, I made sure the device was showing up. This showed that my device was using /dev/ttyACM0.\nmkdir -p ~/Downloads/lora cd ~/Downloads/lora python3 -m venv venv source venv/bin/activate pip install esptool esptool.py chip_id I could not get the web-based installer to work, so I decided to flash with the command-line. 🤷‍♂️\nI downloaded the latest beta firmware. At the time of this writing, this was v2.1.11.5ec624d.\nwget https://github.com/meshtastic/firmware/releases/download/v2.1.11.5ec624d/firmware-2.1.11.5ec624d.zip unzip firmware-2.1.11.5ec624d.zip This is the command I used to flash. Don’t blindly copy/paste this, because the firmware is specific for the LILYGO® TTGO Lora T3S3-V1.0.\n./device-install.sh -p /dev/ttyACM0 -f firmware-tlora-t3s3-v1-2.1.11.5ec624d.bin After manually restarting the device, I was greeted by the Meshtastic logo. I repeated the flashing process for the other device.\nSoftware setup Meshtastic offers a variety of apps, including Apple and Android apps, as well as a Python app, and even a web client (either served directly from the device’s local web server, or from your browser via the Web Serial protocol).\nI paired one device to the Android app and another to my browser via the Web Serial protocol.\nOnce paired and connected, I made sure to set the region to US, since I wanted to be on the 915MHz frequency. I didn’t change the pre-shared key, so both devices were able to see one another right away and communicate.\nHere, you can see the messages on the web app.\nHere, you can see the messages on the Android app.\nTo be clear, these devices are NOT communicating via text (SMS), but instead over LoRa, completely off-grid! 🤯\nConclusion I’m still waiting on the 3D printed cases to arrive, but I’m going to try to head outside and do some range tests with these devices. Very cool!\n-Logan\n",
+  "wordCount" : "866",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_meshtastic.svg","datePublished": "2023-05-24T00:00:00Z",
+  "dateModified": "2023-05-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2023/05/lora-and-meshtastic/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      LoRa and Meshtastic
+    </h1>
+    <div class="post-meta"><span title='2023-05-24 00:00:00 +0000 UTC'>2023-05-24</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;866 words&nbsp;·&nbsp;Logan Marchione
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_meshtastic.svg" alt="featured image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#lora" aria-label="LoRa">LoRa</a><ul>
+                        
+                <li>
+                    <a href="#why-lora" aria-label="Why LoRa?">Why LoRa?</a></li>
+                <li>
+                    <a href="#lora-and-lorawan" aria-label="LoRa and LoRaWAN">LoRa and LoRaWAN</a></li></ul>
+                </li>
+                <li>
+                    <a href="#meshtastic" aria-label="Meshtastic">Meshtastic</a><ul>
+                        
+                <li>
+                    <a href="#devices" aria-label="Devices">Devices</a></li>
+                <li>
+                    <a href="#device-flashing" aria-label="Device flashing">Device flashing</a></li>
+                <li>
+                    <a href="#software-setup" aria-label="Software setup">Software setup</a></li></ul>
+                </li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I&rsquo;ve been itching to work on some hardware projects lately and kept seeing ESP32-related things pop up on Reddit. In particular, I was coming across a lot of LoRa projects, and then started down a rabbit hole.</p>
+<h1 id="lora">LoRa<a hidden class="anchor" aria-hidden="true" href="#lora">#</a></h1>
+<p><a href="https://en.wikipedia.org/wiki/LoRa">LoRa</a> (from <strong>lo</strong>ng <strong>ra</strong>nge) is a proprietary radio technology that is owned by <a href="https://en.wikipedia.org/wiki/Semtech">Semtech</a>. It is designed for long-range (e.g., 10km), low-bandwidth (i.e., measured in Kbps), low-power communication, primarily for <a href="https://en.wikipedia.org/wiki/Internet_of_things">internet of things</a> (IoT) networks.</p>
+<p>LoRa defines the <strong>physical</strong> layer that controls how the radio signals are modulated. Specifically, LoRa uses <a href="https://en.wikipedia.org/wiki/Chirp_spread_spectrum">chirp spread spectrum</a> (CSS) to encode information. You can view more about LoRa and CSS in <a href="https://www.youtube.com/watch?v=dxYY097QNs0">this</a> video.</p>
+<p>LoRa operates in a license-free, sub-gigahertz frequency band (i.e., under 1GHz or 1000MHz), but each frequency varies from region to region due to regulatory requirements. If you&rsquo;re buying a LoRa device, make sure you pick one tuned to the correct frequency band for your region.</p>
+<ul>
+<li>China - 470-510MHz and 779-787MHz</li>
+<li>Europe - 863–870MHz (typically 868MHz)</li>
+<li>India - 865–867 MHz (typically 865MHz)</li>
+<li>Japan - 920-923MHz</li>
+<li>USA - 902–928 MHz (typically 915MHz)</li>
+<li>South America - 915–928 MHz (typically 915 or 923MHz)</li>
+</ul>
+<h2 id="why-lora">Why LoRa?<a hidden class="anchor" aria-hidden="true" href="#why-lora">#</a></h2>
+<p>LoRa tries to bridge the gap between current communication technologies, like WiFi, Bluetooth, and cellular (4G/5G).</p>
+<figure>
+    <img loading="lazy" src="20230510_001.png"
+         alt="lora vs other communication types" width="100%"/> <figcaption>
+            <p>
+                    <a href="https://www.thethingsnetwork.org/docs/lorawan/what-is-lorawan/">Image from The Things Network</a></p>
+        </figcaption>
+</figure>
+
+<p>LoRa is useful for long-range, low-bandwidth, low-power communication, which is perfect for IoT devices. Some examples include:</p>
+<ul>
+<li>a water sensor in a well in a remote location</li>
+<li>a factory with hundreds of smoke alarms that all need to communicate</li>
+<li>a large nature preserve trying to track animal migration</li>
+<li>a natural gas provider needing to monitor each customer&rsquo;s meter for usage</li>
+<li>a weather station that only occasionally needs to transmit information</li>
+</ul>
+<h2 id="lora-and-lorawan">LoRa and LoRaWAN<a hidden class="anchor" aria-hidden="true" href="#lora-and-lorawan">#</a></h2>
+<p>LoRaWAN builds on top of LoRa to define the communication protocol and system architecture.</p>
+<p>It&rsquo;s important to note that you can use LoRa <strong>without</strong> using LoRaWAN. Other LoRa-based networks (that are not LoRaWAN) include <a href="https://www.helium.com/">Helium</a>, <a href="https://www.thethingsnetwork.org/">The Things Network</a>, <a href="https://disaster.radio/">Disaster.radio</a>, and <a href="https://meshtastic.org/">Meshtastic</a>.</p>
+<h1 id="meshtastic">Meshtastic<a hidden class="anchor" aria-hidden="true" href="#meshtastic">#</a></h1>
+<p><a href="https://meshtastic.org/">Meshtastic</a> builds on LoRa (not LoraWAN) to produce a decentralized mesh network. Features include:</p>
+<ul>
+<li>Text-based, encrypted communication</li>
+<li>No phone required (e.g., you can use a computer with the right hardware), but there are <a href="https://apps.apple.com/us/app/meshtastic/id1586432531">iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.geeksville.mesh">Android</a> applications</li>
+<li>Decentralization</li>
+<li>Great battery life</li>
+<li>Optional GPS location sharing</li>
+<li><a href="https://github.com/meshtastic/firmware">Open-source software</a></li>
+</ul>
+<p>Unlike the traditional cellular network, each end-user device (e.g., phone, laptop, etc&hellip;) connects to a LoRa radio running Meshtastic, and all LoRa radios running Meshtastic can mesh together. Messages are relayed through LoRa radios until they reach their destination.</p>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230510_003.png" loading="lazy" alt="meshtastic network"></p>
+<h2 id="devices">Devices<a hidden class="anchor" aria-hidden="true" href="#devices">#</a></h2>
+<p>Meshtastic firmware is available for a handful of <a href="https://meshtastic.org/docs/supported-hardware">devices</a>, but I was looking for:</p>
+<ul>
+<li>915MHz support (because I&rsquo;m in the US)</li>
+<li>WiFi and Bluetooth (this meant the microcontroller needed to be an ESP32 instead of the nRF52840, which lacks WiFi)</li>
+<li>USB-C</li>
+<li>display</li>
+<li>GPS (optional)</li>
+</ul>
+<p>I was also looking for the newer SX1262 chip instead of the older SX1276 (source <a href="https://www.semtech.com/uploads/design-support/SG-SEMTECH-WSP.pdf">here</a>).</p>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230510_002.png" loading="lazy" alt="semtech chip comparison"></p>
+<p>This left me with the following options:</p>
+<ul>
+<li><a href="https://heltec.org/project/wifi-lora-32-v3/">Heltec WiFi LoRa 32 (V3)</a> - No GPS</li>
+<li><a href="https://heltec.org/project/wireless-stick-lite-v2/">Heltec Wireless Stick Lite (V3)</a> - No GPS or display</li>
+<li><a href="https://www.aliexpress.us/item/2255800992363816.html">LILYGO TTGO T-Beam v1.1</a> - MicroUSB, older NEO-6M GPS, Semtech SX1276</li>
+<li><a href="https://www.aliexpress.us/item/2251832703268452.html">LILYGO TTGO T-Beam v1.1 with NEO-M8N</a> - MicroUSB, newer NEO-M8N, Semtech SX1276</li>
+<li><a href="https://www.aliexpress.us/item/2255801100907218.html">LILYGO TTGO T-Beam v1.1 with NEO-M8N and SX1262</a> - MicroUSB, newer NEO-M8N, Semtech SX1262</li>
+<li><a href="https://www.aliexpress.us/item/3256804440825086.html">LILYGO® TTGO Lora T3S3-V1.0</a> - No GPS</li>
+</ul>
+<p>In the end, I purchased two of each of the following:</p>
+<ul>
+<li><a href="https://www.aliexpress.us/item/3256804440825086.html">LILYGO® TTGO Lora T3S3-V1.0</a> (the SX1262 915MHz version, this took about 2 weeks to arrive)</li>
+<li><a href="https://www.etsy.com/listing/1470821285/ttgo-t3s3-case-for-meshtastic">3D printed case</a></li>
+<li><a href="https://www.amazon.com/915MHz-LoRa-Gateway-Antenna-Connector/dp/B091PRHPTJ">915MHz antenna</a> (with SMA male connector)</li>
+</ul>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230524_001_huef93e7e10e98f00a4c0575242da2263f_719376_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="lora t3s3"></p>
+<h2 id="device-flashing">Device flashing<a hidden class="anchor" aria-hidden="true" href="#device-flashing">#</a></h2>
+<p>First, I made sure the device was showing up. This showed that my device was using <code>/dev/ttyACM0</code>.</p>
+<pre tabindex="0"><code>mkdir -p ~/Downloads/lora
+cd ~/Downloads/lora
+python3 -m venv venv
+source venv/bin/activate
+pip install esptool
+esptool.py chip_id
+</code></pre><p>I could not get the <a href="https://meshtastic.org/docs/getting-started/flashing-firmware/esp32/web-flasher">web-based installer</a> to work, so I decided to flash with the <a href="https://meshtastic.org/docs/getting-started/flashing-firmware/esp32/cli-script">command-line</a>. 🤷‍♂️</p>
+<p>I downloaded the latest beta firmware. At the time of this writing, this was <code>v2.1.11.5ec624d</code>.</p>
+<pre tabindex="0"><code>wget https://github.com/meshtastic/firmware/releases/download/v2.1.11.5ec624d/firmware-2.1.11.5ec624d.zip
+unzip firmware-2.1.11.5ec624d.zip
+</code></pre><p>This is the command I used to flash. Don&rsquo;t blindly copy/paste this, because the firmware is specific for the LILYGO® TTGO Lora T3S3-V1.0.</p>
+<pre tabindex="0"><code>./device-install.sh -p /dev/ttyACM0 -f firmware-tlora-t3s3-v1-2.1.11.5ec624d.bin
+</code></pre><p>After manually restarting the device, I was greeted by the Meshtastic logo. I repeated the flashing process for the other device.</p>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230524_002_hu0a1fd25fb78f0b100242dddf613f5f02_489893_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="meshtastic boot logo"></p>
+<h2 id="software-setup">Software setup<a hidden class="anchor" aria-hidden="true" href="#software-setup">#</a></h2>
+<p>Meshtastic offers a variety of <a href="https://meshtastic.org/docs/software">apps</a>, including <a href="https://meshtastic.org/docs/software/apple/installation">Apple</a> and <a href="https://meshtastic.org/docs/software/android/installation">Android</a> apps, as well as a <a href="https://meshtastic.org/docs/software/python/cli">Python</a> app, and even a <a href="https://meshtastic.org/docs/software/web-client">web client</a> (either served directly from the device&rsquo;s local web server, or from your browser via the Web Serial protocol).</p>
+<p>I paired one device to the Android app and another to my browser via the Web Serial protocol.</p>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230524_003.png" loading="lazy" alt="meshtastic topology"></p>
+<p>Once paired and connected, I made sure to set the region to <code>US</code>, since I wanted to be on the 915MHz frequency. I didn&rsquo;t change the pre-shared key, so both devices were able to see one another right away and communicate.</p>
+<p>Here, you can see the messages on the web app.</p>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230524_004.png" loading="lazy" alt="web app"></p>
+<p>Here, you can see the messages on the Android app.</p>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230524_005.png" loading="lazy" alt="android app"></p>
+<p>To be clear, these devices are <strong>NOT</strong> communicating via text (SMS), but instead over LoRa, completely off-grid! 🤯</p>
+
+<p><img src="/2023/05/lora-and-meshtastic/20230524_006_hu98e2b53918d983e01f7fad5d7d71c097_575289_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="meshtastic devices"></p>
+<h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p>I&rsquo;m still waiting on the 3D printed cases to arrive, but I&rsquo;m going to try to head outside and do some range tests with these devices. Very cool!</p>
+<p>-Logan</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share LoRa and Meshtastic on twitter"
+        href="https://twitter.com/intent/tweet/?text=LoRa%20and%20Meshtastic&amp;url=https%3a%2f%2floganmarchione.github.io%2f2023%2f05%2flora-and-meshtastic%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share LoRa and Meshtastic on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2023%2f05%2flora-and-meshtastic%2f&amp;title=LoRa%20and%20Meshtastic&amp;summary=LoRa%20and%20Meshtastic&amp;source=https%3a%2f%2floganmarchione.github.io%2f2023%2f05%2flora-and-meshtastic%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share LoRa and Meshtastic on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2023%2f05%2flora-and-meshtastic%2f&title=LoRa%20and%20Meshtastic">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share LoRa and Meshtastic on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2023%2f05%2flora-and-meshtastic%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share LoRa and Meshtastic on whatsapp"
+        href="https://api.whatsapp.com/send?text=LoRa%20and%20Meshtastic%20-%20https%3a%2f%2floganmarchione.github.io%2f2023%2f05%2flora-and-meshtastic%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share LoRa and Meshtastic on telegram"
+        href="https://telegram.me/share/url?text=LoRa%20and%20Meshtastic&amp;url=https%3a%2f%2floganmarchione.github.io%2f2023%2f05%2flora-and-meshtastic%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
+</div>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

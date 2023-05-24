@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/gaming/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>LoRa and Meshtastic</title>
+      <link>https://loganmarchione.github.io/2023/05/lora-and-meshtastic/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2023/05/lora-and-meshtastic/</guid>
+      <description>Introduction I&amp;rsquo;ve been itching to work on some hardware projects lately and kept seeing ESP32-related things pop up on Reddit. In particular, I was coming across a lot of LoRa projects, and then started down a rabbit hole.
+LoRa LoRa (from long range) is a proprietary radio technology that is owned by Semtech. It is designed for long-range (e.g., 10km), low-bandwidth (i.e., measured in Kbps), low-power communication, primarily for internet of things (IoT) networks.</description>
+    </item>
+    
+    <item>
       <title>Continuous Delivery with Docker Compose and Drone</title>
       <link>https://loganmarchione.github.io/2023/04/continuous-delivery-with-docker-compose-and-drone/</link>
       <pubDate>Tue, 04 Apr 2023 00:00:00 +0000</pubDate>
