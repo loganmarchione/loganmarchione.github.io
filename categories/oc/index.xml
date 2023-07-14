@@ -6,7 +6,17 @@
     <description>Recent content in oc on Logan Marchione</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/oc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/oc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using the Bangle.js 2 smartwatch for one week</title>
+      <link>https://loganmarchione.github.io/2023/07/using-the-bangle.js-2-smartwatch-for-one-week/</link>
+      <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2023/07/using-the-bangle.js-2-smartwatch-for-one-week/</guid>
+      <description>TL;DR This is a long post. If you don&amp;rsquo;t want to read the whole thing, the TL;DR is below.
+The Bangle.js 2 is an open-source, hackable smartwatch that runs Javascript (yes, you read that correctly). Is it as shiny and fast as the Apple Watch? No. However, comparing an Apple Watch to the Bangle.js 2 is like comparing apples (no pun intended) to oranges. The Bangle.js 2 isn&amp;rsquo;t going to be super-fast and 60Hz smooth (like the Apple Watch), but if you remember that you&amp;rsquo;re running Javascript on a SoC the size of a shirt button, then you&amp;rsquo;ll be impressed.</description>
+    </item>
+    
     <item>
       <title>LoRa and Meshtastic</title>
       <link>https://loganmarchione.github.io/2023/05/lora-and-meshtastic/</link>
