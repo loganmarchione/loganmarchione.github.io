@@ -11,7 +11,7 @@
 3 backups 2 different types of media 1 backup offsite Current setup Currently, I keep an encrypted external HDD at home and another at work. Every couple weeks, I perform a backup to both and rotate the drives (this covers a 2-1-1 backup).">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2017/07/backblaze-b2-backup-setup/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.92af714ca533aa152c7e6a8f010bd7a3e443ea5c0968de40949facc94b5e6229.css" integrity="sha256-kq9xTKUzqhUsfmqPAQvXo&#43;RD6lwJaN5AlJ&#43;syUteYik=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4117d964c20f142572c34772d5a912b3681e6e9317e9f2de59739813b764caeb.css" integrity="sha256-QRfZZMIPFCVyw0dy1akSs2gebpMX6fLeWXOYE7dkyus=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -271,7 +271,7 @@
 <li><a href="https://www.amazon.com/clouddrive">Amazon Cloud Drive</a></li>
 <li><a href="https://aws.amazon.com/s3/">Amazon S3</a></li>
 <li><a href="https://aws.amazon.com/glacier/">Amazon Glacier</a></li>
-<li><a href="https://www.backblaze.com/b2/cloud-storage.html">Backblaze B2</a></li>
+<li><a href="https://www.backblaze.com/cloud-storage">Backblaze B2</a></li>
 <li><a href="https://cloud.google.com/storage-nearline/">Google Nearline</a></li>
 <li><a href="http://www.tarsnap.com/">Tarsnap</a></li>
 </ul>
@@ -291,7 +291,7 @@
 <p>I ended up choosing Duplicity. It seemed to be the most popular program, it supports incremental backups and B2 storage, and supports encryption with GPG.</p>
 <h1 id="setup-b2">Setup B2<a hidden class="anchor" aria-hidden="true" href="#setup-b2">#</a></h1>
 <h2 id="sign-up-and-install-b2">Sign up and install B2<a hidden class="anchor" aria-hidden="true" href="#sign-up-and-install-b2">#</a></h2>
-<p><a href="https://www.backblaze.com/b2/cloud-storage.html">Sign up</a> for a B2 account if you don&rsquo;t have one already. You can download the official B2 command line tool from <a href="https://www.backblaze.com/b2/docs/quick_command_line.html">these instructions</a>, but I&rsquo;m installing the <a href="https://aur.archlinux.org/packages/backblaze-b2/">package</a> from the AUR using <a href="https://wiki.archlinux.org/index.php/AUR_helpers">pacaur</a>. Note - You can create a bucket from the website if you don&rsquo;t want to install the B2 command line tool.</p>
+<p><a href="https://www.backblaze.com/cloud-storage">Sign up</a> for a B2 account if you don&rsquo;t have one already. You can download the official B2 command line tool from <a href="https://www.backblaze.com/b2/docs/quick_command_line.html">these instructions</a>, but I&rsquo;m installing the <a href="https://aur.archlinux.org/packages/backblaze-b2/">package</a> from the AUR using <a href="https://wiki.archlinux.org/index.php/AUR_helpers">pacaur</a>. Note - You can create a bucket from the website if you don&rsquo;t want to install the B2 command line tool.</p>
 <pre tabindex="0"><code>pacaur -S backblaze-b2
 </code></pre><h2 id="setup-a-bucket">Setup a bucket<a hidden class="anchor" aria-hidden="true" href="#setup-a-bucket">#</a></h2>
 <p>Start by authorizing your account (substitute your account ID as needed). You will be prompted for your Application Key, which you can get in the B2 control panel.</p>
@@ -422,7 +422,16 @@ unset SIGN_PASSPHRASE
                 d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
         </svg>
     </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Backblaze B2 backup setup on ycombinator"
+        href="https://news.ycombinator.com/submitlink?t=Backblaze%20B2%20backup%20setup&u=https%3a%2f%2floganmarchione.github.io%2f2017%2f07%2fbackblaze-b2-backup-setup%2f">
+        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+            <path
+                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+        </svg>
+    </a>
 </div>
+
   </footer>
 </article>
     </main>
