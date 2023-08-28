@@ -8,16 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/zfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Keebio Sinc split keyboard</title>
-      <link>https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/</link>
-      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/</guid>
-      <description>Introduction ⚠️ WARNING ⚠️
-This is an image-heavy post (I have lazy-loading enabled, so images should only load as you scroll) My only &amp;ldquo;good&amp;rdquo; lighting is in the kitchen, and I don&amp;rsquo;t have a DSLR or macro lens, so excuse the blurry close-up shots and shadows 🤷‍♂️ I&amp;rsquo;ve been using a WASD CODE 87-key mechanical keyboard with Cherry MX Clear switches since 2017. I liked it so much that I bought another (for when I used to work in the office).</description>
-    </item>
-    
-    <item>
       <title>Using the Bangle.js 2 smartwatch for one week</title>
       <link>https://loganmarchione.github.io/2023/07/using-the-bangle.js-2-smartwatch-for-one-week/</link>
       <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
@@ -53,8 +43,8 @@ I (try to) practice GitOps, so all of my Kubernetes configuration is in a public
       <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://loganmarchione.github.io/2023/01/my-experience-replacing-the-steam-deck-ssd/</guid>
-      <description>TL;DR You can purchase a large SSD for way less than Valve is charging and it&amp;rsquo;s easy to replace the SSD in your Steam Deck.
-Item Price Item Price 64GB Steam Deck $399 512GB Steam Deck $649 512GB NVMe SSD $65 Total $464 $649 Introduction I wanted to pick up a Steam Deck and was stuck on what model to purchase. The only difference between models (besides an etched glass display and a Steam Community profile bundle) is the size of the internal storage.</description>
+      <description>Update: 2023-08-28 I&amp;rsquo;ve been using the Kioxia BG4 for over six months now without any issues. In that time, the Steam Deck has become much more popular (so popular that some of these SSDs are marketed as &amp;ldquo;Steam Deck upgrade kits&amp;rdquo;). I don&amp;rsquo;t have a need to upgrade my Kioxia BG4 (yet), but you may want to consider these models as well.
+Make Model Link Watts PCIe Spec Price Comments Corsair MP600 Mini (1TB) Here 4.</description>
     </item>
     
     <item>
