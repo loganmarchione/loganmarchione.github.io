@@ -7,6 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://loganmarchione.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Deploying Hugo with CloudFront and S3 (for real this time)</title>
+      <link>https://loganmarchione.github.io/2023/10/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/</link>
+      <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2023/10/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/</guid>
+      <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
+Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Two years ago, I wrote about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn&amp;rsquo;t that well-versed in Terraform or AWS.</description>
+    </item>
+    
+    <item>
       <title>Keebio Sinc split keyboard</title>
       <link>https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/</link>
       <pubDate>Wed, 30 Aug 2023 00:00:00 +0000</pubDate>
