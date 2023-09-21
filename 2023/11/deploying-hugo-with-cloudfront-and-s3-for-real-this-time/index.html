@@ -8,7 +8,8 @@
 <title>Deploying Hugo with CloudFront and S3 (for real this time) | Logan Marchione</title>
 <meta name="keywords" content="">
 <meta name="description" content="Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
-Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Two years ago, I wrote about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn&rsquo;t that well-versed in Terraform or AWS.">
+Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify TL;DR Good news everyone! If you&rsquo;re reading this (in late 2023), you&rsquo;re reading it via CloudFront instead of a VPS!
+Introduction Two years ago, I wrote about deploying this site to CloudFront and S3.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.4117d964c20f142572c34772d5a912b3681e6e9317e9f2de59739813b764caeb.css" integrity="sha256-QRfZZMIPFCVyw0dy1akSs2gebpMX6fLeWXOYE7dkyus=" rel="preload stylesheet" as="style">
@@ -57,7 +58,8 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
     </style>
 </noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Deploying Hugo with CloudFront and S3 (for real this time)" />
 <meta property="og:description" content="Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
-Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Two years ago, I wrote about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn&rsquo;t that well-versed in Terraform or AWS." />
+Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify TL;DR Good news everyone! If you&rsquo;re reading this (in late 2023), you&rsquo;re reading it via CloudFront instead of a VPS!
+Introduction Two years ago, I wrote about deploying this site to CloudFront and S3." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/" />
 <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_aws_cloudfront_s3.svg" /><meta property="article:section" content="posts" />
@@ -68,7 +70,8 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_aws_cloudfront_s3.svg" />
 <meta name="twitter:title" content="Deploying Hugo with CloudFront and S3 (for real this time)"/>
 <meta name="twitter:description" content="Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
-Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Two years ago, I wrote about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn&rsquo;t that well-versed in Terraform or AWS."/>
+Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify TL;DR Good news everyone! If you&rsquo;re reading this (in late 2023), you&rsquo;re reading it via CloudFront instead of a VPS!
+Introduction Two years ago, I wrote about deploying this site to CloudFront and S3."/>
 
 
 <script type="application/ld+json">
@@ -97,12 +100,12 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
   "@type": "BlogPosting",
   "headline": "Deploying Hugo with CloudFront and S3 (for real this time)",
   "name": "Deploying Hugo with CloudFront and S3 (for real this time)",
-  "description": "Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!\nDate URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Two years ago, I wrote about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn\u0026rsquo;t that well-versed in Terraform or AWS.",
+  "description": "Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!\nDate URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify TL;DR Good news everyone! If you\u0026rsquo;re reading this (in late 2023), you\u0026rsquo;re reading it via CloudFront instead of a VPS!\nIntroduction Two years ago, I wrote about deploying this site to CloudFront and S3.",
   "keywords": [
     
   ],
-  "articleBody": "Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!\nDate URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Two years ago, I wrote about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn’t that well-versed in Terraform or AWS.\nIn those two years, I tried a half-dozen times to move to a static-friendly host, but none of them had all of the features I wanted (AWS Amplify came close, but didn’t have IPv6 support).\nEase of setup Git-aware by default Separate dev/prod sites IPv6 (using your own DNS) Custom HTTP headers HTTP redirects SSL/TLS In that last post, I said:\nIf I’m going to switch, it needs to be easier than Nginx.\nNow, I’m eating those words. I’ve stepped up my game and decided to try again with hosting this site on CloudFront and S3.\nDesign decisions Terraform code Not going to lie, this took me a solid week to come up with. Mostly because I have multiple static sites, and I wanted them all to be the same (without duplicating Terraform code), so I wrote a Terraform module, which I published to GitHub. You can read the details and code on GitHub, but this module creates the S3 buckets, ACM certificates, Route53 entries, and CloudFront distribution.\n################################################################################ ### Module for static site ################################################################################ module \"static_site_domain_com\" { source = \"github.com/loganmarchione/terraform-aws-static-site?ref=0.1.0\" providers = { aws.us-east-1 = aws.us-east-1 } # The domain name of the site (**MUST** match the Route53 hosted zone name (e.g., `domain.com`) domain_name = \"domain.com\" # Since this is a static site, we probably don't need versioning, since our source files are stored in git bucket_versioning_logs = false bucket_versioning_site = false # CloudFront settings cloudfront_compress = true cloudfront_default_root_object = \"index.html\" cloudfront_enabled = true cloudfront_function_create = false cloudfront_function_filename = \"function.js\" cloudfront_function_name = \"ReWrites\" cloudfront_http_version = \"http2and3\" cloudfront_ipv6 = true cloudfront_price_class = \"PriceClass_100\" cloudfront_ssl_minimum_protocol_version = \"TLSv1.2_2021\" cloudfront_ttl_min = 3600 cloudfront_ttl_default = 86400 cloudfront_ttl_max = 31536000 cloudfront_viewer_protocol_policy = \"redirect-to-https\" # IAM iam_policy_site_updating = false # Upload default files upload_index = true upload_robots = true upload_404 = true } Yes, there were existing modules that created static sites (one, two, three), but none of them did exactly what I wanted, so I wrote my own. Therefore, it’s pretty opinionated and you may not like some of the decisions I’ve made (but there are plenty of options to change).\nCloudFront The main thing that kept me from moving away from my VPS was Nginx. I’ve been using it for years, it’s easy to configure, and it has so many options. CloudFront is a content delivery network (CDN), not a webserver (like Nginx). Because of that, you really need to be creative when trying to get CloudFront to do webserver-type things.\nDefault root objects For example, CloudFront has a concept of default root objects.\nIf you don’t set a default root object, visiting https://example.com returns an error. However, you can manually type https://example.com/index.html and get the page back.\nIf you set index.html as the default root object and visit https://example.com, it works!\nBut, if you visit any sub-page like https://example.com/foo, you get an error. Again, you can manually type https://example.com/foo/index.html and get the page back.\nTo get around this, I had to use a CloudFront Function, which is lightweight JavaScript that runs on CloudFront’s edge servers.\n// https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/example-function-add-index.html function handler(event) { var request = event.request; var uri = request.uri; // Check whether the URI is missing a file name. if (uri.endsWith('/')) { request.uri += 'index.html'; } // Check whether the URI is missing a file extension. else if (!uri.includes('.')) { request.uri += '/index.html'; } return request; } Caching https://serialized.net/2017/06/maximizing-performance-with-cloudfront-s3-and-hugo/\nYou can use CloudFront Functions to do lightweight tasks like change headers, rewrite URLs, etc… However, I’m not sure if this adds any latency.\nGitHub Actions With my VPS, I was using GitHub Actions to build my site, then using rsync to move the files from the GitHub Actions runner to my VPS.\n... ... ... - name: Build run: hugo --gc --baseURL=\"https://${{ env.URL_PRD }}\" - name: SSH setup run: | mkdir -p ~/.ssh echo \"${{ secrets.DEPLOY_KEY }}\" \u003e ~/.ssh/deploy_key ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ env.URL_PRD }} \u003e ~/.ssh/known_hosts chmod -R 700 ~/.ssh chmod 600 ~/.ssh/deploy_key - name: Rsync run: | rsync -rltvz --delete --omit-dir-times \\ -e \"ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }}\" public/ \\ ${{ secrets.DEPLOY_USER }}@${{ env.URL_PRD }}:/var/www/${{ env.URL_PRD }} For the switchover, I would need some way to push the files to S3. Luckily, Hugo has a built-in deploy command, which can upload files to S3 and invalidate CloudFront cache automatically.\nHowever, then comes the problem of authentication. I was initially going to create a long-lived AWS access key to use in my GitHub Actions, but kept reading about how great OpenID Connect (OIDC) is. It’s still black magic to me, but basically, it allows GitHub Actions to send files to AWS S3 with no passwords or keys involved! 🤯\nUsing some open source modules, I was able to setup GitHub as an OIDC provider in my AWS account, and create a role that GitHub Actions was able to assume.\n################################################################################ ### Module for OIDC provider ################################################################################ module \"oidc_provider\" { source = \"github.com/terraform-aws-modules/terraform-aws-iam?ref=v5.30.0//modules/iam-github-oidc-provider\" } ################################################################################ ### Module for GitHub OIDC role ################################################################################ module \"iam_github_oidc_role\" { source = \"github.com/terraform-aws-modules/terraform-aws-iam?ref=v5.30.0//modules/iam-github-oidc-role\" name = \"GitHubActionsOIDC\" policies = { SiteUpdating = module.static_site_loganmarchione_com.site_updating_iam_policy_arn } subjects = [\"loganmarchione/loganmarchione.com:*\"] } My module has the option to create the IAM policy (called SiteUpdating) needed to allow the role to update the files in S3 and create the cache invalidation.\n{ \"Version\" : \"2012-10-17\", \"Id\" : \"SiteUpdating\", \"Statement\" : [ { \"Sid\" : \"S3\", \"Effect\" : \"Allow\", \"Action\" : [ \"s3:GetBucketPolicy\", \"s3:PutBucketPolicy\", \"s3:ListBucket\", \"s3:PutObject\", \"s3:DeleteObject\", ], \"Resource\" : [ aws_s3_bucket.site.arn, \"${aws_s3_bucket.site.arn}/*\" ] }, { \"Sid\" : \"CloudFront\", \"Effect\" : \"Allow\", \"Action\" : [ \"cloudfront:CreateInvalidation\", \"cloudfront:GetInvalidation\", \"cloudfront:ListInvalidations\" ], \"Resource\" : aws_cloudfront_distribution.site.arn } ] } Then, I was able to use these GitHub Actions to get everything working. Magically, the files are uploaded to S3!\n... ... ... permissions: id-token: write contents: read ... ... ... steps: ... ... ... - name: Configure AWS credentials uses: aws-actions/configure-aws-credentials@v4 with: role-to-assume: ${{ secrets.ROLE_TO_ASSUME_DEV }} role-duration-seconds: 900 aws-region: us-east-2 - name: Build run: hugo --gc -DEF --baseURL=\"https://${{ env.URL }}\" env: URL: loganmarchione.com - name: Deploy to S3 run: hugo deploy --maxDeletes -1 --invalidateCDN --logLevel info Credit to these two blogs (one, two) for working examples. The docs for AWS and GitHub are also linked here and here, respectively.\nThings gained/lost What did I gain and lose by switching from a VPS to CloudFront and S3?\nGained First is speed. Hosting on a single VPS with a local disk is fast (if you happen to be physically close to the VPS). But CloudFront puts me on every continent (if I want to pay for it).\nSecond is capacity. Not that my site is popular, but CloudFront has almost infinite capacity for traffic. Once CloudFront caches an object from S3 and distributes the object across its network, it’s almost immune to any sort of traffic spike or DDoS.\nThird is complexity (this is a negative). My site infrastructure is infinitely more complicated, and as AWS roles out new features, I’ll have to update my Terraform to take advantage of them. I do this for a living, but I’ll have to see what the maintenance overhead is over time.\nLost First is simplicity. This was not easy to setup and took me weeks between writing the module, debugging the module, writing IAM policies, testing, etc…\nSecond is freedom. This basically locks me into AWS. Not saying that I can’t go back to a VPS (because my static site is just a bunch of HTML/CSS/JavaScript), but I’m not dependent on AWS (which never goes down 😝).\nThird is maintenance (this is actually a positive). I no longer have to install/patch/maintain/backup a VPS, which is nice.\nCost I was using a $6/month Digital Ocean droplet as my VPS. I already had my DNS in Route53, which was costing me $0.50/month for the hosted zone, so the only cost I added was CloudFront and Route53.\nConclusion -Logan\n",
-  "wordCount" : "1386",
+  "articleBody": "Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!\nDate URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify TL;DR Good news everyone! If you’re reading this (in late 2023), you’re reading it via CloudFront instead of a VPS!\nIntroduction Two years ago, I wrote about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn’t that well-versed in Terraform or AWS.\nIn those two years, I tried a half-dozen times to move to a static-friendly host, but none of them had all of the features I wanted (AWS Amplify came close, but didn’t have IPv6 support).\nEase of setup Git-aware by default Separate dev/prod sites IPv6 (using your own DNS) Custom HTTP headers HTTP redirects SSL/TLS In that last post, I said:\nIf I’m going to switch, it needs to be easier than Nginx.\nNow, I’m eating those words. I’ve stepped up my game and decided to try again with hosting this site on CloudFront and S3.\nDesign decisions Terraform code Not going to lie, this took me a solid week to come up with. I have multiple static sites and I wanted them to all have the same setup (without duplicating Terraform code), so I wrote a Terraform module, which I published to GitHub. You can read the details and code on GitHub, but this module creates the S3 buckets, ACM certificate, Route53 entries, CloudFront distribution, and more.\n################################################################################ ### Module for static site ################################################################################ module \"static_site_domain_com\" { source = \"github.com/loganmarchione/terraform-aws-static-site?ref=0.1.1\" providers = { aws.us-east-1 = aws.us-east-1 } # The domain name of the site (**MUST** match the Route53 hosted zone name (e.g., `domain.com`) domain_name = \"domain.com\" # Since this is a static site, we probably don't need versioning, since our source files are stored in git bucket_versioning_logs = false bucket_versioning_site = false # CloudFront settings cloudfront_compress = true cloudfront_default_root_object = \"index.html\" cloudfront_enabled = true cloudfront_function_create = false cloudfront_function_filename = \"function.js\" cloudfront_function_name = \"ReWrites\" cloudfront_http_version = \"http2and3\" cloudfront_ipv6 = true cloudfront_price_class = \"PriceClass_100\" cloudfront_ssl_minimum_protocol_version = \"TLSv1.2_2021\" cloudfront_ttl_min = 3600 cloudfront_ttl_default = 86400 cloudfront_ttl_max = 2592000 cloudfront_viewer_protocol_policy = \"redirect-to-https\" # IAM iam_policy_site_updating = false # Upload default files upload_index = false upload_robots = false upload_404 = false } Yes, there were existing modules that created static sites (one, two, three), but none of them did exactly what I wanted, so I wrote my own. Therefore, it’s pretty opinionated and you may not like some of the decisions I’ve made (but there are plenty of options to change).\nCloudFront The main thing that kept me from moving away from my VPS was Nginx. I’ve been using it for years, it’s easy to configure, it’s a single server, it’s simple, and it has so many options.\nCloudFront, however, is a content delivery network (CDN), not a webserver. Because of that, you can’t do all the webserver things you were used to doing with Nginx.\nFunctions CloudFront Function are written in Javascript and do lightweight tasks like change headers, rewrite URLs, etc… To get some of my Nginx-like functionality into CloudFront, I had to use CloudFront Functions.\nFirst, CloudFront has a concept of default root objects. If you don’t set a default root object, visiting https://example.com returns an error. However, you can manually type https://example.com/index.html to view the page (but this is ugly). To fix this, set index.html as the default root object and visit https://example.com, it works!\nBut, if you visit any sub-page like https://example.com/foo, you get an error. Again, you can manually type https://example.com/foo/index.html to view the page (again, this is ugly).\nSecond, I also wanted to do URL rewrites/redirects (e.g., redirect /feed to /index.xml) like I did in Nginx.\nlocation /feed { rewrite ^/feed$ /index.xml; } To fix both of these issues, I created a CloudFront Function that is optionally applied via my Terraform module.\nfunction handler(event) { var request = event.request; var uri = request.uri; // Responses var response_feed = { statusCode: 301, statusDescription: \"Moved Permanently\", headers: { \"location\": { \"value\": \"/index.xml\" } } } // Returns if (uri === \"/feed\" || uri === \"/feed/\") { return response_feed; } // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/example-function-add-index.html // Check whether the URI is missing a file name. if (uri.endsWith('/')) { request.uri += 'index.html'; } // Check whether the URI is missing a file extension. else if (!uri.includes('.')) { request.uri += '/index.html'; } // If none of the above conditions are met, return the original request return request; } Caching Caching was (and still is) harder than I thought it would be. There are two kinds of caching:\nbrowser caching (this is done by the user’s browser and is hard for me to control) CDN caching (this is done by CloudFront and is controlled by me) When someone visits a website and their browser tries to download https://example.com/foo.jpg, it first checks its local cache. If the file is there, it doesn’t need to download it again, which makes the rest of the site load faster.\nWith Nginx, I was able to request that the user’s browser cache files for a set number of days, based on filetype.\nlocation / { try_files $uri $uri/ =404; #Cache these filetypes in the user's browser for a set number of days location ~* \\.(atom|bmp|css|doc|gif|ico|jpeg|jpg|js|pdf|png|ppt|rss|svg|tiff|ttf|woff|woff2|xls|zip)$ { expires 10d; add_header 'Cache-Control' 'private, must-revalidate'; } } However, what if I pushed an update to my site and wanted the user to download it again? Well, I couldn’t control that (because it was set to expire after 10 days) and now they’re viewing a version of my site with a mix of old and new assets. Obviously, I could have (and probably should have) set the number of days lower than 10, but setting it too low defeats the purpose of a cache in the first place.\nThe same problem applies to CloudFront, except now there is a second cache in the mix. When I push updates to S3, how can I tell CloudFront to update its copy of my static assets? Below is a recreation of Josh Barratt’s diagram that I think does a really good job of visualizing this.\nTo solve these issues, I did a couple things.\nFor browser cache, you can’t actually set this in CloudFront (again, CloudFront is not a webserver). Instead, I set the Cache-Control header on specific files in my Hugo config.yaml file, which is read during the hugo deploy command (more on that later). This actually sets the metadata on the files in S3, then CloudFront just forwards that metadata to the user. Also, notice how I turned the expiration time down to 86400 (one day) instead of ten days, and that html, json, and xml files don’t get cached at all.\ndeployment: targets: ... ... ... matchers: # cached with gzip compression enabled - pattern: \"^.+\\\\.(js|css|svg|ttf)$\" cacheControl: \"max-age=86400, no-transform, public\" gzip: true # cached with gzip compression disabled - pattern: \"^.+\\\\.(atom|bmp|gif|ico|jpeg|jpg|pdf|png|rss|tiff|woff|woff2|zip)$\" cacheControl: \"max-age=86400, no-transform, public\" gzip: false # sitemap gets a special content-type header - pattern: \"^sitemap\\\\.xml$\" contentType: \"application/xml\" gzip: true # not cached with gzip compression enabled - pattern: \"^.+\\\\.(html|json|xml)$\" gzip: true For CloudFront cache, I’ve setup multiple time-to-live (TTL) values that control how long the files stay in CloudFront’s cache. It’s important to try to strike a balance between how long the files live in CloudFront, and how often they come from S3.\nminimum TTL = 3600 default TTL = 86400 maximum TTL = 2592000 To force CloudFront to invalidate all files in its cache, I’ve setup my deployment script to force invalidation (more on that below).\nGitHub Actions With my VPS, I was using GitHub Actions to build my site, then using rsync to move the files from the GitHub Actions runner to my VPS.\n... ... ... - name: Build run: hugo --gc --baseURL=\"https://${{ env.URL_PRD }}\" - name: SSH setup run: | mkdir -p ~/.ssh echo \"${{ secrets.DEPLOY_KEY }}\" \u003e ~/.ssh/deploy_key ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ env.URL_PRD }} \u003e ~/.ssh/known_hosts chmod -R 700 ~/.ssh chmod 600 ~/.ssh/deploy_key - name: Rsync run: | rsync -rltvz --delete --omit-dir-times \\ -e \"ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }}\" public/ \\ ${{ secrets.DEPLOY_USER }}@${{ env.URL_PRD }}:/var/www/${{ env.URL_PRD }} For the switchover, I would need some way to push the files to S3. Luckily, Hugo has a built-in deploy command, which can upload files to S3 and invalidate CloudFront cache automatically.\nHowever, then comes the problem of authentication. I was initially going to create a long-lived AWS access key to use in my GitHub Actions, but kept reading about how great OpenID Connect (OIDC) is. It’s still black magic to me, but basically, it allows GitHub Actions to send files to AWS S3 with no passwords or keys involved! 🤯\nUsing some open source modules, I was able to setup GitHub as an OIDC provider in my AWS account, and create a role that GitHub Actions was able to assume.\n################################################################################ ### Module for OIDC provider ################################################################################ module \"oidc_provider\" { source = \"github.com/terraform-aws-modules/terraform-aws-iam?ref=v5.30.0//modules/iam-github-oidc-provider\" } ################################################################################ ### Module for GitHub OIDC role ################################################################################ module \"iam_github_oidc_role\" { source = \"github.com/terraform-aws-modules/terraform-aws-iam?ref=v5.30.0//modules/iam-github-oidc-role\" name = \"GitHubActionsOIDC\" policies = { SiteUpdating = module.static_site_loganmarchione_com.site_updating_iam_policy_arn } subjects = [\"loganmarchione/loganmarchione.com:*\"] } My module has the option to create the IAM policy (called SiteUpdating) needed to allow the GitHub OIDC role to update the files in S3 and create the cache invalidation.\n{ \"Version\" : \"2012-10-17\", \"Id\" : \"SiteUpdating\", \"Statement\" : [ { \"Sid\" : \"S3\", \"Effect\" : \"Allow\", \"Action\" : [ \"s3:GetBucketPolicy\", \"s3:PutBucketPolicy\", \"s3:ListBucket\", \"s3:PutObject\", \"s3:DeleteObject\", ], \"Resource\" : [ aws_s3_bucket.site.arn, \"${aws_s3_bucket.site.arn}/*\" ] }, { \"Sid\" : \"CloudFront\", \"Effect\" : \"Allow\", \"Action\" : [ \"cloudfront:CreateInvalidation\", \"cloudfront:GetInvalidation\", \"cloudfront:ListInvalidations\" ], \"Resource\" : aws_cloudfront_distribution.site.arn } ] } Then, I was able to use these GitHub Actions to get everything working. Magically, the files are uploaded to S3 without a password!\n... ... ... permissions: id-token: write contents: read ... ... ... steps: ... ... ... - name: Configure AWS credentials uses: aws-actions/configure-aws-credentials@v4 with: role-to-assume: ${{ secrets.ROLE_TO_ASSUME_DEV }} role-duration-seconds: 900 aws-region: us-east-2 - name: Build run: hugo --gc -DEF --baseURL=\"https://${{ env.URL }}\" env: URL: loganmarchione.com - name: Deploy to S3 run: hugo deploy --maxDeletes -1 --invalidateCDN --logLevel info Credit to these two blogs (one, two) for working examples. The docs for AWS and GitHub are also linked here and here, respectively.\nThings gained/lost What did I gain and lose by switching from a VPS to CloudFront and S3?\nGained First is speed. Hosting on a single VPS with a local disk is fast (if you happen to be physically close to the VPS). But CloudFront puts me on every continent (if I want to pay for it).\nSecond is capacity. Not that my site is popular, but CloudFront has almost infinite capacity for traffic. Once CloudFront caches an object from S3 and distributes the object across its network, it’s almost immune to any sort of traffic spike or DDoS.\nThird is complexity (this is a negative). My site infrastructure is infinitely more complicated, and as AWS roles out new features, I’ll have to update my Terraform to take advantage of them. I do this for a living, but I’ll have to see what the maintenance overhead is over time.\nLost First is simplicity. This was not easy to setup and took me weeks between writing the module, debugging the module, writing IAM policies, testing, etc…\nSecond is freedom. This basically locks me into AWS. Not saying that I can’t go back to a VPS (because my static site is just a bunch of HTML/CSS/JavaScript), but I’m not dependent on AWS (which never goes down 😝).\nThird is maintenance (this is actually a positive). I no longer have to install/patch/maintain/backup a VPS, which is nice.\nCost I was using a $6/month Digital Ocean droplet as my VPS. I already had my DNS in Route53, which was costing me $0.50/month for the hosted zone, so the only cost I added was CloudFront and ACM. Using the AWS Pricing Calculator, I guessed that the site would end up costing me around $5/month. In reality,\nConclusion -Logan\n",
+  "wordCount" : "2024",
   "inLanguage": "en",
   "image":"https://loganmarchione.github.io/assets/featured/featured_aws_cloudfront_s3.svg","datePublished": "2023-11-01T00:00:00Z",
   "dateModified": "2023-11-01T00:00:00Z",
@@ -199,7 +202,7 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
     <h1 class="post-title">
       Deploying Hugo with CloudFront and S3 (for real this time)
     </h1>
-    <div class="post-meta"><span title='2023-11-01 00:00:00 +0000 UTC'>2023-11-01</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1386 words&nbsp;·&nbsp;Logan Marchione
+    <div class="post-meta"><span title='2023-11-01 00:00:00 +0000 UTC'>2023-11-01</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;2024 words&nbsp;·&nbsp;Logan Marchione
 
 </div>
   </header> 
@@ -213,6 +216,8 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
 
         <div class="inner"><ul>
                 <li>
+                    <a href="#tldr" aria-label="TL;DR">TL;DR</a></li>
+                <li>
                     <a href="#introduction" aria-label="Introduction">Introduction</a></li>
                 <li>
                     <a href="#design-decisions" aria-label="Design decisions">Design decisions</a><ul>
@@ -223,7 +228,7 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
                     <a href="#cloudfront" aria-label="CloudFront">CloudFront</a><ul>
                         
                 <li>
-                    <a href="#default-root-objects" aria-label="Default root objects">Default root objects</a></li>
+                    <a href="#functions" aria-label="Functions">Functions</a></li>
                 <li>
                     <a href="#caching" aria-label="Caching">Caching</a></li></ul>
                 </li>
@@ -275,6 +280,10 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
 </tr>
 </tbody>
 </table>
+<h1 id="tldr">TL;DR<a hidden class="anchor" aria-hidden="true" href="#tldr">#</a></h1>
+<p>Good news everyone! If you&rsquo;re reading this (in late 2023), you&rsquo;re reading it via CloudFront instead of a VPS!</p>
+<p><img loading="lazy" src="/assets/memes/good_news_everyone.jpg" alt="meme"  />
+</p>
 <h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>Two years ago, I <a href="/2021/10/deploying-hugo-with-cloudfront-and-s3/">wrote</a> about deploying this site to CloudFront and S3. I had a test version of the site running, but there were too many moving pieces, and to be honest, I wasn&rsquo;t that well-versed in Terraform or AWS.</p>
 <p>In those two years, I tried a half-dozen times to move to a static-friendly host, but none of them had <em>all</em> of the features I wanted (AWS Amplify came close, but didn&rsquo;t have IPv6 support).</p>
@@ -294,13 +303,13 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
 <p>Now, I&rsquo;m eating those words. I&rsquo;ve stepped up my game and decided to try again with hosting this site on CloudFront and S3.</p>
 <h1 id="design-decisions">Design decisions<a hidden class="anchor" aria-hidden="true" href="#design-decisions">#</a></h1>
 <h2 id="terraform-code">Terraform code<a hidden class="anchor" aria-hidden="true" href="#terraform-code">#</a></h2>
-<p>Not going to lie, this took me a solid week to come up with. Mostly because I have multiple static sites, and I wanted them all to be the same (without duplicating Terraform code), so I wrote a Terraform module, which I <a href="https://github.com/loganmarchione/terraform-aws-static-site">published to GitHub</a>. You can read the details and code on GitHub, but this module creates the S3 buckets, ACM certificates, Route53 entries, and CloudFront distribution.</p>
+<p>Not going to lie, this took me a solid week to come up with. I have multiple static sites and I wanted them to all have the same setup (without duplicating Terraform code), so I wrote a Terraform module, which I <a href="https://github.com/loganmarchione/terraform-aws-static-site">published to GitHub</a>. You can read the details and code on GitHub, but this module creates the S3 buckets, ACM certificate, Route53 entries, CloudFront distribution, and more.</p>
 <pre tabindex="0"><code>################################################################################
 ### Module for static site
 ################################################################################
 
 module &#34;static_site_domain_com&#34; {
-  source = &#34;github.com/loganmarchione/terraform-aws-static-site?ref=0.1.0&#34;
+  source = &#34;github.com/loganmarchione/terraform-aws-static-site?ref=0.1.1&#34;
 
   providers = {
     aws.us-east-1 = aws.us-east-1
@@ -326,31 +335,49 @@ module &#34;static_site_domain_com&#34; {
   cloudfront_ssl_minimum_protocol_version = &#34;TLSv1.2_2021&#34;
   cloudfront_ttl_min                      = 3600
   cloudfront_ttl_default                  = 86400
-  cloudfront_ttl_max                      = 31536000
+  cloudfront_ttl_max                      = 2592000
   cloudfront_viewer_protocol_policy       = &#34;redirect-to-https&#34;
 
   # IAM
   iam_policy_site_updating = false
 
   # Upload default files
-  upload_index  = true
-  upload_robots = true
-  upload_404    = true
+  upload_index  = false
+  upload_robots = false
+  upload_404    = false
 }
 </code></pre><p>Yes, there were existing modules that created static sites (<a href="https://github.com/infrable-io/terraform-aws-static-website">one</a>, <a href="https://github.com/joshuamkite/terraform-aws-static-website-s3-cloudfront-acm">two</a>, <a href="https://github.com/terraform-aws-modules/terraform-aws-cloudfront">three</a>), but none of them did <em>exactly</em> what I wanted, so I wrote my own. Therefore, it&rsquo;s pretty opinionated and you may not like some of the decisions I&rsquo;ve made (but there are plenty of options to change).</p>
 <h2 id="cloudfront">CloudFront<a hidden class="anchor" aria-hidden="true" href="#cloudfront">#</a></h2>
-<p>The main thing that kept me from moving away from my VPS was <a href="https://nginx.org/">Nginx</a>. I&rsquo;ve been using it for years, it&rsquo;s easy to configure, and it has <em>so many options</em>. CloudFront is a content delivery network (CDN), not a webserver (like Nginx). Because of that, you really need to be creative when trying to get CloudFront to do webserver-type things.</p>
-<h3 id="default-root-objects">Default root objects<a hidden class="anchor" aria-hidden="true" href="#default-root-objects">#</a></h3>
-<p>For example, CloudFront has a concept of <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html#DefaultRootObjectHow">default root objects</a>.</p>
-<p>If you don&rsquo;t set a default root object, visiting <code>https://example.com</code> returns an error. However, you can manually type <code>https://example.com/index.html</code> and get the page back.</p>
-<p>If you set <code>index.html</code> as the default root object and visit <code>https://example.com</code>, it works!</p>
-<p>But, if you visit any sub-page like <code>https://example.com/foo</code>, you get an error. Again, you can manually type <code>https://example.com/foo/index.html</code> and get the page back.</p>
-<p>To get around this, I had to use a <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html">CloudFront Function</a>, which is lightweight JavaScript that runs on CloudFront&rsquo;s edge servers.</p>
-<pre tabindex="0"><code>// https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/example-function-add-index.html
-function handler(event) {
+<p>The main thing that kept me from moving away from my VPS was <a href="https://nginx.org/">Nginx</a>. I&rsquo;ve been using it for years, it&rsquo;s easy to configure, it&rsquo;s a single server, it&rsquo;s simple, and it has <em>so many options</em>.</p>
+<p>CloudFront, however, is a content delivery network (CDN), not a webserver. Because of that, you can&rsquo;t do all the webserver things you were used to doing with Nginx.</p>
+<h3 id="functions">Functions<a hidden class="anchor" aria-hidden="true" href="#functions">#</a></h3>
+<p><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html">CloudFront Function</a> are written in Javascript and do lightweight tasks like change headers, rewrite URLs, etc&hellip; To get some of my Nginx-like functionality into CloudFront, I had to use CloudFront Functions.</p>
+<p>First, CloudFront has a concept of <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html#DefaultRootObjectHow">default root objects</a>. If you don&rsquo;t set a default root object, visiting <code>https://example.com</code> returns an error. However, you can manually type <code>https://example.com/index.html</code> to view the page (but this is ugly). To fix this, set <code>index.html</code> as the default root object and visit <code>https://example.com</code>, it works!</p>
+<p>But, if you visit any sub-page like <code>https://example.com/foo</code>, you get an error. Again, you can manually type <code>https://example.com/foo/index.html</code> to view the page (again, this is ugly).</p>
+<p>Second, I also wanted to do URL rewrites/redirects (e.g., redirect <code>/feed</code> to <code>/index.xml</code>) like I did in Nginx.</p>
+<pre tabindex="0"><code>  location /feed {
+    rewrite ^/feed$ /index.xml;
+  }
+</code></pre><p>To fix both of these issues, I created a CloudFront Function that is optionally applied via my Terraform module.</p>
+<pre tabindex="0"><code>function handler(event) {
     var request = event.request;
     var uri = request.uri;
 
+    // Responses
+    var response_feed = {
+        statusCode: 301,
+        statusDescription: &#34;Moved Permanently&#34;,
+        headers: {
+            &#34;location&#34;: { &#34;value&#34;: &#34;/index.xml&#34; }
+        }
+    }
+
+    // Returns
+    if (uri === &#34;/feed&#34; || uri === &#34;/feed/&#34;) {
+        return response_feed;
+    }
+
+    // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/example-function-add-index.html
     // Check whether the URI is missing a file name.
     if (uri.endsWith(&#39;/&#39;)) {
         request.uri += &#39;index.html&#39;;
@@ -360,11 +387,61 @@ function handler(event) {
         request.uri += &#39;/index.html&#39;;
     }
 
+    // If none of the above conditions are met, return the original request
     return request;
 }
 </code></pre><h3 id="caching">Caching<a hidden class="anchor" aria-hidden="true" href="#caching">#</a></h3>
-<p><a href="https://serialized.net/2017/06/maximizing-performance-with-cloudfront-s3-and-hugo/">https://serialized.net/2017/06/maximizing-performance-with-cloudfront-s3-and-hugo/</a></p>
-<p>You can use CloudFront Functions to do lightweight tasks like change headers, rewrite URLs, etc&hellip; However, I&rsquo;m not sure if this adds any latency.</p>
+<p>Caching was (and still is) harder than I thought it would be. There are two kinds of caching:</p>
+<ul>
+<li>browser caching (this is done by the user&rsquo;s browser and is hard for me to control)</li>
+<li>CDN caching (this is done by CloudFront and is controlled by me)</li>
+</ul>
+<p>When someone visits a website and their browser tries to download <code>https://example.com/foo.jpg</code>, it first checks its local cache. If the file is there, it doesn&rsquo;t need to download it again, which makes the rest of the site load faster.</p>
+<p>With Nginx, I was able to request that the user&rsquo;s browser cache files for a set number of days, based on filetype.</p>
+<pre tabindex="0"><code>  location / {
+    try_files $uri $uri/ =404;
+    #Cache these filetypes in the user&#39;s browser for a set number of days
+    location ~* \.(atom|bmp|css|doc|gif|ico|jpeg|jpg|js|pdf|png|ppt|rss|svg|tiff|ttf|woff|woff2|xls|zip)$ {
+      expires 10d;
+      add_header &#39;Cache-Control&#39; &#39;private, must-revalidate&#39;;
+    }
+  }
+</code></pre><p>However, what if I pushed an update to my site and <em>wanted</em> the user to download it again? Well, I couldn&rsquo;t control that (because it was set to expire after 10 days) and now they&rsquo;re viewing a version of my site with a mix of old and new assets. Obviously, I could have (and probably should have) set the number of days lower than <code>10</code>, but setting it too low defeats the purpose of a cache in the first place.</p>
+
+<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20230921_001p1_hu1369fdafbb16a360924c9bad02de6efc_32853_800x0_resize_catmullrom_3.png" loading="lazy" alt="nginx caching"></p>
+<p>The same problem applies to CloudFront, except now there is a second cache in the mix. When I push updates to S3, how can I tell CloudFront to update its copy of my static assets? Below is a <a href="https://serialized.net/2017/06/maximizing-performance-with-cloudfront-s3-and-hugo/">recreation of Josh Barratt&rsquo;s diagram</a> that I think does a really good job of visualizing this.</p>
+
+<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20230921_001p2_hua02f3cccf9e1fff92a865587a4921772_49060_800x0_resize_catmullrom_3.png" loading="lazy" alt="cloudfront caching"></p>
+<p>To solve these issues, I did a couple things.</p>
+<p>For browser cache, you can&rsquo;t actually set this in CloudFront (again, CloudFront is not a webserver). Instead, I set the <code>Cache-Control</code> header on specific files in my Hugo <code>config.yaml</code> file, which is read during the <code>hugo deploy</code> command (more on that later). This actually sets the <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#SysMetadata">metadata</a> on the files in S3, then CloudFront just forwards that metadata to the user. Also, notice how I turned the expiration time down to <code>86400</code> (one day) instead of ten days, and that <code>html</code>, <code>json</code>, and <code>xml</code> files don&rsquo;t get cached at all.</p>
+<pre tabindex="0"><code>deployment:
+  targets:
+    ...
+    ...
+    ...
+  matchers:
+    # cached with gzip compression enabled
+    - pattern: &#34;^.+\\.(js|css|svg|ttf)$&#34;
+      cacheControl: &#34;max-age=86400, no-transform, public&#34;
+      gzip: true
+    # cached with gzip compression disabled
+    - pattern: &#34;^.+\\.(atom|bmp|gif|ico|jpeg|jpg|pdf|png|rss|tiff|woff|woff2|zip)$&#34;
+      cacheControl: &#34;max-age=86400, no-transform, public&#34;
+      gzip: false
+    # sitemap gets a special content-type header
+    - pattern: &#34;^sitemap\\.xml$&#34;
+      contentType: &#34;application/xml&#34;
+      gzip: true
+    # not cached with gzip compression enabled
+    - pattern: &#34;^.+\\.(html|json|xml)$&#34;
+      gzip: true
+</code></pre><p>For CloudFront cache, I&rsquo;ve setup multiple time-to-live (TTL) values that control how long the files stay in CloudFront&rsquo;s cache. It&rsquo;s important to try to strike a balance between how long the files live in CloudFront, and how often they come from S3.</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMinTTL">minimum TTL</a> = <code>3600</code></li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDefaultTTL">default TTL</a> = <code>86400</code></li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMaxTTL">maximum TTL</a> = <code>2592000</code></li>
+</ul>
+<p>To force CloudFront to invalidate all files in its cache, I&rsquo;ve setup my deployment script to force invalidation (more on that below).</p>
 <h2 id="github-actions">GitHub Actions<a hidden class="anchor" aria-hidden="true" href="#github-actions">#</a></h2>
 <p>With my VPS, I was using GitHub Actions to build my site, then using rsync to move the files from the GitHub Actions runner to my VPS.</p>
 <pre tabindex="0"><code>    ...
@@ -410,7 +487,7 @@ module &#34;iam_github_oidc_role&#34; {
   }
   subjects = [&#34;loganmarchione/loganmarchione.com:*&#34;]
 }
-</code></pre><p>My module has the option to create the IAM policy (called <code>SiteUpdating</code>) needed to allow the role to update the files in S3 and create the cache invalidation.</p>
+</code></pre><p>My module has the option to create the IAM policy (called <code>SiteUpdating</code>) needed to allow the GitHub OIDC role to update the files in S3 and create the cache invalidation.</p>
 <pre tabindex="0"><code>{
   &#34;Version&#34; : &#34;2012-10-17&#34;,
   &#34;Id&#34; : &#34;SiteUpdating&#34;,
@@ -442,7 +519,7 @@ module &#34;iam_github_oidc_role&#34; {
     }
   ]
 }
-</code></pre><p>Then, I was able to use these GitHub Actions to get everything working. Magically, the files are uploaded to S3!</p>
+</code></pre><p>Then, I was able to use these GitHub Actions to get everything working. Magically, the files are uploaded to S3 without a password!</p>
 <pre tabindex="0"><code>    ...
     ...
     ...
@@ -482,7 +559,7 @@ module &#34;iam_github_oidc_role&#34; {
 <p>Second is freedom. This basically locks me into AWS. Not saying that I can&rsquo;t go back to a VPS (because my static site is just a bunch of HTML/CSS/JavaScript), but I&rsquo;m not dependent on AWS (which never goes down 😝).</p>
 <p>Third is maintenance (this is actually a positive). I no longer have to install/patch/maintain/backup a VPS, which is nice.</p>
 <h2 id="cost">Cost<a hidden class="anchor" aria-hidden="true" href="#cost">#</a></h2>
-<p>I was using a $6/month Digital Ocean droplet as my VPS. I already had my DNS in Route53, which was costing me $0.50/month for the hosted zone, so the only cost I added was CloudFront and Route53.</p>
+<p>I was using a $6/month Digital Ocean droplet as my VPS. I already had my DNS in Route53, which was costing me $0.50/month for the hosted zone, so the only cost I added was CloudFront and ACM. Using the <a href="https://calculator.aws/">AWS Pricing Calculator</a>, I guessed that the site would end up costing me around $5/month. In reality,</p>
 <h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
 <p>-Logan</p>
 
