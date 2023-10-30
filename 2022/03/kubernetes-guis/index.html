@@ -199,7 +199,7 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
     <h1 class="post-title">
       Kubernetes GUIs
     </h1>
-    <div class="post-meta"><span title='2022-03-29 00:00:00 +0000 UTC'>2022-03-29</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;822 words&nbsp;·&nbsp;Logan Marchione
+    <div class="post-meta">&lt;span title=&#39;2022-03-29 00:00:00 &#43;0000 UTC&#39;&gt;2022-03-29&lt;/span&gt;&amp;nbsp;·&amp;nbsp;4 min&amp;nbsp;·&amp;nbsp;822 words&amp;nbsp;·&amp;nbsp;Logan Marchione
 
 </div>
   </header> 
@@ -267,7 +267,7 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
 </table>
 <h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>In my <a href="/2022/03/k3s-single-node-cluster-for-noobs/">last post</a>, I setup a <a href="https://k3s.io/">K3s</a> single-node cluster and an example application. While everything was done through the command-line, as a noob, it&rsquo;s nice to have a <a href="https://en.wikipedia.org/wiki/Graphical_user_interface">graphical user interface</a> (GUI) of some kind. I&rsquo;m not a fan of <a href="https://www.lastweekinaws.com/blog/clickops/">ClickOps</a>, but it&rsquo;s convenient to have a GUI to be able to quickly view status, instead of hunting for the right <code>kubectl</code> command.</p>
-<p>⚠️ WARNING ⚠️</p>
+<p>&#x26a0;&#xfe0f; WARNING &#x26a0;&#xfe0f;</p>
 <ul>
 <li>I am not a Kubernetes expert!</li>
 <li>This is solely for my own learning. If you get something useful out of my ramblings, that&rsquo;s great, but it&rsquo;s not my primary goal.</li>
@@ -370,7 +370,7 @@ kubectl -n kubernetes-dashboard describe secret admin-user-token | grep &#39;^to
 <p><img src="/2022/03/kubernetes-guis/20220312_002_hu0ec0ba384d84a943ef23cc20fedcc24d_174879_800x0_resize_catmullrom_3.png" loading="lazy" alt="k8s dashboard"></p>
 <h2 id="lens">Lens<a hidden class="anchor" aria-hidden="true" href="#lens">#</a></h2>
 <p><a href="https://k8slens.dev/">Lens</a> is probably the next-most popular k8s GUI. It is made by <a href="https://www.mirantis.com/software/lens/">Mirantis</a>, the same people who make <a href="https://k0sproject.io/">k0s</a> and who recently <a href="https://www.mirantis.com/blog/mirantis-acquires-docker-enterprise-platform-business/">purchased</a> Docker Enterprise. It is <a href="https://github.com/lensapp/lens">open source</a>, but also offers a paid cloud service called <a href="https://k8slens.dev/spaces.html">Lens Spaces</a>.</p>
-<p>Lens is Electron-based, which means it&rsquo;s available for a ton of platforms, but it&rsquo;s also Electron-based, so there&rsquo;s that slow memory leak to look forward to. 🤷‍♂️</p>
+<p>Lens is Electron-based, which means it&rsquo;s available for a ton of platforms, but it&rsquo;s also Electron-based, so there&rsquo;s that slow memory leak to look forward to. &#x1f937;&zwj;&#x2642;&#xfe0f;</p>
 <p>See the installation instructions <a href="https://docs.k8slens.dev/main/getting-started/">here</a>. I&rsquo;m using Arch, btw, so I&rsquo;m using the version from the <a href="https://aur.archlinux.org/packages/lens-bin">AUR</a>.</p>
 <pre tabindex="0"><code>yay -s lens-bin
 </code></pre><p>Lens reads your <code>~/.kube/config</code> file, so no setup or proxy is required.</p>
