@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Deploying Hugo with CloudFront and S3 (for real this time)</title>
+      <link>https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/</link>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/</guid>
+      <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
+Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify TL;DR Good news everyone!</description>
+    </item>
+    
+    <item>
       <title>Keebio Sinc split keyboard</title>
       <link>https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/</link>
       <pubDate>Wed, 30 Aug 2023 00:00:00 +0000</pubDate>
@@ -211,7 +221,7 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
       
       <guid>https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/</guid>
       <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
-Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with CloudFront and S3. My main complaints came from the complicated Terraform setup and the lack of easy redirects.</description>
+Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with CloudFront and S3.</description>
     </item>
     
     <item>
@@ -221,7 +231,7 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
       
       <guid>https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/</guid>
       <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
-Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with AWS Amplify. My only complaint was that Amplify doesn&amp;rsquo;t support IPv6.</description>
+Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with AWS Amplify.</description>
     </item>
     
     <item>
@@ -231,7 +241,7 @@ Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-1
       
       <guid>https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/</guid>
       <description>Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
-Date URL Part 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Since I migrated from WordPress to Hugo, I&amp;rsquo;ve dropped the need to run PHP and MySQL on my server. This means my server is now only running Nginx, serving up static HTML/CSS/JS files.</description>
+Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Since I migrated from WordPress to Hugo, I&amp;rsquo;ve dropped the need to run PHP and MySQL on my server.</description>
     </item>
     
     <item>
