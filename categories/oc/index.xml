@@ -6,16 +6,15 @@
     <description>Recent content in oc on Logan Marchione</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/oc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/oc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Beryl travel router with OpenWrt</title>
-      <link>https://loganmarchione.github.io/2024/01/beryl-travel-router-with-openwrt/</link>
-      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <link>https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/</link>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://loganmarchione.github.io/2024/01/beryl-travel-router-with-openwrt/</guid>
+      <guid>https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/</guid>
       <description>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
-Date URL Part 2024-01-31 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction It&amp;rsquo;s been over seven years since I last touched OpenWrt. &amp;#x1f92f;
-I&amp;rsquo;ve been on a couple trips in the last month and needed a way to share a single internet connection with multiple devices (e.</description>
+Date URL Part 2024-02-06 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I&amp;rsquo;ve been on a couple trips in the last month and needed a way to share a single internet connection with multiple devices (e.</description>
     </item>
     
     <item>
@@ -589,7 +588,7 @@ Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrat
       
       <guid>https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/</guid>
       <description>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
-Date URL Part 2024-01-31 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction Typically, when a new version of OpenWrt is released, I completely wipe the router and start over.</description>
+Date URL Part 2024-02-06 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction Typically, when a new version of OpenWrt is released, I completely wipe the router and start over.</description>
     </item>
     
     <item>
@@ -610,7 +609,7 @@ Fun fact - in 1993 the US government charged Zimmerman with &amp;ldquo;munition
       
       <guid>https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/</guid>
       <description>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
-Date URL Part 2024-01-31 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I&amp;rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works.</description>
+Date URL Part 2024-02-06 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I&amp;rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works.</description>
     </item>
     
     <item>
@@ -640,7 +639,7 @@ Introduction Since TrueCrypt is no longer under active development, I&amp;rsquo;
       
       <guid>https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/</guid>
       <description>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
-Date URL Part 2024-01-31 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time.</description>
+Date URL Part 2024-02-06 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Update: Multiple posts Originally, this series consisted of three posts with basically the same content, but small improvements each time.</description>
     </item>
     
     <item>
