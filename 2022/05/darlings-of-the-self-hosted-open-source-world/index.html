@@ -7,11 +7,20 @@
 <meta name="robots" content="index, follow">
 <title>Darlings of the self-hosted, open-source world | Logan Marchione</title>
 <meta name="keywords" content="">
-<meta name="description" content="TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
-Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.">
+<meta name="description" content="TL;DR
+In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
+
+Home Assistant
+Jellyfin
+Pi-hole
+Nextcloud
+WordPress
+
+Introduction
+My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4117d964c20f142572c34772d5a912b3681e6e9317e9f2de59739813b764caeb.css" integrity="sha256-QRfZZMIPFCVyw0dy1akSs2gebpMX6fLeWXOYE7dkyus=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f737ae2bbddb9e5a5c8133bc107d338cb5dfa2b17a99422c06cf6bdb4736c9bf.css" integrity="sha256-9zeuK73bnlpcgTO8EH0zjLXforF6mUIsBs9r20c2yb8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -19,6 +28,7 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
 <link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/">
 <noscript>
     <style>
         #theme-toggle,
@@ -36,7 +46,7 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -55,36 +65,53 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Darlings of the self-hosted, open-source world" />
-<meta property="og:description" content="TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
-Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/" />
-<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00" /><meta property="og:site_name" content="Logan Marchione" />
+</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:title" content="Darlings of the self-hosted, open-source world">
+<meta property="og:description" content="TL;DR
+In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" />
-<meta name="twitter:title" content="Darlings of the self-hosted, open-source world"/>
-<meta name="twitter:description" content="TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
-Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks."/>
+Home Assistant
+Jellyfin
+Pi-hole
+Nextcloud
+WordPress
+
+Introduction
+My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/">
+<meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-05-05T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00"><meta property="og:site_name" content="Logan Marchione">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg">
+<meta name="twitter:title" content="Darlings of the self-hosted, open-source world">
+<meta name="twitter:description" content="TL;DR
+In my opinion, these self-hosted, open-source applications are the best of what open-source can be.
+
+Home Assistant
+Jellyfin
+Pi-hole
+Nextcloud
+WordPress
+
+Introduction
+My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.">
 
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [, 
+  "itemListElement": [
     {
       "@type": "ListItem",
-      "position":  2 ,
+      "position":  1 ,
       "name": "Posts",
       "item": "https://loganmarchione.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
-      "position":  3 ,
+      "position":  2 ,
       "name": "Darlings of the self-hosted, open-source world",
       "item": "https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/"
     }
@@ -97,7 +124,7 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
   "@type": "BlogPosting",
   "headline": "Darlings of the self-hosted, open-source world",
   "name": "Darlings of the self-hosted, open-source world",
-  "description": "TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.\nHome Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.",
+  "description": "TL;DR In my opinion, these self-hosted, open-source applications are the best of what open-source can be.\nHome Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.\n",
   "keywords": [
     
   ],
@@ -141,7 +168,7 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://loganmarchione.github.io" accesskey="h" title="Logan Marchione (Alt + H)">
+            <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
                 <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
@@ -196,14 +223,14 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       Darlings of the self-hosted, open-source world
     </h1>
     <div class="post-meta"><span title='2022-05-05 00:00:00 +0000 UTC'>2022-05-05</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1119 words&nbsp;·&nbsp;Logan Marchione
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" alt="featured image">
+<figure class="entry-cover"><img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" alt="featured image">
         
 </figure><div class="toc">
     <details >
@@ -247,70 +274,69 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
 <p>My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.</p>
 <p>This got me thinking about other self-hosted, open-source applications that are truly amazing works of engineering and community collaboration. Below is what I came up with.</p>
 <table>
-<thead>
-<tr>
-<th>Project</th>
-<th>Category</th>
-<th>Paid tier?</th>
-<th>Language</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
+  <thead>
+      <tr>
+          <th>Project</th>
+          <th>Category</th>
+          <th>Paid tier?</th>
+          <th>Language</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
 
 
 <span class="homelab-svg-assets-inline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g fill-rule="evenodd"><path fill="#41bdf5" d="M0 0h48v48H0z"/><path fill="#fff" d="M23.988 6.72a1.116 1.116 0 0 0-.79.334L5.252 25.257a.896.896 0 0 0 .638 1.525h3.33v12.791c0 .412.334.747.746.747H38.02a.747.747 0 0 0 .747-.747V26.782h3.345a.896.896 0 0 0 .64-1.522l-3.985-4.075V14.76a.747.747 0 0 0-.747-.746h-3.11a.747.747 0 0 0-.747.746v1.75l-9.37-9.459-.01-.009a1.117 1.117 0 0 0-.794-.322zm.006 7.774a3.842 3.842 0 0 1 1.44 7.401l-.001 8.515 2.798-2.8a3.839 3.839 0 0 1 3.534-5.34 3.84 3.84 0 0 1 3.837 3.84 3.839 3.839 0 0 1-5.336 3.537l-4.833 4.836v5.836h-2.878v-5.836l-4.833-4.836a3.839 3.839 0 0 1-5.336-3.536 3.839 3.839 0 1 1 7.371 1.5l2.798 2.8v-8.516a3.841 3.841 0 0 1 1.439-7.401zm0 2.304a1.535 1.535 0 1 0 0 3.07 1.535 1.535 0 0 0 0-3.07zm-7.77 7.776a1.535 1.535 0 1 0 0 3.071 1.535 1.535 0 0 0 0-3.07zm15.54 0a1.535 1.535 0 1 0 .002 3.071 1.535 1.535 0 0 0-.001-3.07z"/></g></svg></span> <a href="https://www.home-assistant.io/">Home Assistant</a></td>
-<td>Home automation</td>
-<td><a href="https://www.nabucasa.com/">Nabu Casa</a></td>
-<td><a href="https://github.com/home-assistant/core">Python</a></td>
-</tr>
-<tr>
-<td>
+          <td>Home automation</td>
+          <td><a href="https://www.nabucasa.com/">Nabu Casa</a></td>
+          <td><a href="https://github.com/home-assistant/core">Python</a></td>
+      </tr>
+      <tr>
+          <td>
 
 
 <span class="homelab-svg-assets-inline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="jellyfin_svg__a" x1="110.25" x2="496.14" y1="213.3" y2="436.09" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#aa5cc3"/><stop offset="1" stop-color="#00a4dc"/></linearGradient></defs><g fill="url(#jellyfin_svg__a)" transform="translate(-2.958 -2.402) scale(.10313)"><path d="M261.42 201.62c-20.44 0-86.24 119.29-76.2 139.43s142.48 19.92 152.4 0-55.76-139.42-76.2-139.43z"/><path d="M261.42 23.3C199.83 23.3 1.57 382.73 31.8 443.43s429.34 60 459.24 0S323 23.3 261.42 23.3zM411.9 390.76c-19.59 39.33-281.08 39.77-300.9 0s110.1-275.28 150.45-275.28S431.49 351.42 411.9 390.76z"/></g></svg></span> <a href="https://jellyfin.org/">Jellyfin</a></td>
-<td>Media server</td>
-<td>N/A</td>
-<td><a href="https://github.com/jellyfin/jellyfin">C#</a></td>
-</tr>
-<tr>
-<td>
+          <td>Media server</td>
+          <td>N/A</td>
+          <td><a href="https://github.com/jellyfin/jellyfin">C#</a></td>
+      </tr>
+      <tr>
+          <td>
 
 
 <span class="homelab-svg-assets-inline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="pihole_svg__New_Gradient_Swatch_1" x1="2.71" x2="69.77" y1="20.04" y2="20.04" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#12b212"/><stop offset="1" stop-color="#0f0"/></linearGradient><style>.pihole_svg__cls-2{fill:#980200}.pihole_svg__cls-3{fill:red}</style></defs><path fill="url(#pihole_svg__New_Gradient_Swatch_1)" d="M36.56 39.93C20.34 38.2 4 25.94 2.71 0c25.17 0 38.63 14.9 39.93 38.51 4.76-28.32 27.07-25 27.07-25 1.06 16.05-12.12 25.78-27.07 26.59-4.2-8.85-29.36-30.56-29.36-30.56a.07.07 0 0 0-.11.08s24.28 21.15 23.39 30.31" transform="translate(7.686) scale(.36943)"/><path d="M24 48c-.58-.033-5.992-.24-6.32-6.32-.267-3.695 2.652-6.418 2.652-10.005-.662-8.944-12.646-7.836-12.646 0a7.366 7.366 0 0 0 2.154 5.224l8.929 8.932a7.366 7.366 0 0 0 5.224 2.154" class="pihole_svg__cls-2"/><path d="M40.314 31.679c-.033.58-.24 5.992-6.32 6.32-3.695.267-6.422-2.652-10.005-2.652-8.944.661-7.836 12.642 0 12.642a7.366 7.366 0 0 0 5.224-2.154l8.936-8.929a7.366 7.366 0 0 0 2.154-5.224" class="pihole_svg__cls-3"/><path d="M24 15.365c.58.033 5.992.24 6.321 6.32.266 3.695-2.653 6.418-2.653 10.005.662 8.944 12.642 7.835 12.642 0a7.366 7.366 0 0 0-2.153-5.224l-8.933-8.937A7.366 7.366 0 0 0 24 15.376" class="pihole_svg__cls-2"/><path d="M7.716 31.679c.033-.58.24-5.993 6.32-6.321 3.695-.266 6.421 2.652 10.005 2.652 8.944-.672 7.835-12.642 0-12.642a7.366 7.366 0 0 0-5.224 2.154L9.88 26.455a7.366 7.366 0 0 0-2.153 5.224" class="pihole_svg__cls-3"/></svg></span> <a href="https://pi-hole.net/">Pi-hole</a></td>
-<td>Network-level ad-block</td>
-<td>N/A</td>
-<td><a href="https://github.com/pi-hole/pi-hole">Shell/Python/PHP</a></td>
-</tr>
-<tr>
-<td>
+          <td>Network-level ad-block</td>
+          <td>N/A</td>
+          <td><a href="https://github.com/pi-hole/pi-hole">Shell/Python/PHP</a></td>
+      </tr>
+      <tr>
+          <td>
 
 
 <span class="homelab-svg-assets-inline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#0082c9" d="M24.036 13.074c-4.975 0-9.193 3.373-10.499 7.942-1.136-2.423-3.598-4.121-6.432-4.121C3.205 16.895 0 20.1 0 23.999c0 3.9 3.205 7.106 7.104 7.106 2.835 0 5.297-1.7 6.433-4.124 1.307 4.57 5.524 7.945 10.499 7.945 4.939 0 9.134-3.324 10.475-7.842 1.157 2.369 3.588 4.02 6.383 4.02 3.9 0 7.106-3.206 7.106-7.105 0-3.899-3.206-7.104-7.106-7.104-2.795 0-5.227 1.65-6.383 4.019-1.34-4.518-5.536-7.84-10.475-7.84zm0 4.17A6.724 6.724 0 0 1 30.792 24a6.725 6.725 0 0 1-6.756 6.756A6.724 6.724 0 0 1 17.282 24a6.722 6.722 0 0 1 6.754-6.754zM7.104 21.067A2.904 2.904 0 0 1 10.04 24a2.905 2.905 0 0 1-2.936 2.935A2.904 2.904 0 0 1 4.171 24a2.902 2.902 0 0 1 2.933-2.933zm33.79 0A2.904 2.904 0 0 1 43.83 24a2.905 2.905 0 0 1-2.936 2.935A2.904 2.904 0 0 1 37.961 24a2.902 2.902 0 0 1 2.933-2.933z" color="#000" style="isolation:auto;mix-blend-mode:normal;text-decoration-color:#000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal"/></svg></span> <a href="https://nextcloud.com/">Nextcloud</a></td>
-<td>Personal cloud</td>
-<td><a href="https://nextcloud.com/enterprise/">NextCloud Enterprise</a></td>
-<td><a href="https://github.com/nextcloud/server">PHP/JS</a></td>
-</tr>
-<tr>
-<td>
+          <td>Personal cloud</td>
+          <td><a href="https://nextcloud.com/enterprise/">NextCloud Enterprise</a></td>
+          <td><a href="https://github.com/nextcloud/server">PHP/JS</a></td>
+      </tr>
+      <tr>
+          <td>
 
 
 <span class="homelab-svg-assets-inline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g fill="#464342" style="fill:#32373c;fill-opacity:1"><path d="M8.708 61.26c0 20.802 12.089 38.779 29.619 47.298L13.258 39.872a52.354 52.354 0 0 0-4.55 21.388zm88.032-2.652c0-6.495-2.333-10.993-4.334-14.494-2.664-4.329-5.161-7.995-5.161-12.324 0-4.831 3.664-9.328 8.825-9.328.233 0 .454.029.681.042-9.35-8.566-21.807-13.796-35.489-13.796-18.36 0-34.513 9.42-43.91 23.688 1.233.037 2.395.063 3.382.063 5.497 0 14.006-.667 14.006-.667 2.833-.167 3.167 3.994.337 4.329 0 0-2.847.335-6.015.501L48.2 93.547l11.501-34.493-8.188-22.434c-2.83-.166-5.511-.501-5.511-.501-2.832-.166-2.5-4.496.332-4.329 0 0 8.679.667 13.843.667 5.496 0 14.006-.667 14.006-.667 2.835-.167 3.168 3.994.337 4.329 0 0-2.853.335-6.015.501l18.992 56.494 5.242-17.517c2.272-7.269 4.001-12.49 4.001-16.989z" style="fill:#32373c;fill-opacity:1" transform="scale(.39175)"/><path d="m62.184 65.857-15.768 45.819a52.552 52.552 0 0 0 14.846 2.141c6.12 0 11.989-1.058 17.452-2.979a4.615 4.615 0 0 1-.374-.724zm45.192-29.811c.226 1.674.354 3.471.354 5.404 0 5.333-.996 11.328-3.996 18.824l-16.053 46.413c15.624-9.111 26.133-26.038 26.133-45.426.001-9.137-2.333-17.729-6.438-25.215z" style="fill:#32373c;fill-opacity:1" transform="scale(.39175)"/><path d="M61.262 0C27.483 0 0 27.481 0 61.26c0 33.783 27.483 61.263 61.262 61.263 33.778 0 61.265-27.48 61.265-61.263C122.526 27.481 95.04 0 61.262 0Zm0 119.715c-32.23 0-58.453-26.223-58.453-58.455 0-32.23 26.222-58.451 58.453-58.451 32.229 0 58.45 26.221 58.45 58.451 0 32.232-26.221 58.455-58.45 58.455z" style="fill:#32373c;fill-opacity:1" transform="scale(.39175)"/></g></svg></span> <a href="https://wordpress.org/">WordPress</a></td>
-<td>Blogging</td>
-<td><a href="https://wordpress.com/">WordPress.com</a></td>
-<td><a href="https://build.trac.wordpress.org/browser">PHP/JS</a></td>
-</tr>
-</tbody>
+          <td>Blogging</td>
+          <td><a href="https://wordpress.com/">WordPress.com</a></td>
+          <td><a href="https://build.trac.wordpress.org/browser">PHP/JS</a></td>
+      </tr>
+  </tbody>
 </table>
 <p>I&rsquo;m aware that this is not an exhaustive list, and that most of these applications stand on the shoulders of giants. However, when trying to sell &ldquo;regular people&rdquo; on self-hosted, open-source applications, this is the list to start with.</p>
 
-<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_001_hu47afe957080c4c105c9978c043b80e4b_118513_800x0_resize_q75_catmullrom.jpg" loading="lazy" alt="your opinion, man"></p>
+<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_001_hu12093166729724103602.jpg" loading="lazy" alt="your opinion, man"></p>
 <h1 id="home-assistant">Home Assistant<a hidden class="anchor" aria-hidden="true" href="#home-assistant">#</a></h1>
 <p>I&rsquo;m certainly not a Home Assistant power user, but I will say this is one of the most useful applications that I self-host. Even if I&rsquo;m not logging into the application itself on a consistent basis, Home Assistant is always there, running in the background, automating my life.</p>
 <p>If you&rsquo;re not aware, <a href="https://www.home-assistant.io/">Home Assistant</a>, is a home automation tool (e.g., turn on the lights when I get home, if the living room is above 75 F turn on the A/C, etc&hellip;). What makes Home Assistant so special is that it allows you to break out of the walled gardens of vendors (Philips, Aqara, SmartThings, Wyze, etc&hellip;). Home Assistant acts as a &ldquo;hub&rdquo;, allowing you to collect data (and act on it) from multiple different sources.</p>
-<p><img loading="lazy" src="20220504_002.svg" alt="home assistant"  />
-</p>
+<p><img alt="home assistant" loading="lazy" src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_002.svg"></p>
 <p>Want your Samsung WiFi-connected smart A/C unit to turn on when your Aqara Zibgee-connected temperature sensor reads 75 F? Want your Wyze camera to detect motion and send you snapshot via Telegram message? Want your Philips lights and SmartThings switches to display natively in your iPhone&rsquo;s Home app? Home Assistant can do all of that, <a href="https://www.home-assistant.io/docs/automation/basics/">and more</a>!</p>
 <p>Home Assistant has a paid tier called <a href="https://www.nabucasa.com/">Nabu Casa</a> that offers (among other things) secure, remote access to your locally-hosted Home Assistant instance.</p>
 <h1 id="jellyfin">Jellyfin<a hidden class="anchor" aria-hidden="true" href="#jellyfin">#</a></h1>
@@ -322,7 +348,7 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
 <p>I don&rsquo;t run <a href="https://pi-hole.net/">Pi-hole</a> personally, but it&rsquo;s mentioned everywhere online. It is a DNS-based sinkhole used to block ads on your <em>entire network</em>. This means that instead of setting up ad-block on every browser, you can setup Pi-hole on your network, and it will block ads on every device on your network (including mobile apps and smart TVs). Because the traffic is blocked on a network level, network performance will be improved and your browsing experience will feel faster (because it is). Blocking ads isn&rsquo;t just about convenience, it&rsquo;s also about security, since Pi-hole&rsquo;s blocklists block potential spam and malware, as well as known bad-actors.</p>
 <p>Pi-hole (as the name implies) originally started as a Raspberry Pi project, but now runs on x86 hardware, as well as Docker. It also offers a DHCP server, and a web-based dashboard for configuration and viewing statistics (screenshot below).</p>
 
-<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_003_hu151526c98c01e1de57c090ed69714623_148570_800x0_resize_catmullrom_3.png" loading="lazy" alt="pi-hole dashboard"></p>
+<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_003_hu4008237153773513492.png" loading="lazy" alt="pi-hole dashboard"></p>
 <h1 id="nextcloud">Nextcloud<a hidden class="anchor" aria-hidden="true" href="#nextcloud">#</a></h1>
 <p>I don&rsquo;t run <a href="https://nextcloud.com/">Nextcloud</a> personally, but it&rsquo;s a stand-out in its field. Competing with giants like Google and Microsoft, Nextcloud is a &ldquo;personal cloud&rdquo;, offering self-hosted versions of mail, contact, calendar, kanban, video/audio calls, web hosting, file storage/sync, document editing, an <a href="https://apps.nextcloud.com/">app store</a>, and more. If there is one application you could use to build your digital life around, it would be Nextcloud.</p>
 <p>Nextcloud also has a ton of business-centered administration features, such as logging/monitoring, 2FA, file access control, LDAP integration, compliance (e.g., HIPAA, GDPR, etc&hellip;), encryption in-transit and at-rest, and more.</p>
@@ -349,65 +375,80 @@ Home Assistant Jellyfin Pi-hole Nextcloud WordPress Introduction My hot water ta
     <ul class="post-tags">
     </ul>
 
-<div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on twitter"
-        href="https://twitter.com/intent/tweet/?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&amp;hashtags=">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&amp;title=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;summary=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;source=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on reddit"
-        href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&title=Darlings%20of%20the%20self-hosted%2c%20open-source%20world">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on facebook"
-        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on whatsapp"
-        href="https://api.whatsapp.com/send?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world%20-%20https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on telegram"
-        href="https://telegram.me/share/url?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
-        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on ycombinator"
-        href="https://news.ycombinator.com/submitlink?t=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&u=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
-        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-            <path
-                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-        </svg>
-    </a>
-</div>
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on x"
+            href="https://x.com/intent/tweet/?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&amp;title=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;summary=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;source=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f&title=Darlings%20of%20the%20self-hosted%2c%20open-source%20world">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on whatsapp"
+            href="https://api.whatsapp.com/send?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world%20-%20https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on telegram"
+            href="https://telegram.me/share/url?text=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&amp;url=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Darlings of the self-hosted, open-source world on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Darlings%20of%20the%20self-hosted%2c%20open-source%20world&u=https%3a%2f%2floganmarchione.github.io%2f2022%2f05%2fdarlings-of-the-self-hosted-open-source-world%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
 
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://loganmarchione.github.io">Logan Marchione</a></span>
+        <span>&copy; 2024 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
