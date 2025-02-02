@@ -8,6 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 16 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/external/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Goodbye to Windows</title>
+      <link>https://loganmarchione.github.io/2025/02/goodbye-to-windows/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://loganmarchione.github.io/2025/02/goodbye-to-windows/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;ve been dual-booting Windows and Linux (I use Arch, btw) for about five years now. This past weekend, I physically removed the SSD that held my Windows 10 installation from my desktop PC. I realized that for the first time in my entire life, I didn&amp;rsquo;t have Windows available on my main computer.&lt;/p&gt;
+&lt;h2 id=&#34;my-windows-journey&#34;&gt;My Windows journey&lt;/h2&gt;
+&lt;p&gt;When I was a kid, I don&amp;rsquo;t remember what year we first got a computer, but I do remember that it was a loud, beige box from Compaq running &lt;a href=&#34;https://en.wikipedia.org/wiki/Windows_98&#34;&gt;Windows 98&lt;/a&gt;. I remember using dial-up internet, playing &lt;a href=&#34;https://en.wikipedia.org/wiki/Total_Annihilation&#34;&gt;Total Annihilation&lt;/a&gt;, and typing simple pages for school on &lt;a href=&#34;https://en.wikipedia.org/wiki/Microsoft_Office_97&#34;&gt;Office 97&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Beryl travel router with OpenWrt</title>
       <link>https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/</link>
       <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
