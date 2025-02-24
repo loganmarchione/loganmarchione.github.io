@@ -45,7 +45,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;My &lt;a href=&#34;http://localhost:1313/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;APU2 is five years old now&lt;/a&gt; and I notice that it runs slow when making changes in pfSense&amp;rsquo;s web interface. The CPU is an AMD GX-412TC (from 2014) and it&amp;rsquo;s running 4GB of DDR3 memory, so I guess that&amp;rsquo;s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I&amp;rsquo;m left wondering if the APU2 could keep up with that speed. I&amp;rsquo;ve seen &lt;a href=&#34;https://teklager.se/en/knowledge-base/apu2-1-gigabit-throughput-pfsense/&#34;&gt;this post&lt;/a&gt; about routing at 1Gbps on the APU2 hardware, but I&amp;rsquo;m also running pfBlockerNG and wondering if that would affect speed.&lt;/p&gt;</description>
+&lt;p&gt;My &lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;APU2 is five years old now&lt;/a&gt; and I notice that it runs slow when making changes in pfSense&amp;rsquo;s web interface. The CPU is an AMD GX-412TC (from 2014) and it&amp;rsquo;s running 4GB of DDR3 memory, so I guess that&amp;rsquo;s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I&amp;rsquo;m left wondering if the APU2 could keep up with that speed. I&amp;rsquo;ve seen &lt;a href=&#34;https://teklager.se/en/knowledge-base/apu2-1-gigabit-throughput-pfsense/&#34;&gt;this post&lt;/a&gt; about routing at 1Gbps on the APU2 hardware, but I&amp;rsquo;m also running pfBlockerNG and wondering if that would affect speed.&lt;/p&gt;</description>
     </item>
     
     <item>
