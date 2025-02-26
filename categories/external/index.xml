@@ -8,48 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 16 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/external/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>pfSense on the OPNsense DEC740</title>
-      <link>https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/</link>
-      <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/</guid>
-      <description>&lt;p&gt;Hey! Listen! This post is part of a series on pfSense. Check them all out!&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-03-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-08-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a PC Engines APU2D4&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-07-17&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;My SG-1100 died&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated back the the EdgeRouter Lite&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;My &lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;APU2 is five years old now&lt;/a&gt; and I notice that it runs slow when making changes in pfSense&amp;rsquo;s web interface. The CPU is an AMD GX-412TC (from 2014) and it&amp;rsquo;s running 4GB of DDR3 memory, so I guess that&amp;rsquo;s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I&amp;rsquo;m left wondering if the APU2 could keep up with that speed. I&amp;rsquo;ve seen &lt;a href=&#34;https://teklager.se/en/knowledge-base/apu2-1-gigabit-throughput-pfsense/&#34;&gt;this post&lt;/a&gt; about routing at 1Gbps on the APU2 hardware, but I&amp;rsquo;m also running pfBlockerNG and wondering if that would affect speed.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Goodbye to Windows</title>
       <link>https://loganmarchione.github.io/2025/02/goodbye-to-windows/</link>
       <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
@@ -99,8 +57,8 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h1 id=&#34;update-2025-02-19&#34;&gt;Update: 2025-02-19&lt;/h1&gt;
-&lt;p&gt;I&amp;rsquo;ve used this travel router half a dozen times without issue. My initial installation was on version 23.05.2, but I&amp;rsquo;ve used a package called &lt;code&gt;luci-app-attendedsysupgrade&lt;/code&gt; to do minor upgrades from within the OpenWrt web interface, following &lt;a href=&#34;https://openwrt.org/docs/guide-user/installation/attended.sysupgrade&#34;&gt;these instructions&lt;/a&gt;.&lt;/p&gt;</description>
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;ve been on a couple trips in the last month and needed a way to share a single internet connection with multiple devices (e.g., Steam Deck, laptops, phones, etc&amp;hellip;). It&amp;rsquo;s been over &lt;a href=&#34;http://localhost:1313/2016/04/openwrt-upgrade-process/&#34;&gt;seven years since I last touched OpenWrt&lt;/a&gt;. &amp;#x1f92f; I thought it would be fun to setup OpenWrt on a travel router and to revisit OpenWrt to see what&amp;rsquo;s changed.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -153,17 +111,15 @@
       <guid>https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/</guid>
       <description>&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;I got a new keyboard &amp;#x1f601;&lt;/p&gt;
-
-
-&lt;video width=&#34;100%&#34; height=&#34;100%&#34; autoplay controls loop muted playsinline&gt;
-  &lt;source src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20230821_012.mp4&#34; type=&#34;video/mp4&#34;&gt;
-  &lt;p&gt;Your browser does not support video.&lt;/p&gt;
+&lt;video autoplay controls loop muted playsinline style=&#34;width: 100%; height: auto;&#34;&gt;
+    &lt;source src=&#34;20230821_012.mp4&#34; type=&#34;video/mp4&#34;&gt;
+    
+    &lt;p&gt; Your browser does not support video. &lt;/p&gt;
 &lt;/video&gt;
-
-
-&lt;video width=&#34;100%&#34; height=&#34;100%&#34; autoplay controls loop muted playsinline&gt;
-  &lt;source src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20230822_001.mp4&#34; type=&#34;video/mp4&#34;&gt;
-  &lt;p&gt;Your browser does not support video.&lt;/p&gt;
+&lt;video autoplay controls loop muted playsinline style=&#34;width: 100%; height: auto;&#34;&gt;
+    &lt;source src=&#34;20230822_001.mp4&#34; type=&#34;video/mp4&#34;&gt;
+    
+    &lt;p&gt; Your browser does not support video. &lt;/p&gt;
 &lt;/video&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20230830_001_hu988522628876519380.jpg&#34; loading=&#34;lazy&#34; alt=&#34;wrist rest&#34;&gt;&lt;/p&gt;
@@ -861,7 +817,8 @@
       <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/</guid>
-      <description>&lt;p&gt;Hey! Listen! This post is part of a series on pfSense. Check them all out!&lt;/p&gt;
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Hey! Listen! This post is part of a series on pfSense. Check them all out!&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -871,11 +828,6 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-03-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
-      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;2019-08-25&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
@@ -893,7 +845,6 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In the past few weeks, I &lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;replaced my EdgeRouter Lite with a Netgate SG-1100&lt;/a&gt;. Two weeks later, &lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;my SG-1100 died,&lt;/a&gt; and I had to put the EdgeRouter Lite back. However, I still wanted to replace the ERL with a pfSense device (albeit, not Netgate hardware).&lt;/p&gt;</description>
     </item>
     
@@ -913,11 +864,6 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-03-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
-      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;2019-08-25&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
