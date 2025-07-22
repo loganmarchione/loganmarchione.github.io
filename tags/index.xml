@@ -98,8 +98,9 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h1 id=&#34;update-2025-02-19&#34;&gt;Update: 2025-02-19&lt;/h1&gt;
-&lt;p&gt;I&amp;rsquo;ve used this travel router half a dozen times without issue. My initial installation was on version 23.05.2, but I&amp;rsquo;ve used a package called &lt;code&gt;luci-app-attendedsysupgrade&lt;/code&gt; to do minor upgrades from within the OpenWrt web interface, following &lt;a href=&#34;https://openwrt.org/docs/guide-user/installation/attended.sysupgrade&#34;&gt;these instructions&lt;/a&gt;.&lt;/p&gt;</description>
+&lt;h1 id=&#34;update-2025-07-22&#34;&gt;Update: 2025-07-22&lt;/h1&gt;
+&lt;p&gt;A lot has changed in the world of OpenWrt!&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;opkg&lt;/code&gt; package manager has been &lt;a href=&#34;https://forum.openwrt.org/t/the-future-is-now-opkg-vs-apk/201164&#34;&gt;replaced&lt;/a&gt; by &lt;code&gt;apk&lt;/code&gt;, the &lt;a href=&#34;https://wiki.alpinelinux.org/wiki/Alpine_Package_Keeper&#34;&gt;same package manager from Alpine Linux&lt;/a&gt;. However, &lt;code&gt;apk&lt;/code&gt; is currently only available on SNAPSHOT builds, so I&amp;rsquo;m guessing it will come as default in the 25.xx version.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -153,7 +154,7 @@
       <description>&lt;h1 id=&#34;update-2025-03-16&#34;&gt;Update: 2025-03-16&lt;/h1&gt;
 &lt;p&gt;I picked up a set of &lt;a href=&#34;https://keeb.io/products/sinc-aluminum-plates&#34;&gt;aluminum plates&lt;/a&gt; for my Sinc, as well as some &lt;a href=&#34;https://keeb.io/products/skuf-silicone-rubber-keyboard-feet&#34;&gt;replacement rubber feet&lt;/a&gt;. You can see the aluminum on the right. Very pleased!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20250315_001_hu11236948363468843777.jpg&#34; loading=&#34;lazy&#34; alt=&#34;aluminum plates&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20250315_001_hu_3bf20349ef337767.jpg&#34; loading=&#34;lazy&#34; alt=&#34;aluminum plates&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;I got a new keyboard &amp;#x1f601;&lt;/p&gt;
 
@@ -169,7 +170,7 @@
   &lt;p&gt;Your browser does not support video.&lt;/p&gt;
 &lt;/video&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20230830_001_hu988522628876519380.jpg&#34; loading=&#34;lazy&#34; alt=&#34;wrist rest&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20230830_001_hu_741332719de908d0.jpg&#34; loading=&#34;lazy&#34; alt=&#34;wrist rest&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;&amp;#x26a0;&amp;#xfe0f; WARNING &amp;#x26a0;&amp;#xfe0f;&lt;/p&gt;
 &lt;ul&gt;
@@ -200,10 +201,10 @@
 &lt;p&gt;There are now a few companies selling pre-built Meshtastic devices, like the &lt;a href=&#34;https://canaryradio.io/products/canaryone&#34;&gt;CanaryOne&lt;/a&gt;, &lt;a href=&#34;https://pacificnorthwest3d.com/collections/meshtastic&#34;&gt;PacificNorthWest3D&lt;/a&gt;, and &lt;a href=&#34;https://muzi.works/collections/all&#34;&gt;muzi WORKS&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Jeff Geerling has an introductory &lt;a href=&#34;https://www.jeffgeerling.com/blog/2024/getting-started-meshtastic&#34;&gt;post&lt;/a&gt; and &lt;a href=&#34;https://www.youtube.com/watch?v=X4Akj5qF-3Q&#34;&gt;video&lt;/a&gt; about Meshtastic, and I ended up purchasing two of the &lt;a href=&#34;https://muzi.works/products/h1-complete-device-with-upgraded-whip-antenna-heltec-v3-running-meshtastic&#34;&gt;muzi WORKS H1 devices&lt;/a&gt; after watching his video (these are based on the Heltec WiFi LoRa 32 V3, so they don&amp;rsquo;t have GPS on-board).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_001_hu13407179120021932145.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_001_hu_6190e882b77cda86.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This is compared to a standard 3x3 inch sticky note.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_002_hu15430750579599185687.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_002_hu_70f6ac0052880bf8.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -294,8 +295,7 @@
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I spend a lot of time on Reddit in &lt;a href=&#34;https://reddit.com/r/devops/&#34;&gt;r/devops&lt;/a&gt;, &lt;a href=&#34;https://reddit.com/r/homelab&#34;&gt;r/homelab&lt;/a&gt;, and &lt;a href=&#34;https://reddit.com/r/selfhosted&#34;&gt;r/selfhosted&lt;/a&gt;, where I always see different versions of the same question:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;It&amp;rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;I&amp;rsquo;ve posted this answer to Reddit multiple times before, but this post will have more detail.&lt;/p&gt;
 &lt;h1 id=&#34;static-site&#34;&gt;Static site&lt;/h1&gt;
 &lt;p&gt;Build a static site. &lt;em&gt;That&amp;rsquo;s the answer&lt;/em&gt;.&lt;/p&gt;
@@ -479,7 +479,7 @@
       <description>&lt;h1 id=&#34;update-2022-04-15&#34;&gt;Update: 2022-04-15&lt;/h1&gt;
 &lt;p&gt;I typically average around 100 unique visitors to this site per day. Below is a screenshot from my &lt;a href=&#34;https://loganmarchione.github.io/2021/03/analytics-with-hugo/&#34;&gt;Plausible analytics setup&lt;/a&gt; showing the traffic spike up to almost 14k unique visitors from HackerNews (and other sources).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/20220415_001_hu6196465632042972178.png&#34; loading=&#34;lazy&#34; alt=&#34;plausible&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/20220415_001_hu_33232211f3dc3a48.png&#34; loading=&#34;lazy&#34; alt=&#34;plausible&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;update-2022-04-12&#34;&gt;Update: 2022-04-12&lt;/h1&gt;
 &lt;p&gt;I posted this article to &lt;a href=&#34;https://news.ycombinator.com/item?id=30993350&#34;&gt;that orange site&lt;/a&gt; and it blew up more than I expected. I reached #3 of the front page (screenshot below) and am officially on the top 10 list for &lt;a href=&#34;https://news.ycombinator.com/front?day=2022-04-11&#34;&gt;2022-04-11&lt;/a&gt;. When I &lt;a href=&#34;https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo/#things-im-losing&#34;&gt;migrated from WordPress to Hugo&lt;/a&gt;, I lost comments on this blog, but the HackerNews post has some really good discussion and recommendations that I highly encourage you to check out.&lt;/p&gt;</description>
     </item>
@@ -2035,7 +2035,7 @@
       <description>&lt;p&gt;Recently, I posted three articles of a four-part series showing how to encrypt an external drive with TrueCrypt on Fedora 20. As-of today, May 28th, TrueCrypt may not be secure after-all.&lt;/p&gt;
 &lt;p&gt;The truecrypt.org website now redirects to &lt;a href=&#34;http://truecrypt.sourceforge.net/&#34;&gt;truecrypt.sourceforge.net&lt;/a&gt;. A warning is displayed that reads, &amp;ldquo;&lt;strong&gt;WARNING: Using TrueCrypt is not secure as it may contain unfixed security issues&lt;/strong&gt;&amp;rdquo; and it directs users to alternative encryption packages for Windows, Mac, and Linux.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/20140528_001_hu236381090301342639.png&#34; loading=&#34;lazy&#34; alt=&#34;screenshot&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/20140528_001_hu_d8f410397429280d.png&#34; loading=&#34;lazy&#34; alt=&#34;screenshot&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

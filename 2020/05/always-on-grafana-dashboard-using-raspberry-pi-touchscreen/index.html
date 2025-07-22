@@ -12,7 +12,7 @@ I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology
 I stumbled upon two separate software stacks for this. First is the TICK stack, which is composed of open-source products from InfluxData:">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a99d68c54e82b02c46a7489b7cb5d5f68d476c2ddbda8a70172a5df0b7dd7da5.css" integrity="sha256-qZ1oxU6CsCxGp0ibfLXV9o1HbC3b2opwFypd8LfdfaU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.690cf6d22bd5957674ee45a0a8d8098730e01470b57a5333bf0a025757900f67.css" integrity="sha256-aQz20ivVlXZ07kWgqNgJhzDgFHC1elMzvwoCV1eQD2c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -150,7 +150,7 @@ I stumbled upon two separate software stacks for this. First is the TICK stack, 
                 <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -208,7 +208,8 @@ I stumbled upon two separate software stacks for this. First is the TICK stack, 
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_grafana.svg" alt="featured image">
+<figure class="entry-cover">
+        <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_grafana.svg" alt="featured image">
         
 </figure><div class="toc">
     <details >
@@ -288,9 +289,9 @@ I stumbled upon two separate software stacks for this. First is the TICK stack, 
 <li>Follow <a href="https://cdn.shopify.com/s/files/1/0174/1800/files/how_to_assemble_the_rpi_touchscreen_display.jpg">these instructions</a> to attach the Raspberry Pi to the display</li>
 </ol>
 
-<p><img src="/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/20200517_002_hu7024499343165732678.jpg" loading="lazy" alt="front of display"></p>
+<p><img src="/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/20200517_002_hu_f7c7f4d16af2836.jpg" loading="lazy" alt="front of display"></p>
 
-<p><img src="/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/20200517_001_hu9895921613532675111.jpg" loading="lazy" alt="back of display"></p>
+<p><img src="/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/20200517_001_hu_e63c0f90c77214e4.jpg" loading="lazy" alt="back of display"></p>
 <h1 id="raspbian-setup">Raspbian setup<a hidden class="anchor" aria-hidden="true" href="#raspbian-setup">#</a></h1>
 <h2 id="raspbian">Raspbian<a hidden class="anchor" aria-hidden="true" href="#raspbian">#</a></h2>
 <p>Because I&rsquo;m using the official Raspberry Pi touchscreen, I wanted to use <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian</a> to ensure the touchscreen would work properly (e.g., drivers, calibration, etc&hellip;). Because the Raspberry Pi is limited on both memory and storage space, I always prefer to use Raspbian Lite and then add a desktop, as opposed to using Raspbian Desktop and then stripping out unneeded packages (e.g., LibreOffice, Wolfram, Sonic Pi, Scratch, etc&hellip;).</p>

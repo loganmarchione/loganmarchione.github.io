@@ -20,7 +20,7 @@ Introduction
 My hot water tank recently leaked, but (luckily for me) there was a floor drain right next to it. The next day (after having the tank fixed), I purchased a water leak sensor, added it to Home Assistant in under 2 minutes, and was able to get push notifications of future detected leaks.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a99d68c54e82b02c46a7489b7cb5d5f68d476c2ddbda8a70172a5df0b7dd7da5.css" integrity="sha256-qZ1oxU6CsCxGp0ibfLXV9o1HbC3b2opwFypd8LfdfaU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.690cf6d22bd5957674ee45a0a8d8098730e01470b57a5333bf0a025757900f67.css" integrity="sha256-aQz20ivVlXZ07kWgqNgJhzDgFHC1elMzvwoCV1eQD2c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -166,7 +166,7 @@ My hot water tank recently leaked, but (luckily for me) there was a floor drain 
                 <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -224,7 +224,8 @@ My hot water tank recently leaked, but (luckily for me) there was a floor drain 
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" alt="featured image">
+<figure class="entry-cover">
+        <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_generic_heart.svg" alt="featured image">
         
 </figure><div class="toc">
     <details >
@@ -326,7 +327,7 @@ My hot water tank recently leaked, but (luckily for me) there was a floor drain 
 </table>
 <p>I&rsquo;m aware that this is not an exhaustive list, and that most of these applications stand on the shoulders of giants. However, when trying to sell &ldquo;regular people&rdquo; on self-hosted, open-source applications, this is the list to start with.</p>
 
-<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_001_hu12093166729724103602.jpg" loading="lazy" alt="your opinion, man"></p>
+<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_001_hu_6d6292bf77300f59.jpg" loading="lazy" alt="your opinion, man"></p>
 <h1 id="home-assistant">Home Assistant<a hidden class="anchor" aria-hidden="true" href="#home-assistant">#</a></h1>
 <p>I&rsquo;m certainly not a Home Assistant power user, but I will say this is one of the most useful applications that I self-host. Even if I&rsquo;m not logging into the application itself on a consistent basis, Home Assistant is always there, running in the background, automating my life.</p>
 <p>If you&rsquo;re not aware, <a href="https://www.home-assistant.io/">Home Assistant</a>, is a home automation tool (e.g., turn on the lights when I get home, if the living room is above 75 F turn on the A/C, etc&hellip;). What makes Home Assistant so special is that it allows you to break out of the walled gardens of vendors (Philips, Aqara, SmartThings, Wyze, etc&hellip;). Home Assistant acts as a &ldquo;hub&rdquo;, allowing you to collect data (and act on it) from multiple different sources.</p>
@@ -342,7 +343,7 @@ My hot water tank recently leaked, but (luckily for me) there was a floor drain 
 <p>I don&rsquo;t run <a href="https://pi-hole.net/">Pi-hole</a> personally, but it&rsquo;s mentioned everywhere online. It is a DNS-based sinkhole used to block ads on your <em>entire network</em>. This means that instead of setting up ad-block on every browser, you can setup Pi-hole on your network, and it will block ads on every device on your network (including mobile apps and smart TVs). Because the traffic is blocked on a network level, network performance will be improved and your browsing experience will feel faster (because it is). Blocking ads isn&rsquo;t just about convenience, it&rsquo;s also about security, since Pi-hole&rsquo;s blocklists block potential spam and malware, as well as known bad-actors.</p>
 <p>Pi-hole (as the name implies) originally started as a Raspberry Pi project, but now runs on x86 hardware, as well as Docker. It also offers a DHCP server, and a web-based dashboard for configuration and viewing statistics (screenshot below).</p>
 
-<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_003_hu4008237153773513492.png" loading="lazy" alt="pi-hole dashboard"></p>
+<p><img src="/2022/05/darlings-of-the-self-hosted-open-source-world/20220504_003_hu_46c4c69e887cdb4.png" loading="lazy" alt="pi-hole dashboard"></p>
 <h1 id="nextcloud">Nextcloud<a hidden class="anchor" aria-hidden="true" href="#nextcloud">#</a></h1>
 <p>I don&rsquo;t run <a href="https://nextcloud.com/">Nextcloud</a> personally, but it&rsquo;s a stand-out in its field. Competing with giants like Google and Microsoft, Nextcloud is a &ldquo;personal cloud&rdquo;, offering self-hosted versions of mail, contact, calendar, kanban, video/audio calls, web hosting, file storage/sync, document editing, an <a href="https://apps.nextcloud.com/">app store</a>, and more. If there is one application you could use to build your digital life around, it would be Nextcloud.</p>
 <p>Nextcloud also has a ton of business-centered administration features, such as logging/monitoring, 2FA, file access control, LDAP integration, compliance (e.g., HIPAA, GDPR, etc&hellip;), encryption in-transit and at-rest, and more.</p>

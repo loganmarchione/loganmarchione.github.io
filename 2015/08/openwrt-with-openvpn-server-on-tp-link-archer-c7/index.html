@@ -43,7 +43,7 @@ Introduction
 I&rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&rsquo;re here, you know that already. If you need a refresher on the different types of VPNs, see below.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a99d68c54e82b02c46a7489b7cb5d5f68d476c2ddbda8a70172a5df0b7dd7da5.css" integrity="sha256-qZ1oxU6CsCxGp0ibfLXV9o1HbC3b2opwFypd8LfdfaU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.690cf6d22bd5957674ee45a0a8d8098730e01470b57a5333bf0a025757900f67.css" integrity="sha256-aQz20ivVlXZ07kWgqNgJhzDgFHC1elMzvwoCV1eQD2c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -212,7 +212,7 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
                 <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -270,7 +270,8 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" alt="featured image">
+<figure class="entry-cover">
+        <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" alt="featured image">
         
 </figure><div class="toc">
     <details >
@@ -442,8 +443,7 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
 <p>Since I&rsquo;ve had luck with TP-Link in the past, I chose to use a <a href="http://amzn.com/B00BUSDVBQ">TP-Link Archer C7</a> for my main router/OpenVPN server. I was looking for something that had dual-band technology (since the 2.4GHz spectrum is pretty crowded around my house), as well as 802.11ac technology (since it&rsquo;s several times faster than 802.11n).</p>
 <p>If you&rsquo;re purchasing a C7, make sure it is hardware version 2.0. From the C7&rsquo;s <a href="http://wiki.openwrt.org/toh/tp-link/tl-wdr7500#supported_versions">wiki page</a>:</p>
 <blockquote>
-<p>For the Archer C7 v1.x and WDR7500 v2.x, the 5GHz 802.11a/n/ac functionality is not supported, and likely will never be, since support for the AR1A (v1) variant of QCA9880 chip is not included in the open source ath10k driver. The Archer C7 v2.x uses the BR4A (v2) variant which is supported in ath10k.</p>
-</blockquote>
+<p>For the Archer C7 v1.x and WDR7500 v2.x, the 5GHz 802.11a/n/ac functionality is not supported, and likely will never be, since support for the AR1A (v1) variant of QCA9880 chip is not included in the open source ath10k driver. The Archer C7 v2.x uses the BR4A (v2) variant which is supported in ath10k.</p></blockquote>
 <h2 id="software">Software<a hidden class="anchor" aria-hidden="true" href="#software">#</a></h2>
 <p>Obviously, I&rsquo;m using <a href="https://openwrt.org/">OpenWrt</a> again. In this case, I&rsquo;m going to be using <a href="http://wiki.openwrt.org/about/latest">Chaos Calmer</a>, even though it&rsquo;s still on release candidate 3 and not a &ldquo;stable&rdquo; release yet. I&rsquo;m choosing CC because LuCI for BB does not supporting configuring 802.11ac via the web.</p>
 <p>When choosing a download for OpenWrt CC RC3 on the C7, be careful which one you choose. There is a download for v1 and v2, then a file for flashing from factory or from a previous release of OpenWrt.</p>
@@ -458,7 +458,7 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
 <p>Disconnect your PC from all wired and wireless networks, then connect the LAN port of the C7 to your PC. You should pull an IP in the 192.168.0.X range, so your C7&rsquo;s IP should be 192.168.0.1. Open your browser, navigate to 192.168.0.1, and enter the username/password combination of <em>admin/admin</em>.</p>
 <p>Once you’re logged into the router, go to <em>System Tools</em>, then <em>Firmware Upgrade</em>. Browse to your file and click <em>Upgrade</em>.</p>
 
-<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_001_hu14189087148827854977.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/20150825_001_hu_a91a8886cd26bef2.png" loading="lazy" alt="screenshot"></p>
 <p>If you receive a message reading <em>Please choose a file to upgrade!</em>, you&rsquo;ll need to rename the file to something shorter, like <em>openwrt.bin</em>.</p>
 <h1 id="configure-openwrt">Configure OpenWrt<a hidden class="anchor" aria-hidden="true" href="#configure-openwrt">#</a></h1>
 <h2 id="set-a-password">Set a password<a hidden class="anchor" aria-hidden="true" href="#set-a-password">#</a></h2>

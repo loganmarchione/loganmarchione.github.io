@@ -13,7 +13,7 @@ The truecrypt.org website now redirects to truecrypt.sourceforge.net. A warning 
 ">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a99d68c54e82b02c46a7489b7cb5d5f68d476c2ddbda8a70172a5df0b7dd7da5.css" integrity="sha256-qZ1oxU6CsCxGp0ibfLXV9o1HbC3b2opwFypd8LfdfaU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.690cf6d22bd5957674ee45a0a8d8098730e01470b57a5333bf0a025757900f67.css" integrity="sha256-aQz20ivVlXZ07kWgqNgJhzDgFHC1elMzvwoCV1eQD2c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -152,7 +152,7 @@ The truecrypt.org website now redirects to truecrypt.sourceforge.net. A warning 
                 <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -210,14 +210,15 @@ The truecrypt.org website now redirects to truecrypt.sourceforge.net. A warning 
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_generic_lock_no_white.svg" alt="featured image">
+<figure class="entry-cover">
+        <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_generic_lock_no_white.svg" alt="featured image">
         
 </figure>
 
   <div class="post-content"><p>Recently, I posted three articles of a four-part series showing how to encrypt an external drive with TrueCrypt on Fedora 20. As-of today, May 28th, TrueCrypt may not be secure after-all.</p>
 <p>The truecrypt.org website now redirects to <a href="http://truecrypt.sourceforge.net/">truecrypt.sourceforge.net</a>. A warning is displayed that reads, &ldquo;<strong>WARNING: Using TrueCrypt is not secure as it may contain unfixed security issues</strong>&rdquo; and it directs users to alternative encryption packages for Windows, Mac, and Linux.</p>
 
-<p><img src="/2014/05/truecrypt-may-not-be-secure/20140528_001_hu236381090301342639.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2014/05/truecrypt-may-not-be-secure/20140528_001_hu_d8f410397429280d.png" loading="lazy" alt="screenshot"></p>
 <p><a href="http://arstechnica.com/security/2014/05/truecrypt-is-not-secure-official-sourceforge-page-abruptly-warns/">Ars Technica</a>, <a href="https://news.ycombinator.com/item?id=7812133">Hacker News</a>, and <a href="http://www.theregister.co.uk/2014/05/28/truecrypt_hack/">The Register</a> have a good articles, so I won&rsquo;t repeat everything they&rsquo;re saying. Initially, it appeared that the TrueCrypt website was hacked. However, in addition to the website updates, <a href="https://github.com/warewolf/truecrypt/compare/master...7.2">new binaries</a> were released that display warnings like <strong>INSECURE_APP</strong> when users try to encrypt data. The binaries, however, are signed with the developer&rsquo;s key. In addition, a Wikipedia user named <a href="https://en.wikipedia.org/wiki/Special:Contributions/Truecrypt-end">Truecrypt-end</a> attempted to update the Wikipedia page with the same messages, but it was rejected by moderators. TrueCrypt was recently going through an <a href="http://istruecryptauditedyet.com/">independent security audit</a>, and it passed <a href="https://opencryptoaudit.org/reports/iSec_Final_Open_Crypto_Audit_Project_TrueCrypt_Security_Assessment.pdf">Phase 1</a> in April. However, this doesn&rsquo;t seem to be related.</p>
 <p>A thread on <a href="http://www.reddit.com/r/crypto/comments/26px1i/truecrypt_shutting_down_development_of_truecrypt/">r/crypto</a> offers up a couple explanations:</p>
 <ol>

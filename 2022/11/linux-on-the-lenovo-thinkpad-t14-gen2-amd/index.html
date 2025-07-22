@@ -11,7 +11,7 @@
 My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that here), but I don&rsquo;t use it to manage my personal servers, write personal code, browse the internet, etc&hellip; But, it would be really nice to SSH to a server from my couch on a device that&rsquo;s not my phone. I figured it was time to get a laptop. I was looking for:">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a99d68c54e82b02c46a7489b7cb5d5f68d476c2ddbda8a70172a5df0b7dd7da5.css" integrity="sha256-qZ1oxU6CsCxGp0ibfLXV9o1HbC3b2opwFypd8LfdfaU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.690cf6d22bd5957674ee45a0a8d8098730e01470b57a5333bf0a025757900f67.css" integrity="sha256-aQz20ivVlXZ07kWgqNgJhzDgFHC1elMzvwoCV1eQD2c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -147,7 +147,7 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
                 <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -205,7 +205,8 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_tux.svg" alt="featured image">
+<figure class="entry-cover">
+        <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_tux.svg" alt="featured image">
         
 </figure><div class="toc">
     <details >
@@ -257,11 +258,11 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
 </ul>
 <p>For all intents and purposes, it looked like a brand new machine, minus all the paperwork and foam.</p>
 
-<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_002_hu5738818762823019174.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
+<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_002_hu_be52ad00f25372fc.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
 
-<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_003_hu9396710794621886981.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
+<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_003_hu_61aab0891b5d103a.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
 
-<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_004_hu11576677669060802278.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
+<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_004_hu_f1349ad75464fb2f.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
 <h2 id="stock">Stock<a hidden class="anchor" aria-hidden="true" href="#stock">#</a></h2>
 <p>Regardless of model number, <a href="https://www.lenovo.com/us/outletus/en/p/laptops/thinkpad/thinkpadt/t14-g2-amd/20xkx026us">here</a> is the link to what I purchased. I paid $569.99, which I thought was a good deal. Below are the specs of the  model that showed up to my house.</p>
 <table>
@@ -356,7 +357,7 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
 <p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_001.png" loading="lazy" alt="base cover removal"></p>
 <p>I tried to block out as many serial numbers as possible, but you can see the single SODIMM slot in the middle (under the black plastic), the SSD and WiFi modules in the top-right in an &ldquo;L&rdquo; shape, with the space for the WWAN module under the black plastic between them (there is a full-size image <a href="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_005.jpeg">here</a>).</p>
 
-<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_005_hu306865641002489769.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
+<p><img src="/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/20221028_005_hu_fda53eec08398443.jpeg" loading="lazy" alt="thinkpad t14 gen2 amd"></p>
 <p>I started it up one more time to make sure everything still worked, then tested the new memory stick. I always test my memory before I use it, and I always recommend <a href="https://www.memtest86.com/download.htm">Memtest86</a> (not to be confused with <a href="https://www.memtest.org/">Memtest86+</a>).</p>
 <h1 id="arch-linux-install">Arch Linux install<a hidden class="anchor" aria-hidden="true" href="#arch-linux-install">#</a></h1>
 <p>I had done my research before selecting this model and found an <a href="https://wiki.archlinux.org/title/Lenovo_ThinkPad_T14_(AMD)_Gen_2">ArchWiki page</a> on it, so I knew Arch should work.</p>
