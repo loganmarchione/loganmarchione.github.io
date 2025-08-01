@@ -490,7 +490,9 @@
       <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://loganmarchione.github.io/2022/03/the-best-way-to-run-dokuwiki-in-docker/</guid>
-      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;update-2025-08-01&#34;&gt;Update: 2025-08-01&lt;/h1&gt;
+&lt;p&gt;There is apparently an &lt;a href=&#34;https://hub.docker.com/r/dokuwiki/dokuwiki&#34;&gt;official DokuWiki image&lt;/a&gt; now. You should probably use that instead of this method.&lt;/p&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;ve been trying to get my homelab applications moved from running on VM/LXC to Docker. There&amp;rsquo;s nothing wrong with VMs or LXC containers, but I&amp;rsquo;m trying to manage fewer servers and &amp;ldquo;snowflakes&amp;rdquo; (even though I do my installs with Ansible).&lt;/p&gt;
 &lt;p&gt;The application that started my homelab journey was &lt;a href=&#34;https://www.dokuwiki.org/&#34;&gt;DokuWiki&lt;/a&gt;. It&amp;rsquo;s a self-hosted wiki, written in PHP, that requires no database. You write in a &lt;a href=&#34;https://www.dokuwiki.org/wiki:syntax&#34;&gt;Markdown-like syntax&lt;/a&gt; (not Markdown) and your data is stored in plain TXT files on the filesystem. DokuWiki, however, is not 100% straightforward to Dockerize.&lt;/p&gt;</description>
     </item>
