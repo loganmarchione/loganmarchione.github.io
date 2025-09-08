@@ -8,45 +8,6 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 22 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/raspberry/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Homelab 10&#34; mini-rack v2</title>
-      <link>https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/</link>
-      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/</guid>
-      <description>&lt;p&gt;Hey! Listen! This post is part of a series on 10&amp;quot; mini-racks. Check them all out!&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-09-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;v2 of the rack&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-16&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Comparison of 10&amp;quot; shelves&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-01-05&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;Homelab 10&amp;quot; mini-rack &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post about mini-rack&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
-&lt;p&gt;I built a new rack out of 20x20mm aluminum. Read more to build your own!&lt;/p&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;I&amp;rsquo;ve been using my home-made &lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;mini-rack&lt;/a&gt; for a few years now. My main complaint is that the shelves &lt;em&gt;themselves&lt;/em&gt; are the horizontal structure on the front face of the unit. If I start removing them, the unit flexes.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>pfSense on the OPNsense DEC740</title>
       <link>https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/</link>
       <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
@@ -382,11 +343,6 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-09-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;v2 of the rack&lt;/td&gt;
-      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;2022-09-16&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
@@ -834,11 +790,6 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-09-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;v2 of the rack&lt;/td&gt;
-      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;2022-09-16&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
