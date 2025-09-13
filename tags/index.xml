@@ -41,13 +41,9 @@
 &lt;/table&gt;
 &lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;I built a new rack out of 20x20mm aluminum. Read more to build your own!&lt;/p&gt;
+&lt;p&gt;TODO: add picture here&lt;/p&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;&amp;#x26a0;&amp;#xfe0f; WARNING &amp;#x26a0;&amp;#xfe0f;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;This post has embedded 3D models (if you have WebGL enabled), so they might take a few seconds to load&lt;/li&gt;
-&lt;li&gt;The 3D models are available to download, but they&amp;rsquo;re only accurate to the nearest whole millimeter&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I&amp;rsquo;ve been using my home-made &lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;mini-rack&lt;/a&gt; for a few years now. My main complaint is that the shelves &lt;em&gt;themselves&lt;/em&gt; are the horizontal structure on the front face of the unit. If I start removing them, the unit flexes.&lt;/p&gt;</description>
+&lt;p&gt;&amp;#x26a0;&amp;#xfe0f; WARNING &amp;#x26a0;&amp;#xfe0f;&lt;/p&gt;</description>
     </item>
     
     <item>
