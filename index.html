@@ -11,7 +11,7 @@
 <meta name="description" content="Logan Marchione">
 <meta name="author" content="Me">
 <link rel="canonical" href="https://loganmarchione.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bc3154c23d0860b2e5088ce31e9cdc2d75da95d87e0552a39d31f567805517f6.css" integrity="sha256-vDFUwj0IYLLlCIzjHpzcLXXaldh&#43;BVKjnTH1Z4BVF/Y=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -152,6 +152,23 @@
 
 <article class="post-entry"> 
 <figure class="entry-cover">
+        <img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_proxmox.svg" alt="featured image">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Linux (more specifically, Proxmox Backup Server) on the OPNsense DEC740
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Introduction I know I’m about five years too late too the party, but I finally setup Proxmox Backup Server (PBS).
+Right now, I have 10 servers inside my Proxmox Virtual Environment (VE) setup, made up of a mix of virtual machines (VMs) and LXC containers (LXCs). I’m using the built-in Proxmox VE backup system to backup my VMs/LXCs to my NAS. This results in about 250GB of backups, which happen once a week. I keep 12 weeks of backups, so that’s 3TB of backups on my NAS. Even if nothing changes week-to-week on a single server, the entire machine is getting backed up every week, taking up the full amount of space.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-10-31 00:00:00 +0000 UTC'>2025-10-31</span>&nbsp;·&nbsp;14 min&nbsp;·&nbsp;2954 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <a class="entry-link" aria-label="post link to Linux (more specifically, Proxmox Backup Server) on the OPNsense DEC740" href="https://loganmarchione.github.io/2025/10/linux-more-specifically-proxmox-backup-server-on-the-opnsense-dec740/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
         <img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_generic_storage.svg" alt="featured image">
 </figure>
   <header class="entry-header">
@@ -180,7 +197,7 @@ Date URL Part 2025-09-25 Homelab 10&#34; mini-rack v2 v2 of the rack 2022-09-16 
 Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense DEC740 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction My APU2 is five years old now and I notice that it runs slow when making changes in pfSense’s web interface. The CPU is an AMD GX-412TC (from 2014) and it’s running 4GB of DDR3 memory, so I guess that’s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I’m left wondering if the APU2 could keep up with that speed. I’ve seen this post about routing at 1Gbps on the APU2 hardware, but I’m also running pfBlockerNG and wondering if that would affect speed.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-01 00:00:00 +0000 UTC'>2025-03-01</span>&nbsp;·&nbsp;19 min&nbsp;·&nbsp;3860 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2025-03-01 00:00:00 +0000 UTC'>2025-03-01</span>&nbsp;·&nbsp;19 min&nbsp;·&nbsp;3882 words&nbsp;·&nbsp;Logan Marchione</footer>
   <a class="entry-link" aria-label="post link to pfSense on the OPNsense DEC740" href="https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/"></a>
 </article>
 
@@ -307,22 +324,6 @@ I (try to) practice GitOps, so all of my Kubernetes configuration is in a public
   </div>
   <footer class="entry-footer"><span title='2023-04-04 00:00:00 +0000 UTC'>2023-04-04</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;1050 words&nbsp;·&nbsp;Logan Marchione</footer>
   <a class="entry-link" aria-label="post link to Continuous Delivery with Docker Compose and Drone" href="https://loganmarchione.github.io/2023/04/continuous-delivery-with-docker-compose-and-drone/"></a>
-</article>
-
-<article class="post-entry"> 
-<figure class="entry-cover">
-        <img loading="lazy" src="https://loganmarchione.github.io/assets/featured/featured_steam_deck.svg" alt="featured image">
-</figure>
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">My experience replacing the Steam Deck SSD
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Update: 2024-01-12 I couldn’t resist the lure of the Steam Deck OLED. I purchased the 512GB model (the same size as my Steam Deck LCD upgraded Kioxia BG4 drive) and used it for a few weeks before purchasing a 1TB Kioxia BG4. Hindsight being 20/20, I should have just purchased the 1TB Steam Deck OLED directly from Valve, since the difference between the 512GB and 1TB model was only $100, and I spent much that on the aftermarket 1TB Kioxia BG4. 🤷‍♂️
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-01-17 00:00:00 +0000 UTC'>2023-01-17</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;2119 words&nbsp;·&nbsp;Logan Marchione</footer>
-  <a class="entry-link" aria-label="post link to My experience replacing the Steam Deck SSD" href="https://loganmarchione.github.io/2023/01/my-experience-replacing-the-steam-deck-ssd/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
