@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@ Introduction
 My APU2 is five years old now and I notice that it runs slow when making changes in pfSense&rsquo;s web interface. The CPU is an AMD GX-412TC (from 2014) and it&rsquo;s running 4GB of DDR3 memory, so I guess that&rsquo;s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I&rsquo;m left wondering if the APU2 could keep up with that speed. I&rsquo;ve seen this post about routing at 1Gbps on the APU2 hardware, but I&rsquo;m also running pfBlockerNG and wondering if that would affect speed.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -72,23 +72,38 @@ My APU2 is five years old now and I notice that it runs slow when making changes
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/">
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="pfSense on the OPNsense DEC740">
   <meta property="og:description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
@@ -192,20 +207,8 @@ My APU2 is five years old now and I notice that it runs slow when making changes
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
@@ -266,7 +269,7 @@ My APU2 is five years old now and I notice that it runs slow when making changes
     <h1 class="post-title entry-hint-parent">
       pfSense on the OPNsense DEC740
     </h1>
-    <div class="post-meta"><span title='2025-03-01 00:00:00 +0000 UTC'>2025-03-01</span>&nbsp;·&nbsp;19 min&nbsp;·&nbsp;3883 words&nbsp;·&nbsp;Logan Marchione
+    <div class="post-meta"><span title='2025-03-01 00:00:00 +0000 UTC'>2025-03-01</span>&nbsp;·&nbsp;<span>19 min</span>&nbsp;·&nbsp;<span>3883 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -1044,9 +1047,14 @@ ax1@pci0:6:0:2: class=0x020000 rev=0x00 hdr=0x00 vendor=0x1022 device=0x1458 sub
 
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -1087,11 +1095,12 @@ ax1@pci0:6:0:2: class=0x020000 rev=0x00 hdr=0x00 vendor=0x1022 device=0x1458 sub
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

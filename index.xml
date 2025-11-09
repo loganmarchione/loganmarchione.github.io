@@ -348,7 +348,8 @@
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I spend a lot of time on Reddit in &lt;a href=&#34;https://reddit.com/r/devops/&#34;&gt;r/devops&lt;/a&gt;, &lt;a href=&#34;https://reddit.com/r/homelab&#34;&gt;r/homelab&lt;/a&gt;, and &lt;a href=&#34;https://reddit.com/r/selfhosted&#34;&gt;r/selfhosted&lt;/a&gt;, where I always see different versions of the same question:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;It&amp;rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;I&amp;rsquo;ve posted this answer to Reddit multiple times before, but this post will have more detail.&lt;/p&gt;
 &lt;h1 id=&#34;static-site&#34;&gt;Static site&lt;/h1&gt;
 &lt;p&gt;Build a static site. &lt;em&gt;That&amp;rsquo;s the answer&lt;/em&gt;.&lt;/p&gt;

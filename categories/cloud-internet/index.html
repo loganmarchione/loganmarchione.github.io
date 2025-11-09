@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="Logan Marchione">
 <meta name="author" content="Me">
 <link rel="canonical" href="https://loganmarchione.github.io/categories/cloud-internet/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://loganmarchione.github.io/categories/cloud-internet/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://loganmarchione.github.io/categories/cloud-internet/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/categories/cloud-internet/">
 <noscript>
     <style>
@@ -40,23 +40,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/categories/cloud-internet/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/categories/cloud-internet/">
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="Cloud-Internet">
   <meta property="og:description" content="Logan Marchione">
@@ -67,20 +82,8 @@
 <meta name="twitter:description" content="Logan Marchione">
 
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
@@ -153,7 +156,7 @@
 Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense DEC740 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction My APU2 is five years old now and I notice that it runs slow when making changes in pfSense’s web interface. The CPU is an AMD GX-412TC (from 2014) and it’s running 4GB of DDR3 memory, so I guess that’s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I’m left wondering if the APU2 could keep up with that speed. I’ve seen this post about routing at 1Gbps on the APU2 hardware, but I’m also running pfBlockerNG and wondering if that would affect speed.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-01 00:00:00 +0000 UTC'>2025-03-01</span>&nbsp;·&nbsp;19 min&nbsp;·&nbsp;3883 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2025-03-01 00:00:00 +0000 UTC'>2025-03-01</span>&nbsp;·&nbsp;<span>19 min</span>&nbsp;·&nbsp;<span>3883 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to pfSense on the OPNsense DEC740" href="https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/"></a>
 </article>
 
@@ -170,7 +173,7 @@ Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense
 Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify TL;DR Good news everyone! If you’re reading this (in late 2023), you’re reading it via CloudFront instead of a VPS!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-11-08 00:00:00 +0000 UTC'>2023-11-08</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;2392 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2023-11-08 00:00:00 +0000 UTC'>2023-11-08</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>2392 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Deploying Hugo with CloudFront and S3 (for real this time)" href="https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/"></a>
 </article>
 
@@ -187,7 +190,7 @@ Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this ti
 Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction It’s been a while since my last K3s post. In that time, I’ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster. I’ve also been at my job using Amazon EKS for about six months, so I think I know just enough to be dangerous now 😉.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-12-07 00:00:00 +0000 UTC'>2022-12-07</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1562 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-12-07 00:00:00 +0000 UTC'>2022-12-07</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>1562 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to K3s cluster updates" href="https://loganmarchione.github.io/2022/12/k3s-cluster-updates/"></a>
 </article>
 
@@ -207,7 +210,7 @@ Static site Build a static site. That’s the answer.
 Why A static site is a great beginner project because:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-10-20 00:00:00 +0000 UTC'>2022-10-20</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;848 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-10-20 00:00:00 +0000 UTC'>2022-10-20</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>848 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to The best DevOps project for a beginner" href="https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/"></a>
 </article>
 
@@ -225,7 +228,7 @@ Introduction I have a confession: I tried really hard to quit Firefox, but I can
 I’ve been using Firefox since the single-digit release days, and I’ve been publishing my Firefox config for five years now. In a recent experiment, I used Brave Browser exclusively for three months, but ended up moving back to Firefox. Here are my thoughts (i.e., a rant) on why I moved, why I moved back, and why I might not be done moving.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-08-03 00:00:00 +0000 UTC'>2022-08-03</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1444 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-08-03 00:00:00 +0000 UTC'>2022-08-03</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>1444 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to I tried to quit Firefox. I can&#39;t." href="https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/"></a>
 </article>
 
@@ -242,7 +245,7 @@ I’ve been using Firefox since the single-digit release days, and I’ve been p
 Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction In my last post, I setup a K3s single-node cluster and an example application. While everything was done through the command-line, as a noob, it’s nice to have a graphical user interface (GUI) of some kind. I’m not a fan of ClickOps, but it’s convenient to have a GUI to be able to quickly view status, instead of hunting for the right kubectl command.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-03-29 00:00:00 +0000 UTC'>2022-03-29</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;822 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-03-29 00:00:00 +0000 UTC'>2022-03-29</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>822 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Kubernetes GUIs" href="https://loganmarchione.github.io/2022/03/kubernetes-guis/"></a>
 </article>
 
@@ -259,7 +262,7 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
 Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I’m starting a new job in the next few days that will require me to learn Kubernetes (often stylized as k8s). This post is not about what k8s is or why you want it (you can read about that here). My only objective for now is to have a single-node k8s cluster running in my homelab.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-03-11 00:00:00 +0000 UTC'>2022-03-11</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1236 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-03-11 00:00:00 +0000 UTC'>2022-03-11</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1236 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to K3s single-node cluster for noobs" href="https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/"></a>
 </article>
 
@@ -276,7 +279,7 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
 Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with CloudFront and S3. My main complaints came from the complicated Terraform setup and the lack of easy redirects. Since Amplify and CloudFront&#43;S3 are the only AWS-based offerings, I decided to check out alternatives outside of the AWS umbrella.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-02-08 00:00:00 +0000 UTC'>2022-02-08</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;604 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-02-08 00:00:00 +0000 UTC'>2022-02-08</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>604 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Deploying Hugo with Netlify" href="https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/"></a>
 </article>
 
@@ -293,7 +296,7 @@ Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this ti
 Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction In my last post, I was testing the deployment of Hugo with AWS Amplify. My only complaint was that Amplify doesn’t support IPv6. Because of this, I wanted to explore other deployment options under the AWS umbrella.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-10-13 00:00:00 +0000 UTC'>2021-10-13</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;560 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2021-10-13 00:00:00 +0000 UTC'>2021-10-13</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>560 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Deploying Hugo with CloudFront and S3" href="https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/"></a>
 </article>
 
@@ -310,7 +313,7 @@ Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this ti
 Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this time) Deploying Hugo with CloudFront and S3 (for real this time) 2022-02-08 Deploying Hugo with Netlify Deploying on Netlify 2021-10-13 Deploying Hugo with CloudFront and S3 Deploying on CloudFront and S3 2021-09-21 Deploying Hugo with AWS Amplify Deploying on Amplify Introduction Since I migrated from WordPress to Hugo, I’ve dropped the need to run PHP and MySQL on my server. This means my server is now only running Nginx, serving up static HTML/CSS/JS files. For a simple site like mine, even a VPS running Nginx is overkill. This site doesn’t need to be hosted on a VPS, it could be hosted in the cloud, or completely on a CDN.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-09-21 00:00:00 +0000 UTC'>2021-09-21</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;934 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2021-09-21 00:00:00 +0000 UTC'>2021-09-21</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>934 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Deploying Hugo with AWS Amplify" href="https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/"></a>
 </article>
 <footer class="page-footer">
@@ -340,9 +343,14 @@ Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this ti
 
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -383,11 +391,12 @@ Date URL Part 2023-11-08 Deploying Hugo with CloudFront and S3 (for real this ti
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

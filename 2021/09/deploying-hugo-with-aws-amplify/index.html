@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@ Introduction
 Since I migrated from WordPress to Hugo, I&rsquo;ve dropped the need to run PHP and MySQL on my server. This means my server is now only running Nginx, serving up static HTML/CSS/JS files. For a simple site like mine, even a VPS running Nginx is overkill. This site doesn&rsquo;t need to be hosted on a VPS, it could be hosted in the cloud, or completely on a CDN.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -72,23 +72,38 @@ Since I migrated from WordPress to Hugo, I&rsquo;ve dropped the need to run PHP 
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/">
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="Deploying Hugo with AWS Amplify">
   <meta property="og:description" content="Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!
@@ -192,20 +207,8 @@ Since I migrated from WordPress to Hugo, I&rsquo;ve dropped the need to run PHP 
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
@@ -266,7 +269,7 @@ Since I migrated from WordPress to Hugo, I&rsquo;ve dropped the need to run PHP 
     <h1 class="post-title entry-hint-parent">
       Deploying Hugo with AWS Amplify
     </h1>
-    <div class="post-meta"><span title='2021-09-21 00:00:00 +0000 UTC'>2021-09-21</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;934 words&nbsp;·&nbsp;Logan Marchione
+    <div class="post-meta"><span title='2021-09-21 00:00:00 +0000 UTC'>2021-09-21</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>934 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -488,9 +491,14 @@ Since I migrated from WordPress to Hugo, I&rsquo;ve dropped the need to run PHP 
 
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -531,11 +539,12 @@ Since I migrated from WordPress to Hugo, I&rsquo;ve dropped the need to run PHP 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

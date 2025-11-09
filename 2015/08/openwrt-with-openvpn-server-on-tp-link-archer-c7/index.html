@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@ Introduction
 I&rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&rsquo;re here, you know that already. If you need a refresher on the different types of VPNs, see below.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -72,23 +72,38 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="OpenWrt with OpenVPN server on TP-Link Archer C7">
   <meta property="og:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
@@ -192,20 +207,8 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
@@ -266,7 +269,7 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
     <h1 class="post-title entry-hint-parent">
       OpenWrt with OpenVPN server on TP-Link Archer C7
     </h1>
-    <div class="post-meta"><span title='2015-08-26 00:00:00 +0000 UTC'>2015-08-26</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;3055 words&nbsp;·&nbsp;Logan Marchione
+    <div class="post-meta"><span title='2015-08-26 00:00:00 +0000 UTC'>2015-08-26</span>&nbsp;·&nbsp;<span>15 min</span>&nbsp;·&nbsp;<span>3055 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -443,7 +446,8 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
 <p>Since I&rsquo;ve had luck with TP-Link in the past, I chose to use a <a href="http://amzn.com/B00BUSDVBQ">TP-Link Archer C7</a> for my main router/OpenVPN server. I was looking for something that had dual-band technology (since the 2.4GHz spectrum is pretty crowded around my house), as well as 802.11ac technology (since it&rsquo;s several times faster than 802.11n).</p>
 <p>If you&rsquo;re purchasing a C7, make sure it is hardware version 2.0. From the C7&rsquo;s <a href="http://wiki.openwrt.org/toh/tp-link/tl-wdr7500#supported_versions">wiki page</a>:</p>
 <blockquote>
-<p>For the Archer C7 v1.x and WDR7500 v2.x, the 5GHz 802.11a/n/ac functionality is not supported, and likely will never be, since support for the AR1A (v1) variant of QCA9880 chip is not included in the open source ath10k driver. The Archer C7 v2.x uses the BR4A (v2) variant which is supported in ath10k.</p></blockquote>
+<p>For the Archer C7 v1.x and WDR7500 v2.x, the 5GHz 802.11a/n/ac functionality is not supported, and likely will never be, since support for the AR1A (v1) variant of QCA9880 chip is not included in the open source ath10k driver. The Archer C7 v2.x uses the BR4A (v2) variant which is supported in ath10k.</p>
+</blockquote>
 <h2 id="software">Software<a hidden class="anchor" aria-hidden="true" href="#software">#</a></h2>
 <p>Obviously, I&rsquo;m using <a href="https://openwrt.org/">OpenWrt</a> again. In this case, I&rsquo;m going to be using <a href="http://wiki.openwrt.org/about/latest">Chaos Calmer</a>, even though it&rsquo;s still on release candidate 3 and not a &ldquo;stable&rdquo; release yet. I&rsquo;m choosing CC because LuCI for BB does not supporting configuring 802.11ac via the web.</p>
 <p>When choosing a download for OpenWrt CC RC3 on the C7, be careful which one you choose. There is a download for v1 and v2, then a file for flashing from factory or from a previous release of OpenWrt.</p>
@@ -910,9 +914,14 @@ remote YOUR_DNS_ENTRY_OR_IP 1194
 
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -953,11 +962,12 @@ remote YOUR_DNS_ENTRY_OR_IP 1194
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

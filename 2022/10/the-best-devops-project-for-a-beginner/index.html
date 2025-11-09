@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,7 @@
 I spend a lot of time on Reddit in r/devops, r/homelab, and r/selfhosted, where I always see different versions of the same question:
 
 It&rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?
+
 I&rsquo;ve posted this answer to Reddit multiple times before, but this post will have more detail.
 Static site
 Build a static site. That&rsquo;s the answer.
@@ -19,7 +20,7 @@ Why
 A static site is a great beginner project because:">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -48,23 +49,38 @@ A static site is a great beginner project because:">
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/">
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="The best DevOps project for a beginner">
   <meta property="og:description" content="Introduction I spend a lot of time on Reddit in r/devops, r/homelab, and r/selfhosted, where I always see different versions of the same question:
@@ -85,6 +101,7 @@ Why A static site is a great beginner project because:">
 I spend a lot of time on Reddit in r/devops, r/homelab, and r/selfhosted, where I always see different versions of the same question:
 
 It&rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?
+
 I&rsquo;ve posted this answer to Reddit multiple times before, but this post will have more detail.
 Static site
 Build a static site. That&rsquo;s the answer.
@@ -147,20 +164,8 @@ A static site is a great beginner project because:">
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
@@ -221,7 +226,7 @@ A static site is a great beginner project because:">
     <h1 class="post-title entry-hint-parent">
       The best DevOps project for a beginner
     </h1>
-    <div class="post-meta"><span title='2022-10-20 00:00:00 +0000 UTC'>2022-10-20</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;848 words&nbsp;·&nbsp;Logan Marchione
+    <div class="post-meta"><span title='2022-10-20 00:00:00 +0000 UTC'>2022-10-20</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>848 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -258,7 +263,8 @@ A static site is a great beginner project because:">
   <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>I spend a lot of time on Reddit in <a href="https://reddit.com/r/devops/">r/devops</a>, <a href="https://reddit.com/r/homelab">r/homelab</a>, and <a href="https://reddit.com/r/selfhosted">r/selfhosted</a>, where I always see different versions of the same question:</p>
 <blockquote>
-<p>It&rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?</p></blockquote>
+<p>It&rsquo;s difficult to get hands-on experience in DevOps. What is a good beginner project?</p>
+</blockquote>
 <p>I&rsquo;ve posted this answer to Reddit multiple times before, but this post will have more detail.</p>
 <h1 id="static-site">Static site<a hidden class="anchor" aria-hidden="true" href="#static-site">#</a></h1>
 <p>Build a static site. <em>That&rsquo;s the answer</em>.</p>
@@ -476,9 +482,14 @@ A static site is a great beginner project because:">
 
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -519,11 +530,12 @@ A static site is a great beginner project because:">
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

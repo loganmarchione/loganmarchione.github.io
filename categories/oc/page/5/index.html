@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="Logan Marchione">
 <meta name="author" content="Me">
 <link rel="canonical" href="https://loganmarchione.github.io/categories/oc/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://loganmarchione.github.io/categories/oc/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://loganmarchione.github.io/categories/oc/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/categories/oc/">
 <noscript>
     <style>
@@ -40,23 +40,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/categories/oc/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/categories/oc/">
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="Oc">
   <meta property="og:description" content="Logan Marchione">
@@ -67,20 +82,8 @@
 <meta name="twitter:description" content="Logan Marchione">
 
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
@@ -154,7 +157,7 @@ Introduction I receive a lot of email questions about my resume, specifically as
 For the past 10 years, I’ve been writing my resume in Microsoft Word. Over time, it had become a burden to update. More often than not, I ended up fighting with the formatting, instead of focusing on the content. The slightest change to a column, graphic, or font would completely alter the formatting of the entire document. With this frustration in mind, I set out to find a new way to write my resume.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-03-01 00:00:00 +0000 UTC'>2019-03-01</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;2014 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2019-03-01 00:00:00 +0000 UTC'>2019-03-01</span>&nbsp;·&nbsp;<span>10 min</span>&nbsp;·&nbsp;<span>2014 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Why I write my resume in LaTeX" href="https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/"></a>
 </article>
 
@@ -171,7 +174,7 @@ For the past 10 years, I’ve been writing my resume in Microsoft Word. Over tim
 Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction What is a CNAME record? A canonical name (CNAME) record is a special type of DNS record that points one domain name to another.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-02-03 00:00:00 +0000 UTC'>2019-02-03</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;496 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2019-02-03 00:00:00 +0000 UTC'>2019-02-03</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>496 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to EdgeRouter CNAME records" href="https://loganmarchione.github.io/2019/02/edgerouter-cname-records/"></a>
 </article>
 
@@ -188,7 +191,7 @@ Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrat
 OpenVPN drawbacks For years, I’ve used OpenVPN to connect back to my home network. Don’t get me wrong, OpenVPN is great, especially compared to dated, insecure alternatives like PPTP or L2TP/IPSec. But, for all its merits, OpenVPN has some drawbacks:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-12-20 00:00:00 +0000 UTC'>2018-12-20</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;639 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2018-12-20 00:00:00 +0000 UTC'>2018-12-20</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>639 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to I just setup WireGuard, and I&#39;ll never go back to OpenVPN" href="https://loganmarchione.github.io/2018/12/i-just-setup-wireguard-and-ill-never-go-back-to-openvpn/"></a>
 </article>
 
@@ -205,7 +208,7 @@ OpenVPN drawbacks For years, I’ve used OpenVPN to connect back to my home netw
 What are wildcard certificates? Wildcard certificates cover any subdomain of a specific domain. For example, I own loganmarchione.com. Because of this, I can create services as subdomains of that domain. For example:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-27 00:00:00 +0000 UTC'>2018-09-27</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1236 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2018-09-27 00:00:00 +0000 UTC'>2018-09-27</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1236 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Let&#39;s Encrypt wildcard certificates with Certbot on Nginx" href="https://loganmarchione.github.io/2018/09/lets-encrypt-wildcard-certificates-with-certbot-on-nginx/"></a>
 </article>
 
@@ -223,7 +226,7 @@ Now, I need to get that data shipped offsite to an external location to cover my
 3 backups 2 different types of media 1 backup offsite Software My cloud storage provider of choice is B2. I’ve written about them in the past and have generally had good luck with them, so I’d like to keep using them.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-06-18 00:00:00 +0000 UTC'>2018-06-18</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1165 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2018-06-18 00:00:00 +0000 UTC'>2018-06-18</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1165 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Rclone on ODROID-HC2" href="https://loganmarchione.github.io/2018/06/rclone-on-odroid-hc2/"></a>
 </article>
 
@@ -240,7 +243,7 @@ Now, I need to get that data shipped offsite to an external location to cover my
 I recently decommissioned my Raspberry Pi 3 that was running my Unifi controller, Dokuwiki, and Network UPS Tools (NUT). I replaced the RPi3 with an Intel i3 NUC with 12GB RAM and a Crucial 2.5&#34; SSD. I chose to use Proxmox as the hypervisor on the NUC because it is open source, has a well-proven record, and has a low learning curve. At the time of this writing, I’m running five KVM virtual machines:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-06-13 00:00:00 +0000 UTC'>2018-06-13</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;2303 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2018-06-13 00:00:00 +0000 UTC'>2018-06-13</span>&nbsp;·&nbsp;<span>11 min</span>&nbsp;·&nbsp;<span>2303 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to ODROID-HC2 as an entry-level NAS" href="https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/"></a>
 </article>
 
@@ -261,7 +264,7 @@ Congrats to the two winners, Dan and Michael! I’ll be emailing you shortly!
 Introduction Since 2014, I’ve been blogging about security, open source, Linux, and routers. Since then, I’ve hit the 1000 comment mark (although technically, some comments are my own replies to your comments). To thank my readers, I’m giving away two Raspberry Pi 3 Complete Starter Kit (32 GB Edition) by CanaKit.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-12-05 00:00:00 +0000 UTC'>2017-12-05</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;698 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2017-12-05 00:00:00 +0000 UTC'>2017-12-05</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>698 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Celebrating 1000 comments by giving away a Raspberry Pi 3!" href="https://loganmarchione.github.io/2017/12/celebrating-1000-comments-by-giving-away-a-raspberry-pi-3/"></a>
 </article>
 
@@ -278,7 +281,7 @@ Introduction Since 2014, I’ve been blogging about security, open source, Linux
 Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction In the past, I’ve posted about my DuckDNS dynamic DNS settings, and mentioned I use Dyn as well. My Dyn setup is documented below.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-10-03 00:00:00 +0000 UTC'>2017-10-03</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;474 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2017-10-03 00:00:00 +0000 UTC'>2017-10-03</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>474 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Dyn DDNS on EdgeRouter" href="https://loganmarchione.github.io/2017/10/dyn-ddns-on-edgerouter/"></a>
 </article>
 
@@ -295,7 +298,7 @@ Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrat
 domain name DNS record(s) web host Typically, most domain registrars offer basic DNS support. In addition, most web hosts also offer basic DNS support. However, you can (and probably should) have these three services hosted at three separate companies (you don’t want all your eggs in one basket).
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-28 00:00:00 +0000 UTC'>2017-09-28</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;756 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2017-09-28 00:00:00 +0000 UTC'>2017-09-28</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>756 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to How to host a website" href="https://loganmarchione.github.io/2017/09/how-to-host-a-website/"></a>
 </article>
 
@@ -311,7 +314,7 @@ domain name DNS record(s) web host Typically, most domain registrars offer basic
     <p>Introduction Certification Authority Authorization (CAA) is a new DNS record specifying which Certificate Authorities (CAs) are allowed to issue certificates for a domain. Introduced by RFC 6844, CAA protects websites by only allowing certificates to be issued by specific CAs. If an attacker were to take over a website, they would only be able to obtain a certificate from a CA specified in DNS CAA records, limiting the damage they could do. While CAA records aren’t going to completely stop certificate misuse, they are easy to implement and are part of a larger security plan.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-21 00:00:00 +0000 UTC'>2017-09-21</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;786 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2017-09-21 00:00:00 +0000 UTC'>2017-09-21</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>786 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Creating CAA records" href="https://loganmarchione.github.io/2017/09/creating-caa-records/"></a>
 </article>
 <footer class="page-footer">
@@ -344,9 +347,14 @@ domain name DNS record(s) web host Typically, most domain registrars offer basic
 
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -387,11 +395,12 @@ domain name DNS record(s) web host Typically, most domain registrars offer basic
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

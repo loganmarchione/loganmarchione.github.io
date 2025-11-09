@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="Logan Marchione">
 <meta name="author" content="Me">
 <link rel="canonical" href="https://loganmarchione.github.io/categories/kubernetes/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d7e6f87603ccc7a363b77812843841068b4b126180b25c38c5aa6e468723cebe.css" integrity="sha256-1&#43;b4dgPMx6Njt3gShDhBBotLEmGAslw4xapuRocjzr4=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://loganmarchione.github.io/categories/kubernetes/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://loganmarchione.github.io/categories/kubernetes/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/categories/kubernetes/">
 <noscript>
     <style>
@@ -40,23 +40,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/categories/kubernetes/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/categories/kubernetes/">
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="Kubernetes">
   <meta property="og:description" content="Logan Marchione">
@@ -67,20 +82,8 @@
 <meta name="twitter:description" content="Logan Marchione">
 
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
@@ -153,7 +156,7 @@
 Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction It’s been a while since my last K3s post. In that time, I’ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster. I’ve also been at my job using Amazon EKS for about six months, so I think I know just enough to be dangerous now 😉.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-12-07 00:00:00 +0000 UTC'>2022-12-07</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1562 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-12-07 00:00:00 +0000 UTC'>2022-12-07</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>1562 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to K3s cluster updates" href="https://loganmarchione.github.io/2022/12/k3s-cluster-updates/"></a>
 </article>
 
@@ -170,7 +173,7 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
 Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction In my last post, I setup a K3s single-node cluster and an example application. While everything was done through the command-line, as a noob, it’s nice to have a graphical user interface (GUI) of some kind. I’m not a fan of ClickOps, but it’s convenient to have a GUI to be able to quickly view status, instead of hunting for the right kubectl command.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-03-29 00:00:00 +0000 UTC'>2022-03-29</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;822 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-03-29 00:00:00 +0000 UTC'>2022-03-29</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>822 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to Kubernetes GUIs" href="https://loganmarchione.github.io/2022/03/kubernetes-guis/"></a>
 </article>
 
@@ -187,7 +190,7 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
 Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I’m starting a new job in the next few days that will require me to learn Kubernetes (often stylized as k8s). This post is not about what k8s is or why you want it (you can read about that here). My only objective for now is to have a single-node k8s cluster running in my homelab.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2022-03-11 00:00:00 +0000 UTC'>2022-03-11</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1236 words&nbsp;·&nbsp;Logan Marchione</footer>
+  <footer class="entry-footer"><span title='2022-03-11 00:00:00 +0000 UTC'>2022-03-11</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1236 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span></footer>
   <a class="entry-link" aria-label="post link to K3s single-node cluster for noobs" href="https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/"></a>
 </article>
     </main>
@@ -211,9 +214,14 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
 
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -254,11 +262,12 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
