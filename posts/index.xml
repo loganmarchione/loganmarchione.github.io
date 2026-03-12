@@ -151,9 +151,10 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h1 id=&#34;update-2025-07-22&#34;&gt;Update: 2025-07-22&lt;/h1&gt;
-&lt;p&gt;A lot has changed in the world of OpenWrt!&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;opkg&lt;/code&gt; package manager has been &lt;a href=&#34;https://forum.openwrt.org/t/the-future-is-now-opkg-vs-apk/201164&#34;&gt;replaced&lt;/a&gt; by &lt;code&gt;apk&lt;/code&gt;, the &lt;a href=&#34;https://wiki.alpinelinux.org/wiki/Alpine_Package_Keeper&#34;&gt;same package manager from Alpine Linux&lt;/a&gt;. However, &lt;code&gt;apk&lt;/code&gt; is currently only available on SNAPSHOT builds, so I&amp;rsquo;m guessing it will come as default in the 25.xx version.&lt;/p&gt;</description>
+&lt;h1 id=&#34;update-2026-03-12&#34;&gt;Update: 2026-03-12&lt;/h1&gt;
+&lt;p&gt;Another release of OpenWrt, another smooth upgrade! First, I installed &lt;code&gt;owut&lt;/code&gt;.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;opkg update &amp;amp;&amp;amp; opkg install owut
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then, I checked my upgrade path.&lt;/p&gt;</description>
     </item>
     
     <item>
