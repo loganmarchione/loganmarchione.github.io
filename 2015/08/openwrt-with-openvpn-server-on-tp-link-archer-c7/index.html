@@ -43,12 +43,12 @@ Introduction
 I&rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&rsquo;re here, you know that already. If you need a refresher on the different types of VPNs, see below.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">
@@ -84,12 +84,6 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -108,7 +102,7 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
   <meta property="og:title" content="OpenWrt with OpenVPN server on TP-Link Archer C7">
   <meta property="og:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
 Date URL Part 2024-02-06 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I’m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you’re here, you know that already. If you need a refresher on the different types of VPNs, see below.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2015-08-26T00:00:00+00:00">
@@ -116,41 +110,9 @@ Date URL Part 2024-02-06 Beryl travel router with OpenWrt OpenWrt revisited 2016
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg">
-<meta name="twitter:title" content="OpenWrt with OpenVPN server on TP-Link Archer C7">
-<meta name="twitter:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
-
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2024-02-06
-          Beryl travel router with OpenWrt
-          OpenWrt revisited
-      
-      
-          2016-04-28
-          OpenWrt upgrade process
-          OpenWrt upgrade
-      
-      
-          2015-08-26
-          OpenWrt with OpenVPN server on TP-Link Archer C7
-          Initial post
-      
-      
-          2015-02-15
-          OpenWrt with OpenVPN client on TP-Link TL-MR3020
-          Initial post
-      
-  
-
-Introduction
-I&rsquo;m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you&rsquo;re here, you know that already. If you need a refresher on the different types of VPNs, see below.">
+  <meta name="twitter:title" content="OpenWrt with OpenVPN server on TP-Link Archer C7">
+  <meta name="twitter:description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
+Date URL Part 2024-02-06 Beryl travel router with OpenWrt OpenWrt revisited 2016-04-28 OpenWrt upgrade process OpenWrt upgrade 2015-08-26 OpenWrt with OpenVPN server on TP-Link Archer C7 Initial post 2015-02-15 OpenWrt with OpenVPN client on TP-Link TL-MR3020 Initial post Introduction I’m not going to spend any time talking about why you should be using a VPN, or how a VPN works. If you’re here, you know that already. If you need a refresher on the different types of VPNs, see below.">
 
 
 <script type="application/ld+json">
@@ -201,7 +163,7 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -209,19 +171,19 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -237,7 +199,7 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -276,76 +238,74 @@ I&rsquo;m not going to spend any time talking about why you should be using a VP
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_openwrt.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
-                        
-                <li>
-                    <a href="#hardware" aria-label="Hardware">Hardware</a></li>
-                <li>
-                    <a href="#software" aria-label="Software">Software</a></li></ul>
-                </li>
-                <li>
-                    <a href="#install-openwrt" aria-label="Install OpenWrt">Install OpenWrt</a></li>
-                <li>
-                    <a href="#configure-openwrt" aria-label="Configure OpenWrt">Configure OpenWrt</a><ul>
-                        
-                <li>
-                    <a href="#set-a-password" aria-label="Set a password">Set a password</a></li>
-                <li>
-                    <a href="#setup-ntp" aria-label="Setup NTP">Setup NTP</a></li>
-                <li>
-                    <a href="#set-default-ip" aria-label="Set default IP">Set default IP</a></li>
-                <li>
-                    <a href="#verify-internet-access" aria-label="Verify internet access">Verify internet access</a></li></ul>
-                </li>
-                <li>
-                    <a href="#setup-wireless" aria-label="Setup wireless">Setup wireless</a><ul>
-                        
-                <li>
-                    <a href="#install-luci" aria-label="Install LuCI">Install LuCI</a></li>
-                <li>
-                    <a href="#create-wireless-network" aria-label="Create wireless network">Create wireless network</a></li></ul>
-                </li>
-                <li>
-                    <a href="#setup-ddns" aria-label="Setup DDNS">Setup DDNS</a></li>
-                <li>
-                    <a href="#setup-openvpn" aria-label="Setup OpenVPN">Setup OpenVPN</a><ul>
-                        
-                <li>
-                    <a href="#install-packages" aria-label="Install packages">Install packages</a></li>
-                <li>
-                    <a href="#create-certificates" aria-label="Create certificates">Create certificates</a></li>
-                <li>
-                    <a href="#configure-networkfirewall" aria-label="Configure network/firewall">Configure network/firewall</a></li>
-                <li>
-                    <a href="#enable-packet-forwarding" aria-label="Enable packet forwarding">Enable packet forwarding</a></li>
-                <li>
-                    <a href="#openvpn-server-config" aria-label="OpenVPN server config">OpenVPN server config</a></li>
-                <li>
-                    <a href="#openvpn-client-config" aria-label="OpenVPN client config">OpenVPN client config</a></li>
-                <li>
-                    <a href="#distribute-keys" aria-label="Distribute keys">Distribute keys</a></li>
-                <li>
-                    <a href="#configure-openvpn-client" aria-label="Configure OpenVPN client">Configure OpenVPN client</a></li></ul>
-                </li>
-                <li>
-                    <a href="#verify-connection" aria-label="Verify connection">Verify connection</a></li>
-                <li>
-                    <a href="#comments" aria-label="Comments">Comments</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                    
+            <li>
+                <a href="#hardware" aria-label="Hardware">Hardware</a></li>
+            <li>
+                <a href="#software" aria-label="Software">Software</a></li></ul>
+            </li>
+            <li>
+                <a href="#install-openwrt" aria-label="Install OpenWrt">Install OpenWrt</a></li>
+            <li>
+                <a href="#configure-openwrt" aria-label="Configure OpenWrt">Configure OpenWrt</a><ul>
+                    
+            <li>
+                <a href="#set-a-password" aria-label="Set a password">Set a password</a></li>
+            <li>
+                <a href="#setup-ntp" aria-label="Setup NTP">Setup NTP</a></li>
+            <li>
+                <a href="#set-default-ip" aria-label="Set default IP">Set default IP</a></li>
+            <li>
+                <a href="#verify-internet-access" aria-label="Verify internet access">Verify internet access</a></li></ul>
+            </li>
+            <li>
+                <a href="#setup-wireless" aria-label="Setup wireless">Setup wireless</a><ul>
+                    
+            <li>
+                <a href="#install-luci" aria-label="Install LuCI">Install LuCI</a></li>
+            <li>
+                <a href="#create-wireless-network" aria-label="Create wireless network">Create wireless network</a></li></ul>
+            </li>
+            <li>
+                <a href="#setup-ddns" aria-label="Setup DDNS">Setup DDNS</a></li>
+            <li>
+                <a href="#setup-openvpn" aria-label="Setup OpenVPN">Setup OpenVPN</a><ul>
+                    
+            <li>
+                <a href="#install-packages" aria-label="Install packages">Install packages</a></li>
+            <li>
+                <a href="#create-certificates" aria-label="Create certificates">Create certificates</a></li>
+            <li>
+                <a href="#configure-networkfirewall" aria-label="Configure network/firewall">Configure network/firewall</a></li>
+            <li>
+                <a href="#enable-packet-forwarding" aria-label="Enable packet forwarding">Enable packet forwarding</a></li>
+            <li>
+                <a href="#openvpn-server-config" aria-label="OpenVPN server config">OpenVPN server config</a></li>
+            <li>
+                <a href="#openvpn-client-config" aria-label="OpenVPN client config">OpenVPN client config</a></li>
+            <li>
+                <a href="#distribute-keys" aria-label="Distribute keys">Distribute keys</a></li>
+            <li>
+                <a href="#configure-openvpn-client" aria-label="Configure OpenVPN client">Configure OpenVPN client</a></li></ul>
+            </li>
+            <li>
+                <a href="#verify-connection" aria-label="Verify connection">Verify connection</a></li>
+            <li>
+                <a href="#comments" aria-label="Comments">Comments</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!</p>
+  <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!</p>
 <table>
   <thead>
       <tr>
@@ -904,9 +864,11 @@ remote YOUR_DNS_ENTRY_OR_IP 1194
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -948,14 +910,13 @@ remote YOUR_DNS_ENTRY_OR_IP 1194
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

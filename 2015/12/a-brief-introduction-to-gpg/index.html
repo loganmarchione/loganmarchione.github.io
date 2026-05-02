@@ -15,12 +15,12 @@ Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 
 Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions export without a license&rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law. However, Zimmerman was able to circumvent this by publishing the entire source code of PGP in a physical book (that could be scanned with OCR and recompiled into source code), since the export of books was protected by the First Amendment. Today, PGP is no longer considered a weapon, but still cannot be exported to a specific list of individuals/countries.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/">
@@ -56,12 +56,6 @@ Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions ex
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -81,7 +75,7 @@ Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions ex
   <meta property="og:description" content="Introduction Put on your tinfoil hats, boys and girls! Today, we’re talking about security, encryption, and GPG!
 PGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.
 Fun fact - in 1993 the US government charged Zimmerman with “munitions export without a license”. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law. However, Zimmerman was able to circumvent this by publishing the entire source code of PGP in a physical book (that could be scanned with OCR and recompiled into source code), since the export of books was protected by the First Amendment. Today, PGP is no longer considered a weapon, but still cannot be exported to a specific list of individuals/countries.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2015-12-31T00:00:00+00:00">
@@ -89,13 +83,10 @@ Fun fact - in 1993 the US government charged Zimmerman with “munitions export
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_gnupg.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_gnupg.svg">
-<meta name="twitter:title" content="A brief introduction to GPG">
-<meta name="twitter:description" content="Introduction
-Put on your tinfoil hats, boys and girls! Today, we&rsquo;re talking about security, encryption, and GPG!
-PGP vs OpenPGP vs GPG
-PGP
-Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.
-Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions export without a license&rdquo;. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law. However, Zimmerman was able to circumvent this by publishing the entire source code of PGP in a physical book (that could be scanned with OCR and recompiled into source code), since the export of books was protected by the First Amendment. Today, PGP is no longer considered a weapon, but still cannot be exported to a specific list of individuals/countries.">
+  <meta name="twitter:title" content="A brief introduction to GPG">
+  <meta name="twitter:description" content="Introduction Put on your tinfoil hats, boys and girls! Today, we’re talking about security, encryption, and GPG!
+PGP vs OpenPGP vs GPG PGP Pretty Good Privacy (PGP) was a program created to encrypt/decrypt data in 1991 by Phil Zimmermann. Zimmermann formed PGP Incorporated, which was acquired serveral times and is now owned by Symantec.
+Fun fact - in 1993 the US government charged Zimmerman with “munitions export without a license”. At the time, cryptography systems with keys over 40 bits were considered a weapon, and since PGP used 128 bit keys, Zimmerman was in violation of the law. However, Zimmerman was able to circumvent this by publishing the entire source code of PGP in a physical book (that could be scanned with OCR and recompiled into source code), since the export of books was protected by the First Amendment. Today, PGP is no longer considered a weapon, but still cannot be exported to a specific list of individuals/countries.">
 
 
 <script type="application/ld+json">
@@ -146,7 +137,7 @@ Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions ex
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -154,19 +145,19 @@ Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions ex
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -182,7 +173,7 @@ Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions ex
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -221,110 +212,108 @@ Fun fact - in 1993 the US government charged Zimmerman with &ldquo;munitions ex
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_gnupg.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
-                        
-                <li>
-                    <a href="#pgp-vs-openpgp-vs-gpg" aria-label="PGP vs OpenPGP vs GPG">PGP vs OpenPGP vs GPG</a><ul>
-                        
-                <li>
-                    <a href="#pgp" aria-label="PGP">PGP</a></li>
-                <li>
-                    <a href="#openpgp" aria-label="OpenPGP">OpenPGP</a></li>
-                <li>
-                    <a href="#gpg" aria-label="GPG">GPG</a></li></ul>
-                </li>
-                <li>
-                    <a href="#public-vs-private-keys" aria-label="Public vs private keys">Public vs private keys</a><ul>
-                        
-                <li>
-                    <a href="#encryption" aria-label="Encryption">Encryption</a></li>
-                <li>
-                    <a href="#verificationdigital-signature" aria-label="Verification/digital signature">Verification/digital signature</a></li></ul>
-                </li></ul>
-                </li>
-                <li>
-                    <a href="#install-gpg" aria-label="Install GPG">Install GPG</a><ul>
-                        
-                <li>
-                    <a href="#important" aria-label="Important!">Important!</a></li></ul>
-                </li>
-                <li>
-                    <a href="#generate-a-key-pair" aria-label="Generate a key pair">Generate a key pair</a></li>
-                <li>
-                    <a href="#generate-a-revocation-certificate" aria-label="Generate a revocation certificate">Generate a revocation certificate</a></li>
-                <li>
-                    <a href="#generating-a-key-fingerprint" aria-label="Generating a key fingerprint">Generating a key fingerprint</a><ul>
-                        
-                <li>
-                    <a href="#using-a-key-fingerprint" aria-label="Using a key fingerprint">Using a key fingerprint</a></li></ul>
-                </li>
-                <li>
-                    <a href="#exportyour-public-key" aria-label="Export your public key">Export your public key</a><ul>
-                        
-                <li>
-                    <a href="#manually" aria-label="Manually">Manually</a></li>
-                <li>
-                    <a href="#to-a-keyserver" aria-label="To a keyserver">To a keyserver</a></li></ul>
-                </li>
-                <li>
-                    <a href="#import-a-key" aria-label="Import a key">Import a key</a><ul>
-                        
-                <li>
-                    <a href="#manually-1" aria-label="Manually">Manually</a></li>
-                <li>
-                    <a href="#from-a-keyserver" aria-label="From a keyserver">From a keyserver</a></li></ul>
-                </li>
-                <li>
-                    <a href="#a-note-onshort-key-ids" aria-label="A note on short key IDs">A note on short key IDs</a></li>
-                <li>
-                    <a href="#signing-keys" aria-label="Signing keys">Signing keys</a><ul>
-                        
-                <li>
-                    <a href="#web-of-trust" aria-label="Web of trust">Web of trust</a></li>
-                <li>
-                    <a href="#signing" aria-label="Signing">Signing</a></li>
-                <li>
-                    <a href="#key-signing-party" aria-label="Key signing party">Key signing party</a></li></ul>
-                </li>
-                <li>
-                    <a href="#manually-encrypting" aria-label="Manually encrypting">Manually encrypting</a><ul>
-                        
-                <li>
-                    <a href="#email" aria-label="Email">Email</a></li>
-                <li>
-                    <a href="#files" aria-label="Files">Files</a></li></ul>
-                </li>
-                <li>
-                    <a href="#manually-decrypting" aria-label="Manually decrypting">Manually decrypting</a></li>
-                <li>
-                    <a href="#basic-key-management" aria-label="Basic key management">Basic key management</a></li>
-                <li>
-                    <a href="#automated-tools" aria-label="Automated tools">Automated tools</a><ul>
-                        
-                <li>
-                    <a href="#desktop-email" aria-label="Desktop email">Desktop email</a></li>
-                <li>
-                    <a href="#webmail" aria-label="Webmail">Webmail</a></li>
-                <li>
-                    <a href="#files-1" aria-label="Files">Files</a></li></ul>
-                </li>
-                <li>
-                    <a href="#comments" aria-label="Comments">Comments</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                    
+            <li>
+                <a href="#pgp-vs-openpgp-vs-gpg" aria-label="PGP vs OpenPGP vs GPG">PGP vs OpenPGP vs GPG</a><ul>
+                    
+            <li>
+                <a href="#pgp" aria-label="PGP">PGP</a></li>
+            <li>
+                <a href="#openpgp" aria-label="OpenPGP">OpenPGP</a></li>
+            <li>
+                <a href="#gpg" aria-label="GPG">GPG</a></li></ul>
+            </li>
+            <li>
+                <a href="#public-vs-private-keys" aria-label="Public vs private keys">Public vs private keys</a><ul>
+                    
+            <li>
+                <a href="#encryption" aria-label="Encryption">Encryption</a></li>
+            <li>
+                <a href="#verificationdigital-signature" aria-label="Verification/digital signature">Verification/digital signature</a></li></ul>
+            </li></ul>
+            </li>
+            <li>
+                <a href="#install-gpg" aria-label="Install GPG">Install GPG</a><ul>
+                    
+            <li>
+                <a href="#important" aria-label="Important!">Important!</a></li></ul>
+            </li>
+            <li>
+                <a href="#generate-a-key-pair" aria-label="Generate a key pair">Generate a key pair</a></li>
+            <li>
+                <a href="#generate-a-revocation-certificate" aria-label="Generate a revocation certificate">Generate a revocation certificate</a></li>
+            <li>
+                <a href="#generating-a-key-fingerprint" aria-label="Generating a key fingerprint">Generating a key fingerprint</a><ul>
+                    
+            <li>
+                <a href="#using-a-key-fingerprint" aria-label="Using a key fingerprint">Using a key fingerprint</a></li></ul>
+            </li>
+            <li>
+                <a href="#exportyour-public-key" aria-label="Export your public key">Export your public key</a><ul>
+                    
+            <li>
+                <a href="#manually" aria-label="Manually">Manually</a></li>
+            <li>
+                <a href="#to-a-keyserver" aria-label="To a keyserver">To a keyserver</a></li></ul>
+            </li>
+            <li>
+                <a href="#import-a-key" aria-label="Import a key">Import a key</a><ul>
+                    
+            <li>
+                <a href="#manually-1" aria-label="Manually">Manually</a></li>
+            <li>
+                <a href="#from-a-keyserver" aria-label="From a keyserver">From a keyserver</a></li></ul>
+            </li>
+            <li>
+                <a href="#a-note-onshort-key-ids" aria-label="A note on short key IDs">A note on short key IDs</a></li>
+            <li>
+                <a href="#signing-keys" aria-label="Signing keys">Signing keys</a><ul>
+                    
+            <li>
+                <a href="#web-of-trust" aria-label="Web of trust">Web of trust</a></li>
+            <li>
+                <a href="#signing" aria-label="Signing">Signing</a></li>
+            <li>
+                <a href="#key-signing-party" aria-label="Key signing party">Key signing party</a></li></ul>
+            </li>
+            <li>
+                <a href="#manually-encrypting" aria-label="Manually encrypting">Manually encrypting</a><ul>
+                    
+            <li>
+                <a href="#email" aria-label="Email">Email</a></li>
+            <li>
+                <a href="#files" aria-label="Files">Files</a></li></ul>
+            </li>
+            <li>
+                <a href="#manually-decrypting" aria-label="Manually decrypting">Manually decrypting</a></li>
+            <li>
+                <a href="#basic-key-management" aria-label="Basic key management">Basic key management</a></li>
+            <li>
+                <a href="#automated-tools" aria-label="Automated tools">Automated tools</a><ul>
+                    
+            <li>
+                <a href="#desktop-email" aria-label="Desktop email">Desktop email</a></li>
+            <li>
+                <a href="#webmail" aria-label="Webmail">Webmail</a></li>
+            <li>
+                <a href="#files-1" aria-label="Files">Files</a></li></ul>
+            </li>
+            <li>
+                <a href="#comments" aria-label="Comments">Comments</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+  <div class="post-content md-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>Put on your tinfoil hats, boys and girls! Today, we&rsquo;re talking about security, encryption, and GPG!</p>
 <h2 id="pgp-vs-openpgp-vs-gpg">PGP vs OpenPGP vs GPG<a hidden class="anchor" aria-hidden="true" href="#pgp-vs-openpgp-vs-gpg">#</a></h2>
 <h3 id="pgp">PGP<a hidden class="anchor" aria-hidden="true" href="#pgp">#</a></h3>
@@ -613,9 +602,11 @@ CiNrh1avYNQ=
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -657,14 +648,13 @@ CiNrh1avYNQ=
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

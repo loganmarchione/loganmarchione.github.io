@@ -14,12 +14,12 @@ I have a confession: I tried really hard to quit Firefox, but I can&rsquo;t.
 I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;ve been publishing my Firefox config for five years now. In a recent experiment, I used Brave Browser exclusively for three months, but ended up moving back to Firefox. Here are my thoughts (i.e., a rant) on why I moved, why I moved back, and why I might not be done moving.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/">
@@ -55,12 +55,6 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -80,7 +74,7 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
   <meta property="og:description" content="TL;DR I’m frustrated by Mozilla, but don’t see many alternative browsers that have such noble goals as Firefox.
 Introduction I have a confession: I tried really hard to quit Firefox, but I can’t.
 I’ve been using Firefox since the single-digit release days, and I’ve been publishing my Firefox config for five years now. In a recent experiment, I used Brave Browser exclusively for three months, but ended up moving back to Firefox. Here are my thoughts (i.e., a rant) on why I moved, why I moved back, and why I might not be done moving.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2022-08-03T00:00:00+00:00">
@@ -88,12 +82,10 @@ I’ve been using Firefox since the single-digit release days, and I’ve been p
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_firefox.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_firefox.svg">
-<meta name="twitter:title" content="I tried to quit Firefox. I can&#39;t.">
-<meta name="twitter:description" content="TL;DR
-I&rsquo;m frustrated by Mozilla, but don&rsquo;t see many alternative browsers that have such noble goals as Firefox.
-Introduction
-I have a confession: I tried really hard to quit Firefox, but I can&rsquo;t.
-I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;ve been publishing my Firefox config for five years now. In a recent experiment, I used Brave Browser exclusively for three months, but ended up moving back to Firefox. Here are my thoughts (i.e., a rant) on why I moved, why I moved back, and why I might not be done moving.">
+  <meta name="twitter:title" content="I tried to quit Firefox. I can&#39;t.">
+  <meta name="twitter:description" content="TL;DR I’m frustrated by Mozilla, but don’t see many alternative browsers that have such noble goals as Firefox.
+Introduction I have a confession: I tried really hard to quit Firefox, but I can’t.
+I’ve been using Firefox since the single-digit release days, and I’ve been publishing my Firefox config for five years now. In a recent experiment, I used Brave Browser exclusively for three months, but ended up moving back to Firefox. Here are my thoughts (i.e., a rant) on why I moved, why I moved back, and why I might not be done moving.">
 
 
 <script type="application/ld+json">
@@ -144,7 +136,7 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -152,19 +144,19 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -180,7 +172,7 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -219,48 +211,46 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_firefox.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#tldr" aria-label="TL;DR">TL;DR</a></li>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
-                <li>
-                    <a href="#firefoxs-rise" aria-label="Firefox&rsquo;s rise&hellip;">Firefox&rsquo;s rise&hellip;</a></li>
-                <li>
-                    <a href="#firefoxs-fall" aria-label="Firefox&rsquo;s fall&hellip;">Firefox&rsquo;s fall&hellip;</a><ul>
-                        
-                <li>
-                    <a href="#chromes-dominance" aria-label="Chrome&rsquo;s dominance">Chrome&rsquo;s dominance</a></li>
-                <li>
-                    <a href="#the-tragedy-of-the-default" aria-label="The tragedy of the default">The tragedy of the default</a></li>
-                <li>
-                    <a href="#mozilla-foundation-vs-corporation" aria-label="Mozilla Foundation vs Corporation">Mozilla Foundation vs Corporation</a></li>
-                <li>
-                    <a href="#mozillas-internal-problems" aria-label="Mozilla&rsquo;s internal problems">Mozilla&rsquo;s internal problems</a></li></ul>
-                </li>
-                <li>
-                    <a href="#why-i-tried-to-quit-firefox-and-why-i-went-back" aria-label="Why I tried to quit Firefox (and why I went back)">Why I tried to quit Firefox (and why I went back)</a><ul>
-                        
-                <li>
-                    <a href="#browsers-and-browser-engines" aria-label="Browsers and browser engines">Browsers and browser engines</a></li>
-                <li>
-                    <a href="#browsers-based-on-other-browsers" aria-label="Browsers based on other browsers">Browsers based on other browsers</a></li></ul>
-                </li>
-                <li>
-                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#tldr" aria-label="TL;DR">TL;DR</a></li>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#firefoxs-rise" aria-label="Firefox&rsquo;s rise&hellip;">Firefox&rsquo;s rise&hellip;</a></li>
+            <li>
+                <a href="#firefoxs-fall" aria-label="Firefox&rsquo;s fall&hellip;">Firefox&rsquo;s fall&hellip;</a><ul>
+                    
+            <li>
+                <a href="#chromes-dominance" aria-label="Chrome&rsquo;s dominance">Chrome&rsquo;s dominance</a></li>
+            <li>
+                <a href="#the-tragedy-of-the-default" aria-label="The tragedy of the default">The tragedy of the default</a></li>
+            <li>
+                <a href="#mozilla-foundation-vs-corporation" aria-label="Mozilla Foundation vs Corporation">Mozilla Foundation vs Corporation</a></li>
+            <li>
+                <a href="#mozillas-internal-problems" aria-label="Mozilla&rsquo;s internal problems">Mozilla&rsquo;s internal problems</a></li></ul>
+            </li>
+            <li>
+                <a href="#why-i-tried-to-quit-firefox-and-why-i-went-back" aria-label="Why I tried to quit Firefox (and why I went back)">Why I tried to quit Firefox (and why I went back)</a><ul>
+                    
+            <li>
+                <a href="#browsers-and-browser-engines" aria-label="Browsers and browser engines">Browsers and browser engines</a></li>
+            <li>
+                <a href="#browsers-based-on-other-browsers" aria-label="Browsers based on other browsers">Browsers based on other browsers</a></li></ul>
+            </li>
+            <li>
+                <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><h1 id="tldr">TL;DR<a hidden class="anchor" aria-hidden="true" href="#tldr">#</a></h1>
+  <div class="post-content md-content"><h1 id="tldr">TL;DR<a hidden class="anchor" aria-hidden="true" href="#tldr">#</a></h1>
 <p>I&rsquo;m frustrated by Mozilla, but don&rsquo;t see many alternative browsers that have such noble goals as Firefox.</p>
 <h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>I have a confession: I tried <em>really hard</em> to quit <a href="https://www.mozilla.org/en-US/firefox/browsers/">Firefox</a>, but I can&rsquo;t.</p>
@@ -427,9 +417,11 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -471,14 +463,13 @@ I&rsquo;ve been using Firefox since the single-digit release days, and I&rsquo;v
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

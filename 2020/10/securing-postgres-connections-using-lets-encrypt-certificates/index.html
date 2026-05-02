@@ -13,12 +13,12 @@ I&rsquo;m on a quest to SSL all the things on my local network. I work in IT sec
 For my web applications, everything is accessed through a Nginx reverse proxy that uses Let&rsquo;s Encrypt wildcard certificates (using the DNS challenge) for encryption. It provides a single choke-point for all my traffic, all using one wildcard certificate, and all my clients accept it with the green lock.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2020/10/securing-postgres-connections-using-lets-encrypt-certificates/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2020/10/securing-postgres-connections-using-lets-encrypt-certificates/">
@@ -54,12 +54,6 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -78,7 +72,7 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
   <meta property="og:title" content="Securing Postgres connections using Let&#39;s Encrypt certificates">
   <meta property="og:description" content="Introduction I’m on a quest to SSL all the things on my local network. I work in IT security, and am more than paranoid when it comes to my homelab (shout-out to r/homelab and r/selfhosted).
 For my web applications, everything is accessed through a Nginx reverse proxy that uses Let’s Encrypt wildcard certificates (using the DNS challenge) for encryption. It provides a single choke-point for all my traffic, all using one wildcard certificate, and all my clients accept it with the green lock.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2020-10-22T00:00:00+00:00">
@@ -86,11 +80,9 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_postgres_lets_encrypt.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_postgres_lets_encrypt.svg">
-<meta name="twitter:title" content="Securing Postgres connections using Let&#39;s Encrypt certificates">
-<meta name="twitter:description" content="Introduction
-I&rsquo;m on a quest to SSL all the things on my local network. I work in IT security, and am more than paranoid when it comes to my homelab (shout-out to r/homelab and r/selfhosted).
-
-For my web applications, everything is accessed through a Nginx reverse proxy that uses Let&rsquo;s Encrypt wildcard certificates (using the DNS challenge) for encryption. It provides a single choke-point for all my traffic, all using one wildcard certificate, and all my clients accept it with the green lock.">
+  <meta name="twitter:title" content="Securing Postgres connections using Let&#39;s Encrypt certificates">
+  <meta name="twitter:description" content="Introduction I’m on a quest to SSL all the things on my local network. I work in IT security, and am more than paranoid when it comes to my homelab (shout-out to r/homelab and r/selfhosted).
+For my web applications, everything is accessed through a Nginx reverse proxy that uses Let’s Encrypt wildcard certificates (using the DNS challenge) for encryption. It provides a single choke-point for all my traffic, all using one wildcard certificate, and all my clients accept it with the green lock.">
 
 
 <script type="application/ld+json">
@@ -141,7 +133,7 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -149,19 +141,19 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -177,7 +169,7 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -216,42 +208,40 @@ For my web applications, everything is accessed through a Nginx reverse proxy th
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_postgres_lets_encrypt.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
-                <li>
-                    <a href="#get-a-certificate" aria-label="Get a certificate">Get a certificate</a></li>
-                <li>
-                    <a href="#configure-postgres" aria-label="Configure Postgres">Configure Postgres</a><ul>
-                        
-                <li>
-                    <a href="#edit-postgres-configuration" aria-label="Edit Postgres configuration">Edit Postgres configuration</a></li>
-                <li>
-                    <a href="#test-postgres-connection" aria-label="Test Postgres connection">Test Postgres connection</a></li></ul>
-                </li>
-                <li>
-                    <a href="#configure-clients" aria-label="Configure clients">Configure clients</a><ul>
-                        
-                <li>
-                    <a href="#check-clients-on-the-database" aria-label="Check clients (on the database)">Check clients (on the database)</a></li></ul>
-                </li>
-                <li>
-                    <a href="#certbot-post-renew-hook" aria-label="Certbot post-renew hook">Certbot post-renew hook</a></li>
-                <li>
-                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#get-a-certificate" aria-label="Get a certificate">Get a certificate</a></li>
+            <li>
+                <a href="#configure-postgres" aria-label="Configure Postgres">Configure Postgres</a><ul>
+                    
+            <li>
+                <a href="#edit-postgres-configuration" aria-label="Edit Postgres configuration">Edit Postgres configuration</a></li>
+            <li>
+                <a href="#test-postgres-connection" aria-label="Test Postgres connection">Test Postgres connection</a></li></ul>
+            </li>
+            <li>
+                <a href="#configure-clients" aria-label="Configure clients">Configure clients</a><ul>
+                    
+            <li>
+                <a href="#check-clients-on-the-database" aria-label="Check clients (on the database)">Check clients (on the database)</a></li></ul>
+            </li>
+            <li>
+                <a href="#certbot-post-renew-hook" aria-label="Certbot post-renew hook">Certbot post-renew hook</a></li>
+            <li>
+                <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+  <div class="post-content md-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>I&rsquo;m on a quest to SSL all the things on my local network. I work in IT security, and am more than paranoid when it comes to my homelab (shout-out to <a href="https://www.reddit.com/r/homelab/">r/homelab</a> and <a href="https://www.reddit.com/r/selfhosted/">r/selfhosted</a>).</p>
 <p><img alt="meme" loading="lazy" src="/assets/memes/ssl_all_the_things.jpg"></p>
 <p>For my web applications, everything is accessed through a <a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">Nginx reverse proxy</a> that uses <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> wildcard certificates (using the <a href="https://letsencrypt.org/docs/challenge-types/#dns-01-challenge">DNS challenge</a>) for encryption. It provides a single choke-point for all my traffic, all using one wildcard certificate, and all my clients accept it with the green lock.</p>
@@ -449,9 +439,11 @@ WHERE ssl.pid = activity.pid;
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -493,14 +485,13 @@ WHERE ssl.pid = activity.pid;
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

@@ -38,12 +38,12 @@ Introduction
 It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster. I&rsquo;ve also been at my job using Amazon EKS for about six months, so I think I know just enough to be dangerous now &#x1f609;.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/12/k3s-cluster-updates/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2022/12/k3s-cluster-updates/">
@@ -79,12 +79,6 @@ It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-do
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -103,7 +97,7 @@ It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-do
   <meta property="og:title" content="K3s cluster updates">
   <meta property="og:description" content="Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
 Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction It’s been a while since my last K3s post. In that time, I’ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster. I’ve also been at my job using Amazon EKS for about six months, so I think I know just enough to be dangerous now 😉.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2022-12-07T00:00:00+00:00">
@@ -111,36 +105,9 @@ Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-0
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_k3s.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_k3s.svg">
-<meta name="twitter:title" content="K3s cluster updates">
-<meta name="twitter:description" content="Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
-
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2022-12-07
-          K3s cluster updates
-          Updates to the cluster build
-      
-      
-          2022-03-29
-          Kubernetes GUIs
-          Exploring Kubernetes GUIs
-      
-      
-          2022-03-11
-          K3s single-node cluster for noobs
-          Deploying K3s
-      
-  
-
-Introduction
-It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster. I&rsquo;ve also been at my job using Amazon EKS for about six months, so I think I know just enough to be dangerous now &#x1f609;.">
+  <meta name="twitter:title" content="K3s cluster updates">
+  <meta name="twitter:description" content="Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
+Date URL Part 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction It’s been a while since my last K3s post. In that time, I’ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster. I’ve also been at my job using Amazon EKS for about six months, so I think I know just enough to be dangerous now 😉.">
 
 
 <script type="application/ld+json">
@@ -191,7 +158,7 @@ It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-do
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -199,19 +166,19 @@ It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-do
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -227,7 +194,7 @@ It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-do
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -266,46 +233,44 @@ It&rsquo;s been a while since my last K3s post. In that time, I&rsquo;ve torn-do
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_k3s.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
-                <li>
-                    <a href="#changes-since-last-post" aria-label="Changes since last post">Changes since last post</a><ul>
-                        
-                <li>
-                    <a href="#database" aria-label="Database">Database</a></li>
-                <li>
-                    <a href="#imperative-vs-declarative" aria-label="Imperative vs Declarative">Imperative vs Declarative</a></li>
-                <li>
-                    <a href="#flux-vs-argocd" aria-label="Flux vs ArgoCD">Flux vs ArgoCD</a></li>
-                <li>
-                    <a href="#persistent-storage" aria-label="Persistent storage">Persistent storage</a></li>
-                <li>
-                    <a href="#secret-storage" aria-label="Secret storage">Secret storage</a></li>
-                <li>
-                    <a href="#ingress" aria-label="Ingress">Ingress</a></li>
-                <li>
-                    <a href="#ssltls" aria-label="SSL/TLS">SSL/TLS</a></li>
-                <li>
-                    <a href="#backups" aria-label="Backups">Backups</a></li></ul>
-                </li>
-                <li>
-                    <a href="#things-im-keeping-an-eye-on" aria-label="Things I&rsquo;m keeping an eye on">Things I&rsquo;m keeping an eye on</a></li>
-                <li>
-                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#changes-since-last-post" aria-label="Changes since last post">Changes since last post</a><ul>
+                    
+            <li>
+                <a href="#database" aria-label="Database">Database</a></li>
+            <li>
+                <a href="#imperative-vs-declarative" aria-label="Imperative vs Declarative">Imperative vs Declarative</a></li>
+            <li>
+                <a href="#flux-vs-argocd" aria-label="Flux vs ArgoCD">Flux vs ArgoCD</a></li>
+            <li>
+                <a href="#persistent-storage" aria-label="Persistent storage">Persistent storage</a></li>
+            <li>
+                <a href="#secret-storage" aria-label="Secret storage">Secret storage</a></li>
+            <li>
+                <a href="#ingress" aria-label="Ingress">Ingress</a></li>
+            <li>
+                <a href="#ssltls" aria-label="SSL/TLS">SSL/TLS</a></li>
+            <li>
+                <a href="#backups" aria-label="Backups">Backups</a></li></ul>
+            </li>
+            <li>
+                <a href="#things-im-keeping-an-eye-on" aria-label="Things I&rsquo;m keeping an eye on">Things I&rsquo;m keeping an eye on</a></li>
+            <li>
+                <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!</p>
+  <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!</p>
 <table>
   <thead>
       <tr>
@@ -553,9 +518,11 @@ spec:
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -597,14 +564,13 @@ spec:
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

@@ -11,12 +11,12 @@
 My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that here), but I don&rsquo;t use it to manage my personal servers, write personal code, browse the internet, etc&hellip; But, it would be really nice to SSH to a server from my couch on a device that&rsquo;s not my phone. I figured it was time to get a laptop. I was looking for:">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/">
@@ -52,12 +52,6 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -75,7 +69,7 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
   <meta property="og:site_name" content="Logan Marchione">
   <meta property="og:title" content="Linux on the Lenovo ThinkPad T14 Gen2 (AMD)">
   <meta property="og:description" content="Introduction My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that here), but I don’t use it to manage my personal servers, write personal code, browse the internet, etc… But, it would be really nice to SSH to a server from my couch on a device that’s not my phone. I figured it was time to get a laptop. I was looking for:">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2022-11-09T00:00:00+00:00">
@@ -83,9 +77,8 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_tux.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_tux.svg">
-<meta name="twitter:title" content="Linux on the Lenovo ThinkPad T14 Gen2 (AMD)">
-<meta name="twitter:description" content="Introduction
-My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that here), but I don&rsquo;t use it to manage my personal servers, write personal code, browse the internet, etc&hellip; But, it would be really nice to SSH to a server from my couch on a device that&rsquo;s not my phone. I figured it was time to get a laptop. I was looking for:">
+  <meta name="twitter:title" content="Linux on the Lenovo ThinkPad T14 Gen2 (AMD)">
+  <meta name="twitter:description" content="Introduction My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that here), but I don’t use it to manage my personal servers, write personal code, browse the internet, etc… But, it would be really nice to SSH to a server from my couch on a device that’s not my phone. I figured it was time to get a laptop. I was looking for:">
 
 
 <script type="application/ld+json">
@@ -136,7 +129,7 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -144,19 +137,19 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -172,7 +165,7 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -211,36 +204,34 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_tux.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
-                <li>
-                    <a href="#specs" aria-label="Specs">Specs</a><ul>
-                        
-                <li>
-                    <a href="#stock" aria-label="Stock">Stock</a></li>
-                <li>
-                    <a href="#upgraded" aria-label="Upgraded">Upgraded</a></li></ul>
-                </li>
-                <li>
-                    <a href="#initial-setup" aria-label="Initial setup">Initial setup</a></li>
-                <li>
-                    <a href="#arch-linux-install" aria-label="Arch Linux install">Arch Linux install</a></li>
-                <li>
-                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#specs" aria-label="Specs">Specs</a><ul>
+                    
+            <li>
+                <a href="#stock" aria-label="Stock">Stock</a></li>
+            <li>
+                <a href="#upgraded" aria-label="Upgraded">Upgraded</a></li></ul>
+            </li>
+            <li>
+                <a href="#initial-setup" aria-label="Initial setup">Initial setup</a></li>
+            <li>
+                <a href="#arch-linux-install" aria-label="Arch Linux install">Arch Linux install</a></li>
+            <li>
+                <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+  <div class="post-content md-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that <a href="/2022/04/impressions-from-a-first-time-mac-user/">here</a>), but I don&rsquo;t use it to manage my personal servers, write personal code, browse the internet, etc&hellip; But, it would be really nice to SSH to a server from my couch on a device that&rsquo;s not my phone. I figured it was time to get a laptop. I was looking for:</p>
 <ul>
 <li>a CPU from within the last 2-3 years</li>
@@ -475,9 +466,11 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -519,14 +512,13 @@ My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

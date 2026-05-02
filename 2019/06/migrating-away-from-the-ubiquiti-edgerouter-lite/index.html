@@ -73,12 +73,12 @@ Introduction
 For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For about $100, you&rsquo;re not going to find a router with more features. In fact, most of Ubiquiti&rsquo;s offerings are a very good value for the money. However, in the past year or so, Ubiquiti has seemed to have some issues with what direction they want to take as a company:">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">
@@ -114,12 +114,6 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -138,7 +132,7 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
   <meta property="og:title" content="Migrating away from the Ubiquiti EdgeRouter Lite">
   <meta property="og:description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
 Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction For years, I’ve been using and loving my Ubiquiti EdgeRouter Lite. For about $100, you’re not going to find a router with more features. In fact, most of Ubiquiti’s offerings are a very good value for the money. However, in the past year or so, Ubiquiti has seemed to have some issues with what direction they want to take as a company:">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2019-06-28T00:00:00+00:00">
@@ -146,71 +140,9 @@ Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrat
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg">
-<meta name="twitter:title" content="Migrating away from the Ubiquiti EdgeRouter Lite">
-<meta name="twitter:description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
-
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2019-06-28
-          Migrating away from the Ubiquiti EdgeRouter Lite
-          Migrated to a Netgate SG-1100
-      
-      
-          2019-02-03
-          EdgeRouter CNAME records
-          Setup CNAME records
-      
-      
-          2017-10-03
-          Dyn DDNS on EdgeRouter
-          Setup DynDNS
-      
-      
-          2017-04-25
-          DuckDNS on EdgeRouter
-          Setup DuckDNS
-      
-      
-          2017-01-08
-          Ubiquiti EdgeRouter serial console settings
-          Serial console settings
-      
-      
-          2016-11-29
-          Ubiquiti UniFi controller setup on Raspberry Pi 3
-          Install UniFi Controller
-      
-      
-          2016-08-30
-          EdgeRouter Lite Dnsmasq setup
-          Setup dnsmasq
-      
-      
-          2016-06-13
-          EdgeRouter Lite software upgrade
-          Firmware upgrade
-      
-      
-          2016-05-12
-          EdgeRouter Lite OpenVPN setup
-          OpenVPN server setup
-      
-      
-          2016-04-29
-          Ubiquiti EdgeRouter Lite setup
-          Initial setup
-      
-  
-
-Introduction
-For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For about $100, you&rsquo;re not going to find a router with more features. In fact, most of Ubiquiti&rsquo;s offerings are a very good value for the money. However, in the past year or so, Ubiquiti has seemed to have some issues with what direction they want to take as a company:">
+  <meta name="twitter:title" content="Migrating away from the Ubiquiti EdgeRouter Lite">
+  <meta name="twitter:description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
+Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 2019-02-03 EdgeRouter CNAME records Setup CNAME records 2017-10-03 Dyn DDNS on EdgeRouter Setup DynDNS 2017-04-25 DuckDNS on EdgeRouter Setup DuckDNS 2017-01-08 Ubiquiti EdgeRouter serial console settings Serial console settings 2016-11-29 Ubiquiti UniFi controller setup on Raspberry Pi 3 Install UniFi Controller 2016-08-30 EdgeRouter Lite Dnsmasq setup Setup dnsmasq 2016-06-13 EdgeRouter Lite software upgrade Firmware upgrade 2016-05-12 EdgeRouter Lite OpenVPN setup OpenVPN server setup 2016-04-29 Ubiquiti EdgeRouter Lite setup Initial setup Introduction For years, I’ve been using and loving my Ubiquiti EdgeRouter Lite. For about $100, you’re not going to find a router with more features. In fact, most of Ubiquiti’s offerings are a very good value for the money. However, in the past year or so, Ubiquiti has seemed to have some issues with what direction they want to take as a company:">
 
 
 <script type="application/ld+json">
@@ -261,7 +193,7 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -269,19 +201,19 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -297,7 +229,7 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -336,42 +268,40 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_ubiquiti_edgemax.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
-                <li>
-                    <a href="#requirements" aria-label="Requirements">Requirements</a><ul>
-                        
-                <li>
-                    <a href="#hardware" aria-label="Hardware">Hardware</a></li>
-                <li>
-                    <a href="#software" aria-label="Software">Software</a></li></ul>
-                </li>
-                <li>
-                    <a href="#pfsense-on-the-netgate-sg-1100" aria-label="pfSense on the Netgate SG-1100">pfSense on the Netgate SG-1100</a><ul>
-                        
-                <li>
-                    <a href="#the-first-ten-minutes" aria-label="The first ten minutes">The first ten minutes</a></li>
-                <li>
-                    <a href="#the-first-24-hours" aria-label="The first 24 hours">The first 24 hours</a></li></ul>
-                </li>
-                <li>
-                    <a href="#pfsense-vs-edgeos" aria-label="pfSense vs EdgeOS">pfSense vs EdgeOS</a></li>
-                <li>
-                    <a href="#comments" aria-label="Comments">Comments</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#requirements" aria-label="Requirements">Requirements</a><ul>
+                    
+            <li>
+                <a href="#hardware" aria-label="Hardware">Hardware</a></li>
+            <li>
+                <a href="#software" aria-label="Software">Software</a></li></ul>
+            </li>
+            <li>
+                <a href="#pfsense-on-the-netgate-sg-1100" aria-label="pfSense on the Netgate SG-1100">pfSense on the Netgate SG-1100</a><ul>
+                    
+            <li>
+                <a href="#the-first-ten-minutes" aria-label="The first ten minutes">The first ten minutes</a></li>
+            <li>
+                <a href="#the-first-24-hours" aria-label="The first 24 hours">The first 24 hours</a></li></ul>
+            </li>
+            <li>
+                <a href="#pfsense-vs-edgeos" aria-label="pfSense vs EdgeOS">pfSense vs EdgeOS</a></li>
+            <li>
+                <a href="#comments" aria-label="Comments">Comments</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!</p>
+  <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!</p>
 <table>
   <thead>
       <tr>
@@ -790,9 +720,11 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -834,14 +766,13 @@ For years, I&rsquo;ve been using and loving my Ubiquiti EdgeRouter Lite. For abo
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

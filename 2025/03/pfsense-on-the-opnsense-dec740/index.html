@@ -43,12 +43,12 @@ Introduction
 My APU2 is five years old now and I notice that it runs slow when making changes in pfSense&rsquo;s web interface. The CPU is an AMD GX-412TC (from 2014) and it&rsquo;s running 4GB of DDR3 memory, so I guess that&rsquo;s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I&rsquo;m left wondering if the APU2 could keep up with that speed. I&rsquo;ve seen this post about routing at 1Gbps on the APU2 hardware, but I&rsquo;m also running pfBlockerNG and wondering if that would affect speed.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.aa4d0ee38b68e63e71907ca647d454b066c9a7adac4415f5b67408992d9ffadf.css" integrity="sha256-qk0O44to5j5xkHymR9RUsGbJp62sRBX1tnQImS2f&#43;t8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
-<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/">
@@ -84,12 +84,6 @@ My APU2 is five years old now and I notice that it runs slow when making changes
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -108,7 +102,7 @@ My APU2 is five years old now and I notice that it runs slow when making changes
   <meta property="og:title" content="pfSense on the OPNsense DEC740">
   <meta property="og:description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
 Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense DEC740 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction My APU2 is five years old now and I notice that it runs slow when making changes in pfSense’s web interface. The CPU is an AMD GX-412TC (from 2014) and it’s running 4GB of DDR3 memory, so I guess that’s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I’m left wondering if the APU2 could keep up with that speed. I’ve seen this post about routing at 1Gbps on the APU2 hardware, but I’m also running pfBlockerNG and wondering if that would affect speed.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-03-01T00:00:00+00:00">
@@ -116,41 +110,9 @@ Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense
     <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_pfsense.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_pfsense.svg">
-<meta name="twitter:title" content="pfSense on the OPNsense DEC740">
-<meta name="twitter:description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
-
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2025-03-01
-          pfSense on the OPNsense DEC740
-          Migrated to the OPNsense DEC740
-      
-      
-          2019-08-25
-          pfSense on the PC Engines APU2
-          Migrated to a PC Engines APU2D4
-      
-      
-          2019-07-17
-          My SG-1100 died
-          Migrated back the the EdgeRouter Lite
-      
-      
-          2019-06-28
-          Migrating away from the Ubiquiti EdgeRouter Lite
-          Migrated to a Netgate SG-1100
-      
-  
-
-Introduction
-My APU2 is five years old now and I notice that it runs slow when making changes in pfSense&rsquo;s web interface. The CPU is an AMD GX-412TC (from 2014) and it&rsquo;s running 4GB of DDR3 memory, so I guess that&rsquo;s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I&rsquo;m left wondering if the APU2 could keep up with that speed. I&rsquo;ve seen this post about routing at 1Gbps on the APU2 hardware, but I&rsquo;m also running pfBlockerNG and wondering if that would affect speed.">
+  <meta name="twitter:title" content="pfSense on the OPNsense DEC740">
+  <meta name="twitter:description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
+Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense DEC740 2019-08-25 pfSense on the PC Engines APU2 Migrated to a PC Engines APU2D4 2019-07-17 My SG-1100 died Migrated back the the EdgeRouter Lite 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrated to a Netgate SG-1100 Introduction My APU2 is five years old now and I notice that it runs slow when making changes in pfSense’s web interface. The CPU is an AMD GX-412TC (from 2014) and it’s running 4GB of DDR3 memory, so I guess that’s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I’m left wondering if the APU2 could keep up with that speed. I’ve seen this post about routing at 1Gbps on the APU2 hardware, but I’m also running pfBlockerNG and wondering if that would affect speed.">
 
 
 <script type="application/ld+json">
@@ -201,7 +163,7 @@ My APU2 is five years old now and I notice that it runs slow when making changes
     "name": "Logan Marchione",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg"
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
     }
   }
 }
@@ -209,19 +171,19 @@ My APU2 is five years old now and I notice that it runs slow when making changes
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
-                <img src="https://loganmarchione.github.io/assets/favicon/favicon_loganmarchione_logo.svg" alt="" aria-label="logo"
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -237,7 +199,7 @@ My APU2 is five years old now and I notice that it runs slow when making changes
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://loganmarchione.github.io/about" title="About">
                     <span>About</span>
@@ -276,62 +238,60 @@ My APU2 is five years old now and I notice that it runs slow when making changes
 <figure class="entry-cover">
         <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_pfsense.svg" alt="featured image">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
-                <li>
-                    <a href="#hardware" aria-label="Hardware">Hardware</a><ul>
-                        
-                <li>
-                    <a href="#comparison" aria-label="Comparison">Comparison</a></li>
-                <li>
-                    <a href="#purchase" aria-label="Purchase">Purchase</a></li>
-                <li>
-                    <a href="#ecc-ram-upgrade" aria-label="ECC RAM upgrade">ECC RAM upgrade</a></li></ul>
-                </li>
-                <li>
-                    <a href="#decisions" aria-label="Decisions">Decisions</a><ul>
-                        
-                <li>
-                    <a href="#did-i-pay-over-800-for-a-router" aria-label="Did I pay over $800 for a router?!">Did I pay over $800 for a router?!</a></li>
-                <li>
-                    <a href="#why-pfsense" aria-label="Why pfSense?">Why pfSense?</a></li></ul>
-                </li>
-                <li>
-                    <a href="#pre-installation" aria-label="Pre-installation">Pre-installation</a><ul>
-                        
-                <li>
-                    <a href="#console-settings" aria-label="Console settings">Console settings</a></li>
-                <li>
-                    <a href="#bios-settings" aria-label="BIOS settings">BIOS settings</a><ul>
-                        
-                <li>
-                    <a href="#enable-ecc" aria-label="Enable ECC">Enable ECC</a></li>
-                <li>
-                    <a href="#ecc-error-injection" aria-label="ECC error injection">ECC error injection</a></li>
-                <li>
-                    <a href="#memory-overclock" aria-label="Memory overclock">Memory overclock</a></li></ul>
-                </li>
-                <li>
-                    <a href="#memory-test" aria-label="Memory test">Memory test</a></li></ul>
-                </li>
-                <li>
-                    <a href="#installing-pfsense" aria-label="Installing pfSense">Installing pfSense</a></li>
-                <li>
-                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#hardware" aria-label="Hardware">Hardware</a><ul>
+                    
+            <li>
+                <a href="#comparison" aria-label="Comparison">Comparison</a></li>
+            <li>
+                <a href="#purchase" aria-label="Purchase">Purchase</a></li>
+            <li>
+                <a href="#ecc-ram-upgrade" aria-label="ECC RAM upgrade">ECC RAM upgrade</a></li></ul>
+            </li>
+            <li>
+                <a href="#decisions" aria-label="Decisions">Decisions</a><ul>
+                    
+            <li>
+                <a href="#did-i-pay-over-800-for-a-router" aria-label="Did I pay over $800 for a router?!">Did I pay over $800 for a router?!</a></li>
+            <li>
+                <a href="#why-pfsense" aria-label="Why pfSense?">Why pfSense?</a></li></ul>
+            </li>
+            <li>
+                <a href="#pre-installation" aria-label="Pre-installation">Pre-installation</a><ul>
+                    
+            <li>
+                <a href="#console-settings" aria-label="Console settings">Console settings</a></li>
+            <li>
+                <a href="#bios-settings" aria-label="BIOS settings">BIOS settings</a><ul>
+                    
+            <li>
+                <a href="#enable-ecc" aria-label="Enable ECC">Enable ECC</a></li>
+            <li>
+                <a href="#ecc-error-injection" aria-label="ECC error injection">ECC error injection</a></li>
+            <li>
+                <a href="#memory-overclock" aria-label="Memory overclock">Memory overclock</a></li></ul>
+            </li>
+            <li>
+                <a href="#memory-test" aria-label="Memory test">Memory test</a></li></ul>
+            </li>
+            <li>
+                <a href="#installing-pfsense" aria-label="Installing pfSense">Installing pfSense</a></li>
+            <li>
+                <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>Hey! Listen! This post is part of a series on pfSense. Check them all out!</p>
+  <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on pfSense. Check them all out!</p>
 <table>
   <thead>
       <tr>
@@ -1037,9 +997,11 @@ ax1@pci0:6:0:2: class=0x020000 rev=0x00 hdr=0x00 vendor=0x1022 device=0x1458 sub
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a><div class="kb-club">
   <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
@@ -1081,14 +1043,13 @@ ax1@pci0:6:0:2: class=0x020000 rev=0x00 hdr=0x00 vendor=0x1022 device=0x1458 sub
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
