@@ -2,28 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://loganmarchione.github.io/categories/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/linux/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/oc/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/posts/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/router/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/pc-hardware/</loc>
+    <lastmod>2025-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/posts/</loc>
     <lastmod>2025-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2025/10/proxmox-backup-server-on-the-opnsense-dec740/</loc>
@@ -41,7 +32,13 @@
     <loc>https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/</loc>
     <lastmod>2025-03-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://loganmarchione.github.io/categories/router/</loc>
+    <lastmod>2025-03-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://loganmarchione.github.io/2025/02/goodbye-to-windows/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/linux/</loc>
     <lastmod>2025-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/windows/</loc>

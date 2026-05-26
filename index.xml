@@ -6,54 +6,7 @@
     <description>Recent content on Logan Marchione</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>A dead-simple OpenWrt setup on the Flint 2</title>
-      <link>https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/</link>
-      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      
-      <guid>https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/</guid>
-      <description>&lt;p&gt;Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2024-02-06&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt revisited&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-08-26&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-02-15&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;We&amp;rsquo;re moving house this year, and there is going to be a period of about a month or so where we own both houses. Before the big move, I&amp;rsquo;m going to move my home office setup myself and work from the new house. I don&amp;rsquo;t plan on moving my entire homelab setup until the big move, so this means that I&amp;rsquo;m going to need a temporary router at the new house so that I can work.&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Wed, 15 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Proxmox Backup Server on the OPNsense DEC740</title>
       <link>https://loganmarchione.github.io/2025/10/proxmox-backup-server-on-the-opnsense-dec740/</link>
@@ -177,11 +130,6 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
           &lt;td&gt;2024-02-06&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
           &lt;td&gt;OpenWrt revisited&lt;/td&gt;
@@ -204,7 +152,9 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;update-2026-03-12&#34;&gt;Update: 2026-03-12&lt;/h1&gt;
-&lt;p&gt;Another release of OpenWrt, another smooth upgrade! First, I installed &lt;code&gt;owut&lt;/code&gt;.&lt;/p&gt;</description>
+&lt;p&gt;Another release of OpenWrt, another smooth upgrade! First, I installed &lt;code&gt;owut&lt;/code&gt;.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;opkg update &amp;amp;&amp;amp; opkg install owut
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then, I checked my upgrade path.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1966,11 +1916,6 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
           &lt;td&gt;2024-02-06&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
           &lt;td&gt;OpenWrt revisited&lt;/td&gt;
@@ -2026,11 +1971,6 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;2024-02-06&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
@@ -2117,11 +2057,6 @@
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;2024-02-06&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
