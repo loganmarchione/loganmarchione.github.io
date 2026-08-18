@@ -9,46 +9,46 @@
 <meta name="keywords" content="">
 <meta name="description" content="Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!
 
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2026-05-23
-          A dead-simple OpenWrt setup on the Flint 2 
-          OpenWrt simple setup
-      
-      
-          2024-02-06
-          Beryl travel router with OpenWrt
-          OpenWrt revisited
-      
-      
-          2016-04-28
-          OpenWrt upgrade process
-          OpenWrt upgrade
-      
-      
-          2015-08-26
-          OpenWrt with OpenVPN server on TP-Link Archer C7
-          Initial post
-      
-      
-          2015-02-15
-          OpenWrt with OpenVPN client on TP-Link TL-MR3020
-          Initial post
-      
-  
+	
+			
+					Date
+					URL
+					Part
+			
+	
+	
+			
+					2026-05-23
+					A dead-simple OpenWrt setup on the Flint 2 
+					OpenWrt simple setup
+			
+			
+					2024-02-06
+					Beryl travel router with OpenWrt
+					OpenWrt revisited
+			
+			
+					2016-04-28
+					OpenWrt upgrade process
+					OpenWrt upgrade
+			
+			
+					2015-08-26
+					OpenWrt with OpenVPN server on TP-Link Archer C7
+					Initial post
+			
+			
+					2015-02-15
+					OpenWrt with OpenVPN client on TP-Link TL-MR3020
+					Initial post
+			
+	
 
 Introduction
 Typically, when a new version of OpenWrt is released, I completely wipe the router and start over. However, with the recent release of 15.05.1, I wanted to perform an in-place upgrade while preserving all of my data.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fb6fa8c13b88513fbed8074f42525ca6d31fc71f35161067ae3f2c6bdfc5065.css" integrity="sha256-j7b6jBO4hRP77YB09CUlym0x/HHzUWEGeuPyxr38UGU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -183,12 +183,12 @@ Date URL Part 2026-05-23 A dead-simple OpenWrt setup on the Flint 2 OpenWrt simp
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -236,7 +236,9 @@ Date URL Part 2026-05-23 A dead-simple OpenWrt setup on the Flint 2 OpenWrt simp
     <h1 class="post-title entry-hint-parent">
       OpenWrt upgrade process
     </h1>
-    <div class="post-meta"><span title='2016-04-28 00:00:00 +0000 UTC'>2016-04-28</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>711 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
+    <div class="post-meta">
+
+<span title='2016-04-28 00:00:00 +0000 UTC'>2016-04-28</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>711 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -274,40 +276,40 @@ Date URL Part 2026-05-23 A dead-simple OpenWrt setup on the Flint 2 OpenWrt simp
 
   <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!</p>
 <table>
-  <thead>
-      <tr>
-          <th>Date</th>
-          <th>URL</th>
-          <th>Part</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>2026-05-23</td>
-          <td><a href="/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/">A dead-simple OpenWrt setup on the Flint 2 </a></td>
-          <td>OpenWrt simple setup</td>
-      </tr>
-      <tr>
-          <td>2024-02-06</td>
-          <td><a href="/2024/02/beryl-travel-router-with-openwrt/">Beryl travel router with OpenWrt</a></td>
-          <td>OpenWrt revisited</td>
-      </tr>
-      <tr>
-          <td>2016-04-28</td>
-          <td><a href="/2016/04/openwrt-upgrade-process/">OpenWrt upgrade process</a></td>
-          <td>OpenWrt upgrade</td>
-      </tr>
-      <tr>
-          <td>2015-08-26</td>
-          <td><a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">OpenWrt with OpenVPN server on TP-Link Archer C7</a></td>
-          <td>Initial post</td>
-      </tr>
-      <tr>
-          <td>2015-02-15</td>
-          <td><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/">OpenWrt with OpenVPN client on TP-Link TL-MR3020</a></td>
-          <td>Initial post</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Date</th>
+					<th>URL</th>
+					<th>Part</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2026-05-23</td>
+					<td><a href="/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/">A dead-simple OpenWrt setup on the Flint 2 </a></td>
+					<td>OpenWrt simple setup</td>
+			</tr>
+			<tr>
+					<td>2024-02-06</td>
+					<td><a href="/2024/02/beryl-travel-router-with-openwrt/">Beryl travel router with OpenWrt</a></td>
+					<td>OpenWrt revisited</td>
+			</tr>
+			<tr>
+					<td>2016-04-28</td>
+					<td><a href="/2016/04/openwrt-upgrade-process/">OpenWrt upgrade process</a></td>
+					<td>OpenWrt upgrade</td>
+			</tr>
+			<tr>
+					<td>2015-08-26</td>
+					<td><a href="/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/">OpenWrt with OpenVPN server on TP-Link Archer C7</a></td>
+					<td>Initial post</td>
+			</tr>
+			<tr>
+					<td>2015-02-15</td>
+					<td><a href="/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/">OpenWrt with OpenVPN client on TP-Link TL-MR3020</a></td>
+					<td>Initial post</td>
+			</tr>
+	</tbody>
 </table>
 <h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>Typically, when a new version of OpenWrt is released, I completely wipe the router and start over. However, with the recent release of <a href="https://downloads.openwrt.org/">15.05.1</a>, I wanted to perform an in-place upgrade while preserving all of my data.</p>
@@ -461,9 +463,11 @@ opkg install package1 package2 package3
 <footer class="footer">
         <span>&copy; 2026 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>

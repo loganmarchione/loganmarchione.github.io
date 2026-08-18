@@ -9,41 +9,41 @@
 <meta name="keywords" content="">
 <meta name="description" content="Hey! Listen! This post is part of a series on pfSense. Check them all out!
 
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2025-03-01
-          pfSense on the OPNsense DEC740
-          Migrated to the OPNsense DEC740
-      
-      
-          2019-08-25
-          pfSense on the PC Engines APU2
-          Migrated to a PC Engines APU2D4
-      
-      
-          2019-07-17
-          My SG-1100 died
-          Migrated back the the EdgeRouter Lite
-      
-      
-          2019-06-28
-          Migrating away from the Ubiquiti EdgeRouter Lite
-          Migrated to a Netgate SG-1100
-      
-  
+	
+			
+					Date
+					URL
+					Part
+			
+	
+	
+			
+					2025-03-01
+					pfSense on the OPNsense DEC740
+					Migrated to the OPNsense DEC740
+			
+			
+					2019-08-25
+					pfSense on the PC Engines APU2
+					Migrated to a PC Engines APU2D4
+			
+			
+					2019-07-17
+					My SG-1100 died
+					Migrated back the the EdgeRouter Lite
+			
+			
+					2019-06-28
+					Migrating away from the Ubiquiti EdgeRouter Lite
+					Migrated to a Netgate SG-1100
+			
+	
 
 Introduction
 I recently wrote about how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense. However, on July 9th (about two weeks after installing my SG-1100) I noticed my internet connection died, and I was unable to ping the router. I used a micro-USB cable to view the console and noticed it was not pulling an IP address from my FiOS ONT.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2019/07/my-sg-1100-died/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fb6fa8c13b88513fbed8074f42525ca6d31fc71f35161067ae3f2c6bdfc5065.css" integrity="sha256-j7b6jBO4hRP77YB09CUlym0x/HHzUWEGeuPyxr38UGU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -178,12 +178,12 @@ Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -231,7 +231,9 @@ Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense
     <h1 class="post-title entry-hint-parent">
       My SG-1100 died
     </h1>
-    <div class="post-meta"><span title='2019-07-17 00:00:00 +0000 UTC'>2019-07-17</span>&nbsp;·&nbsp;<span>13 min</span>&nbsp;·&nbsp;<span>2738 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
+    <div class="post-meta">
+
+<span title='2019-07-17 00:00:00 +0000 UTC'>2019-07-17</span>&nbsp;·&nbsp;<span>13 min</span>&nbsp;·&nbsp;<span>2738 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -261,35 +263,35 @@ Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense
 
   <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on pfSense. Check them all out!</p>
 <table>
-  <thead>
-      <tr>
-          <th>Date</th>
-          <th>URL</th>
-          <th>Part</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>2025-03-01</td>
-          <td><a href="/2025/03/pfsense-on-the-opnsense-dec740/">pfSense on the OPNsense DEC740</a></td>
-          <td>Migrated to the OPNsense DEC740</td>
-      </tr>
-      <tr>
-          <td>2019-08-25</td>
-          <td><a href="/2019/08/pfsense-on-the-pc-engines-apu2/">pfSense on the PC Engines APU2</a></td>
-          <td>Migrated to a PC Engines APU2D4</td>
-      </tr>
-      <tr>
-          <td>2019-07-17</td>
-          <td><a href="/2019/07/my-sg-1100-died/">My SG-1100 died</a></td>
-          <td>Migrated back the the EdgeRouter Lite</td>
-      </tr>
-      <tr>
-          <td>2019-06-28</td>
-          <td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
-          <td>Migrated to a Netgate SG-1100</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Date</th>
+					<th>URL</th>
+					<th>Part</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2025-03-01</td>
+					<td><a href="/2025/03/pfsense-on-the-opnsense-dec740/">pfSense on the OPNsense DEC740</a></td>
+					<td>Migrated to the OPNsense DEC740</td>
+			</tr>
+			<tr>
+					<td>2019-08-25</td>
+					<td><a href="/2019/08/pfsense-on-the-pc-engines-apu2/">pfSense on the PC Engines APU2</a></td>
+					<td>Migrated to a PC Engines APU2D4</td>
+			</tr>
+			<tr>
+					<td>2019-07-17</td>
+					<td><a href="/2019/07/my-sg-1100-died/">My SG-1100 died</a></td>
+					<td>Migrated back the the EdgeRouter Lite</td>
+			</tr>
+			<tr>
+					<td>2019-06-28</td>
+					<td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
+					<td>Migrated to a Netgate SG-1100</td>
+			</tr>
+	</tbody>
 </table>
 <h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>I recently <a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">wrote about</a> how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense. However, on July 9th (about two weeks after installing my SG-1100) I noticed my internet connection died, and I was unable to ping the router. I used a micro-USB cable to view the console and noticed it was not pulling an IP address from my FiOS ONT.</p>
@@ -770,9 +772,11 @@ Date URL Part 2025-03-01 pfSense on the OPNsense DEC740 Migrated to the OPNsense
 <footer class="footer">
         <span>&copy; 2026 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>

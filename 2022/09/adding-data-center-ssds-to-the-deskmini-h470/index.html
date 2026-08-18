@@ -9,36 +9,36 @@
 <meta name="keywords" content="">
 <meta name="description" content="Hey! Listen! This post is part of a series on the DeskMini H470 as a hypervisor. Check them all out!
 
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2022-09-07
-          Adding a ZFS mirror to Proxmox 
-          Add a ZFS mirror to Proxmox
-      
-      
-          2022-09-02
-          Adding data center SSDs to the DeskMini H470
-          Add 2x Intel D3-S4510 to the DeskMini H470
-      
-      
-          2021-06-23
-          ASRock DeskMini H470 as a compact hypervisor
-          Initial post about DeskMini H470
-      
-  
+	
+			
+					Date
+					URL
+					Part
+			
+	
+	
+			
+					2022-09-07
+					Adding a ZFS mirror to Proxmox 
+					Add a ZFS mirror to Proxmox
+			
+			
+					2022-09-02
+					Adding data center SSDs to the DeskMini H470
+					Add 2x Intel D3-S4510 to the DeskMini H470
+			
+			
+					2021-06-23
+					ASRock DeskMini H470 as a compact hypervisor
+					Initial post about DeskMini H470
+			
+	
 
 Introduction
 Last year, I setup the ASRock DeskMini H470 as a compact hypervisor running Proxmox. During setup, I only installed a single NVMe SSD. However, I specifically chose the DeskMini H470 because it had space for more drives, which I knew I would eventually want to make use of. Today is that day.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fb6fa8c13b88513fbed8074f42525ca6d31fc71f35161067ae3f2c6bdfc5065.css" integrity="sha256-j7b6jBO4hRP77YB09CUlym0x/HHzUWEGeuPyxr38UGU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -173,12 +173,12 @@ Date URL Part 2022-09-07 Adding a ZFS mirror to Proxmox Add a ZFS mirror to Prox
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -226,7 +226,9 @@ Date URL Part 2022-09-07 Adding a ZFS mirror to Proxmox Add a ZFS mirror to Prox
     <h1 class="post-title entry-hint-parent">
       Adding data center SSDs to the DeskMini H470
     </h1>
-    <div class="post-meta"><span title='2022-09-02 00:00:00 +0000 UTC'>2022-09-02</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>1521 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
+    <div class="post-meta">
+
+<span title='2022-09-02 00:00:00 +0000 UTC'>2022-09-02</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>1521 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -274,30 +276,30 @@ Date URL Part 2022-09-07 Adding a ZFS mirror to Proxmox Add a ZFS mirror to Prox
 
   <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on the DeskMini H470 as a hypervisor. Check them all out!</p>
 <table>
-  <thead>
-      <tr>
-          <th>Date</th>
-          <th>URL</th>
-          <th>Part</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>2022-09-07</td>
-          <td><a href="/2022/09/adding-a-zfs-mirror-to-proxmox/">Adding a ZFS mirror to Proxmox </a></td>
-          <td>Add a ZFS mirror to Proxmox</td>
-      </tr>
-      <tr>
-          <td>2022-09-02</td>
-          <td><a href="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/">Adding data center SSDs to the DeskMini H470</a></td>
-          <td>Add 2x Intel D3-S4510 to the DeskMini H470</td>
-      </tr>
-      <tr>
-          <td>2021-06-23</td>
-          <td><a href="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/">ASRock DeskMini H470 as a compact hypervisor</a></td>
-          <td>Initial post about DeskMini H470</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Date</th>
+					<th>URL</th>
+					<th>Part</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2022-09-07</td>
+					<td><a href="/2022/09/adding-a-zfs-mirror-to-proxmox/">Adding a ZFS mirror to Proxmox </a></td>
+					<td>Add a ZFS mirror to Proxmox</td>
+			</tr>
+			<tr>
+					<td>2022-09-02</td>
+					<td><a href="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/">Adding data center SSDs to the DeskMini H470</a></td>
+					<td>Add 2x Intel D3-S4510 to the DeskMini H470</td>
+			</tr>
+			<tr>
+					<td>2021-06-23</td>
+					<td><a href="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/">ASRock DeskMini H470 as a compact hypervisor</a></td>
+					<td>Initial post about DeskMini H470</td>
+			</tr>
+	</tbody>
 </table>
 <h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>Last year, I <a href="/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/">setup the ASRock DeskMini H470 as a compact hypervisor</a> running Proxmox. During setup, I only installed a single NVMe SSD. However, I specifically chose the DeskMini H470 because it had space for more drives, which I knew I would eventually want to make use of. Today is that day.</p>
@@ -364,88 +366,88 @@ nvme0n1                      259:0    0 476.9G  0 disk
 <h2 id="disk-selection">Disk selection<a hidden class="anchor" aria-hidden="true" href="#disk-selection">#</a></h2>
 <p>I spent way too much time deciding on SSDs. I knew I wanted enterprise-grade SSDs, which have power-loss protection and are generally rated for more writes than consumer SSDs. However, enterprise-grade SSDs are hard to find new on sale to the general public. Although I did look on eBay, I wanted the warranty that came with a new drive. Below were my options (for comparision, I added the 970 Pro to the list).</p>
 <table>
-  <thead>
-      <tr>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Year introduced</th>
-          <th>NAND type</th>
-          <th>IOPS (4K read)</th>
-          <th>IOPS (4K write)</th>
-          <th>Mean Time Between Failures (MTBF)</th>
-          <th>Endurance Rating (Lifetime Writes)</th>
-          <th>Price</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Intel</td>
-          <td><a href="https://ark.intel.com/content/www/us/en/ark/products/134912/intel-ssd-d3s4510-series-960gb-2-5in-sata-6gbs-3d2-tlc.html">D3-S4510 960GB</a></td>
-          <td>Q3'18</td>
-          <td>64-layer TLC 3D NAND</td>
-          <td>95k</td>
-          <td>36k</td>
-          <td>2 million hours</td>
-          <td>3.5 PBW</td>
-          <td><a href="https://www.newegg.com/intel-d3-s4510-960gb/p/0D9-002V-003V6?Item=0D9-002V-003V6">$265 @ Newegg</a>, <a href="https://www.bhphotovideo.com/c/product/1466176-REG/intel_ssdsc2kb960g801_s4510_960gb_internal_ssd.html">$261 @ B&amp;H</a></td>
-      </tr>
-      <tr>
-          <td>Intel</td>
-          <td><a href="https://ark.intel.com/content/www/us/en/ark/products/134917/intel-ssd-d3s4610-series-960gb-2-5in-sata-6gbs-3d2-tlc.html">D3-S4610 960GB</a></td>
-          <td>Q3'18</td>
-          <td>64-layer TLC 3D NAND</td>
-          <td>96k</td>
-          <td>51k</td>
-          <td>2 million hours</td>
-          <td>5.8 PBW</td>
-          <td><a href="https://www.insight.com/en_US/shop/product/SSDSC2KG960G801/INTEL/SSDSC2KG960G801/Intel-SolidState-Drive-D3S4610-Series--SSD--960-GB--SATA-6Gbs/">$351 @ Insight</a></td>
-      </tr>
-      <tr>
-          <td>Intel</td>
-          <td><a href="https://ark.intel.com/content/www/us/en/ark/products/208143/intel-ssd-d3s4520-series-960gb-2-5in-sata-6gbs-3d4-tlc.html">D3-S4520 960GB</a></td>
-          <td>Q3'21</td>
-          <td>144-layer TLC 3D NAND</td>
-          <td>90k</td>
-          <td>43k</td>
-          <td>2 million hours</td>
-          <td>5.3 PBW</td>
-          <td><a href="https://www.insight.com/en_US/shop/product/SSDSC2KB960GZ01/INTEL/SSDSC2KB960GZ01/Intel-SolidState-Drive-D3S4520-Series--SSD--960-GB--SATA-6Gbs/">$285 @ Insight</a></td>
-      </tr>
-      <tr>
-          <td>Samsung</td>
-          <td><a href="https://semiconductor.samsung.com/ssd/datacenter-ssd/pm893/mz7l3960hcjr-00a07/">PM893 960GB</a></td>
-          <td>Q1'21</td>
-          <td>128-layer TLC V-NAND</td>
-          <td>98k</td>
-          <td>30k</td>
-          <td>2 million hours</td>
-          <td>1.752 PBW</td>
-          <td><a href="https://store.supermicro.com/960gb-sata-hds-s2t0-mz7l3960hcjra7.html">$171 @ SuperMicro</a>, <a href="https://www.cdw.com/product/samsung-pm893-960gb-2.5-sata-6gbps-solid-state-drive/6763102">$218 @ CDW</a></td>
-      </tr>
-      <tr>
-          <td>Samsung</td>
-          <td><a href="https://semiconductor.samsung.com/consumer-storage/internal-ssd/970pro/">970 Pro 512GB</a></td>
-          <td>Q3'18</td>
-          <td>64-layer MLC V-NAND</td>
-          <td>370k</td>
-          <td>500k</td>
-          <td>1.5 million hours</td>
-          <td>0.6 PBW</td>
-          <td>$149 (at time of purchase in 2021)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Make</th>
+					<th>Model</th>
+					<th>Year introduced</th>
+					<th>NAND type</th>
+					<th>IOPS (4K read)</th>
+					<th>IOPS (4K write)</th>
+					<th>Mean Time Between Failures (MTBF)</th>
+					<th>Endurance Rating (Lifetime Writes)</th>
+					<th>Price</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Intel</td>
+					<td><a href="https://ark.intel.com/content/www/us/en/ark/products/134912/intel-ssd-d3s4510-series-960gb-2-5in-sata-6gbs-3d2-tlc.html">D3-S4510 960GB</a></td>
+					<td>Q3'18</td>
+					<td>64-layer TLC 3D NAND</td>
+					<td>95k</td>
+					<td>36k</td>
+					<td>2 million hours</td>
+					<td>3.5 PBW</td>
+					<td><a href="https://www.newegg.com/intel-d3-s4510-960gb/p/0D9-002V-003V6?Item=0D9-002V-003V6">$265 @ Newegg</a>, <a href="https://www.bhphotovideo.com/c/product/1466176-REG/intel_ssdsc2kb960g801_s4510_960gb_internal_ssd.html">$261 @ B&amp;H</a></td>
+			</tr>
+			<tr>
+					<td>Intel</td>
+					<td><a href="https://ark.intel.com/content/www/us/en/ark/products/134917/intel-ssd-d3s4610-series-960gb-2-5in-sata-6gbs-3d2-tlc.html">D3-S4610 960GB</a></td>
+					<td>Q3'18</td>
+					<td>64-layer TLC 3D NAND</td>
+					<td>96k</td>
+					<td>51k</td>
+					<td>2 million hours</td>
+					<td>5.8 PBW</td>
+					<td><a href="https://www.insight.com/en_US/shop/product/SSDSC2KG960G801/INTEL/SSDSC2KG960G801/Intel-SolidState-Drive-D3S4610-Series--SSD--960-GB--SATA-6Gbs/">$351 @ Insight</a></td>
+			</tr>
+			<tr>
+					<td>Intel</td>
+					<td><a href="https://ark.intel.com/content/www/us/en/ark/products/208143/intel-ssd-d3s4520-series-960gb-2-5in-sata-6gbs-3d4-tlc.html">D3-S4520 960GB</a></td>
+					<td>Q3'21</td>
+					<td>144-layer TLC 3D NAND</td>
+					<td>90k</td>
+					<td>43k</td>
+					<td>2 million hours</td>
+					<td>5.3 PBW</td>
+					<td><a href="https://www.insight.com/en_US/shop/product/SSDSC2KB960GZ01/INTEL/SSDSC2KB960GZ01/Intel-SolidState-Drive-D3S4520-Series--SSD--960-GB--SATA-6Gbs/">$285 @ Insight</a></td>
+			</tr>
+			<tr>
+					<td>Samsung</td>
+					<td><a href="https://semiconductor.samsung.com/ssd/datacenter-ssd/pm893/mz7l3960hcjr-00a07/">PM893 960GB</a></td>
+					<td>Q1'21</td>
+					<td>128-layer TLC V-NAND</td>
+					<td>98k</td>
+					<td>30k</td>
+					<td>2 million hours</td>
+					<td>1.752 PBW</td>
+					<td><a href="https://store.supermicro.com/960gb-sata-hds-s2t0-mz7l3960hcjra7.html">$171 @ SuperMicro</a>, <a href="https://www.cdw.com/product/samsung-pm893-960gb-2.5-sata-6gbps-solid-state-drive/6763102">$218 @ CDW</a></td>
+			</tr>
+			<tr>
+					<td>Samsung</td>
+					<td><a href="https://semiconductor.samsung.com/consumer-storage/internal-ssd/970pro/">970 Pro 512GB</a></td>
+					<td>Q3'18</td>
+					<td>64-layer MLC V-NAND</td>
+					<td>370k</td>
+					<td>500k</td>
+					<td>1.5 million hours</td>
+					<td>0.6 PBW</td>
+					<td>$149 (at time of purchase in 2021)</td>
+			</tr>
+	</tbody>
 </table>
 <p>In the end, I ended up choosing the Intel D3-S4510 960GB, as it came recommended on multiple forums. I would have preferred the D3-S4610 960GB (since it&rsquo;s more write-intensive), but I wasn&rsquo;t 100% sure if Insight was selling new drives or not (conflicting reports on Reddit).</p>
 <h2 id="physical-installation">Physical installation<a hidden class="anchor" aria-hidden="true" href="#physical-installation">#</a></h2>
 <p>The physical installation was easy enough, although I did need to remove the motherboard from the tray to access the screws. Also, ASRock uses a propriety SATA cable for these ultra-tiny connectors.</p>
 
-<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_001_hu_cc51e004af0c2c3e.jpeg" loading="lazy" alt="intel ssd installation"></p>
+<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_001_hu_df17c6bf7db9f84b.jpeg" loading="lazy" alt="intel ssd installation"></p>
 
-<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_002_hu_38c883cfad7f7e5b.jpeg" loading="lazy" alt="intel ssd installation"></p>
+<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_002_hu_7caa28ed5df46209.jpeg" loading="lazy" alt="intel ssd installation"></p>
 
-<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_003_hu_8b3569c74f4ace87.jpeg" loading="lazy" alt="intel ssd installation"></p>
+<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_003_hu_8d8018a816d2a415.jpeg" loading="lazy" alt="intel ssd installation"></p>
 
-<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_004_hu_26fe003aa844cc1.jpeg" loading="lazy" alt="intel ssd installation"></p>
+<p><img src="/2022/09/adding-data-center-ssds-to-the-deskmini-h470/20220902_004_hu_64e22334504f0736.jpeg" loading="lazy" alt="intel ssd installation"></p>
 <h2 id="identify-disks">Identify disks<a hidden class="anchor" aria-hidden="true" href="#identify-disks">#</a></h2>
 <p>The basic smoke test was to make sure the disks worked and showed up to the kernel.</p>
 <pre tabindex="0"><code>ls -la /dev/disk/by-id/ | grep sd
@@ -627,9 +629,11 @@ nvme0n1                      259:0    0 476.9G  0 disk
 <footer class="footer">
         <span>&copy; 2026 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>

@@ -11,44 +11,43 @@
       <title>A dead-simple OpenWrt setup on the Flint 2</title>
       <link>https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/</link>
       <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2024-02-06&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt revisited&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-08-26&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-02-15&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2026-05-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt simple setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2024-02-06&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt revisited&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-08-26&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-02-15&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;We&amp;rsquo;re moving house this year, and there is going to be a period of about a month or so where we own both houses. Before the big move, I&amp;rsquo;m going to move my home office setup myself and work from the new house. I don&amp;rsquo;t plan on moving my entire homelab setup until the big move, so this means that I&amp;rsquo;m going to need a temporary router at the new house so that I can work.&lt;/p&gt;</description>
@@ -58,7 +57,6 @@
       <title>Proxmox Backup Server on the OPNsense DEC740</title>
       <link>https://loganmarchione.github.io/2025/10/proxmox-backup-server-on-the-opnsense-dec740/</link>
       <pubDate>Wed, 15 Oct 2025 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2025/10/proxmox-backup-server-on-the-opnsense-dec740/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I know I&amp;rsquo;m about five years too late too the party, but I&amp;rsquo;m finally getting around to setting up &lt;a href=&#34;https://www.proxmox.com/en/products/proxmox-backup-server/overview&#34;&gt;Proxmox Backup Server (PBS)&lt;/a&gt;.&lt;/p&gt;
@@ -69,80 +67,78 @@
       <title>Homelab 10&#34; mini-rack v2</title>
       <link>https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/</link>
       <pubDate>Thu, 25 Sep 2025 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on 10&amp;quot; mini-racks. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-09-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;v2 of the rack&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-16&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Comparison of 10&amp;quot; shelves&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-01-05&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;Homelab 10&amp;quot; mini-rack &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post about mini-rack&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2025-09-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;v2 of the rack&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-16&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Comparison of 10&amp;quot; shelves&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-01-05&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;Homelab 10&amp;quot; mini-rack &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post about mini-rack&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;I built a new rack out of 20x20mm extruded aluminum. Read more to build your own!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/20250925_004_hu_457dced97a483d54.jpeg&#34; loading=&#34;lazy&#34; alt=&#34;mini-rack assembled&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/20250925_004_hu_3c46ac1b87d6be63.jpeg&#34; loading=&#34;lazy&#34; alt=&#34;mini-rack assembled&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/20250925_006_hu_eb6b4d2f82e0bbf9.jpeg&#34; loading=&#34;lazy&#34; alt=&#34;mini-rack assembled with gear&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/20250925_006_hu_b8e77f959e2d1a31.jpeg&#34; loading=&#34;lazy&#34; alt=&#34;mini-rack assembled with gear&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>pfSense on the OPNsense DEC740</title>
       <link>https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/</link>
       <pubDate>Sat, 01 Mar 2025 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on pfSense. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-03-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-08-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a PC Engines APU2D4&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-07-17&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;My SG-1100 died&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated back the the EdgeRouter Lite&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2025-03-01&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-08-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a PC Engines APU2D4&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-07-17&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;My SG-1100 died&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated back the the EdgeRouter Lite&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;My &lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;APU2 is five years old now&lt;/a&gt; and I notice that it runs slow when making changes in pfSense&amp;rsquo;s web interface. The CPU is an AMD GX-412TC (from 2014) and it&amp;rsquo;s running 4GB of DDR3 memory, so I guess that&amp;rsquo;s to be expected. Also, I only have 500/500Mbps internet, but would like to update to 1Gbps at some point, and I&amp;rsquo;m left wondering if the APU2 could keep up with that speed. I&amp;rsquo;ve seen &lt;a href=&#34;https://teklager.se/en/knowledge-base/apu2-1-gigabit-throughput-pfsense/&#34;&gt;this post&lt;/a&gt; about routing at 1Gbps on the APU2 hardware, but I&amp;rsquo;m also running pfBlockerNG and wondering if that would affect speed.&lt;/p&gt;</description>
@@ -152,7 +148,6 @@
       <title>Goodbye to Windows</title>
       <link>https://loganmarchione.github.io/2025/02/goodbye-to-windows/</link>
       <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2025/02/goodbye-to-windows/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;ve been dual-booting Windows and Linux (I use Arch, btw) for about ten years now. This past weekend, I physically removed the SSD that held my Windows 10 installation from my desktop PC. I realized that for the first time in my entire life, I didn&amp;rsquo;t have Windows available on my main computer.&lt;/p&gt;
@@ -164,44 +159,43 @@
       <title>Beryl travel router with OpenWrt</title>
       <link>https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/</link>
       <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2024-02-06&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt revisited&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-08-26&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-02-15&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2026-05-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt simple setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2024-02-06&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt revisited&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-08-26&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-02-15&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;update-2026-03-12&#34;&gt;Update: 2026-03-12&lt;/h1&gt;
 &lt;p&gt;Another release of OpenWrt, another smooth upgrade! First, I installed &lt;code&gt;owut&lt;/code&gt;.&lt;/p&gt;</description>
@@ -211,39 +205,38 @@
       <title>Deploying Hugo with CloudFront and S3 (for real this time)</title>
       <link>https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/</link>
       <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2023-11-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-02-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Netlify&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-10-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-09-21&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Amplify&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2023-11-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-02-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Netlify&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-10-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-09-21&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Amplify&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;Good news everyone! If you&amp;rsquo;re reading this (in late 2023), you&amp;rsquo;re reading it via CloudFront instead of a VPS!&lt;/p&gt;</description>
@@ -253,12 +246,11 @@
       <title>Keebio Sinc split keyboard</title>
       <link>https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/</link>
       <pubDate>Wed, 30 Aug 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/</guid>
       <description>&lt;h1 id=&#34;update-2025-03-16&#34;&gt;Update: 2025-03-16&lt;/h1&gt;
 &lt;p&gt;I picked up a set of &lt;a href=&#34;https://keeb.io/products/sinc-aluminum-plates&#34;&gt;aluminum plates&lt;/a&gt; for my Sinc, as well as some &lt;a href=&#34;https://keeb.io/products/skuf-silicone-rubber-keyboard-feet&#34;&gt;replacement rubber feet&lt;/a&gt;. You can see the aluminum on the right. Very pleased!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20250315_001_hu_3bf20349ef337767.jpg&#34; loading=&#34;lazy&#34; alt=&#34;aluminum plates&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20250315_001_hu_52ffd6d9c77f84d8.jpg&#34; loading=&#34;lazy&#34; alt=&#34;aluminum plates&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;I got a new keyboard &amp;#x1f601;&lt;/p&gt;
 
@@ -274,7 +266,7 @@
   &lt;p&gt;Your browser does not support video.&lt;/p&gt;
 &lt;/video&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20230830_001_hu_741332719de908d0.jpg&#34; loading=&#34;lazy&#34; alt=&#34;wrist rest&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/08/keebio-sinc-split-keyboard/20230830_001_hu_50f41cea7418e7ea.jpg&#34; loading=&#34;lazy&#34; alt=&#34;wrist rest&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;&amp;#x26a0;&amp;#xfe0f; WARNING &amp;#x26a0;&amp;#xfe0f;&lt;/p&gt;
 &lt;ul&gt;
@@ -288,7 +280,6 @@
       <title>Using the Bangle.js 2 smartwatch for one week</title>
       <link>https://loganmarchione.github.io/2023/07/using-the-bangle.js-2-smartwatch-for-one-week/</link>
       <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2023/07/using-the-bangle.js-2-smartwatch-for-one-week/</guid>
       <description>&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;This is a long post. If you don&amp;rsquo;t want to read the whole thing, the TL;DR is below.&lt;/p&gt;
@@ -299,23 +290,21 @@
       <title>LoRa and Meshtastic</title>
       <link>https://loganmarchione.github.io/2023/05/lora-and-meshtastic/</link>
       <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2023/05/lora-and-meshtastic/</guid>
       <description>&lt;h1 id=&#34;update-2024-08-12&#34;&gt;Update: 2024-08-12&lt;/h1&gt;
 &lt;p&gt;There are now a few companies selling pre-built Meshtastic devices, like the &lt;a href=&#34;https://canaryradio.io/products/canaryone&#34;&gt;CanaryOne&lt;/a&gt;, &lt;a href=&#34;https://pacificnorthwest3d.com/collections/meshtastic&#34;&gt;PacificNorthWest3D&lt;/a&gt;, and &lt;a href=&#34;https://muzi.works/collections/all&#34;&gt;muzi WORKS&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Jeff Geerling has an introductory &lt;a href=&#34;https://www.jeffgeerling.com/blog/2024/getting-started-meshtastic&#34;&gt;post&lt;/a&gt; and &lt;a href=&#34;https://www.youtube.com/watch?v=X4Akj5qF-3Q&#34;&gt;video&lt;/a&gt; about Meshtastic, and I ended up purchasing two of the &lt;a href=&#34;https://muzi.works/products/h1-complete-device-with-upgraded-whip-antenna-heltec-v3-running-meshtastic&#34;&gt;muzi WORKS H1 devices&lt;/a&gt; after watching his video (these are based on the Heltec WiFi LoRa 32 V3, so they don&amp;rsquo;t have GPS on-board).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_001_hu_6190e882b77cda86.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_001_hu_c71474ad89778d39.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This is compared to a standard 3x3 inch sticky note.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_002_hu_70f6ac0052880bf8.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2023/05/lora-and-meshtastic/20240812_002_hu_e638b1dda429c154.jpg&#34; loading=&#34;lazy&#34; alt=&#34;muzi WORKS H1&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Continuous Delivery with Docker Compose and Drone</title>
       <link>https://loganmarchione.github.io/2023/04/continuous-delivery-with-docker-compose-and-drone/</link>
       <pubDate>Tue, 04 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2023/04/continuous-delivery-with-docker-compose-and-drone/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;m slowly &lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;transitioning&lt;/a&gt; all of my applications from a Docker Compose-based setup to running on Kubernetes (specifically, &lt;a href=&#34;https://k3s.io/&#34;&gt;K3s&lt;/a&gt;). Part of the reason I love Kubernetes is the tooling around it.&lt;/p&gt;
@@ -326,7 +315,6 @@
       <title>My experience replacing the Steam Deck SSD</title>
       <link>https://loganmarchione.github.io/2023/01/my-experience-replacing-the-steam-deck-ssd/</link>
       <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2023/01/my-experience-replacing-the-steam-deck-ssd/</guid>
       <description>&lt;h1 id=&#34;update-2024-01-12&#34;&gt;Update: 2024-01-12&lt;/h1&gt;
 &lt;p&gt;I couldn&amp;rsquo;t resist the lure of the &lt;a href=&#34;https://www.steamdeck.com/en/oled&#34;&gt;Steam Deck OLED&lt;/a&gt;. I purchased the 512GB model (the same size as my Steam Deck LCD upgraded Kioxia BG4 drive) and used it for a few weeks before purchasing a 1TB Kioxia BG4. Hindsight being 20/20, I should have just purchased the 1TB Steam Deck OLED directly from Valve, since the difference between the 512GB and 1TB model was only $100, and I spent much that on the aftermarket 1TB Kioxia BG4. &amp;#x1f937;&amp;zwj;&amp;#x2642;&amp;#xfe0f;&lt;/p&gt;</description>
@@ -336,34 +324,33 @@
       <title>K3s cluster updates</title>
       <link>https://loganmarchione.github.io/2022/12/k3s-cluster-updates/</link>
       <pubDate>Wed, 07 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/12/k3s-cluster-updates/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-12-07&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Updates to the cluster build&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-03-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;Kubernetes GUIs&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Exploring Kubernetes GUIs&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-03-11&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster for noobs&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying K3s&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-12-07&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Updates to the cluster build&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;Kubernetes GUIs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Exploring Kubernetes GUIs&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-11&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster for noobs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying K3s&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;It&amp;rsquo;s been a while since my &lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;last K3s post&lt;/a&gt;. In that time, I&amp;rsquo;ve torn-down and rebuilt my single-node cluster a dozen times, but never actually moved any workloads to that cluster. I&amp;rsquo;ve also been at my job using Amazon EKS for about six months, so I think I know &lt;em&gt;just&lt;/em&gt; enough to be dangerous now &amp;#x1f609;.&lt;/p&gt;</description>
@@ -373,7 +360,6 @@
       <title>Linux on the Lenovo ThinkPad T14 Gen2 (AMD)</title>
       <link>https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/</link>
       <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;My only PC is a desktop, where I dual boot Windows (for gaming only) and Linux (for everything else). My work provided me with Macbook (read more about that &lt;a href=&#34;https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/&#34;&gt;here&lt;/a&gt;), but I don&amp;rsquo;t use it to manage my personal servers, write personal code, browse the internet, etc&amp;hellip; But, it would be really nice to SSH to a server from my couch on a device that&amp;rsquo;s not my phone. I figured it was time to get a laptop. I was looking for:&lt;/p&gt;</description>
@@ -383,7 +369,6 @@
       <title>How to run Renovate on a self-hosted Gitea and Drone instance</title>
       <link>https://loganmarchione.github.io/2022/10/how-to-run-renovate-on-a-self-hosted-gitea-and-drone-instance/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/10/how-to-run-renovate-on-a-self-hosted-gitea-and-drone-instance/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I recently started using Mend&amp;rsquo;s &lt;a href=&#34;https://github.com/renovatebot/renovate&#34;&gt;Renovate&lt;/a&gt; bot to keep my dependencies up-to-date on my GitHub projects. GitHub already has tool for this called &lt;a href=&#34;https://github.com/dependabot&#34;&gt;Dependabot&lt;/a&gt;, but it only works with GitHub. Renovate is much more flexible, and it&amp;rsquo;s also open-source, so it can run on other Git platforms, like my self-hosted Gitea and Drone instance at home.&lt;/p&gt;
@@ -394,7 +379,6 @@
       <title>The best DevOps project for a beginner</title>
       <link>https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/</link>
       <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/10/the-best-devops-project-for-a-beginner/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I spend a lot of time on Reddit in &lt;a href=&#34;https://reddit.com/r/devops/&#34;&gt;r/devops&lt;/a&gt;, &lt;a href=&#34;https://reddit.com/r/homelab&#34;&gt;r/homelab&lt;/a&gt;, and &lt;a href=&#34;https://reddit.com/r/selfhosted&#34;&gt;r/selfhosted&lt;/a&gt;, where I always see different versions of the same question:&lt;/p&gt;
@@ -413,7 +397,6 @@
       <title>Asus PCE-AX3000 on Linux</title>
       <link>https://loganmarchione.github.io/2022/09/asus-pce-ax3000-on-linux/</link>
       <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/09/asus-pce-ax3000-on-linux/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;This post serves no real purpose other than to match SEO keywords for people searching for PCIe WiFi cards for Linux.&lt;/p&gt;
@@ -435,34 +418,33 @@
       <title>Homelab 10&#34; mini-rack shelves</title>
       <link>https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/</link>
       <pubDate>Fri, 16 Sep 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on 10&amp;quot; mini-racks. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-09-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;v2 of the rack&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-16&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Comparison of 10&amp;quot; shelves&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-01-05&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;Homelab 10&amp;quot; mini-rack &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post about mini-rack&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2025-09-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;v2 of the rack&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-16&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Comparison of 10&amp;quot; shelves&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-01-05&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;Homelab 10&amp;quot; mini-rack &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post about mini-rack&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;&amp;#x26a0;&amp;#xfe0f; WARNING &amp;#x26a0;&amp;#xfe0f;&lt;/p&gt;
@@ -478,34 +460,33 @@
       <title>Adding a ZFS mirror to Proxmox</title>
       <link>https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/</link>
       <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the DeskMini H470 as a hypervisor. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-07&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/&#34;&gt;Adding a ZFS mirror to Proxmox &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Add a ZFS mirror to Proxmox&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-02&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/&#34;&gt;Adding data center SSDs to the DeskMini H470&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Add 2x Intel D3-S4510 to the DeskMini H470&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-06-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/&#34;&gt;ASRock DeskMini H470 as a compact hypervisor&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post about DeskMini H470&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-07&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/&#34;&gt;Adding a ZFS mirror to Proxmox &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Add a ZFS mirror to Proxmox&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-02&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/&#34;&gt;Adding data center SSDs to the DeskMini H470&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Add 2x Intel D3-S4510 to the DeskMini H470&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-06-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/&#34;&gt;ASRock DeskMini H470 as a compact hypervisor&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post about DeskMini H470&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In my last post, I &lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/&#34;&gt;added two Intel D3-S4510 960 SSDs to my ASRock DeskMini H470&lt;/a&gt; running Proxmox. I also upgraded the firmware, as well as ran some basic tests on the drives. In this post, I&amp;rsquo;ll be creating a ZFS mirror and adding it to Proxmox.&lt;/p&gt;</description>
@@ -515,34 +496,33 @@
       <title>Adding data center SSDs to the DeskMini H470</title>
       <link>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</link>
       <pubDate>Fri, 02 Sep 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the DeskMini H470 as a hypervisor. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-07&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/&#34;&gt;Adding a ZFS mirror to Proxmox &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Add a ZFS mirror to Proxmox&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-02&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/&#34;&gt;Adding data center SSDs to the DeskMini H470&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Add 2x Intel D3-S4510 to the DeskMini H470&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-06-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/&#34;&gt;ASRock DeskMini H470 as a compact hypervisor&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post about DeskMini H470&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-07&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/&#34;&gt;Adding a ZFS mirror to Proxmox &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Add a ZFS mirror to Proxmox&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-02&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/&#34;&gt;Adding data center SSDs to the DeskMini H470&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Add 2x Intel D3-S4510 to the DeskMini H470&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-06-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/&#34;&gt;ASRock DeskMini H470 as a compact hypervisor&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post about DeskMini H470&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Last year, I &lt;a href=&#34;https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/&#34;&gt;setup the ASRock DeskMini H470 as a compact hypervisor&lt;/a&gt; running Proxmox. During setup, I only installed a single NVMe SSD. However, I specifically chose the DeskMini H470 because it had space for more drives, which I knew I would eventually want to make use of. Today is that day.&lt;/p&gt;</description>
@@ -552,7 +532,6 @@
       <title>I tried to quit Firefox. I can&#39;t.</title>
       <link>https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/</link>
       <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/08/i-tried-to-quit-firefox-i-cant/</guid>
       <description>&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;m frustrated by Mozilla, but don&amp;rsquo;t see many alternative browsers that have such noble goals as Firefox.&lt;/p&gt;
@@ -565,7 +544,6 @@
       <title>Darlings of the self-hosted, open-source world</title>
       <link>https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/</link>
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/05/darlings-of-the-self-hosted-open-source-world/</guid>
       <description>&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;In my opinion, these self-hosted, open-source applications are the best of what open-source can be.&lt;/p&gt;
@@ -584,12 +562,11 @@
       <title>Impressions from a first-time Mac user</title>
       <link>https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/</link>
       <pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/</guid>
       <description>&lt;h1 id=&#34;update-2022-04-15&#34;&gt;Update: 2022-04-15&lt;/h1&gt;
 &lt;p&gt;I typically average around 100 unique visitors to this site per day. Below is a screenshot from my &lt;a href=&#34;https://loganmarchione.github.io/2021/03/analytics-with-hugo/&#34;&gt;Plausible analytics setup&lt;/a&gt; showing the traffic spike up to almost 14k unique visitors from HackerNews (and other sources).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/20220415_001_hu_33232211f3dc3a48.png&#34; loading=&#34;lazy&#34; alt=&#34;plausible&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/20220415_001_hu_1032e0237b578d90.png&#34; loading=&#34;lazy&#34; alt=&#34;plausible&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;update-2022-04-12&#34;&gt;Update: 2022-04-12&lt;/h1&gt;
 &lt;p&gt;I posted this article to &lt;a href=&#34;https://news.ycombinator.com/item?id=30993350&#34;&gt;that orange site&lt;/a&gt; and it blew up more than I expected. I reached #3 of the front page (screenshot below) and am officially on the top 10 list for &lt;a href=&#34;https://news.ycombinator.com/front?day=2022-04-11&#34;&gt;2022-04-11&lt;/a&gt;. When I &lt;a href=&#34;https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo/#things-im-losing&#34;&gt;migrated from WordPress to Hugo&lt;/a&gt;, I lost comments on this blog, but the HackerNews post has some really good discussion and recommendations that I highly encourage you to check out.&lt;/p&gt;</description>
     </item>
@@ -598,7 +575,6 @@
       <title>The &#39;best&#39; way to run DokuWiki in Docker</title>
       <link>https://loganmarchione.github.io/2022/03/the-best-way-to-run-dokuwiki-in-docker/</link>
       <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/03/the-best-way-to-run-dokuwiki-in-docker/</guid>
       <description>&lt;h1 id=&#34;update-2025-08-01&#34;&gt;Update: 2025-08-01&lt;/h1&gt;
 &lt;p&gt;There is apparently an &lt;a href=&#34;https://hub.docker.com/r/dokuwiki/dokuwiki&#34;&gt;official DokuWiki image&lt;/a&gt; now. You should probably use that instead of this method.&lt;/p&gt;
@@ -611,34 +587,33 @@
       <title>Kubernetes GUIs</title>
       <link>https://loganmarchione.github.io/2022/03/kubernetes-guis/</link>
       <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/03/kubernetes-guis/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-12-07&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Updates to the cluster build&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-03-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;Kubernetes GUIs&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Exploring Kubernetes GUIs&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-03-11&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster for noobs&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying K3s&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-12-07&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Updates to the cluster build&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;Kubernetes GUIs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Exploring Kubernetes GUIs&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-11&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster for noobs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying K3s&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In my &lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;last post&lt;/a&gt;, I setup a &lt;a href=&#34;https://k3s.io/&#34;&gt;K3s&lt;/a&gt; single-node cluster and an example application. While everything was done through the command-line, as a noob, it&amp;rsquo;s nice to have a &lt;a href=&#34;https://en.wikipedia.org/wiki/Graphical_user_interface&#34;&gt;graphical user interface&lt;/a&gt; (GUI) of some kind. I&amp;rsquo;m not a fan of &lt;a href=&#34;https://www.lastweekinaws.com/blog/clickops/&#34;&gt;ClickOps&lt;/a&gt;, but it&amp;rsquo;s convenient to have a GUI to be able to quickly view status, instead of hunting for the right &lt;code&gt;kubectl&lt;/code&gt; command.&lt;/p&gt;</description>
@@ -648,34 +623,33 @@
       <title>K3s single-node cluster for noobs</title>
       <link>https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/</link>
       <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-12-07&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Updates to the cluster build&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-03-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;Kubernetes GUIs&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Exploring Kubernetes GUIs&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-03-11&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster for noobs&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying K3s&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-12-07&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Updates to the cluster build&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;Kubernetes GUIs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Exploring Kubernetes GUIs&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-11&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster for noobs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying K3s&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;m starting a new job in the next few days that will require me to learn Kubernetes (often stylized as k8s). This post is not about what k8s is or why you want it (you can read about that &lt;a href=&#34;https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/&#34;&gt;here&lt;/a&gt;). My only objective for now is to have a single-node k8s cluster running in my homelab.&lt;/p&gt;</description>
@@ -685,39 +659,38 @@
       <title>Deploying Hugo with Netlify</title>
       <link>https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/</link>
       <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2023-11-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-02-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Netlify&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-10-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-09-21&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Amplify&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2023-11-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-02-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Netlify&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-10-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-09-21&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Amplify&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In my &lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;last post&lt;/a&gt;, I was testing the deployment of Hugo with &lt;a href=&#34;https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/&#34;&gt;CloudFront and S3&lt;/a&gt;. My main complaints came from the complicated Terraform setup and the lack of easy redirects. Since Amplify and CloudFront+S3 are the only AWS-based offerings, I decided to check out alternatives outside of the AWS umbrella.&lt;/p&gt;</description>
@@ -727,39 +700,38 @@
       <title>Deploying Hugo with CloudFront and S3</title>
       <link>https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/</link>
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2023-11-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-02-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Netlify&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-10-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-09-21&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Amplify&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2023-11-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-02-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Netlify&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-10-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-09-21&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Amplify&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In my &lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;last post&lt;/a&gt;, I was testing the deployment of Hugo with &lt;a href=&#34;https://aws.amazon.com/amplify/&#34;&gt;AWS Amplify&lt;/a&gt;. My only complaint was that Amplify doesn&amp;rsquo;t support IPv6. Because of this, I wanted to explore other deployment options under the AWS umbrella.&lt;/p&gt;</description>
@@ -769,39 +741,38 @@
       <title>Deploying Hugo with AWS Amplify</title>
       <link>https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/</link>
       <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on deploying Hugo. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2023-11-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-02-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Netlify&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-10-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-09-21&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Deploying on Amplify&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2023-11-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/&#34;&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying Hugo with CloudFront and S3 (for real this time)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-02-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/02/deploying-hugo-with-netlify/&#34;&gt;Deploying Hugo with Netlify&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Netlify&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-10-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/10/deploying-hugo-with-cloudfront-and-s3/&#34;&gt;Deploying Hugo with CloudFront and S3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on CloudFront and S3&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-09-21&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/09/deploying-hugo-with-aws-amplify/&#34;&gt;Deploying Hugo with AWS Amplify &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying on Amplify&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Since I &lt;a href=&#34;https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo&#34;&gt;migrated from WordPress to Hugo&lt;/a&gt;, I&amp;rsquo;ve dropped the need to run PHP and MySQL on my server. This means my server is now only running Nginx, serving up static HTML/CSS/JS files. For a simple site like mine, even a VPS running Nginx is overkill. This site doesn&amp;rsquo;t &lt;em&gt;need&lt;/em&gt; to be hosted on a VPS, it could be hosted in the cloud, or completely on a CDN.&lt;/p&gt;</description>
@@ -811,7 +782,6 @@
       <title>Raspi-config&#39;s mostly undocumented non-interactive mode</title>
       <link>https://loganmarchione.github.io/2021/07/raspi-configs-mostly-undocumented-non-interactive-mode/</link>
       <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2021/07/raspi-configs-mostly-undocumented-non-interactive-mode/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;If you&amp;rsquo;ve ever used a Raspberry Pi, you&amp;rsquo;ve probably used the &lt;code&gt;raspi-config&lt;/code&gt; &lt;a href=&#34;https://www.raspberrypi.org/documentation/configuration/raspi-config.md&#34;&gt;configuration tool&lt;/a&gt;. This &lt;a href=&#34;https://en.wikipedia.org/wiki/Text-based_user_interface&#34;&gt;text-based user interface&lt;/a&gt; (TUI) is great for changing 99% of basic settings on the Raspberry Pi, such as the hostname, WiFi country, locale, memory split, etc&amp;hellip;&lt;/p&gt;
@@ -824,34 +794,33 @@
       <title>ASRock DeskMini H470 as a compact hypervisor</title>
       <link>https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/</link>
       <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the DeskMini H470 as a hypervisor. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-07&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/&#34;&gt;Adding a ZFS mirror to Proxmox &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Add a ZFS mirror to Proxmox&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-02&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/&#34;&gt;Adding data center SSDs to the DeskMini H470&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Add 2x Intel D3-S4510 to the DeskMini H470&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-06-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/&#34;&gt;ASRock DeskMini H470 as a compact hypervisor&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post about DeskMini H470&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-07&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-a-zfs-mirror-to-proxmox/&#34;&gt;Adding a ZFS mirror to Proxmox &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Add a ZFS mirror to Proxmox&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-02&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/adding-data-center-ssds-to-the-deskmini-h470/&#34;&gt;Adding data center SSDs to the DeskMini H470&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Add 2x Intel D3-S4510 to the DeskMini H470&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-06-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/06/asrock-deskmini-h470-as-a-compact-hypervisor/&#34;&gt;ASRock DeskMini H470 as a compact hypervisor&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post about DeskMini H470&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;My hypervisor since 2017 has been an Intel &lt;a href=&#34;https://ark.intel.com/content/www/us/en/ark/products/95066/intel-nuc-kit-nuc7i3bnh.html&#34;&gt;NUC7i3BNH&lt;/a&gt;. It has a 2c/4t 15W laptop CPU (Core i3-7100U), with 2x 16GB Crucial DDR4, and a 512GB Samsung 860 Pro. While it served me well over these years, I&amp;rsquo;ve outgrown the CPU and cooling solution.&lt;/p&gt;</description>
@@ -861,7 +830,6 @@
       <title>Analytics with Hugo</title>
       <link>https://loganmarchione.github.io/2021/03/analytics-with-hugo/</link>
       <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2021/03/analytics-with-hugo/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;When I was running WordPress, I was using Matomo (formerly Piwik) for analytics. This solution worked for me, but was more complicated than I needed, and I didn&amp;rsquo;t make use of 99% of the features. It also required PHP and MySQL/MariaDB, which were not installed on the new server hosting my Hugo-based blog. Because of this, I wanted to switch to a simpler analytics solution.&lt;/p&gt;
@@ -873,7 +841,6 @@
       <title>Migrating from WordPress to Hugo</title>
       <link>https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo/</link>
       <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Hopefully this page is coming at you blazing fast, and with a new look! If so, you&amp;rsquo;re seeing my static site generated by &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Here&amp;rsquo;s some high-level thoughts about the migration from WordPress, which I&amp;rsquo;ve been using since 2014, to Hugo.&lt;/p&gt;
@@ -887,34 +854,33 @@
       <title>Homelab 10&#34; mini-rack</title>
       <link>https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on 10&amp;quot; mini-racks. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-09-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;v2 of the rack&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2022-09-16&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Comparison of 10&amp;quot; shelves&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2021-01-05&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;Homelab 10&amp;quot; mini-rack &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post about mini-rack&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2025-09-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/&#34;&gt;Homelab 10&amp;quot; mini-rack v2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;v2 of the rack&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-09-16&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/09/homelab-10-mini-rack-shelves/&#34;&gt;Homelab 10&amp;quot; mini-rack shelves &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Comparison of 10&amp;quot; shelves&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2021-01-05&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2021/01/homelab-10-mini-rack/&#34;&gt;Homelab 10&amp;quot; mini-rack &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post about mini-rack&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;update-2021-01-10&#34;&gt;Update: 2021-01-10&lt;/h1&gt;
 &lt;p&gt;I made the following changes and updated the post below (not the pictures) to reflect those changes:&lt;/p&gt;
@@ -931,7 +897,6 @@
       <title>Securing Postgres connections using Let&#39;s Encrypt certificates</title>
       <link>https://loganmarchione.github.io/2020/10/securing-postgres-connections-using-lets-encrypt-certificates/</link>
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2020/10/securing-postgres-connections-using-lets-encrypt-certificates/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;m on a quest to SSL all the things on my local network. I work in IT security, and am more than paranoid when it comes to my homelab (shout-out to &lt;a href=&#34;https://www.reddit.com/r/homelab/&#34;&gt;r/homelab&lt;/a&gt; and &lt;a href=&#34;https://www.reddit.com/r/selfhosted/&#34;&gt;r/selfhosted&lt;/a&gt;).&lt;/p&gt;
@@ -943,7 +908,6 @@
       <title>Always-on Grafana dashboard using Raspberry Pi touchscreen</title>
       <link>https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2020/05/always-on-grafana-dashboard-using-raspberry-pi-touchscreen/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I have a small homelab in my home that runs pfSense, Proxmox, Docker, a Synology NAS, UniFi wireless, etc&amp;hellip; I already monitor my pfSense firewall logs using &lt;a href=&#34;https://www.graylog.org/&#34;&gt;Graylog&lt;/a&gt;, but I was looking for a solution to monitor hardware (e.g., CPU usage, RAM usage, etc&amp;hellip;) as well as software processes (e.g., containers using network, current download/upload speed, etc&amp;hellip;).&lt;/p&gt;
@@ -954,7 +918,6 @@
       <title>Linting Ansible playbooks using Drone</title>
       <link>https://loganmarchione.github.io/2020/04/linting-ansible-playbooks-using-drone/</link>
       <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2020/04/linting-ansible-playbooks-using-drone/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In my &lt;a href=&#34;https://loganmarchione.github.io/2020/04/how-and-why-you-should-lint-your-ansible-playbooks/&#34;&gt;last post&lt;/a&gt;, I went over linting Ansible playbooks manually. In this post, I&amp;rsquo;m going to give you a brief introduction on how to lint playbooks automatically, using &lt;a href=&#34;https://drone.io/&#34;&gt;Drone&lt;/a&gt;.&lt;/p&gt;
@@ -966,7 +929,6 @@
       <title>How and why you should lint your Ansible playbooks</title>
       <link>https://loganmarchione.github.io/2020/04/how-and-why-you-should-lint-your-ansible-playbooks/</link>
       <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2020/04/how-and-why-you-should-lint-your-ansible-playbooks/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;h2 id=&#34;what-is-ansible&#34;&gt;What is Ansible?&lt;/h2&gt;
@@ -979,39 +941,38 @@
       <title>pfSense on the PC Engines APU2</title>
       <link>https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/</link>
       <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on pfSense. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-03-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-08-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a PC Engines APU2D4&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-07-17&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;My SG-1100 died&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated back the the EdgeRouter Lite&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2025-03-01&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-08-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a PC Engines APU2D4&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-07-17&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;My SG-1100 died&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated back the the EdgeRouter Lite&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In the past few weeks, I &lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;replaced my EdgeRouter Lite with a Netgate SG-1100&lt;/a&gt;. Two weeks later, &lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;my SG-1100 died,&lt;/a&gt; and I had to put the EdgeRouter Lite back. However, I still wanted to replace the ERL with a pfSense device (albeit, not Netgate hardware).&lt;/p&gt;</description>
@@ -1021,39 +982,38 @@
       <title>My SG-1100 died</title>
       <link>https://loganmarchione.github.io/2019/07/my-sg-1100-died/</link>
       <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2019/07/my-sg-1100-died/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on pfSense. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2025-03-01&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-08-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a PC Engines APU2D4&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-07-17&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;My SG-1100 died&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated back the the EdgeRouter Lite&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2025-03-01&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/&#34;&gt;pfSense on the OPNsense DEC740&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to the OPNsense DEC740&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-08-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/08/pfsense-on-the-pc-engines-apu2/&#34;&gt;pfSense on the PC Engines APU2&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a PC Engines APU2D4&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-07-17&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/07/my-sg-1100-died/&#34;&gt;My SG-1100 died&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated back the the EdgeRouter Lite&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I recently &lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;wrote about&lt;/a&gt; how I was dropping the Ubiquiti EdgeRouter Lite for a Netgate SG-1100 running pfSense. However, on July 9th (about two weeks after installing my SG-1100) I noticed my internet connection died, and I was unable to ping the router. I used a micro-USB cable to view the console and noticed it was not pulling an IP address from my FiOS ONT.&lt;/p&gt;</description>
@@ -1063,69 +1023,68 @@
       <title>Migrating away from the Ubiquiti EdgeRouter Lite</title>
       <link>https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/</link>
       <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;For years, I&amp;rsquo;ve been using and loving my &lt;a href=&#34;https://www.ui.com/edgemax/edgerouter-lite/&#34;&gt;Ubiquiti EdgeRouter Lite&lt;/a&gt;. For about $100, you&amp;rsquo;re not going to find a router with more features. In fact, most of Ubiquiti&amp;rsquo;s offerings are a very good value for the money. However, in the past year or so, Ubiquiti has seemed to have some issues with what direction they want to take as a company:&lt;/p&gt;</description>
@@ -1135,7 +1094,6 @@
       <title>Why I write my resume in LaTeX</title>
       <link>https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2019/03/why-i-write-my-resume-in-latex/</guid>
       <description>&lt;h1 id=&#34;tldr&#34;&gt;TL;DR&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;#advantages-of-a-latex-resume&#34;&gt;Skip to the bottom&lt;/a&gt;.&lt;/p&gt;
@@ -1148,69 +1106,68 @@
       <title>EdgeRouter CNAME records</title>
       <link>https://loganmarchione.github.io/2019/02/edgerouter-cname-records/</link>
       <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2019/02/edgerouter-cname-records/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;h2 id=&#34;what-is-a-cname-record&#34;&gt;What is a CNAME record?&lt;/h2&gt;
@@ -1221,7 +1178,6 @@
       <title>I just setup WireGuard, and I&#39;ll never go back to OpenVPN</title>
       <link>https://loganmarchione.github.io/2018/12/i-just-setup-wireguard-and-ill-never-go-back-to-openvpn/</link>
       <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2018/12/i-just-setup-wireguard-and-ill-never-go-back-to-openvpn/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.wireguard.com/&#34;&gt;WireGuard&lt;/a&gt; released their official iOS app &lt;a href=&#34;https://lists.zx2c4.com/pipermail/wireguard/2018-December/003694.html&#34;&gt;today&lt;/a&gt;, and I wasted no time jumping on setting up a WireGuard server at home (based mostly on &lt;a href=&#34;https://grh.am/2018/wireguard-setup-guide-for-ios/&#34;&gt;this guide&lt;/a&gt;). This is not going to be a tutorial, but instead, I&amp;rsquo;m going to talk about why WireGuard is a game-changer.&lt;/p&gt;
@@ -1233,7 +1189,6 @@
       <title>Let&#39;s Encrypt wildcard certificates with Certbot on Nginx</title>
       <link>https://loganmarchione.github.io/2018/09/lets-encrypt-wildcard-certificates-with-certbot-on-nginx/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2018/09/lets-encrypt-wildcard-certificates-with-certbot-on-nginx/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In March of 2018, &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt; (the free Certificate Authority) &lt;a href=&#34;https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579&#34;&gt;announced&lt;/a&gt; they added support for &lt;a href=&#34;https://en.wikipedia.org/wiki/Wildcard_certificate&#34;&gt;wildcard certificates&lt;/a&gt; through the upgraded &lt;a href=&#34;https://datatracker.ietf.org/wg/acme/about/&#34;&gt;ACMEv2&lt;/a&gt; protocol. I&amp;rsquo;ve been hosting most of my services on subdirectories (e.g., &lt;code&gt;loganmarchione.com/rss&lt;/code&gt;) but have been wanting to move them to subdomains (e.g., &lt;code&gt;rss.loganmarchione.com&lt;/code&gt;), and thought this was the perfect chance to do just that.&lt;/p&gt;
@@ -1245,7 +1200,6 @@
       <title>Rclone on ODROID-HC2</title>
       <link>https://loganmarchione.github.io/2018/06/rclone-on-odroid-hc2/</link>
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2018/06/rclone-on-odroid-hc2/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In my last post, I talked about setting up an &lt;a href=&#34;https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/&#34;&gt;ODROID-HC2 as a NAS&lt;/a&gt; using OpenMediaVault. I have that up and running, and I&amp;rsquo;ve also written a few scripts to backup my data to a few of the SMB shares.&lt;/p&gt;
@@ -1263,7 +1217,6 @@
       <title>ODROID-HC2 as an entry-level NAS</title>
       <link>https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/</link>
       <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2018/06/odroid-hc2-as-an-entry-level-nas/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;ve been doing some work on my homelab that I haven&amp;rsquo;t documented here.&lt;/p&gt;
@@ -1274,7 +1227,6 @@
       <title>Celebrating 1000 comments by giving away a Raspberry Pi 3!</title>
       <link>https://loganmarchione.github.io/2017/12/celebrating-1000-comments-by-giving-away-a-raspberry-pi-3/</link>
       <pubDate>Tue, 05 Dec 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/12/celebrating-1000-comments-by-giving-away-a-raspberry-pi-3/</guid>
       <description>&lt;h1 id=&#34;winners&#34;&gt;Winners&lt;/h1&gt;
 &lt;p&gt;An update:&lt;/p&gt;
@@ -1290,69 +1242,68 @@
       <title>Dyn DDNS on EdgeRouter</title>
       <link>https://loganmarchione.github.io/2017/10/dyn-ddns-on-edgerouter/</link>
       <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/10/dyn-ddns-on-edgerouter/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In the past, I&amp;rsquo;ve posted about my &lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS dynamic DNS settings&lt;/a&gt;, and mentioned I use Dyn as well. My Dyn setup is documented below.&lt;/p&gt;</description>
@@ -1362,7 +1313,6 @@
       <title>How to host a website</title>
       <link>https://loganmarchione.github.io/2017/09/how-to-host-a-website/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/09/how-to-host-a-website/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;While creating &lt;a href=&#34;https://loganmarchione.github.io/2017/09/creating-caa-records/&#34;&gt;CAA records&lt;/a&gt;, I found myself needing a new DNS provider. During that process, I thought it would be a good idea to document what it take to host a website and how the internet works (in a very limited sense). To host a website on the public internet, you need three things:&lt;/p&gt;
@@ -1378,7 +1328,6 @@
       <title>Creating CAA records</title>
       <link>https://loganmarchione.github.io/2017/09/creating-caa-records/</link>
       <pubDate>Thu, 21 Sep 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/09/creating-caa-records/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Certification Authority Authorization (CAA) is a new DNS record specifying which Certificate Authorities (CAs) are allowed to issue certificates for a domain. Introduced by &lt;a href=&#34;https://tools.ietf.org/html/rfc6844&#34;&gt;RFC 6844&lt;/a&gt;, CAA protects websites by only allowing certificates to be issued by specific CAs. If an attacker were to take over a website, they would only be able to obtain a certificate from a CA specified in DNS CAA records, limiting the damage they could do. While CAA records aren&amp;rsquo;t going to completely stop certificate misuse, they are easy to implement and are part of a larger security plan.&lt;/p&gt;</description>
@@ -1388,7 +1337,6 @@
       <title>Backblaze B2 backup setup</title>
       <link>https://loganmarchione.github.io/2017/07/backblaze-b2-backup-setup/</link>
       <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/07/backblaze-b2-backup-setup/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Recently, I&amp;rsquo;ve been thinking more and more about backups for my small (but growing) homelab. The golden rule is to follow the 3-2-1 method for backups:&lt;/p&gt;
@@ -1405,69 +1353,68 @@
       <title>DuckDNS on EdgeRouter</title>
       <link>https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/</link>
       <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;ve been using &lt;a href=&#34;https://dyn.com/&#34;&gt;Dyn&lt;/a&gt; for my dynamic DNS for years. However, after the &lt;a href=&#34;https://en.wikipedia.org/wiki/2016_Dyn_cyberattack&#34;&gt;2016 Dyn DDoS&lt;/a&gt;, I&amp;rsquo;ve decided to add a second dynamic DNS service provider, in case Dyn goes down again.&lt;/p&gt;</description>
@@ -1477,7 +1424,6 @@
       <title>Raspberry Pi UPS monitor (with Nginx web monitoring)</title>
       <link>https://loganmarchione.github.io/2017/02/raspberry-pi-ups-monitor-with-nginx-web-monitoring/</link>
       <pubDate>Fri, 24 Feb 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/02/raspberry-pi-ups-monitor-with-nginx-web-monitoring/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;With the winter weather, we&amp;rsquo;ve been having brownouts and power losses more frequently. I wanted to purchase a UPS to protect my equipment from this, but I also wanted to receive alerts when the power goes out, and possibly shutdown equipment. For this, I need an &lt;a href=&#34;https://en.wikipedia.org/wiki/Uninterruptible_power_supply&#34;&gt;Uninterruptible Power Supply&lt;/a&gt; (UPS) and a computer to monitor it with.&lt;/p&gt;
@@ -1489,69 +1435,68 @@
       <title>Ubiquiti EdgeRouter serial console settings</title>
       <link>https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/</link>
       <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;m planning on upgrading my EdgeRouter Lite (ERL) to the newly-released &lt;a href=&#34;https://community.ubnt.com/t5/EdgeMAX-Updates-Blog/EdgeMAX-EdgeRouter-software-release-v1-9-1/ba-p/1766160&#34;&gt;v1.9.1&lt;/a&gt; (I&amp;rsquo;m following my &lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;upgrade guide&lt;/a&gt;). This time, I&amp;rsquo;m using a serial cable to connect to my ERL. This is the first time I&amp;rsquo;ve used serial, so I&amp;rsquo;m going to document the process.&lt;/p&gt;</description>
@@ -1561,69 +1506,68 @@
       <title>Ubiquiti UniFi controller setup on Raspberry Pi 3</title>
       <link>https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/</link>
       <pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;As you know, I love my &lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite&lt;/a&gt;. Since I bought it, I&amp;rsquo;ve been wanting to purchase one of the &lt;a href=&#34;https://www.ubnt.com/unifi/unifi-ap/&#34;&gt;UniFi wireless APs&lt;/a&gt; ever since I saw the &lt;a href=&#34;http://arstechnica.com/gadgets/2015/10/review-ubiquiti-unifi-made-me-realize-how-terrible-consumer-wi-fi-gear-is/&#34;&gt;Ars Technica&lt;/a&gt; review of them. I ended up picking up the UniFi AC Pro on a Black Friday deal on Jet.com.&lt;/p&gt;</description>
@@ -1633,69 +1577,68 @@
       <title>EdgeRouter Lite Dnsmasq setup</title>
       <link>https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/</link>
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;One of my only complaints about the EdgeRouter Lite is the usage of the &lt;a href=&#34;https://en.wikipedia.org/wiki/DHCPD&#34;&gt;Internet Systems Consortium (ISC) DHCP&lt;/a&gt; server. My main issue is that the DHCP server does not integrate with the DNS server. Because of this, DHCP names/leases are not automatically added to DNS. This topic has been addressed a few times before (&lt;a href=&#34;https://www.reddit.com/r/Ubiquiti/comments/4jtli1/i_would_like_to_access_my_lan_devices_by_name&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://www.reddit.com/r/Ubiquiti/comments/2cm0f1/local_dns_host_resolution/&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://community.ubnt.com/t5/EdgeMAX/etc-hosts-and-resolving-names/td-p/461725&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://community.ubnt.com/t5/EdgeMAX/Automatic-DNS-resolution-of-DHCP-client-names/td-p/651311&#34;&gt;here&lt;/a&gt;, and &lt;a href=&#34;https://community.ubnt.com/t5/EdgeMAX/Setting-up-Local-DNS/td-p/449259&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;</description>
@@ -1705,29 +1648,28 @@
       <title>Verizon FiOS Router Maintenance Charge</title>
       <link>https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/</link>
       <pubDate>Mon, 22 Aug 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on using your own router with Verizon FiOS. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-22&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/&#34;&gt;Verizon FiOS Router Maintenance Charge&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Maintenance Charges&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-07-11&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/&#34;&gt;Use your own router with Verizon FiOS&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial Post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-22&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/&#34;&gt;Verizon FiOS Router Maintenance Charge&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Maintenance Charges&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-07-11&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/&#34;&gt;Use your own router with Verizon FiOS&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial Post&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;If you&amp;rsquo;ve read my other post, you already know how to &lt;a href=&#34;https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/&#34;&gt;use your own router with Verizon FiOS&lt;/a&gt;. Interestingly enough, that post is my most popular, but I was surprised to see my pageviews double one day in July. I checked the referring links and was surprised to find I had been link to by &lt;a href=&#34;http://arstechnica.com/information-technology/2016/07/verizon-creates-monthly-maintenance-fee-for-customers-with-old-routers/&#34;&gt;ArsTechnica&lt;/a&gt; (thanks Ars!). The article that Ars posted was about Verizon charging a $2.80/month &amp;ldquo;Router Maintenance Charge&amp;rdquo; to continue supporting the older Actiontec routers. This was the first I&amp;rsquo;d heard of this. The information first went public via email (below), and then started popping up on &lt;a href=&#34;https://www.dslreports.com/shownews/Verizon-Begins-Charging-a-Fee-Just-to-Use-an-Older-Router-137445&#34;&gt;DSLReports&lt;/a&gt;.&lt;/p&gt;</description>
@@ -1737,69 +1679,68 @@
       <title>EdgeRouter Lite software upgrade</title>
       <link>https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/</link>
       <pubDate>Mon, 13 Jun 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Ubiquiti just released the new v1.8.5 software for their EdgeMax devices, including the EdgeRouter Lite (ERL). I&amp;rsquo;ll be showing you how to install the new software via the CLI, which only takes a few minutes.&lt;/p&gt;</description>
@@ -1809,69 +1750,68 @@
       <title>EdgeRouter Lite OpenVPN setup</title>
       <link>https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/</link>
       <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In my &lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;last post&lt;/a&gt;, I setup the Ubiquiti EdgeRouter Lite (ERL) as a basic router and firewall. Is this post, I&amp;rsquo;ll be going over the setup of an OpenVPN server. In the past, I used an Archer C7 running OpenWrt to &lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;host OpenVPN&lt;/a&gt;, so I&amp;rsquo;ll be applying most of those principles again here.&lt;/p&gt;</description>
@@ -1881,69 +1821,68 @@
       <title>Ubiquiti EdgeRouter Lite setup</title>
       <link>https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/</link>
       <pubDate>Fri, 29 Apr 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-06-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2019-02-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup CNAME records&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-10-03&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DynDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-04-25&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup DuckDNS&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2017-01-08&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Serial console settings&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-11-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Install UniFi Controller&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-30&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Setup dnsmasq&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-06-13&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Firmware upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-05-12&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenVPN server setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-29&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial setup&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-06-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/&#34;&gt;Migrating away from the Ubiquiti EdgeRouter Lite&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Migrated to a Netgate SG-1100&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2019-02-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2019/02/edgerouter-cname-records/&#34;&gt;EdgeRouter CNAME records&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup CNAME records&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/10/dyn-ddns-edgerouter/&#34;&gt;Dyn DDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DynDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-04-25&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/04/duckdns-on-edgerouter/&#34;&gt;DuckDNS on EdgeRouter&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup DuckDNS&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2017-01-08&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2017/01/ubiquiti-edgerouter-serial-console-settings/&#34;&gt;Ubiquiti EdgeRouter serial console settings&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Serial console settings&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-11-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/&#34;&gt;Ubiquiti UniFi controller setup on Raspberry Pi 3&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Install UniFi Controller&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-30&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/edgerouter-lite-dnsmasq-setup/&#34;&gt;EdgeRouter Lite Dnsmasq setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Setup dnsmasq&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-06-13&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/06/edgerouter-lite-software-upgrade/&#34;&gt;EdgeRouter Lite software upgrade&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Firmware upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-05-12&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/05/edgerouter-lite-openvpn-setup/&#34;&gt;EdgeRouter Lite OpenVPN setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenVPN server setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/ubiquiti-edgerouter-lite-setup/&#34;&gt;Ubiquiti EdgeRouter Lite setup&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial setup&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;As much as I love my &lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;C7 running OpenWrt&lt;/a&gt;, I&amp;rsquo;ve been hearing a lot of good things about &lt;a href=&#34;https://www.ubnt.com/&#34;&gt;Ubiquiti&lt;/a&gt; devices. In particular, the &lt;a href=&#34;https://www.ubnt.com/edgemax/edgerouter-lite/&#34;&gt;EdgeRouter Lite&lt;/a&gt;, which is touted as being the world&amp;rsquo;s first router under $100 capable of passing one million packets per second (1Mpps). In contrast, I&amp;rsquo;ve &lt;a href=&#34;https://www.reddit.com/r/openwrt/comments/3lhie4/stable_embedded_router_for_openwrt_that_wont_be/cv6rrud&#34;&gt;read&lt;/a&gt; that the TP-Link WDR-3600 can pass about 25Kpps. This is partly due to the hardware in the WDR-3600, and partly due to the software (OpenWrt). I wanted to try out the EdgeRouter Lite (ERL) and see how it performed.&lt;/p&gt;</description>
@@ -1953,44 +1892,43 @@
       <title>OpenWrt upgrade process</title>
       <link>https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/</link>
       <pubDate>Thu, 28 Apr 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2024-02-06&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt revisited&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-08-26&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-02-15&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2026-05-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt simple setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2024-02-06&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt revisited&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-08-26&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-02-15&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Typically, when a new version of OpenWrt is released, I completely wipe the router and start over. However, with the recent release of &lt;a href=&#34;https://downloads.openwrt.org/&#34;&gt;15.05.1&lt;/a&gt;, I wanted to perform an in-place upgrade while preserving all of my data.&lt;/p&gt;</description>
@@ -2000,7 +1938,6 @@
       <title>A brief introduction to GPG</title>
       <link>https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/</link>
       <pubDate>Thu, 31 Dec 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2015/12/a-brief-introduction-to-gpg/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Put on your tinfoil hats, boys and girls! Today, we&amp;rsquo;re talking about security, encryption, and GPG!&lt;/p&gt;
@@ -2014,44 +1951,43 @@
       <title>OpenWrt with OpenVPN server on TP-Link Archer C7</title>
       <link>https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/</link>
       <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2024-02-06&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt revisited&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-08-26&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-02-15&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2026-05-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt simple setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2024-02-06&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt revisited&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-08-26&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-02-15&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;I&amp;rsquo;m not going to spend any time talking about why &lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/#the-why&#34;&gt;you should be using a VPN&lt;/a&gt;, or how a VPN works. If you&amp;rsquo;re here, you know that already. If you need a refresher on the different types of VPNs, see below.&lt;/p&gt;</description>
@@ -2061,29 +1997,28 @@
       <title>Use your own router with Verizon FiOS</title>
       <link>https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/</link>
       <pubDate>Sat, 11 Jul 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on using your own router with Verizon FiOS. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-08-22&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/&#34;&gt;Verizon FiOS Router Maintenance Charge&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Maintenance Charges&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-07-11&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/&#34;&gt;Use your own router with Verizon FiOS&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial Post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-08-22&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/08/verizon-fios-router-maintenance-charge/&#34;&gt;Verizon FiOS Router Maintenance Charge&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Maintenance Charges&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-07-11&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/07/use-your-own-router-with-verizon-fios/&#34;&gt;Use your own router with Verizon FiOS&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial Post&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;At the new house, we have &lt;a href=&#34;https://www.verizon.com/home/fios/&#34;&gt;Verizon FiOS&lt;/a&gt;. If you&amp;rsquo;re not familiar, FiOS is a FTTP (Fiber-to-the-Premises) multimedia service that offers phone service, internet, and TV. If fiber is strung in your area, Verizon taps into the fiber line on the telephone pole and runs it to your house. Verizon will then install a box on your property called the Optical Network Terminal (ONT), that converts the fiber signal into a copper signal.&lt;/p&gt;</description>
@@ -2093,7 +2028,6 @@
       <title>Encrypted external drive with LUKS</title>
       <link>https://loganmarchione.github.io/2015/05/encrypted-external-drive-with-luks/</link>
       <pubDate>Wed, 06 May 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2015/05/encrypted-external-drive-with-luks/</guid>
       <description>&lt;h1 id=&#34;update-luks2-is-out-use-it-instead&#34;&gt;Update: LUKS2 is out, use it instead!&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://gitlab.com/cryptsetup/cryptsetup/-/blob/master/docs/v2.0.0-ReleaseNotes&#34;&gt;LUKS2 was released in 2018&lt;/a&gt;, you should double-check the documentation for it before you blindly follow this guide. &amp;#x1f643;&lt;/p&gt;
@@ -2105,44 +2039,43 @@
       <title>OpenWrt with OpenVPN client on TP-Link TL-MR3020</title>
       <link>https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/</link>
       <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020/</guid>
       <description>&lt;p&gt;Hey! Listen! This post is part of a series on using OpenWrt. Check them all out!&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Date&lt;/th&gt;
-          &lt;th&gt;URL&lt;/th&gt;
-          &lt;th&gt;Part&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2026-05-23&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt simple setup&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2024-02-06&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt revisited&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2016-04-28&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;OpenWrt upgrade&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-08-26&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;2015-02-15&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;Initial post&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2026-05-23&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/&#34;&gt;A dead-simple OpenWrt setup on the Flint 2 &lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt simple setup&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2024-02-06&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2024/02/beryl-travel-router-with-openwrt/&#34;&gt;Beryl travel router with OpenWrt&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt revisited&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2016-04-28&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2016/04/openwrt-upgrade-process/&#34;&gt;OpenWrt upgrade process&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;OpenWrt upgrade&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-08-26&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/08/openwrt-with-openvpn-server-on-tp-link-archer-c7/&#34;&gt;OpenWrt with OpenVPN server on TP-Link Archer C7&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2015-02-15&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2015/02/openwrt-with-openvpn-client-on-tp-link-tl-mr3020-3/&#34;&gt;OpenWrt with OpenVPN client on TP-Link TL-MR3020&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Initial post&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;update-multiple-posts&#34;&gt;Update: Multiple posts&lt;/h1&gt;
 &lt;p&gt;Originally, this series consisted of three posts with basically the same content, but small improvements each time. The original links are below:&lt;/p&gt;</description>
@@ -2152,7 +2085,6 @@
       <title>UPDATE: TrueCrypt may not be secure</title>
       <link>https://loganmarchione.github.io/2014/06/update-truecrypt-may-not-be-secure/</link>
       <pubDate>Mon, 02 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2014/06/update-truecrypt-may-not-be-secure/</guid>
       <description>&lt;p&gt;Ever since TrueCrypt &lt;a href=&#34;https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/&#34; title=&#34;TrueCrypt may not be secure&#34;&gt;disappeared&lt;/a&gt; a few days ago, there has been a lot of speculation as to what happened. There are plenty of theories on &lt;a href=&#34;http://www.reddit.com/r/netsec/comments/26pz9b/truecrypt_development_has_ended_052814/&#34;&gt;r/netsec&lt;/a&gt;, &lt;a href=&#34;http://www.reddit.com/r/linux/comments/26qe9f/truecrypt_is_not_secure_official_sourceforge_page/&#34;&gt;r/linx&lt;/a&gt;, and &lt;a href=&#34;http://www.reddit.com/r/crypto/comments/26px1i/truecrypt_shutting_down_development_of_truecrypt/&#34;&gt;r/crypto&lt;/a&gt;. Even &lt;a href=&#34;https://www.schneier.com/blog/archives/2014/05/truecrypt_wtf.html&#34;&gt;Bruce Schneier&lt;/a&gt; doesn&amp;rsquo;t know what&amp;rsquo;s going on.&lt;/p&gt;
 &lt;p&gt;There is a theory that the developer &lt;a href=&#34;http://krebsonsecurity.com/2014/05/true-goodbye-using-truecrypt-is-not-secure/comment-page-1/#comment-255908&#34;&gt;threw in the towel&lt;/a&gt;, however, the most popular theory going around is that the NSA/FBI/other-three-letter-organization was involved and this is TrueCrypt&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Warrant_canary&#34;&gt;warrant canary&lt;/a&gt;. Because they would not legally be allowed to divulge the fact that they were being forced to backdoor their software, they decided to suggest alternatives known to be backdoored, knowing that users would understand the secret message.&lt;/p&gt;</description>
@@ -2162,19 +2094,17 @@
       <title>TrueCrypt may not be secure</title>
       <link>https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/</link>
       <pubDate>Wed, 28 May 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/</guid>
       <description>&lt;p&gt;Recently, I posted three articles of a four-part series showing how to encrypt an external drive with TrueCrypt on Fedora 20. As-of today, May 28th, TrueCrypt may not be secure after-all.&lt;/p&gt;
 &lt;p&gt;The truecrypt.org website now redirects to &lt;a href=&#34;http://truecrypt.sourceforge.net/&#34;&gt;truecrypt.sourceforge.net&lt;/a&gt;. A warning is displayed that reads, &amp;ldquo;&lt;strong&gt;WARNING: Using TrueCrypt is not secure as it may contain unfixed security issues&lt;/strong&gt;&amp;rdquo; and it directs users to alternative encryption packages for Windows, Mac, and Linux.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/20140528_001_hu_d8f410397429280d.png&#34; loading=&#34;lazy&#34; alt=&#34;screenshot&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/20140528_001_hu_3705ad557cd1fd8b.png&#34; loading=&#34;lazy&#34; alt=&#34;screenshot&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>UPDATE: Dropping Dropbox</title>
       <link>https://loganmarchione.github.io/2014/04/update-dropping-dropbox/</link>
       <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2014/04/update-dropping-dropbox/</guid>
       <description>&lt;p&gt;In March, I &lt;a href=&#34;https://loganmarchione.github.io/2014/03/dropping-dropbox/&#34; title=&#34;Dropping Dropbox&#34;&gt;cancelled my subscription&lt;/a&gt; to Dropbox over privacy concerns. Seems like that was a good idea.&lt;/p&gt;
 &lt;p&gt;Dropbox just &lt;a href=&#34;https://blog.dropbox.com/2014/04/growing-our-leadership-team/&#34;&gt;announced&lt;/a&gt; that they&amp;rsquo;re adding Dr. Condoleezza Rice to their Board of Directors. I don&amp;rsquo;t have &lt;a href=&#34;http://www.reddit.com/r/restorethefourth/comments/23a377/watch_dropboxs_condoleeza_rice_advocate/&#34;&gt;to&lt;/a&gt; &lt;a href=&#34;http://hardware.slashdot.org/story/14/04/10/1850253/double-take-condoleezza-rice-as-dropboxs-newest-board-member&#34;&gt;tell&lt;/a&gt; &lt;a href=&#34;http://www.techdirt.com/articles/20140410/07181926866/adding-condoleeza-rice-to-dropboxs-board-seems-incredibly-tone-deaf-following-nsa-concerns.shtml&#34;&gt;you&lt;/a&gt; &lt;a href=&#34;http://www.reddit.com/r/technology/comments/22os31/&#34;&gt;why&lt;/a&gt; &lt;a href=&#34;http://techcrunch.com/2014/04/09/condoleezza-rice-joins-dropboxs-board/&#34;&gt;this&lt;/a&gt; &lt;a href=&#34;http://techcrunch.com/2014/04/10/petition-demanding-removal-of-condoleezza-rice-from-dropbox-board-pops-up-online-on-twitter/&#34;&gt;is&lt;/a&gt; &lt;a href=&#34;http://www.reddit.com/r/realtech/comments/22pjya/care_about_your_privacy_drop_dropbox_and_pick_up/&#34;&gt;a&lt;/a&gt; &lt;a href=&#34;http://www.reddit.com/r/technology/comments/22p34z/drop_dropbox/&#34;&gt;terrible&lt;/a&gt; &lt;a href=&#34;http://www.pcworld.com/article/2142286/drop-dropbox-protests-flare-as-wiretap-proponent-condoleezza-rice-joins-board.html&#34;&gt;idea&lt;/a&gt;.&lt;/p&gt;
@@ -2188,7 +2118,6 @@
       <title>Dropping Dropbox</title>
       <link>https://loganmarchione.github.io/2014/03/dropping-dropbox/</link>
       <pubDate>Wed, 26 Mar 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://loganmarchione.github.io/2014/03/dropping-dropbox/</guid>
       <description>&lt;p&gt;I dropped Dropbox! Well, not entirely.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve been a Dropbox user since Day 1. I remember when their service was first introduced. Cloud storage was just coming out and it was so convenient to be able to access your data anywhere.&lt;/p&gt;

@@ -9,71 +9,71 @@
 <meta name="keywords" content="">
 <meta name="description" content="Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!
 
-  
-      
-          Date
-          URL
-          Part
-      
-  
-  
-      
-          2019-06-28
-          Migrating away from the Ubiquiti EdgeRouter Lite
-          Migrated to a Netgate SG-1100
-      
-      
-          2019-02-03
-          EdgeRouter CNAME records
-          Setup CNAME records
-      
-      
-          2017-10-03
-          Dyn DDNS on EdgeRouter
-          Setup DynDNS
-      
-      
-          2017-04-25
-          DuckDNS on EdgeRouter
-          Setup DuckDNS
-      
-      
-          2017-01-08
-          Ubiquiti EdgeRouter serial console settings
-          Serial console settings
-      
-      
-          2016-11-29
-          Ubiquiti UniFi controller setup on Raspberry Pi 3
-          Install UniFi Controller
-      
-      
-          2016-08-30
-          EdgeRouter Lite Dnsmasq setup
-          Setup dnsmasq
-      
-      
-          2016-06-13
-          EdgeRouter Lite software upgrade
-          Firmware upgrade
-      
-      
-          2016-05-12
-          EdgeRouter Lite OpenVPN setup
-          OpenVPN server setup
-      
-      
-          2016-04-29
-          Ubiquiti EdgeRouter Lite setup
-          Initial setup
-      
-  
+	
+			
+					Date
+					URL
+					Part
+			
+	
+	
+			
+					2019-06-28
+					Migrating away from the Ubiquiti EdgeRouter Lite
+					Migrated to a Netgate SG-1100
+			
+			
+					2019-02-03
+					EdgeRouter CNAME records
+					Setup CNAME records
+			
+			
+					2017-10-03
+					Dyn DDNS on EdgeRouter
+					Setup DynDNS
+			
+			
+					2017-04-25
+					DuckDNS on EdgeRouter
+					Setup DuckDNS
+			
+			
+					2017-01-08
+					Ubiquiti EdgeRouter serial console settings
+					Serial console settings
+			
+			
+					2016-11-29
+					Ubiquiti UniFi controller setup on Raspberry Pi 3
+					Install UniFi Controller
+			
+			
+					2016-08-30
+					EdgeRouter Lite Dnsmasq setup
+					Setup dnsmasq
+			
+			
+					2016-06-13
+					EdgeRouter Lite software upgrade
+					Firmware upgrade
+			
+			
+					2016-05-12
+					EdgeRouter Lite OpenVPN setup
+					OpenVPN server setup
+			
+			
+					2016-04-29
+					Ubiquiti EdgeRouter Lite setup
+					Initial setup
+			
+	
 
 Introduction
 As you know, I love my Ubiquiti EdgeRouter Lite. Since I bought it, I&rsquo;ve been wanting to purchase one of the UniFi wireless APs ever since I saw the Ars Technica review of them. I ended up picking up the UniFi AC Pro on a Black Friday deal on Jet.com.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fb6fa8c13b88513fbed8074f42525ca6d31fc71f35161067ae3f2c6bdfc5065.css" integrity="sha256-j7b6jBO4hRP77YB09CUlym0x/HHzUWEGeuPyxr38UGU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -208,12 +208,12 @@ Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrat
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -261,7 +261,9 @@ Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrat
     <h1 class="post-title entry-hint-parent">
       Ubiquiti UniFi controller setup on Raspberry Pi 3
     </h1>
-    <div class="post-meta"><span title='2016-11-29 00:00:00 +0000 UTC'>2016-11-29</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1177 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
+    <div class="post-meta">
+
+<span title='2016-11-29 00:00:00 +0000 UTC'>2016-11-29</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>1177 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -305,65 +307,65 @@ Date URL Part 2019-06-28 Migrating away from the Ubiquiti EdgeRouter Lite Migrat
 
   <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on the Ubiquiti EdgeRouter Lite. Check them all out!</p>
 <table>
-  <thead>
-      <tr>
-          <th>Date</th>
-          <th>URL</th>
-          <th>Part</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>2019-06-28</td>
-          <td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
-          <td>Migrated to a Netgate SG-1100</td>
-      </tr>
-      <tr>
-          <td>2019-02-03</td>
-          <td><a href="/2019/02/edgerouter-cname-records/">EdgeRouter CNAME records</a></td>
-          <td>Setup CNAME records</td>
-      </tr>
-      <tr>
-          <td>2017-10-03</td>
-          <td><a href="/2017/10/dyn-ddns-edgerouter/">Dyn DDNS on EdgeRouter</a></td>
-          <td>Setup DynDNS</td>
-      </tr>
-      <tr>
-          <td>2017-04-25</td>
-          <td><a href="/2017/04/duckdns-on-edgerouter/">DuckDNS on EdgeRouter</a></td>
-          <td>Setup DuckDNS</td>
-      </tr>
-      <tr>
-          <td>2017-01-08</td>
-          <td><a href="/2017/01/ubiquiti-edgerouter-serial-console-settings/">Ubiquiti EdgeRouter serial console settings</a></td>
-          <td>Serial console settings</td>
-      </tr>
-      <tr>
-          <td>2016-11-29</td>
-          <td><a href="/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/">Ubiquiti UniFi controller setup on Raspberry Pi 3</a></td>
-          <td>Install UniFi Controller</td>
-      </tr>
-      <tr>
-          <td>2016-08-30</td>
-          <td><a href="/2016/08/edgerouter-lite-dnsmasq-setup/">EdgeRouter Lite Dnsmasq setup</a></td>
-          <td>Setup dnsmasq</td>
-      </tr>
-      <tr>
-          <td>2016-06-13</td>
-          <td><a href="/2016/06/edgerouter-lite-software-upgrade/">EdgeRouter Lite software upgrade</a></td>
-          <td>Firmware upgrade</td>
-      </tr>
-      <tr>
-          <td>2016-05-12</td>
-          <td><a href="/2016/05/edgerouter-lite-openvpn-setup/">EdgeRouter Lite OpenVPN setup</a></td>
-          <td>OpenVPN server setup</td>
-      </tr>
-      <tr>
-          <td>2016-04-29</td>
-          <td><a href="/2016/04/ubiquiti-edgerouter-lite-setup/">Ubiquiti EdgeRouter Lite setup</a></td>
-          <td>Initial setup</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Date</th>
+					<th>URL</th>
+					<th>Part</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2019-06-28</td>
+					<td><a href="/2019/06/migrating-away-from-the-ubiquiti-edgerouter-lite/">Migrating away from the Ubiquiti EdgeRouter Lite</a></td>
+					<td>Migrated to a Netgate SG-1100</td>
+			</tr>
+			<tr>
+					<td>2019-02-03</td>
+					<td><a href="/2019/02/edgerouter-cname-records/">EdgeRouter CNAME records</a></td>
+					<td>Setup CNAME records</td>
+			</tr>
+			<tr>
+					<td>2017-10-03</td>
+					<td><a href="/2017/10/dyn-ddns-edgerouter/">Dyn DDNS on EdgeRouter</a></td>
+					<td>Setup DynDNS</td>
+			</tr>
+			<tr>
+					<td>2017-04-25</td>
+					<td><a href="/2017/04/duckdns-on-edgerouter/">DuckDNS on EdgeRouter</a></td>
+					<td>Setup DuckDNS</td>
+			</tr>
+			<tr>
+					<td>2017-01-08</td>
+					<td><a href="/2017/01/ubiquiti-edgerouter-serial-console-settings/">Ubiquiti EdgeRouter serial console settings</a></td>
+					<td>Serial console settings</td>
+			</tr>
+			<tr>
+					<td>2016-11-29</td>
+					<td><a href="/2016/11/ubiquiti-unifi-controller-setup-raspberry-pi-3/">Ubiquiti UniFi controller setup on Raspberry Pi 3</a></td>
+					<td>Install UniFi Controller</td>
+			</tr>
+			<tr>
+					<td>2016-08-30</td>
+					<td><a href="/2016/08/edgerouter-lite-dnsmasq-setup/">EdgeRouter Lite Dnsmasq setup</a></td>
+					<td>Setup dnsmasq</td>
+			</tr>
+			<tr>
+					<td>2016-06-13</td>
+					<td><a href="/2016/06/edgerouter-lite-software-upgrade/">EdgeRouter Lite software upgrade</a></td>
+					<td>Firmware upgrade</td>
+			</tr>
+			<tr>
+					<td>2016-05-12</td>
+					<td><a href="/2016/05/edgerouter-lite-openvpn-setup/">EdgeRouter Lite OpenVPN setup</a></td>
+					<td>OpenVPN server setup</td>
+			</tr>
+			<tr>
+					<td>2016-04-29</td>
+					<td><a href="/2016/04/ubiquiti-edgerouter-lite-setup/">Ubiquiti EdgeRouter Lite setup</a></td>
+					<td>Initial setup</td>
+			</tr>
+	</tbody>
 </table>
 <h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
 <p>As you know, I love my <a href="/2016/04/ubiquiti-edgerouter-lite-setup/">Ubiquiti EdgeRouter Lite</a>. Since I bought it, I&rsquo;ve been wanting to purchase one of the <a href="https://www.ubnt.com/unifi/unifi-ap/">UniFi wireless APs</a> ever since I saw the <a href="http://arstechnica.com/gadgets/2015/10/review-ubiquiti-unifi-made-me-realize-how-terrible-consumer-wi-fi-gear-is/">Ars Technica</a> review of them. I ended up picking up the UniFi AC Pro on a Black Friday deal on Jet.com.</p>
@@ -455,7 +457,7 @@ EOF&#39;
 <pre tabindex="0"><code>https://&lt;device_IP_here&gt;:8443
 </code></pre><p>If everything is working, you should see the setup wizard. Since there are many different ways to do the setup, I won&rsquo;t be covering that here.</p>
 
-<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_001_hu_435369f4ba254606.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_001_hu_5c43f0f8dc5aeabd.png" loading="lazy" alt="screenshot"></p>
 <h1 id="controller-alternatives">Controller alternatives<a hidden class="anchor" aria-hidden="true" href="#controller-alternatives">#</a></h1>
 <p>There are a few alternatives to running the controller software on the Raspberry Pi on your local network:</p>
 <ol>
@@ -467,14 +469,14 @@ EOF&#39;
 <h1 id="comparison">Comparison<a hidden class="anchor" aria-hidden="true" href="#comparison">#</a></h1>
 <p>Here, you can see my signal strength on the old access point (TP-Link Archer C7 running OpenWrt Chaos Calmer) on the 2.4GHz and 5GHz networks, respectively.</p>
 
-<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_002_hu_8cac16212d9ca2f9.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_002_hu_1dda1d50d812a5a4.png" loading="lazy" alt="screenshot"></p>
 
-<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_003_hu_94f6fc4a6f6b61e4.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_003_hu_5186d065f5da73cf.png" loading="lazy" alt="screenshot"></p>
 <p>Then, the same measurements with the new UniFi access point. Again, on the 2.4GHz and 5GHz networks, respectively.</p>
 
-<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_004_hu_f620d29a20399aaf.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_004_hu_ac5f11725b857b5f.png" loading="lazy" alt="screenshot"></p>
 
-<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_005_hu_82230f96406c8bdd.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2016/11/ubiquiti-unifi-controller-setup-on-raspberry-pi-3/20161128_005_hu_41ab8271835ac960.png" loading="lazy" alt="screenshot"></p>
 <p>Hope this helps!</p>
 <p>-Logan</p>
 <h1 id="comments">Comments<a hidden class="anchor" aria-hidden="true" href="#comments">#</a></h1>
@@ -561,9 +563,11 @@ EOF&#39;
 <footer class="footer">
         <span>&copy; 2026 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>

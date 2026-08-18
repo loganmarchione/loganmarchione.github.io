@@ -12,7 +12,7 @@ I know I&rsquo;m about five years too late too the party, but I&rsquo;m finally 
 Right now, I have 10 servers inside my Proxmox Virtual Environment (PVE) setup, made up of a mix of virtual machines (VMs) and LXC containers (LXCs). I&rsquo;m currently using the built-in PVE backup system to backup my VMs/LXCs to my NAS. This results in about 250GB of backups, which happen once a week. I keep 12 weeks of backups, so that&rsquo;s 3TB of backups on my NAS. Even if nothing changes week-to-week on a single VM/LXC, the entire machine is getting backed up every week, taking up the full amount of space.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2025/10/proxmox-backup-server-on-the-opnsense-dec740/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fb6fa8c13b88513fbed8074f42525ca6d31fc71f35161067ae3f2c6bdfc5065.css" integrity="sha256-j7b6jBO4hRP77YB09CUlym0x/HHzUWEGeuPyxr38UGU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -147,12 +147,12 @@ Right now, I have 10 servers inside my Proxmox Virtual Environment (PVE) setup, 
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -200,7 +200,9 @@ Right now, I have 10 servers inside my Proxmox Virtual Environment (PVE) setup, 
     <h1 class="post-title entry-hint-parent">
       Proxmox Backup Server on the OPNsense DEC740
     </h1>
-    <div class="post-meta"><span title='2025-10-15 00:00:00 +0000 UTC'>2025-10-15</span>&nbsp;·&nbsp;<span>21 min</span>&nbsp;·&nbsp;<span>4445 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
+    <div class="post-meta">
+
+<span title='2025-10-15 00:00:00 +0000 UTC'>2025-10-15</span>&nbsp;·&nbsp;<span>21 min</span>&nbsp;·&nbsp;<span>4445 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -293,136 +295,136 @@ Right now, I have 10 servers inside my Proxmox Virtual Environment (PVE) setup, 
 <h2 id="comparison">Comparison<a hidden class="anchor" aria-hidden="true" href="#comparison">#</a></h2>
 <p>I must have looked at hundreds or thousands of mini PCs on obscure industrial and electronics distributor websites. Below are the devices that I found in my searching.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Make/Model</th>
-          <th>Specific model number</th>
-          <th>CPU</th>
-          <th>RAM</th>
-          <th>ECC</th>
-          <th>Storage</th>
-          <th>NICs</th>
-          <th>Price (main unit only)</th>
-          <th>Comments</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="https://www.asrockind.com/en-gb/iBOX-250J">ASRock iBOX-250J</a></td>
-          <td>N/A</td>
-          <td>Intel J6412 (4c/4t, 10W)</td>
-          <td>2x DDR4-3200 SO-DIMM slots (max 32GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x1, 1x 2.5&quot; bay</td>
-          <td>2x Intel i225V</td>
-          <td></td>
-          <td>Seems impossible to buy as an individual</td>
-      </tr>
-      <tr>
-          <td><a href="https://www.asrockind.com/en-gb/iBOX-260J">ASRock iBOX-260J</a></td>
-          <td>N/A</td>
-          <td>Intel N97 (4c/4t, 12W)</td>
-          <td>1x DDR4-3200 SO-DIMM slot (max 32GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x1, 1x 2.5&quot; bay</td>
-          <td>1x Intel i210AT, 1x Intel i226V</td>
-          <td></td>
-          <td>Seems impossible to buy as an individual</td>
-      </tr>
-      <tr>
-          <td><a href="https://global.shuttle.com/products/productsDetail?pn=DL30N%20SERIES&amp;c=xpc-fanless">Shuttle DL30N</a></td>
-          <td>N/A</td>
-          <td>Intel N100/N200/N300</td>
-          <td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x2, 1x 2.5&quot; bay</td>
-          <td>2x Intel i226LM</td>
-          <td>~$500</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><a href="https://jetwaycomputer.com/FBU03.html">Jetway FBU03</a></td>
-          <td>HBFBU03-6412-B</td>
-          <td>Intel J6412 (4c/4t, 10W)</td>
-          <td>1x DDR4-3200 SO-DIMM slot (max 32GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x2</td>
-          <td>2x Intel i225V</td>
-          <td>~$299</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><a href="https://jetwaycomputer.com/BFTADN1.html">Jetway BFTADN1</a></td>
-          <td>BFTADN1-N97-N</td>
-          <td>Intel N97 (4c/4t, 12W)</td>
-          <td>1x DDR5-4800 SO-DIMM slot (max 32GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x2</td>
-          <td>2x Intel i225V</td>
-          <td>~$550</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><a href="https://www.gigaipc.com/en/products-detail/QBiX-EHLA6412-A1/">GIGAIPC QBiX-EHLA6412-A1</a></td>
-          <td>N/A</td>
-          <td>Intel J6412 (4c/4t, 10W)</td>
-          <td>1x DDR4-3200 SO-DIMM slot (max 32GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x2</td>
-          <td>1x Intel i211AT</td>
-          <td>~$300</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><a href="https://www.gigaipc.com/en/products-detail/QBiX-ADNAN97-A1/">GIGAIPC QBiX-ADNAN97-A1</a></td>
-          <td>N/A</td>
-          <td>Intel N97 (4c/4t, 12W)</td>
-          <td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
-          <td>2x Realtek RTL8111H 👎</td>
-          <td>~$350</td>
-          <td>So close, but Realtek NICs</td>
-      </tr>
-      <tr>
-          <td><a href="https://www.supermicro.com/en/products/system/iot/box_pc/sys-e100-14am-e">SuperMicro SYS-E100-14AM-E</a></td>
-          <td>N/A</td>
-          <td>Intel x7433RE (4c/4t, 9W)</td>
-          <td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
-          <td>2x Intel i226IT</td>
-          <td>~$500</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><a href="https://www.supermicro.com/en/products/system/iot/box_pc/sys-e100-14am-h">SuperMicro SYS-E100-14AM-H</a></td>
-          <td>N/A</td>
-          <td>Intel x7835RE (8c/8t, 12W)</td>
-          <td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
-          <td>2x Intel i226IT</td>
-          <td>~$500</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><a href="https://www.supermicro.com/en/products/system/iot/fanless%20embedded/sys-e100-14am-l">SuperMicro SYS-E100-14AM-L</a></td>
-          <td>N/A</td>
-          <td>Intel N97 (4c/4t, 12W)</td>
-          <td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
-          <td>No</td>
-          <td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
-          <td>2x Intel i226IT</td>
-          <td>~$500</td>
-          <td></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Make/Model</th>
+					<th>Specific model number</th>
+					<th>CPU</th>
+					<th>RAM</th>
+					<th>ECC</th>
+					<th>Storage</th>
+					<th>NICs</th>
+					<th>Price (main unit only)</th>
+					<th>Comments</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><a href="https://www.asrockind.com/en-gb/iBOX-250J">ASRock iBOX-250J</a></td>
+					<td>N/A</td>
+					<td>Intel J6412 (4c/4t, 10W)</td>
+					<td>2x DDR4-3200 SO-DIMM slots (max 32GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x1, 1x 2.5&quot; bay</td>
+					<td>2x Intel i225V</td>
+					<td></td>
+					<td>Seems impossible to buy as an individual</td>
+			</tr>
+			<tr>
+					<td><a href="https://www.asrockind.com/en-gb/iBOX-260J">ASRock iBOX-260J</a></td>
+					<td>N/A</td>
+					<td>Intel N97 (4c/4t, 12W)</td>
+					<td>1x DDR4-3200 SO-DIMM slot (max 32GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x1, 1x 2.5&quot; bay</td>
+					<td>1x Intel i210AT, 1x Intel i226V</td>
+					<td></td>
+					<td>Seems impossible to buy as an individual</td>
+			</tr>
+			<tr>
+					<td><a href="https://global.shuttle.com/products/productsDetail?pn=DL30N%20SERIES&amp;c=xpc-fanless">Shuttle DL30N</a></td>
+					<td>N/A</td>
+					<td>Intel N100/N200/N300</td>
+					<td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x2, 1x 2.5&quot; bay</td>
+					<td>2x Intel i226LM</td>
+					<td>~$500</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><a href="https://jetwaycomputer.com/FBU03.html">Jetway FBU03</a></td>
+					<td>HBFBU03-6412-B</td>
+					<td>Intel J6412 (4c/4t, 10W)</td>
+					<td>1x DDR4-3200 SO-DIMM slot (max 32GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x2</td>
+					<td>2x Intel i225V</td>
+					<td>~$299</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><a href="https://jetwaycomputer.com/BFTADN1.html">Jetway BFTADN1</a></td>
+					<td>BFTADN1-N97-N</td>
+					<td>Intel N97 (4c/4t, 12W)</td>
+					<td>1x DDR5-4800 SO-DIMM slot (max 32GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x2</td>
+					<td>2x Intel i225V</td>
+					<td>~$550</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><a href="https://www.gigaipc.com/en/products-detail/QBiX-EHLA6412-A1/">GIGAIPC QBiX-EHLA6412-A1</a></td>
+					<td>N/A</td>
+					<td>Intel J6412 (4c/4t, 10W)</td>
+					<td>1x DDR4-3200 SO-DIMM slot (max 32GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x2</td>
+					<td>1x Intel i211AT</td>
+					<td>~$300</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><a href="https://www.gigaipc.com/en/products-detail/QBiX-ADNAN97-A1/">GIGAIPC QBiX-ADNAN97-A1</a></td>
+					<td>N/A</td>
+					<td>Intel N97 (4c/4t, 12W)</td>
+					<td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
+					<td>2x Realtek RTL8111H 👎</td>
+					<td>~$350</td>
+					<td>So close, but Realtek NICs</td>
+			</tr>
+			<tr>
+					<td><a href="https://www.supermicro.com/en/products/system/iot/box_pc/sys-e100-14am-e">SuperMicro SYS-E100-14AM-E</a></td>
+					<td>N/A</td>
+					<td>Intel x7433RE (4c/4t, 9W)</td>
+					<td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
+					<td>2x Intel i226IT</td>
+					<td>~$500</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><a href="https://www.supermicro.com/en/products/system/iot/box_pc/sys-e100-14am-h">SuperMicro SYS-E100-14AM-H</a></td>
+					<td>N/A</td>
+					<td>Intel x7835RE (8c/8t, 12W)</td>
+					<td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
+					<td>2x Intel i226IT</td>
+					<td>~$500</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><a href="https://www.supermicro.com/en/products/system/iot/fanless%20embedded/sys-e100-14am-l">SuperMicro SYS-E100-14AM-L</a></td>
+					<td>N/A</td>
+					<td>Intel N97 (4c/4t, 12W)</td>
+					<td>1x DDR5-4800 SO-DIMM slot (max 16GB)</td>
+					<td>No</td>
+					<td>1x M.2 2280 NVMe PCIe Gen3 x1</td>
+					<td>2x Intel i226IT</td>
+					<td>~$500</td>
+					<td></td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="purchase">Purchase<a hidden class="anchor" aria-hidden="true" href="#purchase">#</a></h2>
 <p>In the end, I <em>really</em> wanted ECC memory, so I once again found myself purchasing another <a href="https://shop.opnsense.com/product/dec740-opnsense-desktop-security-appliance/">OPNsense DEC740</a> (the last one was for  <a href="/2025/03/pfsense-on-the-opnsense-dec740/">my pfSense router</a>). I would love to find out who the OEM is for these so that I could purchase five of them (without OPNsense installed). I really love these little boxes, I just wish they weren&rsquo;t so expensive 😅.</p>
 
-<p><img src="/2025/10/proxmox-backup-server-on-the-opnsense-dec740/20250215_002_hu_5e22e644e44de2.jpg" loading="lazy" alt="dec740"></p>
+<p><img src="/2025/10/proxmox-backup-server-on-the-opnsense-dec740/20250215_002_hu_b6603c0c349af1c1.jpg" loading="lazy" alt="dec740"></p>
 <p>I also picked up two upgrades:</p>
 <ul>
 <li>a stick of 16GB DDR4 ECC UDIMM VLP (specifically model number MTA18ADF2G72AZ-2G6 from <a href="https://memory.net/product/mta18adf2g72az-2g6-micron-1x-16gb-ddr4-2666-ecc-udimm-pc4-21300v-e-dual-rank-x8-module/">Memory.net</a>) for $84</li>
@@ -1066,7 +1068,7 @@ GRUB_CMDLINE_LINUX=&#34;$GRUB_CMDLINE_LINUX console=ttyS0,115200 rdinit=/vtoy/vt
 </code></pre><h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
 <p>I don&rsquo;t have PBS 100% setup or connected to PVE yet (I&rsquo;m still working on that), but I don&rsquo;t forsee having any issues 🤞. My ultimate plan is to backup PVE to PBS, and then have PBS <a href="https://pbs.proxmox.com/docs/managing-remotes.html">sync all that content</a> to my NAS (for backup to the cloud).</p>
 
-<p><img src="/2025/10/proxmox-backup-server-on-the-opnsense-dec740/20251016_001_hu_e8203375f0068ff.png" loading="lazy" alt="pbs dashboard"></p>
+<p><img src="/2025/10/proxmox-backup-server-on-the-opnsense-dec740/20251016_001_hu_798c64e10813a1cf.png" loading="lazy" alt="pbs dashboard"></p>
 <p>-Logan</p>
 
 
@@ -1150,9 +1152,11 @@ GRUB_CMDLINE_LINUX=&#34;$GRUB_CMDLINE_LINUX console=ttyS0,115200 rdinit=/vtoy/vt
 <footer class="footer">
         <span>&copy; 2026 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>

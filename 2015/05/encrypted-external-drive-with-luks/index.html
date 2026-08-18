@@ -13,7 +13,7 @@ Introduction
 Since TrueCrypt is no longer under active development, I&rsquo;ve decided to wipe my external drives and re-encrypt them with LUKS and dm-crypt. These are standard Linux tools that are available by default in most distributions. I&rsquo;ve used LUKS and dm-crypt in the past, when I installed Arch Linux on my laptop. Here, I&rsquo;ll be performing a similar procedure, but without LVM.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2015/05/encrypted-external-drive-with-luks/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c1d2b7752e7ce8eb303000a599133b52f7fe9427f037808d15ad0d15d2e07b1d.css" integrity="sha256-wdK3dS586OswMAClmRM7Uvf&#43;lCfwN4CNFa0NFdLgex0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fb6fa8c13b88513fbed8074f42525ca6d31fc71f35161067ae3f2c6bdfc5065.css" integrity="sha256-j7b6jBO4hRP77YB09CUlym0x/HHzUWEGeuPyxr38UGU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -148,12 +148,12 @@ Introduction Since TrueCrypt is no longer under active development, I’ve decid
                     height="35">Logan Marchione</a>
             <div class="logo-switches">
                 <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -201,7 +201,9 @@ Introduction Since TrueCrypt is no longer under active development, I’ve decid
     <h1 class="post-title entry-hint-parent">
       Encrypted external drive with LUKS
     </h1>
-    <div class="post-meta"><span title='2015-05-06 00:00:00 +0000 UTC'>2015-05-06</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>1312 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
+    <div class="post-meta">
+
+<span title='2015-05-06 00:00:00 +0000 UTC'>2015-05-06</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>1312 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
 
 </div>
   </header> 
@@ -319,50 +321,50 @@ sdb                         8:16   0 931.5G  0 disk
 <p>Here, we&rsquo;ll setup encryption on our new partition.</p>
 <pre tabindex="0"><code>sudo cryptsetup -v -y -c aes-xts-plain64 -s 512 -h sha512 -i 5000 --use-random luksFormat /dev/sdb1
 </code></pre><table>
-  <thead>
-      <tr>
-          <th>Option</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>-v</code></td>
-          <td>verbose</td>
-      </tr>
-      <tr>
-          <td><code>-y</code></td>
-          <td>verify passphrase, ask twice, and complain if they don&rsquo;t match</td>
-      </tr>
-      <tr>
-          <td><code>-c</code></td>
-          <td>specify the cipher used</td>
-      </tr>
-      <tr>
-          <td><code>-s</code></td>
-          <td>specify the key size used</td>
-      </tr>
-      <tr>
-          <td><code>-h</code></td>
-          <td>specify the hash used</td>
-      </tr>
-      <tr>
-          <td><code>-i</code></td>
-          <td>number of milliseconds to spend passphrase processing (if using anything more than sha1, must be great than 1000)</td>
-      </tr>
-      <tr>
-          <td><code>--use-random</code></td>
-          <td>which random number generator to use</td>
-      </tr>
-      <tr>
-          <td><code>luksFormat</code></td>
-          <td>to initialize the partition and set a passphrase</td>
-      </tr>
-      <tr>
-          <td><code>/dev/sdb1</code></td>
-          <td>the partition to encrypt</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Option</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>-v</code></td>
+					<td>verbose</td>
+			</tr>
+			<tr>
+					<td><code>-y</code></td>
+					<td>verify passphrase, ask twice, and complain if they don&rsquo;t match</td>
+			</tr>
+			<tr>
+					<td><code>-c</code></td>
+					<td>specify the cipher used</td>
+			</tr>
+			<tr>
+					<td><code>-s</code></td>
+					<td>specify the key size used</td>
+			</tr>
+			<tr>
+					<td><code>-h</code></td>
+					<td>specify the hash used</td>
+			</tr>
+			<tr>
+					<td><code>-i</code></td>
+					<td>number of milliseconds to spend passphrase processing (if using anything more than sha1, must be great than 1000)</td>
+			</tr>
+			<tr>
+					<td><code>--use-random</code></td>
+					<td>which random number generator to use</td>
+			</tr>
+			<tr>
+					<td><code>luksFormat</code></td>
+					<td>to initialize the partition and set a passphrase</td>
+			</tr>
+			<tr>
+					<td><code>/dev/sdb1</code></td>
+					<td>the partition to encrypt</td>
+			</tr>
+	</tbody>
 </table>
 <p>Seriously, read the <a href="http://www.dsm.fordham.edu/cgi-bin/man-cgi.pl?topic=cryptsetup">man page</a> and the <a href="https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions">FAQ</a> on cryptsetup before you do anything here.</p>
 <p>To see the configuration of the header, use the command below.</p>
@@ -374,7 +376,7 @@ sdb                         8:16   0 931.5G  0 disk
 </blockquote>
 <p>That paragraph is probably easier explained with an <a href="https://nnc3.com/mags/LM10/Magazine/Archive/2005/61/065-071_encrypt/article.html">image</a>.</p>
 
-<p><img src="/2015/05/encrypted-external-drive-with-luks/20150505_002_hu_2ca312b91b0a29cb.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2015/05/encrypted-external-drive-with-luks/20150505_002_hu_dddcf5b80010f903.png" loading="lazy" alt="screenshot"></p>
 <p>If you don&rsquo;t understand already, it&rsquo;s important to not damage the LUKS header. It&rsquo;s best practice to <a href="https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions#6-backup-and-data-recovery">backup the header</a> as soon as you create the LUKS device, because you&rsquo;re probably lazy and won&rsquo;t do it later. If you damage the header at all (accidental formatting, wrong device when using <em>dd</em>, bad block, etc&hellip;), you&rsquo;ll need this backup header to recover the data. The header file itself needs encrypted and should be stored in safe place (not on the same drive, obviously).</p>
 <pre tabindex="0"><code>sudo cryptsetup luksHeaderBackup --header-backup-file /path/to/file.img /dev/sdb1
 </code></pre><p>Note - TrueCrypt (brilliant piece of software) uses a <a href="http://www.wilderssecurity.com/threads/truecrypt-file-partition-drive.349445/#post-2246156">backup header</a> at the end of the drive as well, to mitigate the risk of a single header.</p>
@@ -505,9 +507,11 @@ sudo cryptsetup luksClose /dev/mapper/volume01
 <footer class="footer">
         <span>&copy; 2026 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
