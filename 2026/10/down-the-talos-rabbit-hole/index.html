@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Down the Talos rabbit hole | Logan Marchione</title>
+<meta name="keywords" content="">
+<meta name="description" content="Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
+
+	
+			
+					Date
+					URL
+					Part
+			
+	
+	
+			
+					2026-10-03
+					Down the Talos rabbit hole
+					Trying out Talos Linux
+			
+			
+					2022-12-07
+					K3s cluster updates
+					Updates to the cluster build
+			
+			
+					2022-03-29
+					Kubernetes GUIs
+					Exploring Kubernetes GUIs
+			
+			
+					2022-03-11
+					K3s single-node cluster for noobs
+					Deploying K3s
+			
+	
+
+Introduction
+I first setup my K3s single-node cluster in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:">
+<meta name="author" content="Logan Marchione">
+<link rel="canonical" href="https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6e0370252c34d7124c1fbb2685bd776efa05f0874888ff2e30cfdc3e5a51af1.css" integrity="sha256-1uA3AlLDTXEkwfuyaFvXdu&#43;gXwh0iI/y4wz9w&#43;WlGvE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<link rel="apple-touch-icon" href="https://loganmarchione.github.io/assets/favicon/apple-touch-icon.png">
+<link rel="mask-icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><script async defer data-domain="loganmarchione.com" src="https://plausible.io/js/plausible.js"></script><meta property="og:url" content="https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/">
+  <meta property="og:site_name" content="Logan Marchione">
+  <meta property="og:title" content="Down the Talos rabbit hole">
+  <meta property="og:description" content="Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
+Date URL Part 2026-10-03 Down the Talos rabbit hole Trying out Talos Linux 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I first setup my K3s single-node cluster in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-10-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-10-03T00:00:00+00:00">
+    <meta property="og:image" content="https://loganmarchione.github.io/assets/featured/featured_k8s.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://loganmarchione.github.io/assets/featured/featured_k8s.svg">
+  <meta name="twitter:title" content="Down the Talos rabbit hole">
+  <meta name="twitter:description" content="Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!
+Date URL Part 2026-10-03 Down the Talos rabbit hole Trying out Talos Linux 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I first setup my K3s single-node cluster in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://loganmarchione.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Down the Talos rabbit hole",
+      "item": "https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Down the Talos rabbit hole",
+  "name": "Down the Talos rabbit hole",
+  "description": "Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!\nDate URL Part 2026-10-03 Down the Talos rabbit hole Trying out Talos Linux 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I first setup my K3s single-node cluster in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!\nDate URL Part 2026-10-03 Down the Talos rabbit hole Trying out Talos Linux 2022-12-07 K3s cluster updates Updates to the cluster build 2022-03-29 Kubernetes GUIs Exploring Kubernetes GUIs 2022-03-11 K3s single-node cluster for noobs Deploying K3s Introduction I first setup my K3s single-node cluster in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:\nBecause it was a single-node cluster, there was no upgrade path for the underlying Debian operating system. The entire point of Kubernetes is to be able to throw nodes away for upgrades. Flux kept giving me issues during upgrades. It would leave my cluster in an errored state and unable to sync until I was able to fix it. During this time, K3s itself performed amazingly well and I never had an issue with it or any of its bundled components.\nIn the meantime, I’ve been missing my Kubernetes cluster and simultaneously reading more about Talos Linux.\nWhat is Talos? Talos Linux is a minimal, immutable, API-driven version of Linux built specifically for Kubernetes. It has no shell, no package manager, no SSH. Just the Linux kernel and Kubernetes. It is designed to do one thing (run Kubernetes) and do it well. Because it is minimal and immutable, there is almost zero attack surface.\nThe entire operating system is declarative. You interact with it using talosctl just like you would interact with Kubernetes using kubectl. You can’t SSH into it and you can’t run shell scripts, so you have to work out what your workflows are before you install it.\nCluster setup Unlike last time, I’m not running a single-node cluster. This cluster will have three nodes so that I can have quorum if a node goes down. I’m going to have three control plane nodes and also schedule pods on those nodes (so I won’t have separate worker nodes).\nThe high-level overview is that we need to get three machines booted from the Talos image where they sit in “maintenance mode” waiting for configuration to be passed to them over the network.\nThat configuration is generated on your local machine using YAML files (but in my case, I’m going to be using Terraform). You then use talosctl to apply the configuration and the machines install Talos and Kubernetes (and whatever else you have configured).\nPlanning - networking Those three nodes will require three static IPs from my router (in my case, I’m setting three DHCP reservations). My Talos cluster will be called hydrogen and the nodes are named after the stable isotopes of hydrogen.\nTalos also requires a floating virtual IP (VIP) for kubectl to use. This IP doesn’t live on any single node, instead, it floats between all nodes. If a single node goes down, you can still manage the cluster. This VIP is going to have a locally-administered MAC address in my router’s DHCP reservations (just so nothing else takes that IP). It is NOT assigned to any of the nodes.\nIP address hostname MAC address 10.10.1.40 hydrogen 02:00:00:00:00:00 10.10.1.41 protium MAC of machine 1 10.10.1.42 deuterium MAC of machine 2 10.10.1.43 tritium MAC of machine 3 Planning - Talos image You can run Talos on bare metal, in the cloud, or on a Raspberry Pi. I’m going to be running it in Proxmox using three virtual machines.\nBecause Talos is immutable and also minimal, their install image isn’t one-size-fits-all and you can’t add things later. Instead, you use their Image Factory to specify what options you want and they build you a custom image. Below are the options I chose:\nHardware Type = Bare-metal Machine Talos Linux Version = v1.14.1 Architecture = amd64 (with SecureBoot disabled) Extensions siderolabs/iscsi-tools and siderolabs/util-linux-tools for Longhorn support siderolabs/qemu-guest-agent for the Proxmox Guest Agent Customization = I left all defaults Those options result in this image schematic ID…\n88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b …and there is the link to the ISO that I’m going to upload to Proxmox.\nhttps://factory.talos.dev/image/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b/v1.14.1/metal-amd64.iso\nWhen using the Image Factory, checksums, signatures, and SBOMs are only available to enterprise customers. That kind of sucks, but they need to make money somehow I guess 🤷.\nPlanning - VM setup As I mentioned, I’m going to be creating three VMs in Proxmox. You can do this however you want (e.g., manually, API, Terraform, etc…), but here are the settings that I’m using. It’s worth noting that Talos has recommended settings listed here as well.\nOS = choose Talos ISO from Image Factory System settings Machine type = q35 BIOS = UEFI, choose your EFI storage, then make sure Pre-Enroll keys is unchecked (to disable SecureBoot) Qemu Agent = checked Disk = choose your disk storage and set size to 50GiB CPU Size = 1 core, 2 threads Type = x86-64-v3 Memory = 4096MiB Network = VirtIO Start the VMs and you should see they are in maintenance mode, ready to receive their configuration.\nInstallation Talos has a workflow for installing via talosctl, but I’m going to be using their Terraform provider (they also have some good Terraform examples here).\nFirst, I installed the required tools on my desktop (I use Arch, btw).\nsudo pacman -S talosctl kubectl Then, I identified what disks I needed to specify when installing (in my case, it was sda for all three nodes).\ntalosctl -n 10.10.1.41 get disks --insecure talosctl -n 10.10.1.42 get disks --insecure talosctl -n 10.10.1.43 get disks --insecure I also made note of which network interface the VIP should be assigned to. In my case, one of the VMs used ens18 while the other two used eth0 (not sure why).\ntalosctl -n 10.10.1.41 get links --insecure talosctl -n 10.10.1.42 get links --insecure talosctl -n 10.10.1.43 get links --insecure That left me with this configuration that ultimately had to go into Terraform.\nIP address hostname MAC address Disk Network 10.10.1.40 hydrogen 02:00:00:00:00:00 N/A N/A 10.10.1.41 protium MAC of machine 1 sda ens18 10.10.1.42 deuterium MAC of machine 2 sda eth0 10.10.1.43 tritium MAC of machine 3 sda eth0 I won’t paste all the Terraform in-line here, just check my repo to see what it looks like. A couple things to note with the Terraform:\nWhen you run terraform apply you should see the console in the Proxmox web UI on the three nodes start do work You can check the variables.tf file to see the settings for each node (e.g., the hostname and disks used) You can search talos.tf to find the LinkAliasConfig. This is where I set the VIP on the link that has a Proxmox-prefixed MAC address (because some links were using ens18 and some where using eth0). This way, I didn’t have to specify which NIC to use on each node (it’s kind of like a wildcard). I haven’t tested how to upgrade Talos or Kubernetes yet, or what to do when the Talos certificates expire After about two minutes, I had a healthy cluster running.\n\u003e talosctl config info Current context: hydrogen Nodes: not defined Endpoints: 10.10.1.41, 10.10.1.42, 10.10.1.43 Roles: os:admin Certificate expires: 1 year from now (2027-10-03) \u003e kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME deuterium Ready control-plane 2m52s v1.36.5 10.10.1.42 Talos (v1.14.1) 6.18.51-talos (amd64) containerd://2.3.5 protium Ready control-plane 2m50s v1.36.5 10.10.1.41 Talos (v1.14.1) 6.18.51-talos (amd64) containerd://2.3.5 tritium Ready control-plane 2m54s v1.36.5 10.10.1.43 Talos (v1.14.1) 6.18.51-talos (amd64) containerd://2.3.5 \u003e kubectl get pods -A NAMESPACE NAME READY STATUS RESTARTS AGE kube-system coredns-6cb54fb45c-5vqsj 1/1 Running 0 3m3s kube-system coredns-6cb54fb45c-9vf6m 1/1 Running 0 3m3s kube-system kube-apiserver-deuterium 1/1 Running 0 2m56s kube-system kube-apiserver-protium 1/1 Running 0 2m54s kube-system kube-apiserver-tritium 1/1 Running 0 2m56s kube-system kube-controller-manager-deuterium 1/1 Running 2 (3m17s ago) 2m56s kube-system kube-controller-manager-protium 1/1 Running 2 (3m16s ago) 2m54s kube-system kube-controller-manager-tritium 1/1 Running 2 (3m21s ago) 2m56s kube-system kube-flannel-b54lt 1/1 Running 0 2m54s kube-system kube-flannel-t4g2d 1/1 Running 0 2m56s kube-system kube-flannel-zf85q 1/1 Running 0 2m58s kube-system kube-proxy-2f8wb 1/1 Running 0 2m58s kube-system kube-proxy-9js4c 1/1 Running 0 2m54s kube-system kube-proxy-qqnpb 1/1 Running 0 2m56s kube-system kube-scheduler-deuterium 1/1 Running 2 (3m17s ago) 2m56s kube-system kube-scheduler-protium 1/1 Running 2 (3m17s ago) 2m54s kube-system kube-scheduler-tritium 1/1 Running 2 (3m19s ago) 2m56s Conclusion Talos’ parent company Sidero Labs was just acquired by Yardi, so it remains to be seen what happens to Talos. In the meantime, I’m going to try to get a few minimal things working in Talos (below) and do an upgrade cycle before I move any workloads to it.\nIngress cert-manager Longhorn ArgoCD -Logan\n",
+  "wordCount" : "1419",
+  "inLanguage": "en",
+  "image":"https://loganmarchione.github.io/assets/featured/featured_k8s.svg","datePublished": "2026-10-03T00:00:00Z",
+  "dateModified": "2026-10-03T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Logan Marchione"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logan Marchione",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://loganmarchione.github.io/assets/favicon/favicon.svg"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://loganmarchione.github.io/" accesskey="h" title="Logan Marchione (Alt + H)">
+                <img src="https://loganmarchione.github.io/assets/favicon/favicon.svg" alt="" aria-label="logo"
+                    height="35">Logan Marchione</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://loganmarchione.github.io/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/privacy" title="Privacy">
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://loganmarchione.github.io/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Down the Talos rabbit hole
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-10-03 00:00:00 +0000 UTC'>2026-10-03</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>1419 words</span>&nbsp;·&nbsp;<span>Logan Marchione</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="https://loganmarchione.github.io/assets/featured/featured_k8s.svg" alt="featured image">
+        
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#what-is-talos" aria-label="What is Talos?">What is Talos?</a></li>
+            <li>
+                <a href="#cluster-setup" aria-label="Cluster setup">Cluster setup</a><ul>
+                    
+            <li>
+                <a href="#planning---networking" aria-label="Planning - networking">Planning - networking</a></li>
+            <li>
+                <a href="#planning---talos-image" aria-label="Planning - Talos image">Planning - Talos image</a></li>
+            <li>
+                <a href="#planning---vm-setup" aria-label="Planning - VM setup">Planning - VM setup</a></li></ul>
+            </li>
+            <li>
+                <a href="#installation" aria-label="Installation">Installation</a></li>
+            <li>
+                <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><p>Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!</p>
+<table>
+	<thead>
+			<tr>
+					<th>Date</th>
+					<th>URL</th>
+					<th>Part</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2026-10-03</td>
+					<td><a href="/2026/10/down-the-talos-rabbit-hole/">Down the Talos rabbit hole</a></td>
+					<td>Trying out Talos Linux</td>
+			</tr>
+			<tr>
+					<td>2022-12-07</td>
+					<td><a href="/2022/12/k3s-cluster-updates/">K3s cluster updates</a></td>
+					<td>Updates to the cluster build</td>
+			</tr>
+			<tr>
+					<td>2022-03-29</td>
+					<td><a href="/2022/03/kubernetes-guis/">Kubernetes GUIs</a></td>
+					<td>Exploring Kubernetes GUIs</td>
+			</tr>
+			<tr>
+					<td>2022-03-11</td>
+					<td><a href="/2022/03/k3s-single-node-cluster-for-noobs/">K3s single-node cluster for noobs</a></td>
+					<td>Deploying K3s</td>
+			</tr>
+	</tbody>
+</table>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>I first setup my <a href="/2022/03/k3s-single-node-cluster-for-noobs/">K3s single-node cluster</a> in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:</p>
+<ol>
+<li>Because it was a single-node cluster, there was no upgrade path for the underlying Debian operating system. The entire point of Kubernetes is to be able to throw nodes away for upgrades.</li>
+<li>Flux kept giving me issues during upgrades. It would leave my cluster in an errored state and unable to sync until I was able to fix it.</li>
+</ol>
+<p>During this time, K3s itself performed amazingly well and I never had an issue with it or any of its bundled components.</p>
+<p>In the meantime, I&rsquo;ve been missing my Kubernetes cluster and simultaneously reading more about <a href="https://www.siderolabs.com/talos-linux">Talos Linux</a>.</p>
+<h1 id="what-is-talos">What is Talos?<a hidden class="anchor" aria-hidden="true" href="#what-is-talos">#</a></h1>
+<p><a href="https://www.siderolabs.com/talos-linux">Talos Linux</a> is a minimal, immutable, API-driven version of Linux built specifically for Kubernetes. It has no shell, no package manager, no SSH. Just the Linux kernel and Kubernetes. It is designed to do one thing (run Kubernetes) and do it well. Because it is minimal and immutable, there is almost zero attack surface.</p>
+<p>The entire operating system is declarative. You interact with it using <a href="https://docs.siderolabs.com/talos/v1.14/learn-more/talosctl"><code>talosctl</code></a> just like you would interact with Kubernetes using <code>kubectl</code>. You can&rsquo;t SSH into it and you can&rsquo;t run shell scripts, so you have to work out what your workflows are before you install it.</p>
+<h1 id="cluster-setup">Cluster setup<a hidden class="anchor" aria-hidden="true" href="#cluster-setup">#</a></h1>
+<p>Unlike last time, I&rsquo;m not running a single-node cluster. This cluster will have three nodes so that I can have quorum if a node goes down. I&rsquo;m going to have three control plane nodes and also schedule pods on those nodes (so I won&rsquo;t have separate worker nodes).</p>
+<p>The high-level overview is that we need to get three machines booted from the Talos image where they sit in &ldquo;maintenance mode&rdquo; waiting for configuration to be passed to them over the network.</p>
+<p>That configuration is generated on your local machine using YAML files (but in my case, I&rsquo;m going to be using Terraform). You then use <code>talosctl</code> to apply the configuration and the machines install Talos and Kubernetes (and whatever else you have configured).</p>
+<h2 id="planning---networking">Planning - networking<a hidden class="anchor" aria-hidden="true" href="#planning---networking">#</a></h2>
+<p>Those three nodes will require three static IPs from my router (in my case, I&rsquo;m setting three DHCP reservations). My Talos cluster will be called <code>hydrogen</code> and the nodes are named after the <a href="https://en.wikipedia.org/wiki/Isotopes_of_hydrogen">stable isotopes of hydrogen</a>.</p>
+<p>Talos also requires a floating virtual IP (VIP) for <code>kubectl</code> to use. This IP doesn&rsquo;t live on any single node, instead, it floats between all nodes. If a single node goes down, you can still manage the cluster. This VIP is going to have a locally-administered MAC address in my router&rsquo;s DHCP reservations (just so nothing else takes that IP). It is NOT assigned to any of the nodes.</p>
+<table>
+	<thead>
+			<tr>
+					<th>IP address</th>
+					<th>hostname</th>
+					<th>MAC address</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>10.10.1.40</code></td>
+					<td><code>hydrogen</code></td>
+					<td><code>02:00:00:00:00:00</code></td>
+			</tr>
+			<tr>
+					<td><code>10.10.1.41</code></td>
+					<td><code>protium</code></td>
+					<td><code>MAC of machine 1</code></td>
+			</tr>
+			<tr>
+					<td><code>10.10.1.42</code></td>
+					<td><code>deuterium</code></td>
+					<td><code>MAC of machine 2</code></td>
+			</tr>
+			<tr>
+					<td><code>10.10.1.43</code></td>
+					<td><code>tritium</code></td>
+					<td><code>MAC of machine 3</code></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="planning---talos-image">Planning - Talos image<a hidden class="anchor" aria-hidden="true" href="#planning---talos-image">#</a></h2>
+<p>You can run Talos on bare metal, in the cloud, or on a Raspberry Pi. I&rsquo;m going to be running it in Proxmox using three virtual machines.</p>
+<p>Because Talos is immutable and also minimal, their install image isn&rsquo;t one-size-fits-all and you can&rsquo;t add things later. Instead, you use their <a href="https://factory.talos.dev/">Image Factory</a> to specify what options you want and they build you a custom image. Below are the options I chose:</p>
+<ul>
+<li>Hardware Type = <code>Bare-metal Machine</code></li>
+<li>Talos Linux Version = <code>v1.14.1</code></li>
+<li>Architecture = <code>amd64</code> (with SecureBoot disabled)</li>
+<li>Extensions
+<ul>
+<li><code>siderolabs/iscsi-tools</code> and <code>siderolabs/util-linux-tools</code> for <a href="https://longhorn.io/docs/1.12.1/advanced-resources/os-distro-specific/talos-linux-support/">Longhorn support</a></li>
+<li><code>siderolabs/qemu-guest-agent</code> for the Proxmox Guest Agent</li>
+</ul>
+</li>
+<li>Customization = I left all defaults</li>
+</ul>
+<p>Those options result in this image schematic ID&hellip;</p>
+<pre tabindex="0"><code>88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b
+</code></pre><p>&hellip;and there is the link to the ISO that I&rsquo;m going to upload to Proxmox.</p>
+<p><a href="https://factory.talos.dev/image/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b/v1.14.1/metal-amd64.iso">https://factory.talos.dev/image/88d1f7a5c4f1d3aba7df787c448c1d3d008ed29cfb34af53fa0df4336a56040b/v1.14.1/metal-amd64.iso</a></p>
+<p>When using the Image Factory, checksums, signatures, and SBOMs are only available to enterprise customers. That kind of sucks, but they need to make money somehow I guess 🤷.</p>
+<h2 id="planning---vm-setup">Planning - VM setup<a hidden class="anchor" aria-hidden="true" href="#planning---vm-setup">#</a></h2>
+<p>As I mentioned, I&rsquo;m going to be creating three VMs in Proxmox. You can do this however you want (e.g., manually, API, Terraform, etc&hellip;), but here are the settings that I&rsquo;m using. It&rsquo;s worth noting that Talos has recommended settings listed <a href="https://docs.siderolabs.com/talos/v1.14/platform-specific-installations/virtualized-platforms/proxmox">here</a> as well.</p>
+<ul>
+<li>OS = choose Talos ISO from Image Factory</li>
+<li>System settings
+<ul>
+<li>Machine type = <code>q35</code></li>
+<li>BIOS = <code>UEFI</code>, choose your EFI storage, then make sure <code>Pre-Enroll keys</code> is unchecked (to disable SecureBoot)</li>
+<li>Qemu Agent = checked</li>
+</ul>
+</li>
+<li>Disk = choose your disk storage and set size to <code>50GiB</code></li>
+<li>CPU
+<ul>
+<li>Size = 1 core, 2 threads</li>
+<li>Type = <code>x86-64-v3</code></li>
+</ul>
+</li>
+<li>Memory = <code>4096MiB</code></li>
+<li>Network = <code>VirtIO</code></li>
+</ul>
+<p>Start the VMs and you should see they are in maintenance mode, ready to receive their configuration.</p>
+
+<p><img src="/2026/10/down-the-talos-rabbit-hole/20261003_001_hu_c76f3db5943d2dd1.png" loading="lazy" alt="talos maintenance mode"></p>
+<h1 id="installation">Installation<a hidden class="anchor" aria-hidden="true" href="#installation">#</a></h1>
+<p>Talos has a <a href="https://docs.siderolabs.com/talos/v1.14/getting-started/getting-started">workflow</a> for installing via <code>talosctl</code>, but I&rsquo;m going to be using their <a href="https://registry.terraform.io/providers/siderolabs/talos/latest/docs">Terraform provider</a> (they also have some good Terraform examples <a href="https://github.com/siderolabs/contrib/tree/main/examples/terraform">here</a>).</p>
+<p>First, I installed the required tools on my desktop (I use Arch, btw).</p>
+<pre tabindex="0"><code>sudo pacman -S talosctl kubectl
+</code></pre><p>Then, I identified what disks I needed to specify when installing (in my case, it was <code>sda</code> for all three nodes).</p>
+<pre tabindex="0"><code>talosctl -n 10.10.1.41 get disks --insecure
+talosctl -n 10.10.1.42 get disks --insecure
+talosctl -n 10.10.1.43 get disks --insecure
+</code></pre><p>I also made note of which network interface the VIP should be assigned to. In my case, one of the VMs used <code>ens18</code> while the other two used <code>eth0</code> (not sure why).</p>
+<pre tabindex="0"><code>talosctl -n 10.10.1.41 get links --insecure
+talosctl -n 10.10.1.42 get links --insecure
+talosctl -n 10.10.1.43 get links --insecure
+</code></pre><p>That left me with this configuration that ultimately had to go into Terraform.</p>
+<table>
+	<thead>
+			<tr>
+					<th>IP address</th>
+					<th>hostname</th>
+					<th>MAC address</th>
+					<th>Disk</th>
+					<th>Network</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>10.10.1.40</code></td>
+					<td><code>hydrogen</code></td>
+					<td><code>02:00:00:00:00:00</code></td>
+					<td>N/A</td>
+					<td>N/A</td>
+			</tr>
+			<tr>
+					<td><code>10.10.1.41</code></td>
+					<td><code>protium</code></td>
+					<td><code>MAC of machine 1</code></td>
+					<td><code>sda</code></td>
+					<td><code>ens18</code></td>
+			</tr>
+			<tr>
+					<td><code>10.10.1.42</code></td>
+					<td><code>deuterium</code></td>
+					<td><code>MAC of machine 2</code></td>
+					<td><code>sda</code></td>
+					<td><code>eth0</code></td>
+			</tr>
+			<tr>
+					<td><code>10.10.1.43</code></td>
+					<td><code>tritium</code></td>
+					<td><code>MAC of machine 3</code></td>
+					<td><code>sda</code></td>
+					<td><code>eth0</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>I won&rsquo;t paste all the Terraform in-line here, just check <a href="https://github.com/loganmarchione/homelab-infra-terraform/tree/b32a59506fd9d35df8fced756c3fb00f53a0892a/talos">my repo</a> to see what it looks like. A couple things to note with the Terraform:</p>
+<ul>
+<li>When you run <code>terraform apply</code> you should see the console in the Proxmox web UI on the three nodes start do work</li>
+<li>You can check the <code>variables.tf</code> file to see the settings for each node (e.g., the hostname and disks used)</li>
+<li>You can search <code>talos.tf</code> to find the <code>LinkAliasConfig</code>. This is where I set the VIP on the link that has a Proxmox-prefixed MAC address (because some links were using <code>ens18</code> and some where using <code>eth0</code>). This way, I didn&rsquo;t have to specify which NIC to use on each node (it&rsquo;s kind of like a wildcard).</li>
+<li>I haven&rsquo;t tested how to upgrade Talos or Kubernetes yet, or what to do when the Talos certificates expire</li>
+</ul>
+
+<p><img src="/2026/10/down-the-talos-rabbit-hole/20261003_002_hu_6c23a378befa83d0.png" loading="lazy" alt="talos install in progress"></p>
+<p>After about two minutes, I had a healthy cluster running.</p>
+<pre tabindex="0"><code>&gt; talosctl config info
+Current context:     hydrogen
+Nodes:               not defined
+Endpoints:           10.10.1.41, 10.10.1.42, 10.10.1.43
+Roles:               os:admin
+Certificate expires: 1 year from now (2027-10-03)
+
+
+&gt; kubectl get nodes -o wide
+NAME        STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE          KERNEL-VERSION          CONTAINER-RUNTIME
+deuterium   Ready    control-plane   2m52s   v1.36.5   10.10.1.42    &lt;none&gt;        Talos (v1.14.1)   6.18.51-talos (amd64)   containerd://2.3.5
+protium     Ready    control-plane   2m50s   v1.36.5   10.10.1.41    &lt;none&gt;        Talos (v1.14.1)   6.18.51-talos (amd64)   containerd://2.3.5
+tritium     Ready    control-plane   2m54s   v1.36.5   10.10.1.43    &lt;none&gt;        Talos (v1.14.1)   6.18.51-talos (amd64)   containerd://2.3.5
+
+
+&gt; kubectl get pods -A
+NAMESPACE     NAME                                READY   STATUS    RESTARTS        AGE
+kube-system   coredns-6cb54fb45c-5vqsj            1/1     Running   0               3m3s
+kube-system   coredns-6cb54fb45c-9vf6m            1/1     Running   0               3m3s
+kube-system   kube-apiserver-deuterium            1/1     Running   0               2m56s
+kube-system   kube-apiserver-protium              1/1     Running   0               2m54s
+kube-system   kube-apiserver-tritium              1/1     Running   0               2m56s
+kube-system   kube-controller-manager-deuterium   1/1     Running   2 (3m17s ago)   2m56s
+kube-system   kube-controller-manager-protium     1/1     Running   2 (3m16s ago)   2m54s
+kube-system   kube-controller-manager-tritium     1/1     Running   2 (3m21s ago)   2m56s
+kube-system   kube-flannel-b54lt                  1/1     Running   0               2m54s
+kube-system   kube-flannel-t4g2d                  1/1     Running   0               2m56s
+kube-system   kube-flannel-zf85q                  1/1     Running   0               2m58s
+kube-system   kube-proxy-2f8wb                    1/1     Running   0               2m58s
+kube-system   kube-proxy-9js4c                    1/1     Running   0               2m54s
+kube-system   kube-proxy-qqnpb                    1/1     Running   0               2m56s
+kube-system   kube-scheduler-deuterium            1/1     Running   2 (3m17s ago)   2m56s
+kube-system   kube-scheduler-protium              1/1     Running   2 (3m17s ago)   2m54s
+kube-system   kube-scheduler-tritium              1/1     Running   2 (3m19s ago)   2m56s
+</code></pre><h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p>Talos&rsquo; parent company <a href="https://www.siderolabs.com/">Sidero Labs</a> was just acquired by <a href="https://www.yardi.com/">Yardi</a>, so it remains to be seen what happens to Talos. In the meantime, I&rsquo;m going to try to get a few minimal things working in Talos (below) and do an upgrade cycle before I move any workloads to it.</p>
+<ul>
+<li>Ingress</li>
+<li>cert-manager</li>
+<li>Longhorn</li>
+<li>ArgoCD</li>
+</ul>
+<p>-Logan</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Down the Talos rabbit hole on x"
+            href="https://x.com/intent/tweet/?text=Down%20the%20Talos%20rabbit%20hole&amp;url=https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f&amp;hashtags=">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Down the Talos rabbit hole on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f&amp;title=Down%20the%20Talos%20rabbit%20hole&amp;summary=Down%20the%20Talos%20rabbit%20hole&amp;source=https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Down the Talos rabbit hole on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f&title=Down%20the%20Talos%20rabbit%20hole">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Down the Talos rabbit hole on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Down the Talos rabbit hole on whatsapp"
+            href="https://api.whatsapp.com/send?text=Down%20the%20Talos%20rabbit%20hole%20-%20https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Down the Talos rabbit hole on telegram"
+            href="https://telegram.me/share/url?text=Down%20the%20Talos%20rabbit%20hole&amp;url=https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Down the Talos rabbit hole on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Down%20the%20Talos%20rabbit%20hole&u=https%3a%2f%2floganmarchione.github.io%2f2026%2f10%2fdown-the-talos-rabbit-hole%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://loganmarchione.github.io/">Logan Marchione</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a><div class="kb-club">
+  <a target="_blank" href="https://512kb.club"><img src="/assets/assets/512kb-club-green-team.svg" alt="512kb club badge"></a>
+</div>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

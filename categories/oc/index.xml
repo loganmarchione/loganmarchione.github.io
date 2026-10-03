@@ -6,7 +6,48 @@
     <description>Recent content in Oc on Logan Marchione</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/oc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/oc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Down the Talos rabbit hole</title>
+      <link>https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/</link>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/</guid>
+      <description>&lt;p&gt;Hey! Listen! This post is part of a series on my journey into K3s. Check them all out!&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Date&lt;/th&gt;
+					&lt;th&gt;URL&lt;/th&gt;
+					&lt;th&gt;Part&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2026-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/&#34;&gt;Down the Talos rabbit hole&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Trying out Talos Linux&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-12-07&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Updates to the cluster build&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-29&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/kubernetes-guis/&#34;&gt;Kubernetes GUIs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Exploring Kubernetes GUIs&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2022-03-11&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster for noobs&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Deploying K3s&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;I first setup my &lt;a href=&#34;https://loganmarchione.github.io/2022/03/k3s-single-node-cluster-for-noobs/&#34;&gt;K3s single-node cluster&lt;/a&gt; in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>My favorite video games (and the moments I actually remember)</title>
       <link>https://loganmarchione.github.io/2026/09/my-favorite-video-games-and-the-moments-i-actually-remember/</link>
@@ -348,6 +389,11 @@
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
+					&lt;td&gt;2026-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/&#34;&gt;Down the Talos rabbit hole&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Trying out Talos Linux&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
 					&lt;td&gt;2022-12-07&lt;/td&gt;
 					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;Updates to the cluster build&lt;/td&gt;
@@ -611,6 +657,11 @@
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
+					&lt;td&gt;2026-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/&#34;&gt;Down the Talos rabbit hole&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Trying out Talos Linux&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
 					&lt;td&gt;2022-12-07&lt;/td&gt;
 					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;Updates to the cluster build&lt;/td&gt;
@@ -646,6 +697,11 @@
 			&lt;/tr&gt;
 	&lt;/thead&gt;
 	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;2026-10-03&lt;/td&gt;
+					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/&#34;&gt;Down the Talos rabbit hole&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Trying out Talos Linux&lt;/td&gt;
+			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;2022-12-07&lt;/td&gt;
 					&lt;td&gt;&lt;a href=&#34;https://loganmarchione.github.io/2022/12/k3s-cluster-updates/&#34;&gt;K3s cluster updates&lt;/a&gt;&lt;/td&gt;

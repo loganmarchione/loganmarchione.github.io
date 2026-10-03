@@ -3,27 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://loganmarchione.github.io/categories/</loc>
-    <lastmod>2026-09-10T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://loganmarchione.github.io/categories/gaming/</loc>
-    <lastmod>2026-09-10T00:00:00+00:00</lastmod>
+    <loc>https://loganmarchione.github.io/categories/cloud-internet/</loc>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/</loc>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/kubernetes/</loc>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/linux/</loc>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/</loc>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/oc/</loc>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/posts/</loc>
+    <lastmod>2026-10-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://loganmarchione.github.io/categories/gaming/</loc>
     <lastmod>2026-09-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2026/09/my-favorite-video-games-and-the-moments-i-actually-remember/</loc>
     <lastmod>2026-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://loganmarchione.github.io/categories/oc/</loc>
-    <lastmod>2026-09-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/posts/</loc>
-    <lastmod>2026-09-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://loganmarchione.github.io/2026/05/a-dead-simple-openwrt-setup-on-the-flint-2/</loc>
-    <lastmod>2026-05-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/linux/</loc>
     <lastmod>2026-05-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/categories/router/</loc>
@@ -40,9 +49,6 @@
   </url><url>
     <loc>https://loganmarchione.github.io/2025/09/homelab-10-mini-rack-v2/</loc>
     <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/cloud-internet/</loc>
-    <lastmod>2025-03-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2025/03/pfsense-on-the-opnsense-dec740/</loc>
     <lastmod>2025-03-01T00:00:00+00:00</lastmod>
@@ -75,9 +81,6 @@
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/12/k3s-cluster-updates/</loc>
-    <lastmod>2022-12-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://loganmarchione.github.io/categories/kubernetes/</loc>
     <lastmod>2022-12-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://loganmarchione.github.io/2022/11/linux-on-the-lenovo-thinkpad-t14-gen2-amd/</loc>
