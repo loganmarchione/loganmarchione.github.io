@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 22 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://loganmarchione.github.io/categories/encryption-privacy/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Dockerizing Claude Code</title>
+      <link>https://loganmarchione.github.io/2026/11/dockerizing-claude-code/</link>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://loganmarchione.github.io/2026/11/dockerizing-claude-code/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Recently, my employer pushed Claude Code to everyone&amp;rsquo;s laptops. It is my assumption that if they pushed Claude Code to every machine, they trust Claude Code with any/all data on that machine. It&amp;rsquo;s not &lt;em&gt;my&lt;/em&gt; machine, so it&amp;rsquo;s not my decision to argue for or against 🤷.&lt;/p&gt;
+&lt;p&gt;At work it&amp;rsquo;s their risk; at home it&amp;rsquo;s mine.&lt;/p&gt;
+&lt;p&gt;At home, I pay for a Claude subscription. I use &lt;a href=&#34;https://zed.dev/&#34;&gt;Zed&lt;/a&gt; as my editor, and I typically open Zed by going to a specific directory and running &lt;code&gt;zeditor .&lt;/code&gt; so Zed only sees that specific directory. Inside Zed, I use Claude via the API (which is billed separately from the subscription), so I get a native experience in Zed&amp;rsquo;s Agent Panel (the ✨ icon). However, I&amp;rsquo;m discovering that Anthropic&amp;rsquo;s pricing model makes it cheaper to use the Claude subscription instead of the API, so that means Zed is out for larger tasks. I want to use Claude Code (part of the subscription) natively on my workstation, but I don&amp;rsquo;t trust it with complete access to all of my files (e.g., I don&amp;rsquo;t want it reading my browser history, grabbing my SSH private keys, etc&amp;hellip;).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Down the Talos rabbit hole</title>
       <link>https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/</link>
       <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
