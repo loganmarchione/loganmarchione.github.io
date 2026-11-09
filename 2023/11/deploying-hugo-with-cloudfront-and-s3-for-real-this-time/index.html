@@ -43,7 +43,7 @@ TL;DR
 Good news everyone! If you&rsquo;re reading this (in late 2023), you&rsquo;re reading it via CloudFront instead of a VPS!">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6e0370252c34d7124c1fbb2685bd776efa05f0874888ff2e30cfdc3e5a51af1.css" integrity="sha256-1uA3AlLDTXEkwfuyaFvXdu&#43;gXwh0iI/y4wz9w&#43;WlGvE=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.08f7cc5b7dc50eb7bad1552af19435c786f6de81238843a42ff2863f7d3f7af5.css" integrity="sha256-CPfMW33FDre60VUq8ZQ1x4b23oEjiEOkL/KGP30/evU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -444,10 +444,10 @@ module &#34;static_site_domain_com&#34; {
   }
 </code></pre><p>However, what if I pushed an update to my site and <em>wanted</em> the user to download an asset again? I couldn&rsquo;t control that (because it was set to expire after 10 days) and now the user is viewing a version of my site with a mix of old and new assets. Obviously, I could have (and probably should have) set the number of days lower than <code>10</code>, but setting it too low defeats the purpose of a cache in the first place.</p>
 
-<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20230921_001p1_hu_6057c8fcdfa99039.png" loading="lazy" alt="nginx caching"></p>
+<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20230921_001p1_hu_f4b8ce9ad7c11f4e.png" loading="lazy" alt="nginx caching"></p>
 <p>The same problem applies to CloudFront, except now there is a second cache in the mix. When I push updates to S3, how can I tell CloudFront to update its copy of my static assets? Below is a <a href="https://serialized.net/2017/06/maximizing-performance-with-cloudfront-s3-and-hugo/">recreation of Josh Barratt&rsquo;s diagram</a> that I think does a really good job of visualizing this.</p>
 
-<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20230921_001p2_hu_58e7b3cf86881290.png" loading="lazy" alt="cloudfront caching"></p>
+<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20230921_001p2_hu_917b961da624fbfd.png" loading="lazy" alt="cloudfront caching"></p>
 <p>To solve these issues, I did a couple things.</p>
 <p>For browser cache, you can&rsquo;t actually set this in CloudFront (again, CloudFront is not a webserver). Instead, I set the <code>Cache-Control</code> header on specific files in my Hugo <code>config.yaml</code> file, which is read during the <code>hugo deploy</code> command (more on that later). This actually sets the <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#SysMetadata">metadata</a> on the files in S3, then CloudFront just forwards that metadata to the user. Also, notice how I turned the expiration time down to <code>86400</code> (one day) instead of 10 days, and that <code>html</code>, <code>json</code>, and <code>xml</code> files are only cached for <code>3600</code> (one hour).</p>
 <pre tabindex="0"><code>deployment:
@@ -605,7 +605,7 @@ module &#34;iam_github_oidc_role_loganmarchione_com&#34; {
 <p>My site isn&rsquo;t super busy, so it&rsquo;s very efficient to run via a CDN instead of a dedicated VPS. I cut over from my VPS to CloudFront on 2023-09-24, so the stats below are from 2023-10-01 to 2023-10-31.</p>
 <p>I use <a href="https://plausible.io/">Plausible</a> for analytics. Below you can see my traffic patterns for October 2023 (the first month on CloudFront).</p>
 
-<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20231108_001_hu_de7492dffa0bd554.png" loading="lazy" alt="plausible"></p>
+<p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20231108_001_hu_bce93aa2089722d.png" loading="lazy" alt="plausible"></p>
 <p>Below is data from the CloudFront dashboard. Here you can see the total HTTP requests (average is ~8500/day) and cache hit rate (~81%).</p>
 
 <p><img src="/2023/11/deploying-hugo-with-cloudfront-and-s3-for-real-this-time/20231108_002.png" loading="lazy" alt="cloudfront stats"></p>

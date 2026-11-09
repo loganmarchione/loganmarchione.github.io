@@ -635,7 +635,7 @@
       <description>&lt;h1 id=&#34;update-2022-04-15&#34;&gt;Update: 2022-04-15&lt;/h1&gt;
 &lt;p&gt;I typically average around 100 unique visitors to this site per day. Below is a screenshot from my &lt;a href=&#34;https://loganmarchione.github.io/2021/03/analytics-with-hugo/&#34;&gt;Plausible analytics setup&lt;/a&gt; showing the traffic spike up to almost 14k unique visitors from HackerNews (and other sources).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/20220415_001_hu_1032e0237b578d90.png&#34; loading=&#34;lazy&#34; alt=&#34;plausible&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2022/04/impressions-from-a-first-time-mac-user/20220415_001_hu_5fc8a2836346255e.png&#34; loading=&#34;lazy&#34; alt=&#34;plausible&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;update-2022-04-12&#34;&gt;Update: 2022-04-12&lt;/h1&gt;
 &lt;p&gt;I posted this article to &lt;a href=&#34;https://news.ycombinator.com/item?id=30993350&#34;&gt;that orange site&lt;/a&gt; and it blew up more than I expected. I reached #3 of the front page (screenshot below) and am officially on the top 10 list for &lt;a href=&#34;https://news.ycombinator.com/front?day=2022-04-11&#34;&gt;2022-04-11&lt;/a&gt;. When I &lt;a href=&#34;https://loganmarchione.github.io/2021/02/migrating-from-wordpress-to-hugo/#things-im-losing&#34;&gt;migrated from WordPress to Hugo&lt;/a&gt;, I lost comments on this blog, but the HackerNews post has some really good discussion and recommendations that I highly encourage you to check out.&lt;/p&gt;</description>
     </item>
@@ -2177,7 +2177,7 @@
       <description>&lt;p&gt;Recently, I posted three articles of a four-part series showing how to encrypt an external drive with TrueCrypt on Fedora 20. As-of today, May 28th, TrueCrypt may not be secure after-all.&lt;/p&gt;
 &lt;p&gt;The truecrypt.org website now redirects to &lt;a href=&#34;http://truecrypt.sourceforge.net/&#34;&gt;truecrypt.sourceforge.net&lt;/a&gt;. A warning is displayed that reads, &amp;ldquo;&lt;strong&gt;WARNING: Using TrueCrypt is not secure as it may contain unfixed security issues&lt;/strong&gt;&amp;rdquo; and it directs users to alternative encryption packages for Windows, Mac, and Linux.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/20140528_001_hu_3705ad557cd1fd8b.png&#34; loading=&#34;lazy&#34; alt=&#34;screenshot&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;https://loganmarchione.github.io/2014/05/truecrypt-may-not-be-secure/20140528_001_hu_3fe953cc36a5b0c6.png&#34; loading=&#34;lazy&#34; alt=&#34;screenshot&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -2190,7 +2190,12 @@
 &lt;p&gt;See the official petition &lt;a href=&#34;http://www.drop-dropbox.com/&#34;&gt;here&lt;/a&gt;, and my letter to Dropbox customer service below.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;To whom it may concern,&lt;/p&gt;
-&lt;p&gt;I have been a paid subscriber to Dropbox since 2010, and have loved every minute of your service since day 1. However, with recent revelations about the NSA, I&amp;rsquo;ve been growing increasingly worried about storing my data in the cloud. Before my subscription renewed in March, I removed all of my files and downgraded to a free account. Originally, I had planned to re-subscribe once I decided how to encrypt my data locally before uploading.&lt;/p&gt;</description>
+&lt;p&gt;I have been a paid subscriber to Dropbox since 2010, and have loved every minute of your service since day 1. However, with recent revelations about the NSA, I&amp;rsquo;ve been growing increasingly worried about storing my data in the cloud. Before my subscription renewed in March, I removed all of my files and downgraded to a free account. Originally, I had planned to re-subscribe once I decided how to encrypt my data locally before uploading.&lt;/p&gt;
+&lt;p&gt;However, after learning that Dr. Condoleezza Rice will be joining your Board of Directors, I will NOT be coming back. Dr. Rice has a proven track record of supporting warrantless wiretapping of US citizens in the name of stopping &amp;ldquo;terrorism&amp;rdquo;. As a company that is trusted with personal user data, you should be ashamed of yourselves for this action.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m sure that one individual&amp;rsquo;s opinion won&amp;rsquo;t matter to your CEO, but I sincerely hope that you lose more customers over this decision. My trust in your service has been lost, and you will not be getting it back.&lt;/p&gt;
+&lt;p&gt;Sincerely,&lt;/p&gt;
+&lt;p&gt;Logan Marchione&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>

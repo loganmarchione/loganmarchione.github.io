@@ -43,7 +43,7 @@ Introduction
 I first setup my K3s single-node cluster in 2022. In early 2026, I moved my entire lab back to Docker Compose due to two main issues:">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2026/10/down-the-talos-rabbit-hole/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6e0370252c34d7124c1fbb2685bd776efa05f0874888ff2e30cfdc3e5a51af1.css" integrity="sha256-1uA3AlLDTXEkwfuyaFvXdu&#43;gXwh0iI/y4wz9w&#43;WlGvE=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.08f7cc5b7dc50eb7bad1552af19435c786f6de81238843a42ff2863f7d3f7af5.css" integrity="sha256-CPfMW33FDre60VUq8ZQ1x4b23oEjiEOkL/KGP30/evU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -393,7 +393,7 @@ Date URL Part 2026-10-03 Down the Talos rabbit hole Trying out Talos Linux 2022-
 </ul>
 <p>Start the VMs and you should see they are in maintenance mode, ready to receive their configuration.</p>
 
-<p><img src="/2026/10/down-the-talos-rabbit-hole/20261003_001_hu_c76f3db5943d2dd1.png" loading="lazy" alt="talos maintenance mode"></p>
+<p><img src="/2026/10/down-the-talos-rabbit-hole/20261003_001_hu_5c06c7ded0aa893b.png" loading="lazy" alt="talos maintenance mode"></p>
 <h1 id="installation">Installation<a hidden class="anchor" aria-hidden="true" href="#installation">#</a></h1>
 <p>Talos has a <a href="https://docs.siderolabs.com/talos/v1.14/getting-started/getting-started">workflow</a> for installing via <code>talosctl</code>, but I&rsquo;m going to be using their <a href="https://registry.terraform.io/providers/siderolabs/talos/latest/docs">Terraform provider</a> (they also have some good Terraform examples <a href="https://github.com/siderolabs/contrib/tree/main/examples/terraform">here</a>).</p>
 <p>First, I installed the required tools on my desktop (I use Arch, btw).</p>
@@ -456,7 +456,7 @@ talosctl -n 10.10.1.43 get links --insecure
 <li>I haven&rsquo;t tested how to upgrade Talos or Kubernetes yet, or what to do when the Talos certificates expire</li>
 </ul>
 
-<p><img src="/2026/10/down-the-talos-rabbit-hole/20261003_002_hu_6c23a378befa83d0.png" loading="lazy" alt="talos install in progress"></p>
+<p><img src="/2026/10/down-the-talos-rabbit-hole/20261003_002_hu_289820e4bfbe0ec0.png" loading="lazy" alt="talos install in progress"></p>
 <p>After about two minutes, I had a healthy cluster running.</p>
 <pre tabindex="0"><code>&gt; talosctl config info
 Current context:     hydrogen

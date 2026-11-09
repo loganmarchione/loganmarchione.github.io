@@ -13,7 +13,7 @@ Introduction
 Since TrueCrypt is no longer under active development, I&rsquo;ve decided to wipe my external drives and re-encrypt them with LUKS and dm-crypt. These are standard Linux tools that are available by default in most distributions. I&rsquo;ve used LUKS and dm-crypt in the past, when I installed Arch Linux on my laptop. Here, I&rsquo;ll be performing a similar procedure, but without LVM.">
 <meta name="author" content="Logan Marchione">
 <link rel="canonical" href="https://loganmarchione.github.io/2015/05/encrypted-external-drive-with-luks/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6e0370252c34d7124c1fbb2685bd776efa05f0874888ff2e30cfdc3e5a51af1.css" integrity="sha256-1uA3AlLDTXEkwfuyaFvXdu&#43;gXwh0iI/y4wz9w&#43;WlGvE=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.08f7cc5b7dc50eb7bad1552af19435c786f6de81238843a42ff2863f7d3f7af5.css" integrity="sha256-CPfMW33FDre60VUq8ZQ1x4b23oEjiEOkL/KGP30/evU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="16x16" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://loganmarchione.github.io/assets/favicon/favicon.svg">
@@ -376,7 +376,7 @@ sdb                         8:16   0 931.5G  0 disk
 </blockquote>
 <p>That paragraph is probably easier explained with an <a href="https://nnc3.com/mags/LM10/Magazine/Archive/2005/61/065-071_encrypt/article.html">image</a>.</p>
 
-<p><img src="/2015/05/encrypted-external-drive-with-luks/20150505_002_hu_dddcf5b80010f903.png" loading="lazy" alt="screenshot"></p>
+<p><img src="/2015/05/encrypted-external-drive-with-luks/20150505_002_hu_89c3ecdda60b1b7a.png" loading="lazy" alt="screenshot"></p>
 <p>If you don&rsquo;t understand already, it&rsquo;s important to not damage the LUKS header. It&rsquo;s best practice to <a href="https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions#6-backup-and-data-recovery">backup the header</a> as soon as you create the LUKS device, because you&rsquo;re probably lazy and won&rsquo;t do it later. If you damage the header at all (accidental formatting, wrong device when using <em>dd</em>, bad block, etc&hellip;), you&rsquo;ll need this backup header to recover the data. The header file itself needs encrypted and should be stored in safe place (not on the same drive, obviously).</p>
 <pre tabindex="0"><code>sudo cryptsetup luksHeaderBackup --header-backup-file /path/to/file.img /dev/sdb1
 </code></pre><p>Note - TrueCrypt (brilliant piece of software) uses a <a href="http://www.wilderssecurity.com/threads/truecrypt-file-partition-drive.349445/#post-2246156">backup header</a> at the end of the drive as well, to mitigate the risk of a single header.</p>
